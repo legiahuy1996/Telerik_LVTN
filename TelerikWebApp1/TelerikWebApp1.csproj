@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6EDA37FB-267C-44B3-B1CC-6F6EFF48BB2F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TelerikWebApp1</RootNamespace>
+    <AssemblyName>TelerikWebApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="Telerik.Web.Spreadsheet">
+      <HintPath>..\lib\RCAJAX\2018.1.117.45.Trial\AdditionalLibraries\Bin45\Telerik.Web.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>..\lib\RCAJAX\2018.1.117.45.Trial\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins">
+      <HintPath>..\lib\RCAJAX\2018.1.117.45.Trial\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core">
+      <HintPath>..\lib\RCAJAX\2018.1.117.45.Trial\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow">
+      <HintPath>..\lib\RCAJAX\2018.1.117.45.Trial\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet">
+      <HintPath>..\lib\RCAJAX\2018.1.117.45.Trial\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml">
+      <HintPath>..\lib\RCAJAX\2018.1.117.45.Trial\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip">
+      <HintPath>..\lib\RCAJAX\2018.1.117.45.Trial\AdditionalLibraries\Bin45\Telerik.Windows.Zip.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DanhSachHoCaThe.aspx.cs">
+      <DependentUpon>DanhSachHoCaThe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachHoCaThe.aspx.designer.cs">
+      <DependentUpon>DanhSachHoCaThe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ThemMoiHoCaThe.aspx.cs">
+      <DependentUpon>ThemMoiHoCaThe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ThemMoiHoCaThe.aspx.designer.cs">
+      <DependentUpon>ThemMoiHoCaThe.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadCaptcha\0.wav" />
+    <Content Include="App_Data\RadCaptcha\1.wav" />
+    <Content Include="App_Data\RadCaptcha\2.wav" />
+    <Content Include="App_Data\RadCaptcha\3.wav" />
+    <Content Include="App_Data\RadCaptcha\4.wav" />
+    <Content Include="App_Data\RadCaptcha\5.wav" />
+    <Content Include="App_Data\RadCaptcha\6.wav" />
+    <Content Include="App_Data\RadCaptcha\7.wav" />
+    <Content Include="App_Data\RadCaptcha\8.wav" />
+    <Content Include="App_Data\RadCaptcha\9.wav" />
+    <Content Include="App_Data\RadCaptcha\A.wav" />
+    <Content Include="App_Data\RadCaptcha\B.wav" />
+    <Content Include="App_Data\RadCaptcha\C.wav" />
+    <Content Include="App_Data\RadCaptcha\D.wav" />
+    <Content Include="App_Data\RadCaptcha\E.wav" />
+    <Content Include="App_Data\RadCaptcha\F.wav" />
+    <Content Include="App_Data\RadCaptcha\G.wav" />
+    <Content Include="App_Data\RadCaptcha\H.wav" />
+    <Content Include="App_Data\RadCaptcha\I.wav" />
+    <Content Include="App_Data\RadCaptcha\J.wav" />
+    <Content Include="App_Data\RadCaptcha\K.wav" />
+    <Content Include="App_Data\RadCaptcha\L.wav" />
+    <Content Include="App_Data\RadCaptcha\M.wav" />
+    <Content Include="App_Data\RadCaptcha\N.wav" />
+    <Content Include="App_Data\RadCaptcha\O.wav" />
+    <Content Include="App_Data\RadCaptcha\P.wav" />
+    <Content Include="App_Data\RadCaptcha\Q.wav" />
+    <Content Include="App_Data\RadCaptcha\R.wav" />
+    <Content Include="App_Data\RadCaptcha\S.wav" />
+    <Content Include="App_Data\RadCaptcha\T.wav" />
+    <Content Include="App_Data\RadCaptcha\U.wav" />
+    <Content Include="App_Data\RadCaptcha\V.wav" />
+    <Content Include="App_Data\RadCaptcha\W.wav" />
+    <Content Include="App_Data\RadCaptcha\X.wav" />
+    <Content Include="App_Data\RadCaptcha\Y.wav" />
+    <Content Include="App_Data\RadCaptcha\Z.wav" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\buttonStyle.css" />
+    <Content Include="Content\dhtmlxmessage.css" />
+    <Content Include="Content\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\MDF.css" />
+    <Content Include="Content\menuStyle.css" />
+    <Content Include="Content\myStyles.css" />
+    <Content Include="Content\overlay.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\styles.css" />
+    <Content Include="DanhSachHoCaThe.aspx" />
+    <Content Include="Default.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadSpell\de-DE.tdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadSpell\en-US.tdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadSpell\fr-FR.tdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\banner-bg.jpg" />
+    <Content Include="images\banner1.jpg" />
+    <Content Include="images\banner2.jpg" />
+    <Content Include="images\business-plan.jpg" />
+    <Content Include="images\cal.gif" />
+    <Content Include="images\dotted-line.gif" />
+    <Content Include="images\feature-botm-crv.jpg" />
+    <Content Include="images\feature-pic-1.jpg" />
+    <Content Include="images\feature-pic-2.jpg" />
+    <Content Include="images\feature-pic-3.jpg" />
+    <Content Include="images\feature-top-crv.jpg" />
+    <Content Include="images\foter-bg.jpg" />
+    <Content Include="images\icon\account_icon.png" />
+    <Content Include="images\icon\add_ico.png" />
+    <Content Include="images\icon\add_ico_hover.png" />
+    <Content Include="images\icon\approve_ico.png" />
+    <Content Include="images\icon\approve_ico_hover.png" />
+    <Content Include="images\icon\arrow_icon.png" />
+    <Content Include="images\icon\back_ico.png" />
+    <Content Include="images\icon\back_ico_hover.png" />
+    <Content Include="images\icon\bell_Disable.png" />
+    <Content Include="images\icon\bell_Xam.png" />
+    <Content Include="images\icon\bell_XanhLa.png" />
+    <Content Include="images\icon\calc_ico.png" />
+    <Content Include="images\icon\calc_ico_hover.png" />
+    <Content Include="images\icon\changePass_hover.png" />
+    <Content Include="images\icon\changePass_normal.png" />
+    <Content Include="images\icon\close_ico.png" />
+    <Content Include="images\icon\close_ico_hover.png" />
+    <Content Include="images\icon\copy_ico.png" />
+    <Content Include="images\icon\copy_ico_hover.png" />
+    <Content Include="images\icon\create_ico.png" />
+    <Content Include="images\icon\create_ico_hover.png" />
+    <Content Include="images\icon\delete_ico.png" />
+    <Content Include="images\icon\delete_ico_hover.png" />
+    <Content Include="images\icon\detail_ico.png" />
+    <Content Include="images\icon\detail_ico_hover.png" />
+    <Content Include="images\icon\down_hover.png" />
+    <Content Include="images\icon\down_normal.png" />
+    <Content Include="images\icon\english_hover.png" />
+    <Content Include="images\icon\english_normal.png" />
+    <Content Include="images\icon\exit_ico.png" />
+    <Content Include="images\icon\export_ico.png" />
+    <Content Include="images\icon\export_ico_hover.png" />
+    <Content Include="images\icon\fill_ico.png" />
+    <Content Include="images\icon\fill_ico_hover.png" />
+    <Content Include="images\icon\GetVisibleControls.gif" />
+    <Content Include="images\icon\HDSD_hover.png" />
+    <Content Include="images\icon\HDSD_normal.png" />
+    <Content Include="images\icon\home_hover.png" />
+    <Content Include="images\icon\home_normal.png" />
+    <Content Include="images\icon\hover_rec.png" />
+    <Content Include="images\icon\ico_add1.png" />
+    <Content Include="images\icon\ico_add2.png" />
+    <Content Include="images\icon\ico_approve1.png" />
+    <Content Include="images\icon\ico_approve2.png" />
+    <Content Include="images\icon\ico_back1.png" />
+    <Content Include="images\icon\ico_back2.png" />
+    <Content Include="images\icon\ico_banner_close.png" />
+    <Content Include="images\icon\ico_banner_show.png" />
+    <Content Include="images\icon\ico_calc1.png" />
+    <Content Include="images\icon\ico_calc2.png" />
+    <Content Include="images\icon\ico_close1.png" />
+    <Content Include="images\icon\ico_close2.png" />
+    <Content Include="images\icon\ico_copy1.png" />
+    <Content Include="images\icon\ico_copy2.png" />
+    <Content Include="images\icon\ico_create1.png" />
+    <Content Include="images\icon\ico_create2.png" />
+    <Content Include="images\icon\ico_delete1.png" />
+    <Content Include="images\icon\ico_delete2.png" />
+    <Content Include="images\icon\ico_detail1.png" />
+    <Content Include="images\icon\ico_detail2.png" />
+    <Content Include="images\icon\ico_down.png" />
+    <Content Include="images\icon\ico_export.png" />
+    <Content Include="images\icon\ico_export1.png" />
+    <Content Include="images\icon\ico_export2.png" />
+    <Content Include="images\icon\ico_fill1.png" />
+    <Content Include="images\icon\ico_fill2.png" />
+    <Content Include="images\icon\ico_import1.png" />
+    <Content Include="images\icon\ico_import2.png" />
+    <Content Include="images\icon\ico_list1.png" />
+    <Content Include="images\icon\ico_list2.png" />
+    <Content Include="images\icon\ico_lock.png" />
+    <Content Include="images\icon\ico_lock1.png" />
+    <Content Include="images\icon\ico_lock2.png" />
+    <Content Include="images\icon\ico_lock3.png" />
+    <Content Include="images\icon\ico_login1.png" />
+    <Content Include="images\icon\ico_login2.png" />
+    <Content Include="images\icon\ico_process1.png" />
+    <Content Include="images\icon\ico_process2.png" />
+    <Content Include="images\icon\ico_recalc1.png" />
+    <Content Include="images\icon\ico_recalc2.png" />
+    <Content Include="images\icon\ico_reject1.png" />
+    <Content Include="images\icon\ico_reject2.png" />
+    <Content Include="images\icon\ico_remove1.png" />
+    <Content Include="images\icon\ico_remove2.png" />
+    <Content Include="images\icon\ico_reset1.png" />
+    <Content Include="images\icon\ico_reset2.png" />
+    <Content Include="images\icon\ico_save1.png" />
+    <Content Include="images\icon\ico_save2.png" />
+    <Content Include="images\icon\ico_search.png" />
+    <Content Include="images\icon\ico_search1.png" />
+    <Content Include="images\icon\ico_search2.png" />
+    <Content Include="images\icon\ico_select1.png" />
+    <Content Include="images\icon\ico_select2.png" />
+    <Content Include="images\icon\ico_submit1.png" />
+    <Content Include="images\icon\ico_submit2.png" />
+    <Content Include="images\icon\ico_transfer1.png" />
+    <Content Include="images\icon\ico_transfer2.png" />
+    <Content Include="images\icon\ico_unlock1.png" />
+    <Content Include="images\icon\ico_unlock2.png" />
+    <Content Include="images\icon\ico_user.png" />
+    <Content Include="images\icon\ico_view1.png" />
+    <Content Include="images\icon\ico_view2.png" />
+    <Content Include="images\icon\import_ico.png" />
+    <Content Include="images\icon\import_ico_hover.png" />
+    <Content Include="images\icon\list_ico.png" />
+    <Content Include="images\icon\list_ico_hover.png" />
+    <Content Include="images\icon\lock_ico.png" />
+    <Content Include="images\icon\lock_ico_hover.png" />
+    <Content Include="images\icon\login_ico.png" />
+    <Content Include="images\icon\login_ico_hover.png" />
+    <Content Include="images\icon\logout_ico.png" />
+    <Content Include="images\icon\logout_ico_hover.png" />
+    <Content Include="images\icon\long.png" />
+    <Content Include="images\icon\pin.png" />
+    <Content Include="images\icon\process_ico.png" />
+    <Content Include="images\icon\process_ico_hover.png" />
+    <Content Include="images\icon\recalc_ico.png" />
+    <Content Include="images\icon\recalc_ico_hover.png" />
+    <Content Include="images\icon\refesh_hover.png" />
+    <Content Include="images\icon\refesh_normal.png" />
+    <Content Include="images\icon\reject_ico.png" />
+    <Content Include="images\icon\reject_ico_hover.png" />
+    <Content Include="images\icon\remove_ico.png" />
+    <Content Include="images\icon\remove_ico_hover.png" />
+    <Content Include="images\icon\reset_ico.png" />
+    <Content Include="images\icon\reset_ico_hover.png" />
+    <Content Include="images\icon\save_ico.png" />
+    <Content Include="images\icon\save_ico_hover.png" />
+    <Content Include="images\icon\search_ico.png" />
+    <Content Include="images\icon\search_ico_hover.png" />
+    <Content Include="images\icon\select_ico.png" />
+    <Content Include="images\icon\select_ico_hover.png" />
+    <Content Include="images\icon\subMenu_icon.png" />
+    <Content Include="images\icon\subMenu_icon1.png" />
+    <Content Include="images\icon\submit_ico.png" />
+    <Content Include="images\icon\submit_ico_hover.png" />
+    <Content Include="images\icon\tool_hover.png" />
+    <Content Include="images\icon\tool_normal.png" />
+    <Content Include="images\icon\transfer_ico.png" />
+    <Content Include="images\icon\transfer_ico_hover.png" />
+    <Content Include="images\icon\unlock_ico.png" />
+    <Content Include="images\icon\unlock_ico_hover.png" />
+    <Content Include="images\icon\unpin.png" />
+    <Content Include="images\icon\up_hover.png" />
+    <Content Include="images\icon\up_normal.png" />
+    <Content Include="images\icon\view_hover.png" />
+    <Content Include="images\icon\view_ico.png" />
+    <Content Include="images\icon\view_ico_hover.png" />
+    <Content Include="images\icon\view_normal.png" />
+    <Content Include="images\icon\VisibleControls.png" />
+    <Content Include="images\icon\vn_hover.png" />
+    <Content Include="images\icon\vn_normal.png" />
+    <Content Include="images\leftpan-btm-crv.jpg" />
+    <Content Include="images\leftpan-top-crv.jpg" />
+    <Content Include="images\logo-bg-bot.jpg" />
+    <Content Include="images\logo-bg-top.jpg" />
+    <Content Include="images\logo-Thue-Nha-nuoc.jpg" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="images\logo1.jpg" />
+    <Content Include="images\logo2.jpg" />
+    <Content Include="images\menu-bg-on.jpg" />
+    <Content Include="images\menu-bg.jpg" />
+    <Content Include="images\more-bg.gif" />
+    <Content Include="images\news-pic.jpg" />
+    <Content Include="images\right-panel-crv.gif" />
+    <Content Include="images\round-bullet.gif" />
+    <Content Include="images\search_ico.png" />
+    <Content Include="images\search_ico_hover.png" />
+    <Content Include="images\solution-pic.jpg" />
+    <Content Include="images\star-icon.gif" />
+    <Content Include="ThemMoiHoCaThe.aspx" />
+    <Content Include="web.config" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Site1.Master" />
+    <Content Include="Model\DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Model\DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Import Project="$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(VSToolsPath)\TypeScript\Microsoft.TypeScript.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49573</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:26994/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

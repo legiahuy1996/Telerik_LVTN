@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 27.375" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="50debdf5-6adb-489f-9ec0-3101d4551de2" absoluteBounds="7.5, 2.875, 2, 23.693260091145834">
+      <DataClassMoniker Name="/DataClasses1DataContext/HR_tblEmp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99fe4adb-415e-44f1-a226-2034b2106b2e" absoluteBounds="7.515, 3.335, 1.9700000000000002, 23.133260091145832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.20923076923077 : 26.5682600911458); (8.20923076923077 : 26.8182600911458); (8.80461538461539 : 26.8182600911458); (8.80461538461539 : 26.5682600911458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClasses1DataContext/HR_tblEmp/HR_tblEmp_HR_tblEmp" />
+      <nodes>
+        <classShapeMoniker Id="50debdf5-6adb-489f-9ec0-3101d4551de2" />
+        <classShapeMoniker Id="50debdf5-6adb-489f-9ec0-3101d4551de2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.20923076923077 : 2.875); (8.20923076923077 : 2.625); (8.80461538461539 : 2.625); (8.80461538461539 : 2.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClasses1DataContext/HR_tblEmp/HR_tblEmp_HR_tblEmp1" />
+      <nodes>
+        <classShapeMoniker Id="50debdf5-6adb-489f-9ec0-3101d4551de2" />
+        <classShapeMoniker Id="50debdf5-6adb-489f-9ec0-3101d4551de2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

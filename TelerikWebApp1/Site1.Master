@@ -1,0 +1,214 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="TelerikWebApp1.Site1" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Welcome to Tax</title>
+
+    <link href="Content/style.css" rel="stylesheet" />
+    <link href="Content/styles.css" rel="stylesheet" />
+    <link href="Content/buttonStyle.css" rel="stylesheet" />
+    <link href="Content/jquery.mCustomScrollbar.css" rel="stylesheet" /><link href="Content/dhtmlxmessage.css" rel="stylesheet" /><link href="Content/MDF.css" rel="stylesheet" /><link href="Content/menuStyle.css" rel="stylesheet" /><link href="Content/myStyles.css" rel="stylesheet" /><link href="Content/overlay.css" rel="stylesheet" />
+</head>
+<body>
+    <table width="100" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td align="left" valign="top" class="whiteBg">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left" valign="top" class="bannerBg">
+                            <table width="870" border="0" align="right" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td width="206" align="left" valign="top" class="logoBotmbg">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td align="left" valign="top" class="logoTopbg">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" valign="top"><a href="index.html">
+                                                    <img src="images/logo2.jpg" alt="Business" title="Business" width="169" height="111" border="0" /></a></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td align="left" valign="top">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td align="left" valign="top">
+                                                    <ul class="topMenu">
+                                                        <li><a href="index.html" title="Home" class="active">Home</a></li>
+                                                        <li><a href="#" title="About Us">About Us</a></li>
+                                                        <li><a href="#" title="Service">Service</a></li>
+                                                        <li><a href="#" title="News">News</a></li>
+                                                        <li><a href="#" title="Contact Us" class="last">Contact Us</a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top" class="banner">
+                                                    <h2>Thuế Việt Nam<br />
+                                                        Tổng cục thuế bộ Tài Chính<br />
+                                                        Nước cộng hòa xã hội chủ nghĩa Việt Nam</h2>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" valign="top" class="paddingTop30">
+                            <table width="842" border="0" align="center" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td width="208" align="left" valign="top" class="leftPanlbotm">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td align="left" valign="top" class="leftPanltop"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top">
+                                                    <table width="185" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td align="left" valign="top">
+                                                                <h2 class="headingTxt">Menu</h2>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="dottedLine">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" valign="top">
+                                                                <div id='cssmenu'>
+                                                                    <ul>
+                                                                        <li class='active '><a href='index.html'><span>Home</span></a></li>
+                                                                        <li class='has-sub '>
+                                                                            <a><span>Danh bạ</span></a>
+                                                                            <ul>
+                                                                               <li><a href="ThemMoiHoCaThe.aspx"><span>Thêm mới hộ cá thể</span></a></li>
+                                                                                <li>
+                                                                                    <a href="DanhSachHoCaThe.aspx"><span>Danh sách hộ cá thể</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href='#'><span>Điều chỉnh thông tin hộ cá thể</span></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li class='has-sub '>
+                                                                            <a href='#'><span>Khai thuế</span></a>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <a href='#'><span>Khai thuế chi tiết</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href='#'><span>Danh sách khai thuế</span></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li class='has-sub '>
+                                                                            <a href='#'><span>Lập sổ bộ</span></a>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <a href='#'><span>Chi tiết sổ bộ thuế</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href='#'><span>Danh sách sổ bộ thuế</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href='#'><span>In bảng kê nộp thuế</span></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li class='has-sub '>
+                                                                            <a href='#'><span>Kết sổ bộ</span></a>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <a href='#'><span>In số hộ được lên sổ bộ trong tháng</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href='#'><span>In tổng số tiền phải thu</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href='#'><span>In số hộ ngưng nghỉ</span></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li><a href='#'><span>About</span></a></li>
+                                                                        <li><a href='#'><span>Contact</span></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div style="clear: both; margin: 0 0 30px 0;">&nbsp;</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="padTop20">
+                                                                <h2 class="headingTxt">Featured Solution</h2>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="dottedLine">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" valign="top">
+                                                                <img src="images/solution-pic.jpg" alt="Solution" title="Solution" width="184" height="56" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" valign="top">
+                                                                <p class="padTop10">
+                                                                    Morbi at mauris. Viu loream loriea
+                                                                    nislesiop  sagittis euvehicula viita
+                                                                    elobortis griavida, dolor. Aliquaiim mauris dudictuma.
+                                                                </p>
+                                                                <a href="#" class="more" title="Read More">Read More</a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="26" align="left" valign="top">&nbsp;</td>
+                                    <td align="left" valign="top">
+                                        <asp:ContentPlaceHolder ID="content" runat="server"></asp:ContentPlaceHolder>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <div class="clear" id="divBottom" style="padding: 0 0 10px 0">Design By :<a href="http://www.dreamweaver-templates.org/" target="_blank">Dreamweaver-Templates.org</a></div>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top" class="footerBg">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left" valign="top">
+                            <ul class="footerLink">
+                                <li class="noDivider"><a href="index.html" title="Home">Home</a></li>
+                                <li><a href="#" title="About Us">About Us</a></li>
+                                <li><a href="#" title="Service">Service</a></li>
+                                <li><a href="#" title="News">News</a></li>
+                                <li><a href="#" title="Contact Us" class="last">Contact Us</a></li>
+                            </ul>
+                            <p class="copy">&copy; Copyright Information Goes Here. All Rights Reserved.</p>
+                            <p class="dsign">&nbsp;</p>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+
+
+
+
+
+
+</html>

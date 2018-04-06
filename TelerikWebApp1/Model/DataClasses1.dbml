@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="iHRP_V32" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=bu2-dev-fis\sql2008;Initial Catalog=iHRP_V32;User ID=EmpNew" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="iHRP_V32ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.HR_tblEmp" Member="HR_tblEmps">
+    <Type Name="HR_tblEmp">
+      <Column Name="EmpID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EmpCode" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="EmpCodeOld" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="KeyNum" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ProbationFrom" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ProbationEnd" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LSStatusChangeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSCompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLevel1ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLevel2ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLevel3ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSPositionID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSJobTitleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLocationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSJobClassID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSGradeID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSRankID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSJobCodeID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSEmpTypeID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSWorkTypeID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="EmpID_ReportTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="EmailComp" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TelephoneComp" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Creater" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Editer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EditTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LSRESourceID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="BasicSalary" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="LineManager" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="DottedManager" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="PlanID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSJobTitleID_Recuit" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="CandidateID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="StartDateOld" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LSMUPCID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSEmpGroupID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSEmpSubGroupID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSJobFunctionID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSActionDescriptionID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSCurrencyTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsNET" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LSTerritoryID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ExtentionPhone" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Active_temp" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SupervisorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Signer1ID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Signer2ID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="OtherRelationship" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PrimaryTask" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PluralityTask" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ReplacementTask" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OtherTask" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="isOfficial" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LSJobTitleID_KN" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ContractID_Cur" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ContractNo_Cur" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="contractCode_Cur" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ContractEffectiveDate_Cur" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ContractToDate_Cur" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ContractSalary_Cur" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Duration_Cur" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSJobTitleID_KN2" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ContractTypeID_Cur" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="NgayNghiViec" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LSLoaiHinhNhanVienID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLoaiNhanVienID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSNhomNhanVienID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSCapBacCongViecNoiBoID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSCapBacNhanVienID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLoaiChiPhiID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STT_Emp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NonEmp" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="WorkingRecordID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSLoaiLaoDongID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSKhoiNhanVienID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CopyFrom_EmpID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImportCreater" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ImportCreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ImportEditer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ImportEditTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DanhMucQTLV1ID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="DanhMucQTLV2ID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="DanhMucQTLV3ID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="DanhMucQTLV4ID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="DanhMucQTLV5ID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="QTLVText1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="QTLVText2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="QTLVText3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="QTLVText4" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="QTLVText5" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="QTLVBoolean1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="QTLVBoolean2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="QTLVDate1" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="QTLVDate2" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LSLevel4ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLevel5ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLevel6ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLevel7ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLevel8ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSLevel9ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSHLevel1ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSHLevel2ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSHLevel3ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSHLevel4ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSHLevel5ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSHLevel6ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OldEmpCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RE_ProjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RE_DemandID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LSCostCenterID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LSEESubGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CongViecDuocGiao" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SAPCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LSPhanLoaiNoiLamViecID" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="EmpIDNhanVienChinh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="HR_tblEmp_HR_tblEmp" Member="HR_tblEmps" ThisKey="EmpID" OtherKey="EmpIDNhanVienChinh" Type="HR_tblEmp" />
+      <Association Name="HR_tblEmp_HR_tblEmp1" Member="HR_tblEmps1" ThisKey="EmpID" OtherKey="EmpID_ReportTo" Type="HR_tblEmp" />
+      <Association Name="HR_tblEmp_HR_tblEmp" Member="HR_tblEmp1" ThisKey="EmpIDNhanVienChinh" OtherKey="EmpID" Type="HR_tblEmp" IsForeignKey="true" />
+      <Association Name="HR_tblEmp_HR_tblEmp1" Member="HR_tblEmp2" ThisKey="EmpID_ReportTo" OtherKey="EmpID" Type="HR_tblEmp" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
