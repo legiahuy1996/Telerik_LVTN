@@ -83,16 +83,16 @@
                                                             <td align="left" valign="top">
                                                                 <div id='cssmenu'>
                                                                     <ul>
-                                                                        <li class='active '><a href='index.html'><span>Home</span></a></li>
+                                                                        <li class='active '><a href="Default.aspx"><span>Home</span></a></li>
                                                                         <li class='has-sub '>
                                                                             <a><span>Danh bạ</span></a>
                                                                             <ul>
-                                                                               <li><a href="ThemMoiHoCaThe.aspx"><span>Thêm mới hộ cá thể</span></a></li>
+                                                                               <li><a href="ThongTinHoCaThe.aspx"><span>Thêm mới hộ cá thể</span></a></li>
                                                                                 <li>
                                                                                     <a href="DanhSachHoCaThe.aspx"><span>Danh sách hộ cá thể</span></a>
                                                                                 </li>
                                                                                 <li>
-                                                                                    <a href='#'><span>Điều chỉnh thông tin hộ cá thể</span></a>
+                                                                                    <a href="DieuChinhHoCaThe.aspx"><span>Điều chỉnh thông tin hộ cá thể</span></a>
                                                                                 </li>
                                                                             </ul>
                                                                         </li>

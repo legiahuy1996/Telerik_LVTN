@@ -92,6 +92,20 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DieuChinhHoCaThe.aspx.cs">
+      <DependentUpon>DieuChinhHoCaThe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DieuChinhHoCaThe.aspx.designer.cs">
+      <DependentUpon>DieuChinhHoCaThe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KhaiThueChiTiet.aspx.cs">
+      <DependentUpon>KhaiThueChiTiet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KhaiThueChiTiet.aspx.designer.cs">
+      <DependentUpon>KhaiThueChiTiet.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,12 +119,12 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
-    <Compile Include="ThemMoiHoCaThe.aspx.cs">
-      <DependentUpon>ThemMoiHoCaThe.aspx</DependentUpon>
+    <Compile Include="ThongTinHoCaThe.aspx.cs">
+      <DependentUpon>ThongTinHoCaThe.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ThemMoiHoCaThe.aspx.designer.cs">
-      <DependentUpon>ThemMoiHoCaThe.aspx</DependentUpon>
+    <Compile Include="ThongTinHoCaThe.aspx.designer.cs">
+      <DependentUpon>ThongTinHoCaThe.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +191,7 @@
     <Content Include="App_Data\RadSpell\fr-FR.tdf" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DieuChinhHoCaThe.aspx" />
     <Content Include="images\banner-bg.jpg" />
     <Content Include="images\banner1.jpg" />
     <Content Include="images\banner2.jpg" />
@@ -359,7 +374,8 @@
     <Content Include="images\search_ico_hover.png" />
     <Content Include="images\solution-pic.jpg" />
     <Content Include="images\star-icon.gif" />
-    <Content Include="ThemMoiHoCaThe.aspx" />
+    <Content Include="KhaiThueChiTiet.aspx" />
+    <Content Include="ThongTinHoCaThe.aspx" />
     <Content Include="web.config" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
