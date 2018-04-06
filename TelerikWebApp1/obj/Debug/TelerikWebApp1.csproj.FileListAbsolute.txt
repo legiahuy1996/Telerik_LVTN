@@ -68,3 +68,5 @@ D:\Projects\LVTNTelerik\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll
 D:\Projects\LVTNTelerik\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CoreCompileInputs.cache
 D:\Projects\LVTNTelerik\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll
 D:\Projects\LVTNTelerik\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.pdb
+D:\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CoreCompileInputs.cache
+D:\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CopyComplete

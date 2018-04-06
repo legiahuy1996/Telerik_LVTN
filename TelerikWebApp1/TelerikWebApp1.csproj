@@ -87,6 +87,13 @@
     <Compile Include="DanhSachHoCaThe.aspx.designer.cs">
       <DependentUpon>DanhSachHoCaThe.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DanhSachKhaiThue.aspx.cs">
+      <DependentUpon>DanhSachKhaiThue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachKhaiThue.aspx.designer.cs">
+      <DependentUpon>DanhSachKhaiThue.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,6 +188,7 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\styles.css" />
     <Content Include="DanhSachHoCaThe.aspx" />
+    <Content Include="DanhSachKhaiThue.aspx" />
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -343,6 +351,7 @@
     <Content Include="images\icon\subMenu_icon1.png" />
     <Content Include="images\icon\submit_ico.png" />
     <Content Include="images\icon\submit_ico_hover.png" />
+    <Content Include="images\icon\table_13.jpg" />
     <Content Include="images\icon\tool_hover.png" />
     <Content Include="images\icon\tool_normal.png" />
     <Content Include="images\icon\transfer_ico.png" />
@@ -378,6 +387,15 @@
     <Content Include="images\search_ico_hover.png" />
     <Content Include="images\solution-pic.jpg" />
     <Content Include="images\star-icon.gif" />
+    <Content Include="images\table_01.jpg" />
+    <Content Include="images\table_03.jpg" />
+    <Content Include="images\table_05.jpg" />
+    <Content Include="images\table_11.jpg" />
+    <Content Include="images\table_13.jpg" />
+    <Content Include="images\table_15.jpg" />
+    <Content Include="images\table_21.jpg" />
+    <Content Include="images\table_23.jpg" />
+    <Content Include="images\table_25.jpg" />
     <Content Include="KhaiThueChiTiet.aspx" />
     <Content Include="ThongTinHoCaThe.aspx" />
     <Content Include="web.config" />
@@ -436,7 +454,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
