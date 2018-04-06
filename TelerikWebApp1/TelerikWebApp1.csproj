@@ -22,6 +22,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UpgradeBackupLocation />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -197,6 +199,7 @@
     <Content Include="images\banner2.jpg" />
     <Content Include="images\business-plan.jpg" />
     <Content Include="images\cal.gif" />
+    <Content Include="images\current-bg.gif" />
     <Content Include="images\dotted-line.gif" />
     <Content Include="images\feature-botm-crv.jpg" />
     <Content Include="images\feature-pic-1.jpg" />
@@ -365,6 +368,7 @@
     <Content Include="images\logo1.jpg" />
     <Content Include="images\logo2.jpg" />
     <Content Include="images\menu-bg-on.jpg" />
+    <Content Include="images\menu-bg.gif" />
     <Content Include="images\menu-bg.jpg" />
     <Content Include="images\more-bg.gif" />
     <Content Include="images\news-pic.jpg" />
@@ -432,7 +436,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

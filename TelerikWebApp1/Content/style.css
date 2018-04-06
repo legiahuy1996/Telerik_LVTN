@@ -85,10 +85,6 @@ ul.topMenu li a:hover, ul.topMenu li a.active{
     background-repeat: no-repeat;
     FONT-SIZE: 8pt;
 }
-td.banner{
-	
-	height:200px;
-}
 td.banner h2{
 	font:bold 16px/18px Arial, Helvetica, sans-serif;
 	color:white;
