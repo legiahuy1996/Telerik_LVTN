@@ -61,7 +61,7 @@
                                                                 <a href='#'><span>Khai thuế</span></a>
                                                                 <ul>
                                                                     <li>
-                                                                        <a href='#'><span>Khai thuế chi tiết</span></a>
+                                                                        <a href='KhaiThueChiTiet.aspx'><span>Khai thuế chi tiết</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href='#'><span>Danh sách khai thuế</span></a>

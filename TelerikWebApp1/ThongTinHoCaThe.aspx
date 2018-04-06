@@ -5,8 +5,7 @@
     <br />
   <form id="frm" runat="server">
     <table cellspacing="1" cellpadding="1" width="100%" border="0" runat="server">
-      
-        <tr></tr>
+
         <tr>
             <td style="width: 5%"></td>
             <td style="width: 15%"></td>
