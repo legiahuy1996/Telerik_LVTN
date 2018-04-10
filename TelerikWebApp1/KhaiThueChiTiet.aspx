@@ -121,7 +121,7 @@
                     <asp:Label runat="server" ID="lblTrangThaiHoatDong">Trạng thái hoạt động</asp:Label>
                 </td>
                 <td  >
-                    <asp:TextBox class="input" runat="server" ID="txtTrangThaiHoatDong" Width="80%"></asp:TextBox>
+                    <asp:CheckBox class="input" runat="server" ID="txtTrangThaiHoatDong" Checked="true"></asp:CheckBox>
                 </td>
             </tr>
            <tr><td><br /></td></tr>

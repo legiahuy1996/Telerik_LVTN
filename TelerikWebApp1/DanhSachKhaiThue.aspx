@@ -9,74 +9,54 @@
     <form id="frm" runat="server">
 
         <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
+            <tr align="center">
+                <td width="20%"></td>
+                <td width="10%"></td>
+                <td width="50%" align="center"></td>
+            </tr>
             <tr>
-                <td width="15%">
+                <td></td>
+                <td>
                     <asp:Label runat="server" ID="lblMST">Mã số thuế</asp:Label>
                 </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtMST" Width="80%"></asp:TextBox>
-                </td>
-                <td width="15%">
-                    <asp:Label runat="server" ID="lblTenCuaHang">Tên cửa hàng</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtTenCuaHang" Width="80%"></asp:TextBox>
+                <td >
+                    <asp:TextBox class="input" runat="server" ID="txtMST" Width="40%"></asp:TextBox>
                 </td>
             </tr>
+                    <tr>
+            <td><br /></td>
+        </tr>
             <tr>
-                <td width="15%">
-                    <asp:Label runat="server" ID="lblCMND">CMND</asp:Label>
+                <td></td>
+                <td >
+                    <asp:Label runat="server" ID="lblDiaChiCuaHang">Địa chỉ cửa hàng</asp:Label>
                 </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtCMND" Width="80%"></asp:TextBox>
-                </td>
-                <td width="15%">
-                    <asp:Label runat="server" ID="lblNayCap">Ngày cấp</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtNgayCap" Width="80%"></asp:TextBox>
+                <td >
+                    <asp:TextBox class="input" runat="server" ID="txtDiaChiCuaHang" Width="40%"></asp:TextBox>
                 </td>
             </tr>
+                    <tr>
+            <td><br /></td>
+        </tr>
             <tr>
-                <td width="15%">
+                <td></td>
+                <td >
                     <asp:Label runat="server" ID="lblSoGP">Số giấy phép</asp:Label>
                 </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtSoGP" Width="80%"></asp:TextBox>
-                </td>
-                <td width="15%">
-                    <asp:Label runat="server" ID="lblDiaChi">Địa chỉ</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtDiaChi" Width="80%"></asp:TextBox>
+                <td>
+                    <asp:TextBox class="input" runat="server" ID="txtSoGP" Width="40%"></asp:TextBox>
                 </td>
             </tr>
+                    <tr>
+            <td><br /></td>
+        </tr>
             <tr>
-                <td width="15%">
-                    <asp:Label runat="server" ID="Label5">Họ Tên</asp:Label>
+                <td></td>
+                <td>
+                    <asp:Label runat="server" ID="lblMaNganh">Mã ngành</asp:Label>
                 </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="TextBox5" Width="80%"></asp:TextBox>
-                </td>
-                <td width="15%">
-                    <asp:Label runat="server" ID="Label6">Ngày tính thuế</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="TextBox6" Width="80%"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td width="15%">
-                    <asp:Label runat="server" ID="Label7">Mã ngành</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="TextBox7" Width="80%"></asp:TextBox>
-                </td>
-                <td width="15%">
-                    <asp:Label runat="server" ID="Label8">Số điện thoại</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="TextBox8" Width="80%"></asp:TextBox>
+                <td>
+                    <telerik:RadComboBox class="input" runat="server" ID="txtMaNganh" Width="40%"></telerik:RadComboBox>
                 </td>
             </tr>
 
@@ -140,8 +120,8 @@
             </tr>
 
         </table>
-         <table width="100" cellpadding="0" cellspacing="0">
-                 <tr>
+        <table width="100" cellpadding="0" cellspacing="0">
+            <tr>
                 <td>
                     <telerik:RadScriptManager runat="server" ID="RadScriptManager2" />
                     <telerik:RadSkinManager ID="RadSkinManager2" runat="server" ShowChooser="true" />
@@ -178,7 +158,7 @@
                     </telerik:RadSplitter>
                 </td>
             </tr>
-             </table>
+        </table>
 
     </form>
 </asp:Content>
