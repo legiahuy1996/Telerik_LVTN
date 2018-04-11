@@ -121,11 +121,7 @@
                     <asp:Label runat="server" ID="lblTrangThaiHoatDong">Trạng thái hoạt động</asp:Label>
                 </td>
                 <td  >
-<<<<<<< HEAD
                     <asp:CheckBox class="input" runat="server" ID="chkTrangThaiHoatDong" Checked="true" Width="80%"></asp:CheckBox>
-=======
-                    <asp:CheckBox class="input" runat="server" ID="txtTrangThaiHoatDong" Checked="true"></asp:CheckBox>
->>>>>>> b4ffbbf15809e8dc55b0b6e562357cbd1f1d4d9a
                 </td>
             </tr>
            <tr><td><br /></td></tr>
@@ -135,9 +131,9 @@
     <tr>
         <td colspan="3" align="center">
             <span class="btn1">
-                <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" ><span class="btnReset">Làm mới</span>
+                <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" OnClick="btnReset_Click"><span class="btnReset">Làm mới</span>
                 </asp:LinkButton>
-                <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" ><span class="btnSave">Lưu</span>
+                <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSave_Click"><span class="btnSave">Lưu</span>
                 </asp:LinkButton>
             </span>
         </td>

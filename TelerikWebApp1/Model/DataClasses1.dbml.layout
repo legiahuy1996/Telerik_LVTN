@@ -133,7 +133,7 @@
         <classShapeMoniker Id="3657ec3a-4a67-42d9-8213-2d8fc1274d30" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 9.6362939453125); (1.75 : 10.9847639973958); (4.41666666666667 : 10.9847639973958 : JumpStart); (4.58333333333333 : 10.9847639973958 : JumpEnd); (6.5 : 10.9847639973958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.75 : 9.6362939453125); (1.75 : 10.9847639973958); (6.5 : 10.9847639973958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/maduongpho/maduongpho_DanhBa" />
       <nodes>
         <classShapeMoniker Id="768545a0-3111-4b5e-9b24-1ba152c3469e" />

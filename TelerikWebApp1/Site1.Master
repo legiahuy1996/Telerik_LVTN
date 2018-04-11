@@ -64,11 +64,7 @@
                                                                         <a href='KhaiThueChiTiet.aspx'><span>Khai thuế chi tiết</span></a>
                                                                     </li>
                                                                     <li>
-<<<<<<< HEAD
                                                                         <a href="DanhSachKhaiThue.aspx"><span>Danh sách khai thuế</span></a>
-=======
-                                                                        <a href='DanhSachKhaiThue.aspx'><span>Danh sách khai thuế</span></a>
->>>>>>> b4ffbbf15809e8dc55b0b6e562357cbd1f1d4d9a
                                                                     </li>
                                                                 </ul>
                                                             </li>

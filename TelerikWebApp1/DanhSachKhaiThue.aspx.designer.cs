@@ -55,47 +55,7 @@ namespace TelerikWebApp1 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
-        protected global::System.Web.UI.WebControls.TextBox txtTenCuaHang;
-        
-        /// <summary>
-        /// lblCMND control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCMND;
-        
-        /// <summary>
-        /// txtCMND control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCMND;
-        
-        /// <summary>
-        /// lblNayCap control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNayCap;
-        
-        /// <summary>
-        /// txtNgayCapCMND control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNgayCapCMND;
-=======
         protected global::System.Web.UI.WebControls.TextBox txtDiaChiCuaHang;
->>>>>>> b4ffbbf15809e8dc55b0b6e562357cbd1f1d4d9a
         
         /// <summary>
         /// lblSoGP control.
@@ -125,13 +85,13 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.Label lblMaNganh;
         
         /// <summary>
-        /// txtMaNganh control.
+        /// cboMaNganh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox txtMaNganh;
+        protected global::Telerik.Web.UI.RadComboBox cboMaNganh;
         
         /// <summary>
         /// tdTimKem control.
@@ -186,24 +146,6 @@ namespace TelerikWebApp1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnReCalc;
-        
-        /// <summary>
-        /// tdTaoMoi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell tdTaoMoi;
-        
-        /// <summary>
-        /// btnCreate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnCreate;
         
         /// <summary>
         /// tdKhoa control.

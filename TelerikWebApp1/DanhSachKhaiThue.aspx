@@ -27,26 +27,12 @@
             <td><br /></td>
         </tr>
             <tr>
-<<<<<<< HEAD
-                <td width="15%">
-                    <asp:Label runat="server" ID="lblCMND">CMND</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtCMND" Width="80%"></asp:TextBox>
-                </td>
-                <td width="15%">
-                    <asp:Label runat="server" ID="lblNayCap">Ngày cấp CMND</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtNgayCapCMND" Width="80%"></asp:TextBox>
-=======
                 <td></td>
                 <td >
                     <asp:Label runat="server" ID="lblDiaChiCuaHang">Địa chỉ cửa hàng</asp:Label>
                 </td>
                 <td >
                     <asp:TextBox class="input" runat="server" ID="txtDiaChiCuaHang" Width="40%"></asp:TextBox>
->>>>>>> b4ffbbf15809e8dc55b0b6e562357cbd1f1d4d9a
                 </td>
             </tr>
                     <tr>
@@ -70,7 +56,7 @@
                     <asp:Label runat="server" ID="lblMaNganh">Mã ngành</asp:Label>
                 </td>
                 <td>
-                    <telerik:RadComboBox class="input" runat="server" ID="txtMaNganh" Width="40%"></telerik:RadComboBox>
+                    <telerik:RadComboBox class="input" runat="server" ID="cboMaNganh" Width="40%"></telerik:RadComboBox>
                 </td>
             </tr>
 
@@ -81,7 +67,7 @@
             <tr>
                 <td id="tdTimKem" runat="server">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnSearch" name="btnSearch" runat="server" AccessKey="F" ToolTip="Alt+F">
+                        <asp:LinkButton ID="btnSearch" name="btnSearch" runat="server" AccessKey="F" ToolTip="Alt+F" OnClick="btnSearch_Click">
 		                    <span class="btnSearch">Tìm kiếm</span>
                         </asp:LinkButton>
                     </span>
@@ -89,7 +75,7 @@
 
                 <td id="tdLamMoi" runat="server">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnAddNew" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R">
+                        <asp:LinkButton ID="btnAddNew" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" OnClick="btnAddNew_Click">
 		                    <span class="btnReset">Làm mới</span>
                         </asp:LinkButton>
                     </span>
@@ -99,14 +85,6 @@
                     <span class="btn1">
                         <asp:LinkButton ID="btnReCalc" name="btnReCalc" runat="server" AccessKey="R" ToolTip="Alt+R">
 		                    <span class="btnRecalc">Tính lại</span>
-                        </asp:LinkButton>
-                    </span>
-                </td>
-
-                <td id="tdTaoMoi" runat="server">
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnCreate" name="btnCreate" runat="server" AccessKey="C" ToolTip="Alt+C">
-		                    <span class="btnCreate">Tạo mới</span>
                         </asp:LinkButton>
                     </span>
                 </td>
@@ -158,13 +136,63 @@
                                                     AutoPostBack="True" />
                                             </HeaderTemplate>
                                         </telerik:GridTemplateColumn>
+                                        <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="DoanhThu" DataField="DoanhThu" HeaderText="Doanh thu">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="bac" DataField="bac" HeaderText="Bậc môn bài">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm tính thuế">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="diachiKD" DataField="diachiKD" HeaderText="Địa chỉ kinh doanh">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="nghekinhdoanh" DataField="nghekinhdoanh" HeaderText="Nghề kinh doanh">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="DienTichKD" DataField="DienTichKD" HeaderText="Diện tích kinh doanh">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="sogp" DataField="sogp" HeaderText="sogp">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="tennganh" DataField="tennganh" HeaderText="Tên ngành">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="TrangThaiHoatDong" DataField="TrangThaiHoatDong" HeaderText="Trạng thái">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="DoanhThuTinhThueGTGT" DataField="DoanhThuTinhThueGTGT" HeaderText="Doanh thu tính thuế GTGT">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="DoanhThuTinhThueTNCN" DataField="DoanhThuTinhThueTNCN" HeaderText="Doanh thu tính thuế TNCN">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="TyLeTinhThueGTGT" DataField="TyLeTinhThueGTGT" HeaderText="Tỷ lệ tính thuế GTGT">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="TyLeTinhThueTNCN" DataField="TyLeTinhThueTNCN" HeaderText="Tỷ lệ tính thuế TNCN">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
                                     </Columns>
-                                    <%--                            <Columns>
-                                    <telerik:GridBoundColumn SortExpression="EmpID" UniqueName="EmpID" DataField="EmpID"
-                                    HeaderText="EmpID">
-                                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80%" />
-                                </telerik:GridBoundColumn>
-                            </Columns>--%>
                                 </MasterTableView>
                             </telerik:RadGrid>
 
