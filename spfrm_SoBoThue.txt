@@ -1,0 +1,98 @@
+﻿alter  PROC spfrm_SoBoThue
+@MST VARCHAR(50) = NULL,
+@CMND VARCHAR(9) = NULL,
+@TenCuaHang  NVARCHAR(150) = NULL,
+@ngaycapCMND  NVARCHAR(10) = NULL,
+@sogp    VARCHAR(50) = NULL,
+@diachi  NVARCHAR(100) = NULL,
+@hoten   NVARCHAR(100)=NULL,
+@ngaytinhthue  NVARCHAR(10)=NULL,
+@manganh VARCHAR(10) = NULL,
+@sdt	NVARCHAR(12)=NULL,
+@idKhaiThue INT =NULL,
+
+-----------------------------
+@Activity  NVARCHAR(10)= NULL,
+@ReturnMess		NVARCHAR(50)=NULL
+
+
+AS
+BEGIN
+	IF(@Activity = 'Search')
+		BEGIN 
+					PRINT 'search'
+				SELECT a.idKhaiThue,a.masothue,a.DoanhThu,a.nam,a.sodt,a.email,a.ghichu,a.nghekinhdoanh,a.SoLuongLD,a.DienTichKD,a.TuGio,a.DenGio,a.diachiKD, 
+					   CASE WHEN a.TrangThaiHoatDong = 1 THEN N'Đang hoạt động' ELSE N'Ngưng hoạt động' END AS TrangThaiHoatDong,
+					   a.DoanhThu,a.DoanhThuTinhThueGTGT,a.DoanhThuTinhThueTNCN,c.TyLeTinhThueGTGT,c.TyLeTinhThueTNCN,b.hoten
+				FROM dbo.KhaiThue a 
+				INNER JOIN dbo.DanhBa b ON b.masothue = a.masothue
+				INNER JOIN dbo.manganh c ON c.manganh = b.manganh
+				WHERE (@TenCuaHang ='' OR @TenCuaHang = NULL OR b.tencuahang LIKE N'%'+@TenCuaHang+'%')
+				AND (@MST ='' OR @MST = NULL OR b.masothue =@MST)
+				AND (@CMND ='' OR @CMND = NULL OR b.cmnd =@CMND)
+				AND (@ngaycapCMND ='' OR @ngaycapCMND = NULL OR b.ngaycapcmnd =@ngaycapCMND)
+				AND (@sogp ='' OR @sogp = NULL OR b.sogp =@sogp)
+				AND (@diachi ='' OR @diachi = NULL OR a.diachiKD LIKE N'%'+@diachi+'%')
+				AND (@ngaytinhthue ='' OR @ngaytinhthue = NULL OR b.ngaytinhthue = @ngaytinhthue)
+				AND (@manganh ='' OR @manganh = NULL OR b.manganh =@manganh)
+				AND (@sdt ='' OR @sdt = NULL OR a.sodt =@sdt)
+				AND a.idKhaiThue NOT IN (SELECT idKhaiThue FROM dbo.SoBoThue)
+				
+
+	    END
+	ELSE 
+		IF (@Activity = 'Create')
+			BEGIN
+			PRINT 'Create'
+					DECLARE @nghekinhdoanh NVARCHAR(100)
+					DECLARE @thangkinhdoanh INT 
+					DECLARE @doanhthutinhthueGTGT INT
+					DECLARE @doanhthutinhthueTNCN INT 
+					DECLARE @TyLeTinhThueGTGT FLOAT
+                    DECLARE @TyLeTinhThueTNCN FLOAT 
+
+
+				
+
+				
+
+					SELECT	   @nghekinhdoanh = a.nghekinhdoanh, @thangkinhdoanh = DATEPART(MONTH,b.ngaybatdaukd),
+							   @hoten = b.hoten,@diachi = a.diachiKD,
+							   @doanhthutinhthueGTGT = a.DoanhThuTinhThueGTGT,@doanhthutinhthueTNCN =a.DoanhThuTinhThueTNCN,
+							   @TyLeTinhThueGTGT = c.TyLeTinhThueGTGT,@TyLeTinhThueTNCN =c.TyLeTinhThueTNCN 
+					FROM dbo.KhaiThue a 
+					INNER JOIN dbo.DanhBa b ON b.masothue = a.masothue
+					INNER JOIN dbo.manganh c ON c.manganh = b.manganh
+					WHERE a.idKhaiThue = @idKhaiThue
+
+					INSERT INTO dbo.SoBoThue
+					        ( idKhaiThue ,
+					          hoten ,
+					          diachiKD ,
+					          nganhngheKD ,
+					          TuThang ,
+					          DenThang ,
+					          DoanhThuTinhThueGTGT ,
+					          DoanhThuTinhThueTNCN ,
+					          TyLeTinhThueGTGT ,
+					          TyLeTinhThueTNCN ,
+					          No
+					        )
+					
+					VALUES  ( @idKhaiThue,
+					          @hoten , -- hoten - nvarchar(50)
+					          @diachi , -- diachiKD - nvarchar(500)
+					          @nghekinhdoanh, -- nganhngheKD - nvarchar(150)
+					          @thangkinhdoanh, -- TuThang - int
+					          12 , -- DenThang - nchar(10)
+					          @doanhthutinhthueGTGT , -- DoanhThuTinhThueGTGT - int
+					          @doanhthutinhthueTNCN , -- DoanhThuTinhThueTNCN - int
+					          @TyLeTinhThueGTGT , -- TyLeTinhThueGTGT - float
+					          @TyLeTinhThueTNCN , -- TyLeTinhThueTNCN - float
+					          1  -- No - bit
+					        )
+                   
+			END 
+			
+		
+END

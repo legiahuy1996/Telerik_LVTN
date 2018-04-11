@@ -265,13 +265,13 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.Label lblTrangThaiHoatDong;
         
         /// <summary>
-        /// txtTrangThaiHoatDong control.
+        /// chkTrangThaiHoatDong control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTrangThaiHoatDong;
+        protected global::System.Web.UI.WebControls.CheckBox chkTrangThaiHoatDong;
         
         /// <summary>
         /// btnReset control.

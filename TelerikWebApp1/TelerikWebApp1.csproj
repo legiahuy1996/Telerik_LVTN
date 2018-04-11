@@ -128,6 +128,13 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="SoBoThue.aspx.cs">
+      <DependentUpon>SoBoThue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SoBoThue.aspx.designer.cs">
+      <DependentUpon>SoBoThue.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ThongTinHoCaThe.aspx.cs">
       <DependentUpon>ThongTinHoCaThe.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -397,6 +404,7 @@
     <Content Include="images\table_23.jpg" />
     <Content Include="images\table_25.jpg" />
     <Content Include="KhaiThueChiTiet.aspx" />
+    <Content Include="SoBoThue.aspx" />
     <Content Include="ThongTinHoCaThe.aspx" />
     <Content Include="web.config" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -454,7 +462,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

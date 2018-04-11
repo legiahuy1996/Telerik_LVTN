@@ -31,10 +31,10 @@
                     <asp:TextBox class="input" runat="server" ID="txtCMND" Width="80%"></asp:TextBox>
                 </td>
                 <td width="15%">
-                    <asp:Label runat="server" ID="lblNayCap">Ngày cấp</asp:Label>
+                    <asp:Label runat="server" ID="lblNayCap">Ngày cấp CMND</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtNgayCap" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="input" runat="server" ID="txtNgayCapCMND" Width="80%"></asp:TextBox>
                 </td>
             </tr>
             <tr>
