@@ -1,0 +1,116 @@
+﻿CREATE PROC Insert_KhaiThue
+@idKhaiThue	NVARCHAR(14) = NULL,
+@masothue		VARCHAR(14) = NULL,
+@DoanhThu		INT = NULL,
+@nam			VARCHAR(4) = NULL,
+@idMonBai		VARCHAR(14) = NULL,
+@sodt			VARCHAR(60) = NULL,
+@email			varchar(100) = NULL,
+@ghichu			VARCHAR(200) = NULL,
+@nghekinhdoanh	VARCHAR(200) = NULL,
+@DienTichKD		FLOAT = NULL,
+@SoLuongLD		INT = NULL,
+@TuGio			INT = NULL,
+@DenGio			INT = NULL,
+@diachiKD		VARCHAR(255) = NULL,
+@TrangThaiHoatDong	BIT = NULL,
+@DoanhtThuTinhThueG	INT = NULL,
+@DoanhThuTinhThueT	INT = NULL,
+@TyLeTinhThueGTGT		FLOAT = NULL,
+@TyLeTinhThueTNCN	FLOAT = NULL
+AS
+BEGIN
+	SELECT @TyLeTinhThueGTGT = c.TyLeTinhThueGTGT,@TyLeTinhThueTNCN = c.TyLeTinhThueTNCN 
+	FROM dbo.KhaiThue(NOLOCK) a 
+	LEFT JOIN dbo.DanhBa (NOLOCK) b ON b.masothue = a.masothue
+	LEFT JOIN dbo.manganh (NOLOCK) c ON c.manganh = b.manganh
+	WHERE a.masothue = @masothue
+	SET @DoanhtThuTinhThueG = @DoanhThu * @TyLeTinhThueGTGT
+	SET @DoanhThuTinhThueT = @DoanhThu * @TyLeTinhThueTNCN
+
+	INSERT INTO dbo.KhaiThue
+	        ( 
+	          masothue ,
+	          DoanhThu ,
+	          nam ,
+	          idMonBai ,
+	          sodt ,
+	          email ,
+	          ghichu ,
+	          nghekinhdoanh ,
+	          DienTichKD ,
+	          SoLuongLD ,
+	          TuGio ,
+	          DenGio ,
+	          diachiKD ,
+	          TrangThaiHoatDong ,
+	          DoanhThuTinhThueGTGT ,
+	          DoanhThuTinhThueTNCN 
+	        )
+	VALUES  ( 
+	          @masothue, -- masothue - varchar(14)
+	          @DoanhThu , -- DoanhThu - int
+	          @nam , -- nam - varchar(4)
+	          @idMonBai , -- idMonBai - varchar(14)
+	          @sodt , -- sodt - varchar(60)
+	          @email , -- email - varchar(100)
+	          @ghichu , -- ghichu - varchar(200)
+	          @nghekinhdoanh , -- nghekinhdoanh - varchar(200)
+	          @DienTichKD , -- DienTichKD - float
+	          @SoLuongLD , -- SoLuongLD - int
+	          @TuGio , -- TuGio - int
+	          @DenGio , -- DenGio - int
+	          @diachiKD , -- diachiKD - varchar(255)
+	          @TrangThaiHoatDong , -- TrangThaiHoatDong - bit
+	          @DoanhtThuTinhThueG , -- DoanhThuTinhThueGTGT - int
+	          @DoanhThuTinhThueT 
+	        )
+
+END	
+
+-----------------------------------------------------------------------
+
+ALTER PROC [dbo].[getDSThue]
+    @masothue VARCHAR(14) = NULL ,
+    @diachicuahang VARCHAR(255) = NULL ,
+    @sogiayphep VARCHAR(50) = NULL ,
+    @manganh VARCHAR(10) = NULL
+AS
+    BEGIN 
+        SELECT  a.masothue ,
+                a.DoanhThu ,
+                a.nam ,
+                d.bac ,
+                a.nghekinhdoanh ,
+                a.diachiKD ,
+                a.TrangThaiHoatDong ,
+                a.DoanhThuTinhThueGTGT ,
+                a.DoanhThuTinhThueTNCN ,
+                c.TyLeTinhThueGTGT ,
+                c.TyLeTinhThueTNCN ,
+                b.sogp ,
+                c.tennganh
+        FROM    dbo.KhaiThue a
+                LEFT JOIN dbo.DanhBa b ON b.masothue = a.masothue
+                LEFT JOIN dbo.manganh c ON c.manganh = b.manganh
+                LEFT JOIN dbo.thuemonbai d ON d.idMonBai = a.idMonBai
+        WHERE   ( @masothue IS NULL
+                  OR @masothue = ''
+                  OR a.masothue = @masothue
+                )
+                AND ( @manganh IS NULL
+                      OR @manganh = ''
+                      OR c.manganh = @manganh
+                    )
+                AND ( @diachicuahang IS NULL
+                      OR @diachicuahang = ''
+                      OR a.diachiKD LIKE N'%' + @diachicuahang + '%'
+                    )
+                AND ( @sogiayphep IS NULL
+                      OR @sogiayphep = ''
+                      OR b.sogp LIKE N'%' + @sogiayphep + '%'
+                    )
+
+    END
+
+

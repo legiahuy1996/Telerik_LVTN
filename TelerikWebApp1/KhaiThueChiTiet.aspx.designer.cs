@@ -271,7 +271,11 @@ namespace TelerikWebApp1 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.CheckBox chkTrangThaiHoatDong;
+=======
+        protected global::System.Web.UI.WebControls.CheckBox txtTrangThaiHoatDong;
+>>>>>>> b4ffbbf15809e8dc55b0b6e562357cbd1f1d4d9a
         
         /// <summary>
         /// btnReset control.

@@ -95,9 +95,9 @@
                         <asp:LinkButton ID="btnCreate" name="btnCreate" runat="server" AccessKey="C" ToolTip="Alt+C" OnClick="btnCreate_Click">
 		                    <span class="btnCreate">Lập sổ bộ</span>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnExport" name="btnExport" runat="server" AccessKey="E" ToolTip="Alt+E">
+                      <%--  <asp:LinkButton ID="btnExport" name="btnExport" runat="server" AccessKey="E" ToolTip="Alt+E">
 		                    <span class="btnExport">Xuất DL</span>
-                        </asp:LinkButton>
+                        </asp:LinkButton>--%>
                     </span>
                 </td>
             </tr>

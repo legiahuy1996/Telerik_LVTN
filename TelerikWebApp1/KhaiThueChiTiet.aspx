@@ -121,7 +121,11 @@
                     <asp:Label runat="server" ID="lblTrangThaiHoatDong">Trạng thái hoạt động</asp:Label>
                 </td>
                 <td  >
+<<<<<<< HEAD
                     <asp:CheckBox class="input" runat="server" ID="chkTrangThaiHoatDong" Checked="true" Width="80%"></asp:CheckBox>
+=======
+                    <asp:CheckBox class="input" runat="server" ID="txtTrangThaiHoatDong" Checked="true"></asp:CheckBox>
+>>>>>>> b4ffbbf15809e8dc55b0b6e562357cbd1f1d4d9a
                 </td>
             </tr>
            <tr><td><br /></td></tr>
