@@ -76,7 +76,9 @@ BEGIN
 					          DoanhThuTinhThueTNCN ,
 					          TyLeTinhThueGTGT ,
 					          TyLeTinhThueTNCN ,
-					          No
+					          No,
+							  NgayLapBo
+
 					        )
 					
 					VALUES  ( @idKhaiThue,
@@ -89,7 +91,8 @@ BEGIN
 					          @doanhthutinhthueTNCN , -- DoanhThuTinhThueTNCN - int
 					          @TyLeTinhThueGTGT , -- TyLeTinhThueGTGT - float
 					          @TyLeTinhThueTNCN , -- TyLeTinhThueTNCN - float
-					          1  -- No - bit
+					          1 ,
+							  GETDATE()
 					        )
                    
 			END 

@@ -64,7 +64,13 @@
                                                                         <a href='KhaiThueChiTiet.aspx'><span>Khai thuế chi tiết</span></a>
                                                                     </li>
                                                                     <li>
+<<<<<<< Updated upstream
                                                                         <a href="DanhSachKhaiThue.aspx"><span>Danh sách khai thuế</span></a>
+=======
+
+                                                                        <a href="DanhSachKhaiThue.aspx"><span>Danh sách khai thuế</span></a>
+
+>>>>>>> Stashed changes
                                                                     </li>
                                                                 </ul>
                                                             </li>
@@ -72,10 +78,10 @@
                                                                 <a href='#'><span>Lập sổ bộ</span></a>
                                                                 <ul>
                                                                     <li>
-                                                                        <a href='#'><span>Chi tiết sổ bộ thuế</span></a>
+                                                                        <a href ="SoBoThue.aspx"><span>Lập sổ bộ thuế</span></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href='#'><span>Danh sách sổ bộ thuế</span></a>
+                                                                        <a href="DanhSachSoBoThue.aspx"><span>Danh sách sổ bộ thuế</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href='#'><span>In bảng kê nộp thuế</span></a>

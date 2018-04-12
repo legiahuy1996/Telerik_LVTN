@@ -120,8 +120,17 @@
                 <td  >
                     <asp:Label runat="server" ID="lblTrangThaiHoatDong">Trạng thái hoạt động</asp:Label>
                 </td>
+<<<<<<< Updated upstream
                 <td  >
                     <asp:CheckBox class="input" runat="server" ID="chkTrangThaiHoatDong" Checked="true" Width="80%"></asp:CheckBox>
+=======
+                <td >
+
+                    <asp:CheckBox class="input" runat="server" ID="chkTrangThaiHoatDong" Checked="true" ></asp:CheckBox>
+
+                    
+
+>>>>>>> Stashed changes
                 </td>
             </tr>
            <tr><td><br /></td></tr>

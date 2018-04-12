@@ -43,10 +43,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlusEnumerable, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlusEnumerable.1.4.0.2\lib\EPPlusEnumerable.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -93,6 +101,13 @@
     </Compile>
     <Compile Include="DanhSachKhaiThue.aspx.designer.cs">
       <DependentUpon>DanhSachKhaiThue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DanhSachSoBoThue.aspx.cs">
+      <DependentUpon>DanhSachSoBoThue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachSoBoThue.aspx.designer.cs">
+      <DependentUpon>DanhSachSoBoThue.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -196,6 +211,7 @@
     <Content Include="Content\styles.css" />
     <Content Include="DanhSachHoCaThe.aspx" />
     <Content Include="DanhSachKhaiThue.aspx" />
+    <Content Include="DanhSachSoBoThue.aspx" />
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -415,6 +431,7 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="packages.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
