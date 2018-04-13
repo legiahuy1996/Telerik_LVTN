@@ -64,13 +64,10 @@
                                                                         <a href='KhaiThueChiTiet.aspx'><span>Khai thuế chi tiết</span></a>
                                                                     </li>
                                                                     <li>
-<<<<<<< Updated upstream
-                                                                        <a href="DanhSachKhaiThue.aspx"><span>Danh sách khai thuế</span></a>
-=======
+
 
                                                                         <a href="DanhSachKhaiThue.aspx"><span>Danh sách khai thuế</span></a>
 
->>>>>>> Stashed changes
                                                                     </li>
                                                                 </ul>
                                                             </li>
