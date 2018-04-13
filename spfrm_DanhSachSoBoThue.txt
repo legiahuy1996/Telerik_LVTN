@@ -1,53 +1,46 @@
-ALTER PROC spfrm_DanhSachSoBoThue
-@MST VARCHAR(50) = NULL,
-@nghekinhdoanh NVARCHAR(100) =NULL,
-@TuThang NVARCHAR(2)  =NULL,
-@DenThang NVARCHAR(2)  =NULL,
-@hoten	NVARCHAR(50)=NULL,
-@diachi	NVARCHAR(500)=NULL,
-@thang	NVARCHAR(2) =NULL,
+﻿ALTER PROC [dbo].[getDSThue]
+    @masothue VARCHAR(14) = NULL ,
+    @diachicuahang VARCHAR(255) = NULL ,
+    @sogiayphep VARCHAR(50) = NULL ,
+    @manganh VARCHAR(10) = NULL,
+	@nam		VARCHAR(4)
+AS
+    BEGIN 
+        SELECT  a.masothue ,
+                a.DoanhThu ,
+                a.nam ,
+                d.bac ,
+                a.nghekinhdoanh ,
+                a.diachiKD ,
+                a.TrangThaiHoatDong ,
+                a.DoanhThuTinhThueGTGT * c.TyLeTinhThueGTGT AS ThueGTGT,
+                a.DoanhThuTinhThueTNCN * c.TyLeTinhThueTNCN AS ThueTNCN,
+                b.sogp ,
+                c.tennganh
+        FROM    dbo.KhaiThue a
+                LEFT JOIN dbo.DanhBa b ON b.masothue = a.masothue
+                LEFT JOIN dbo.manganh c ON c.manganh = b.manganh
+                LEFT JOIN dbo.thuemonbai d ON d.idMonBai = a.idMonBai
+        WHERE a.TrangThaiHoatDong = '1' AND 
+		( @nam IS NULL
+                  OR @nam = ''
+                  OR a.nam = @nam
+                ) AND 
+		( @masothue IS NULL
+                  OR @masothue = ''
+                  OR a.masothue = @masothue
+                )
+                AND ( @manganh IS NULL
+                      OR @manganh = ''
+                      OR c.manganh = @manganh
+                    )
+                AND ( @diachicuahang IS NULL
+                      OR @diachicuahang = ''
+                      OR a.diachiKD LIKE N'%' + @diachicuahang + '%'
+                    )
+                AND ( @sogiayphep IS NULL
+                      OR @sogiayphep = ''
+                      OR b.sogp LIKE N'%' + @sogiayphep + '%'
+                    )
 
-
-@Activity  NVARCHAR(10)= NULL
-
-AS 
-BEGIN 
-	IF(@Activity = 'Search')
-	BEGIN
-		DECLARE @FromMonth INT,@ToMonth INT ,@Month INT , @Year INT 
-		IF(@TuThang ='')
-			SET @FromMonth =1
-		ELSE 
-			SET @FromMonth = @TuThang
-		IF(@DenThang ='')
-			SET @ToMonth = 12
-		ELSE
-			SET @ToMonth = @DenThang 
-		IF(@thang ='')
-			SET @Month = DATEPART(MONTH,GETDATE())
-		ELSE
-			SET @Month = @thang
-		
-		PRINT @FromMonth
-		PRINT @ToMonth
-		PRINT @Month
-
-		SELECT a.hoten,a.DoanhThuTinhThueGTGT,a.DoanhThuTinhThueTNCN,a.TyLeTinhThueGTGT,a.TyLeTinhThueTNCN,
-		FORMAT((a.DoanhThuTinhThueGTGT * a.TyLeTinhThueGTGT),'N0') AS ThueGTGT,
-		FORMAT((a.DoanhThuTinhThueTNCN * a.TyLeTinhThueTNCN),'N0') AS ThueTNCN ,
-		a.NgayLapBo
-		,a.diachiKD,a.nganhngheKD,a.TuThang,a.DenThang,c.masothue,CASE WHEN a.No =1 THEN N'Còn nợ thuế' ELSE N'Đã nộp thuế' END AS trangthai
-		FROM dbo.SoBoThue a
-		INNER JOIN dbo.KhaiThue b ON b.idKhaiThue = a.idKhaiThue
-		INNER JOIN dbo.DanhBa c ON  c.masothue = b.masothue 
-		WHERE (@MST ='' OR @MST IS NULL OR c.masothue = @MST)
-		AND (@nghekinhdoanh ='' OR @nghekinhdoanh IS NULL OR b.nghekinhdoanh LIKE N'%'+ @nghekinhdoanh+'%')
-		AND  a.TuThang = @FromMonth
-		AND  a.DenThang = @ToMonth
-		AND (@hoten ='' OR @hoten IS NULL OR a.hoten LIKE N'%'+ @hoten+'%')
-		AND (@diachi ='' OR @diachi IS NULL OR a.diachiKD LIKE N'%'+ @diachi+'%')
-		AND (@thang ='' OR @thang IS NULL OR MONTH(a.NgayLapBo) = @thang)   
-		
-
-    END 
-END 
+    END
