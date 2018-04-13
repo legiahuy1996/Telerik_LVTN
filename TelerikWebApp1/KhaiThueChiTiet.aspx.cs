@@ -38,6 +38,7 @@ namespace TelerikWebApp1
         protected void btnSave_Click(object sender, EventArgs e)
         {
             InsertData();
+            Response.Redirect("KhaiThueChiTiet.aspx");
         }
 
         protected void btnReset_Click(object sender, EventArgs e)

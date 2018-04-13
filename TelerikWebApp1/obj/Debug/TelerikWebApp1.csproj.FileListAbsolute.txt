@@ -101,3 +101,7 @@ D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.dll
 D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.xml
 D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.pdb
 >>>>>>> Stashed changes
+D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.dll
+D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.dll
+D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.xml
+D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.pdb

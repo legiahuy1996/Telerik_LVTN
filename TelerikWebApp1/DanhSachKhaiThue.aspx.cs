@@ -46,8 +46,8 @@ namespace TelerikWebApp1
             string SoGP = txtSoGP.Text;
             string CuaHang = txtDiaChiCuaHang.Text;
             string MaNganh = cboMaNganh.SelectedValue.Trim();
-
-            List<getDSThueResult> lst = db.getDSThue(MST, CuaHang, SoGP, MaNganh).ToList();
+            string Nam = txtNam.Text;
+            List<getDSThueResult> lst = db.getDSThue(MST, CuaHang, SoGP, MaNganh,Nam).ToList();
             grid.DataSource = lst;
             grid.Rebind();
         }
@@ -60,6 +60,10 @@ namespace TelerikWebApp1
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
             Response.Redirect("DanhSachKhaiThue.aspx");
+        }
+
+        protected void btnLock_Click(object sender, EventArgs e)
+        {
         }
     }
 }
