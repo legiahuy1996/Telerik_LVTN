@@ -70,7 +70,7 @@ D:\Projects\LVTNTelerik\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll
 D:\Projects\LVTNTelerik\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.pdb
 D:\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CoreCompileInputs.cache
 D:\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CopyComplete
-<<<<<<< Updated upstream
+
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojResolveAssemblyReference.cache
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll.licenses
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CoreCompileInputs.cache
@@ -95,13 +95,11 @@ D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Flow.
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Spreadsheet.xml
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.xml
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Zip.xml
-=======
-D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.dll
-D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.dll
-D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.xml
-D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.pdb
->>>>>>> Stashed changes
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.dll
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.dll
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.xml
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.pdb
+D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.dll
+D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.dll
+D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.xml
+D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.pdb

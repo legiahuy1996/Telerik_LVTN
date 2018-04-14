@@ -33,9 +33,9 @@ namespace TelerikWebApp1.Model
     partial void InsertBangKeNopThue(BangKeNopThue instance);
     partial void UpdateBangKeNopThue(BangKeNopThue instance);
     partial void DeleteBangKeNopThue(BangKeNopThue instance);
-    partial void Insertthuemonbai(thuemonbai instance);
-    partial void Updatethuemonbai(thuemonbai instance);
-    partial void Deletethuemonbai(thuemonbai instance);
+    partial void Inserttruythu(truythu instance);
+    partial void Updatetruythu(truythu instance);
+    partial void Deletetruythu(truythu instance);
     partial void Insertcanboql(canboql instance);
     partial void Updatecanboql(canboql instance);
     partial void Deletecanboql(canboql instance);
@@ -75,13 +75,13 @@ namespace TelerikWebApp1.Model
     partial void Insertthue(thue instance);
     partial void Updatethue(thue instance);
     partial void Deletethue(thue instance);
-    partial void Inserttruythu(truythu instance);
-    partial void Updatetruythu(truythu instance);
-    partial void Deletetruythu(truythu instance);
+    partial void Insertthuemonbai(thuemonbai instance);
+    partial void Updatethuemonbai(thuemonbai instance);
+    partial void Deletethuemonbai(thuemonbai instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["thueConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["thueConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -118,11 +118,11 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		public System.Data.Linq.Table<thuemonbai> thuemonbais
+		public System.Data.Linq.Table<truythu> truythus
 		{
 			get
 			{
-				return this.GetTable<thuemonbai>();
+				return this.GetTable<truythu>();
 			}
 		}
 		
@@ -230,11 +230,11 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		public System.Data.Linq.Table<truythu> truythus
+		public System.Data.Linq.Table<thuemonbai> thuemonbais
 		{
 			get
 			{
-				return this.GetTable<truythu>();
+				return this.GetTable<thuemonbai>();
 			}
 		}
 		
@@ -348,74 +348,74 @@ namespace TelerikWebApp1.Model
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.thuemonbai")]
-	public partial class thuemonbai : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.truythu")]
+	public partial class truythu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _nam;
+		private int _IDtruythu;
 		
 		private System.Nullable<int> _doanhso;
 		
-		private System.Nullable<int> _sotien;
+		private System.Nullable<double> _TiLeTinhThue;
 		
-		private System.Nullable<System.DateTime> _ngayphainop;
+		private System.Nullable<int> _SoTien;
 		
-		private System.Nullable<int> _trangthai;
+		private string _LyDo;
 		
-		private string _bac;
+		private System.Nullable<int> _TrangThai;
+		
+		private string _KyThue;
 		
 		private string _masothue;
 		
-		private int _idMonBai;
-		
-		private EntitySet<KhaiThue> _KhaiThues;
+		private EntityRef<DanhBa> _DanhBa;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnnamChanging(string value);
-    partial void OnnamChanged();
+    partial void OnIDtruythuChanging(int value);
+    partial void OnIDtruythuChanged();
     partial void OndoanhsoChanging(System.Nullable<int> value);
     partial void OndoanhsoChanged();
-    partial void OnsotienChanging(System.Nullable<int> value);
-    partial void OnsotienChanged();
-    partial void OnngayphainopChanging(System.Nullable<System.DateTime> value);
-    partial void OnngayphainopChanged();
-    partial void OntrangthaiChanging(System.Nullable<int> value);
-    partial void OntrangthaiChanged();
-    partial void OnbacChanging(string value);
-    partial void OnbacChanged();
+    partial void OnTiLeTinhThueChanging(System.Nullable<double> value);
+    partial void OnTiLeTinhThueChanged();
+    partial void OnSoTienChanging(System.Nullable<int> value);
+    partial void OnSoTienChanged();
+    partial void OnLyDoChanging(string value);
+    partial void OnLyDoChanged();
+    partial void OnTrangThaiChanging(System.Nullable<int> value);
+    partial void OnTrangThaiChanged();
+    partial void OnKyThueChanging(string value);
+    partial void OnKyThueChanged();
     partial void OnmasothueChanging(string value);
     partial void OnmasothueChanged();
-    partial void OnidMonBaiChanging(int value);
-    partial void OnidMonBaiChanged();
     #endregion
 		
-		public thuemonbai()
+		public truythu()
 		{
-			this._KhaiThues = new EntitySet<KhaiThue>(new Action<KhaiThue>(this.attach_KhaiThues), new Action<KhaiThue>(this.detach_KhaiThues));
+			this._DanhBa = default(EntityRef<DanhBa>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nam", DbType="VarChar(4)")]
-		public string nam
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDtruythu", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IDtruythu
 		{
 			get
 			{
-				return this._nam;
+				return this._IDtruythu;
 			}
 			set
 			{
-				if ((this._nam != value))
+				if ((this._IDtruythu != value))
 				{
-					this.OnnamChanging(value);
+					this.OnIDtruythuChanging(value);
 					this.SendPropertyChanging();
-					this._nam = value;
-					this.SendPropertyChanged("nam");
-					this.OnnamChanged();
+					this._IDtruythu = value;
+					this.SendPropertyChanged("IDtruythu");
+					this.OnIDtruythuChanged();
 				}
 			}
 		}
@@ -440,82 +440,102 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sotien", DbType="Int")]
-		public System.Nullable<int> sotien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TiLeTinhThue", DbType="Float")]
+		public System.Nullable<double> TiLeTinhThue
 		{
 			get
 			{
-				return this._sotien;
+				return this._TiLeTinhThue;
 			}
 			set
 			{
-				if ((this._sotien != value))
+				if ((this._TiLeTinhThue != value))
 				{
-					this.OnsotienChanging(value);
+					this.OnTiLeTinhThueChanging(value);
 					this.SendPropertyChanging();
-					this._sotien = value;
-					this.SendPropertyChanged("sotien");
-					this.OnsotienChanged();
+					this._TiLeTinhThue = value;
+					this.SendPropertyChanged("TiLeTinhThue");
+					this.OnTiLeTinhThueChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngayphainop", DbType="Date")]
-		public System.Nullable<System.DateTime> ngayphainop
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTien", DbType="Int")]
+		public System.Nullable<int> SoTien
 		{
 			get
 			{
-				return this._ngayphainop;
+				return this._SoTien;
 			}
 			set
 			{
-				if ((this._ngayphainop != value))
+				if ((this._SoTien != value))
 				{
-					this.OnngayphainopChanging(value);
+					this.OnSoTienChanging(value);
 					this.SendPropertyChanging();
-					this._ngayphainop = value;
-					this.SendPropertyChanged("ngayphainop");
-					this.OnngayphainopChanged();
+					this._SoTien = value;
+					this.SendPropertyChanged("SoTien");
+					this.OnSoTienChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_trangthai", DbType="Int")]
-		public System.Nullable<int> trangthai
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDo", DbType="VarChar(255)")]
+		public string LyDo
 		{
 			get
 			{
-				return this._trangthai;
+				return this._LyDo;
 			}
 			set
 			{
-				if ((this._trangthai != value))
+				if ((this._LyDo != value))
 				{
-					this.OntrangthaiChanging(value);
+					this.OnLyDoChanging(value);
 					this.SendPropertyChanging();
-					this._trangthai = value;
-					this.SendPropertyChanged("trangthai");
-					this.OntrangthaiChanged();
+					this._LyDo = value;
+					this.SendPropertyChanged("LyDo");
+					this.OnLyDoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bac", DbType="VarChar(20)")]
-		public string bac
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="Int")]
+		public System.Nullable<int> TrangThai
 		{
 			get
 			{
-				return this._bac;
+				return this._TrangThai;
 			}
 			set
 			{
-				if ((this._bac != value))
+				if ((this._TrangThai != value))
 				{
-					this.OnbacChanging(value);
+					this.OnTrangThaiChanging(value);
 					this.SendPropertyChanging();
-					this._bac = value;
-					this.SendPropertyChanged("bac");
-					this.OnbacChanged();
+					this._TrangThai = value;
+					this.SendPropertyChanged("TrangThai");
+					this.OnTrangThaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyThue", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string KyThue
+		{
+			get
+			{
+				return this._KyThue;
+			}
+			set
+			{
+				if ((this._KyThue != value))
+				{
+					this.OnKyThueChanging(value);
+					this.SendPropertyChanging();
+					this._KyThue = value;
+					this.SendPropertyChanged("KyThue");
+					this.OnKyThueChanged();
 				}
 			}
 		}
@@ -531,6 +551,10 @@ namespace TelerikWebApp1.Model
 			{
 				if ((this._masothue != value))
 				{
+					if (this._DanhBa.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnmasothueChanging(value);
 					this.SendPropertyChanging();
 					this._masothue = value;
@@ -540,36 +564,37 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMonBai", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idMonBai
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DanhBa_truythu", Storage="_DanhBa", ThisKey="masothue", OtherKey="masothue", IsForeignKey=true)]
+		public DanhBa DanhBa
 		{
 			get
 			{
-				return this._idMonBai;
+				return this._DanhBa.Entity;
 			}
 			set
 			{
-				if ((this._idMonBai != value))
+				DanhBa previousValue = this._DanhBa.Entity;
+				if (((previousValue != value) 
+							|| (this._DanhBa.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnidMonBaiChanging(value);
 					this.SendPropertyChanging();
-					this._idMonBai = value;
-					this.SendPropertyChanged("idMonBai");
-					this.OnidMonBaiChanged();
+					if ((previousValue != null))
+					{
+						this._DanhBa.Entity = null;
+						previousValue.truythus.Remove(this);
+					}
+					this._DanhBa.Entity = value;
+					if ((value != null))
+					{
+						value.truythus.Add(this);
+						this._masothue = value.masothue;
+					}
+					else
+					{
+						this._masothue = default(string);
+					}
+					this.SendPropertyChanged("DanhBa");
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="thuemonbai_KhaiThue", Storage="_KhaiThues", ThisKey="idMonBai", OtherKey="idMonBai")]
-		public EntitySet<KhaiThue> KhaiThues
-		{
-			get
-			{
-				return this._KhaiThues;
-			}
-			set
-			{
-				this._KhaiThues.Assign(value);
 			}
 		}
 		
@@ -591,18 +616,6 @@ namespace TelerikWebApp1.Model
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_KhaiThues(KhaiThue entity)
-		{
-			this.SendPropertyChanging();
-			entity.thuemonbai = this;
-		}
-		
-		private void detach_KhaiThues(KhaiThue entity)
-		{
-			this.SendPropertyChanging();
-			entity.thuemonbai = null;
 		}
 	}
 	
@@ -1120,9 +1133,9 @@ namespace TelerikWebApp1.Model
 		
 		private string _nam;
 		
-		private EntitySet<KhaiThue> _KhaiThues;
-		
 		private EntitySet<truythu> _truythus;
+		
+		private EntitySet<KhaiThue> _KhaiThues;
 		
 		private EntityRef<maduongpho> _maduongpho;
 		
@@ -1190,8 +1203,8 @@ namespace TelerikWebApp1.Model
 		
 		public DanhBa()
 		{
-			this._KhaiThues = new EntitySet<KhaiThue>(new Action<KhaiThue>(this.attach_KhaiThues), new Action<KhaiThue>(this.detach_KhaiThues));
 			this._truythus = new EntitySet<truythu>(new Action<truythu>(this.attach_truythus), new Action<truythu>(this.detach_truythus));
+			this._KhaiThues = new EntitySet<KhaiThue>(new Action<KhaiThue>(this.attach_KhaiThues), new Action<KhaiThue>(this.detach_KhaiThues));
 			this._maduongpho = default(EntityRef<maduongpho>);
 			this._manganh1 = default(EntityRef<manganh>);
 			OnCreated();
@@ -1745,19 +1758,6 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DanhBa_KhaiThue", Storage="_KhaiThues", ThisKey="masothue", OtherKey="masothue")]
-		public EntitySet<KhaiThue> KhaiThues
-		{
-			get
-			{
-				return this._KhaiThues;
-			}
-			set
-			{
-				this._KhaiThues.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DanhBa_truythu", Storage="_truythus", ThisKey="masothue", OtherKey="masothue")]
 		public EntitySet<truythu> truythus
 		{
@@ -1768,6 +1768,19 @@ namespace TelerikWebApp1.Model
 			set
 			{
 				this._truythus.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DanhBa_KhaiThue", Storage="_KhaiThues", ThisKey="masothue", OtherKey="masothue")]
+		public EntitySet<KhaiThue> KhaiThues
+		{
+			get
+			{
+				return this._KhaiThues;
+			}
+			set
+			{
+				this._KhaiThues.Assign(value);
 			}
 		}
 		
@@ -1859,18 +1872,6 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		private void attach_KhaiThues(KhaiThue entity)
-		{
-			this.SendPropertyChanging();
-			entity.DanhBa = this;
-		}
-		
-		private void detach_KhaiThues(KhaiThue entity)
-		{
-			this.SendPropertyChanging();
-			entity.DanhBa = null;
-		}
-		
 		private void attach_truythus(truythu entity)
 		{
 			this.SendPropertyChanging();
@@ -1878,6 +1879,18 @@ namespace TelerikWebApp1.Model
 		}
 		
 		private void detach_truythus(truythu entity)
+		{
+			this.SendPropertyChanging();
+			entity.DanhBa = null;
+		}
+		
+		private void attach_KhaiThues(KhaiThue entity)
+		{
+			this.SendPropertyChanging();
+			entity.DanhBa = this;
+		}
+		
+		private void detach_KhaiThues(KhaiThue entity)
 		{
 			this.SendPropertyChanging();
 			entity.DanhBa = null;
@@ -4637,74 +4650,74 @@ namespace TelerikWebApp1.Model
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.truythu")]
-	public partial class truythu : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.thuemonbai")]
+	public partial class thuemonbai : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _IDtruythu;
+		private string _nam;
 		
 		private System.Nullable<int> _doanhso;
 		
-		private System.Nullable<double> _TiLeTinhThue;
+		private System.Nullable<int> _sotien;
 		
-		private System.Nullable<int> _SoTien;
+		private System.Nullable<System.DateTime> _ngayphainop;
 		
-		private string _LyDo;
+		private System.Nullable<int> _trangthai;
 		
-		private System.Nullable<int> _TrangThai;
-		
-		private string _KyThue;
+		private string _bac;
 		
 		private string _masothue;
 		
-		private EntityRef<DanhBa> _DanhBa;
+		private int _idMonBai;
+		
+		private EntitySet<KhaiThue> _KhaiThues;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIDtruythuChanging(int value);
-    partial void OnIDtruythuChanged();
+    partial void OnnamChanging(string value);
+    partial void OnnamChanged();
     partial void OndoanhsoChanging(System.Nullable<int> value);
     partial void OndoanhsoChanged();
-    partial void OnTiLeTinhThueChanging(System.Nullable<double> value);
-    partial void OnTiLeTinhThueChanged();
-    partial void OnSoTienChanging(System.Nullable<int> value);
-    partial void OnSoTienChanged();
-    partial void OnLyDoChanging(string value);
-    partial void OnLyDoChanged();
-    partial void OnTrangThaiChanging(System.Nullable<int> value);
-    partial void OnTrangThaiChanged();
-    partial void OnKyThueChanging(string value);
-    partial void OnKyThueChanged();
+    partial void OnsotienChanging(System.Nullable<int> value);
+    partial void OnsotienChanged();
+    partial void OnngayphainopChanging(System.Nullable<System.DateTime> value);
+    partial void OnngayphainopChanged();
+    partial void OntrangthaiChanging(System.Nullable<int> value);
+    partial void OntrangthaiChanged();
+    partial void OnbacChanging(string value);
+    partial void OnbacChanged();
     partial void OnmasothueChanging(string value);
     partial void OnmasothueChanged();
+    partial void OnidMonBaiChanging(int value);
+    partial void OnidMonBaiChanged();
     #endregion
 		
-		public truythu()
+		public thuemonbai()
 		{
-			this._DanhBa = default(EntityRef<DanhBa>);
+			this._KhaiThues = new EntitySet<KhaiThue>(new Action<KhaiThue>(this.attach_KhaiThues), new Action<KhaiThue>(this.detach_KhaiThues));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDtruythu", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int IDtruythu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nam", DbType="VarChar(4)")]
+		public string nam
 		{
 			get
 			{
-				return this._IDtruythu;
+				return this._nam;
 			}
 			set
 			{
-				if ((this._IDtruythu != value))
+				if ((this._nam != value))
 				{
-					this.OnIDtruythuChanging(value);
+					this.OnnamChanging(value);
 					this.SendPropertyChanging();
-					this._IDtruythu = value;
-					this.SendPropertyChanged("IDtruythu");
-					this.OnIDtruythuChanged();
+					this._nam = value;
+					this.SendPropertyChanged("nam");
+					this.OnnamChanged();
 				}
 			}
 		}
@@ -4729,102 +4742,82 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TiLeTinhThue", DbType="Float")]
-		public System.Nullable<double> TiLeTinhThue
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sotien", DbType="Int")]
+		public System.Nullable<int> sotien
 		{
 			get
 			{
-				return this._TiLeTinhThue;
+				return this._sotien;
 			}
 			set
 			{
-				if ((this._TiLeTinhThue != value))
+				if ((this._sotien != value))
 				{
-					this.OnTiLeTinhThueChanging(value);
+					this.OnsotienChanging(value);
 					this.SendPropertyChanging();
-					this._TiLeTinhThue = value;
-					this.SendPropertyChanged("TiLeTinhThue");
-					this.OnTiLeTinhThueChanged();
+					this._sotien = value;
+					this.SendPropertyChanged("sotien");
+					this.OnsotienChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoTien", DbType="Int")]
-		public System.Nullable<int> SoTien
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngayphainop", DbType="Date")]
+		public System.Nullable<System.DateTime> ngayphainop
 		{
 			get
 			{
-				return this._SoTien;
+				return this._ngayphainop;
 			}
 			set
 			{
-				if ((this._SoTien != value))
+				if ((this._ngayphainop != value))
 				{
-					this.OnSoTienChanging(value);
+					this.OnngayphainopChanging(value);
 					this.SendPropertyChanging();
-					this._SoTien = value;
-					this.SendPropertyChanged("SoTien");
-					this.OnSoTienChanged();
+					this._ngayphainop = value;
+					this.SendPropertyChanged("ngayphainop");
+					this.OnngayphainopChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDo", DbType="VarChar(255)")]
-		public string LyDo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_trangthai", DbType="Int")]
+		public System.Nullable<int> trangthai
 		{
 			get
 			{
-				return this._LyDo;
+				return this._trangthai;
 			}
 			set
 			{
-				if ((this._LyDo != value))
+				if ((this._trangthai != value))
 				{
-					this.OnLyDoChanging(value);
+					this.OntrangthaiChanging(value);
 					this.SendPropertyChanging();
-					this._LyDo = value;
-					this.SendPropertyChanged("LyDo");
-					this.OnLyDoChanged();
+					this._trangthai = value;
+					this.SendPropertyChanged("trangthai");
+					this.OntrangthaiChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThai", DbType="Int")]
-		public System.Nullable<int> TrangThai
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bac", DbType="VarChar(20)")]
+		public string bac
 		{
 			get
 			{
-				return this._TrangThai;
+				return this._bac;
 			}
 			set
 			{
-				if ((this._TrangThai != value))
+				if ((this._bac != value))
 				{
-					this.OnTrangThaiChanging(value);
+					this.OnbacChanging(value);
 					this.SendPropertyChanging();
-					this._TrangThai = value;
-					this.SendPropertyChanged("TrangThai");
-					this.OnTrangThaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KyThue", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string KyThue
-		{
-			get
-			{
-				return this._KyThue;
-			}
-			set
-			{
-				if ((this._KyThue != value))
-				{
-					this.OnKyThueChanging(value);
-					this.SendPropertyChanging();
-					this._KyThue = value;
-					this.SendPropertyChanged("KyThue");
-					this.OnKyThueChanged();
+					this._bac = value;
+					this.SendPropertyChanged("bac");
+					this.OnbacChanged();
 				}
 			}
 		}
@@ -4840,10 +4833,6 @@ namespace TelerikWebApp1.Model
 			{
 				if ((this._masothue != value))
 				{
-					if (this._DanhBa.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnmasothueChanging(value);
 					this.SendPropertyChanging();
 					this._masothue = value;
@@ -4853,37 +4842,36 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DanhBa_truythu", Storage="_DanhBa", ThisKey="masothue", OtherKey="masothue", IsForeignKey=true)]
-		public DanhBa DanhBa
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMonBai", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idMonBai
 		{
 			get
 			{
-				return this._DanhBa.Entity;
+				return this._idMonBai;
 			}
 			set
 			{
-				DanhBa previousValue = this._DanhBa.Entity;
-				if (((previousValue != value) 
-							|| (this._DanhBa.HasLoadedOrAssignedValue == false)))
+				if ((this._idMonBai != value))
 				{
+					this.OnidMonBaiChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DanhBa.Entity = null;
-						previousValue.truythus.Remove(this);
-					}
-					this._DanhBa.Entity = value;
-					if ((value != null))
-					{
-						value.truythus.Add(this);
-						this._masothue = value.masothue;
-					}
-					else
-					{
-						this._masothue = default(string);
-					}
-					this.SendPropertyChanged("DanhBa");
+					this._idMonBai = value;
+					this.SendPropertyChanged("idMonBai");
+					this.OnidMonBaiChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="thuemonbai_KhaiThue", Storage="_KhaiThues", ThisKey="idMonBai", OtherKey="idMonBai")]
+		public EntitySet<KhaiThue> KhaiThues
+		{
+			get
+			{
+				return this._KhaiThues;
+			}
+			set
+			{
+				this._KhaiThues.Assign(value);
 			}
 		}
 		
@@ -4906,6 +4894,18 @@ namespace TelerikWebApp1.Model
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_KhaiThues(KhaiThue entity)
+		{
+			this.SendPropertyChanging();
+			entity.thuemonbai = this;
+		}
+		
+		private void detach_KhaiThues(KhaiThue entity)
+		{
+			this.SendPropertyChanging();
+			entity.thuemonbai = null;
+		}
 	}
 	
 	public partial class getDSThueResult
@@ -4923,7 +4923,7 @@ namespace TelerikWebApp1.Model
 		
 		private string _diachiKD;
 		
-		private System.Nullable<bool> _TrangThaiHoatDong;
+		private string _TrangThaiHoatDong;
 		
 		private System.Nullable<double> _ThueGTGT;
 		
@@ -5033,8 +5033,8 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThaiHoatDong", DbType="Bit")]
-		public System.Nullable<bool> TrangThaiHoatDong
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangThaiHoatDong", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string TrangThaiHoatDong
 		{
 			get
 			{

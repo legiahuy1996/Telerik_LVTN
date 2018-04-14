@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="thue" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-54Q0QQH\HUY;Initial Catalog=thue;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="thueConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-54Q0QQH\HUY;Initial Catalog=thue;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="thueConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BangKeNopThue" Member="BangKeNopThues">
     <Type Name="BangKeNopThue">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.thuemonbai" Member="thuemonbais">
-    <Type Name="thuemonbai">
-      <Column Name="nam" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+  <Table Name="dbo.truythu" Member="truythus">
+    <Type Name="truythu">
+      <Column Name="IDtruythu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="doanhso" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="sotien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ngayphainop" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="trangthai" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="bac" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TiLeTinhThue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LyDo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TrangThai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KyThue" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="masothue" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
-      <Column Name="idMonBai" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="thuemonbai_KhaiThue" Member="KhaiThues" ThisKey="idMonBai" OtherKey="idMonBai" Type="KhaiThue" />
+      <Association Name="DanhBa_truythu" Member="DanhBa" ThisKey="masothue" OtherKey="masothue" Type="DanhBa" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.canboql" Member="canboqls">
@@ -69,8 +69,8 @@
       <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="ghichu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="nam" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
-      <Association Name="DanhBa_KhaiThue" Member="KhaiThues" ThisKey="masothue" OtherKey="masothue" Type="KhaiThue" />
       <Association Name="DanhBa_truythu" Member="truythus" ThisKey="masothue" OtherKey="masothue" Type="truythu" />
+      <Association Name="DanhBa_KhaiThue" Member="KhaiThues" ThisKey="masothue" OtherKey="masothue" Type="KhaiThue" />
       <Association Name="maduongpho_DanhBa" Member="maduongpho" ThisKey="madp" OtherKey="madp" Type="maduongpho" IsForeignKey="true" />
       <Association Name="manganh_DanhBa" Member="manganh1" ThisKey="manganh" OtherKey="manganh1" Type="manganh" IsForeignKey="true" />
     </Type>
@@ -206,17 +206,17 @@
       <Association Name="mucluc_thue_thue" Member="mucluc_thue" ThisKey="idTieuMuc" OtherKey="id" Type="mucluc_thue" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.truythu" Member="truythus">
-    <Type Name="truythu">
-      <Column Name="IDtruythu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+  <Table Name="dbo.thuemonbai" Member="thuemonbais">
+    <Type Name="thuemonbai">
+      <Column Name="nam" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
       <Column Name="doanhso" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TiLeTinhThue" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LyDo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="TrangThai" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="KyThue" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="sotien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayphainop" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="trangthai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bac" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="masothue" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
-      <Association Name="DanhBa_truythu" Member="DanhBa" ThisKey="masothue" OtherKey="masothue" Type="DanhBa" IsForeignKey="true" />
+      <Column Name="idMonBai" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="thuemonbai_KhaiThue" Member="KhaiThues" ThisKey="idMonBai" OtherKey="idMonBai" Type="KhaiThue" />
     </Type>
   </Table>
   <Function Name="dbo.getDSThue" Method="getDSThue">
@@ -232,7 +232,7 @@
       <Column Name="bac" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="diachiKD" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="TrangThaiHoatDong" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TrangThaiHoatDong" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="ThueGTGT" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="ThueTNCN" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="sogp" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
