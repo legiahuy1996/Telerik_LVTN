@@ -3,7 +3,7 @@
     @diachicuahang VARCHAR(255) = NULL ,
     @sogiayphep VARCHAR(50) = NULL ,
     @manganh VARCHAR(10) = NULL,
-	@nam		VARCHAR(4)
+	@nam		VARCHAR(4) = null
 AS
     BEGIN 
         SELECT  a.masothue ,

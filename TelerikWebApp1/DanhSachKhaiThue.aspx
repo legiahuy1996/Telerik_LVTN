@@ -4,7 +4,7 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="content" runat="server">
-    <h1 style="margin-left: 30%">Danh Sách Khai Thuế</h1>
+    <h1 style="font-size:20px;">Danh Sách Khai Thuế</h1>
     <br />
     <form id="frm" runat="server">
 

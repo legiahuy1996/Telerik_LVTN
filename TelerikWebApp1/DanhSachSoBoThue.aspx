@@ -4,7 +4,7 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="content" runat="server">
-    <h1 style="margin-left: 35%">DANH SÁCH SỔ BỘ THUẾ</h1>
+    <h1>DANH SÁCH SỔ BỘ THUẾ</h1>
     <br />
     <form id="frm" runat="server">
 

@@ -2,13 +2,14 @@
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="DanhSachHoCaThe" ContentPlaceHolderID="content" runat="server">
-    <h1 style="margin-left: 30%">Danh sách hộ cá thể</h1>
+    <h1>Danh sách hộ cá thể</h1>
     <br />
  
     <form id="frm" runat="server">
 
         <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
-            <tr>
+                <tr>
+                  <td style="width: 5%"></td>
                 <td width="15%">
                     <asp:Label runat="server" ID="lblMST">Mã số thuế</asp:Label>
                 </td>
@@ -23,6 +24,7 @@
                 </td>
             </tr>
             <tr>
+                  <td style="width: 5%"></td>
                 <td width="15%">
                     <asp:Label runat="server" ID="lblCMND">CMND</asp:Label>
                 </td>
@@ -37,6 +39,7 @@
                 </td>
             </tr>
             <tr>
+                  <td style="width: 5%"></td>
                 <td width="15%">
                     <asp:Label runat="server" ID="lblSoGP">Số giấy phép</asp:Label>
                 </td>
@@ -51,6 +54,7 @@
                 </td>
             </tr>
             <tr>
+                  <td style="width: 5%"></td>
                 <td width="15%">
                     <asp:Label runat="server" ID="Label5">Họ Tên</asp:Label>
                 </td>
@@ -65,6 +69,7 @@
                 </td>
             </tr>
             <tr>
+                  <td style="width: 5%"></td>
                 <td width="15%">
                     <asp:Label runat="server" ID="Label7">Mã ngành</asp:Label>
                 </td>
@@ -97,11 +102,11 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td width="100%">
                     <telerik:RadScriptManager runat="server" ID="RadScriptManager2" />
                     <telerik:RadSkinManager ID="RadSkinManager2" runat="server" ShowChooser="true" />
-                    <telerik:RadSplitter ID="RadSplitter2" Width="650px" runat="server" Orientation="Horizontal">
-                        <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
+                    <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
+                        <telerik:RadPane ID="RadPane1" Height="500px" Width="90%" runat="server" Scrolling="Both">
                             <telerik:RadGrid runat="server" ID="grid" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true" AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="true">
                                 <ClientSettings>
                                     <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />

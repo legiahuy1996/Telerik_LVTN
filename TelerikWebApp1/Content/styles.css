@@ -49,9 +49,11 @@
 }
 #cssmenu > ul {
   float: left;
+  width: 100%;
 }
 #cssmenu > ul > li {
   float: left;
+  padding-left:1%;
 }
 #cssmenu > ul > li:hover:after {
   content: '';

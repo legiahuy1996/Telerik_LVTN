@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site1.Master" CodeBehind="ThongTinHoCaThe.aspx.cs" Inherits="TelerikWebApp1.ThemMoiHoCaThe" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="content" runat="server">
-   <h1 style="margin-left: 30%">Thông tin hộ cá thể</h1>
+   <h1>Thông tin hộ cá thể</h1>
     <br />
   <form id="frm" runat="server">
     <table cellspacing="1" cellpadding="1" width="100%" border="0" runat="server">

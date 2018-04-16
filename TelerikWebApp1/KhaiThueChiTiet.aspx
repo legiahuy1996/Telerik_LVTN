@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site1.Master" CodeBehind="KhaiThueChiTiet.aspx.cs" Inherits="TelerikWebApp1.KhaiThueChiTiet" %>
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="content" runat="server">
-   <h1 style="margin-left: 30%">Khai thuế chi tiết</h1>
+   <h1>Khai thuế chi tiết</h1>
     <br />
   <form id="frm" runat="server">
      <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
