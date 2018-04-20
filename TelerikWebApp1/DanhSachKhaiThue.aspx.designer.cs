@@ -76,24 +76,6 @@ namespace TelerikWebApp1 {
         protected global::Telerik.Web.UI.RadComboBox cboMaNganh;
         
         /// <summary>
-        /// lblDiaChiCuaHang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDiaChiCuaHang;
-        
-        /// <summary>
-        /// txtDiaChiCuaHang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDiaChiCuaHang;
-        
-        /// <summary>
         /// lblSoGP control.
         /// </summary>
         /// <remarks>

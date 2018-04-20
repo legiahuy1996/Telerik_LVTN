@@ -44,10 +44,9 @@ namespace TelerikWebApp1
         {
             string MST = txtMST.Text;
             string SoGP = txtSoGP.Text;
-            string CuaHang = txtDiaChiCuaHang.Text;
-            string MaNganh = cboMaNganh.SelectedValue.Trim();
+            string MaNganh = cboMaNganh.SelectedValue;
             string Nam = txtNam.Text;
-            List<getDSThueResult> lst = db.getDSThue(MST, CuaHang, SoGP, MaNganh,Nam).ToList();
+            List<getDSThueResult> lst = db.getDSThue(MST, SoGP, MaNganh,Nam).ToList();
             grid.DataSource = lst;
             grid.Rebind();
         }

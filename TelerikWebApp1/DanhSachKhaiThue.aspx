@@ -4,7 +4,7 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="content" runat="server">
-    <h1 style="font-size:20px;">Danh Sách Khai Thuế</h1>
+    <h1 style="font-size: 20px;">Danh Sách Khai Thuế</h1>
     <br />
     <form id="frm" runat="server">
 
@@ -19,25 +19,29 @@
                 <td>
                     <asp:Label runat="server" ID="lblNam">Năm</asp:Label>
                 </td>
-                <td >
+                <td>
                     <asp:TextBox class="input" runat="server" ID="txtNam" Width="40%"></asp:TextBox>
                 </td>
             </tr>
-                 <tr>
-            <td><br /></td>
-        </tr>
+            <tr>
+                <td>
+                    <br />
+                </td>
+            </tr>
             <tr>
                 <td></td>
                 <td>
                     <asp:Label runat="server" ID="lblMST">Mã số thuế</asp:Label>
                 </td>
-                <td >
+                <td>
                     <asp:TextBox class="input" runat="server" ID="txtMST" Width="40%"></asp:TextBox>
                 </td>
             </tr>
-                    <tr>
-            <td><br /></td>
-        </tr>
+            <tr>
+                <td>
+                    <br />
+                </td>
+            </tr>
             <tr>
                 <td></td>
                 <td>
@@ -47,24 +51,14 @@
                     <telerik:RadComboBox class="input" runat="server" ID="cboMaNganh" Width="40%"></telerik:RadComboBox>
                 </td>
             </tr>
-                                <tr>
-            <td><br /></td>
-        </tr>
             <tr>
-                <td></td>
-                <td >
-                    <asp:Label runat="server" ID="lblDiaChiCuaHang">Địa chỉ cửa hàng</asp:Label>
-                </td>
-                <td >
-                    <asp:TextBox class="input" runat="server" ID="txtDiaChiCuaHang" Width="40%"></asp:TextBox>
+                <td>
+                    <br />
                 </td>
             </tr>
-                    <tr>
-            <td><br /></td>
-        </tr>
             <tr>
                 <td></td>
-                <td >
+                <td>
                     <asp:Label runat="server" ID="lblSoGP">Số giấy phép</asp:Label>
                 </td>
                 <td>
@@ -158,7 +152,7 @@
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="DoanhThu" DataField="DoanhThu" HeaderText="Doanh thu">
+                                        <telerik:GridBoundColumn UniqueName="TongDoanhThu" DataField="TongDoanhThu" HeaderText="Tổng Doanh thu">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
@@ -190,11 +184,11 @@
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="ThueGTGT" DataField="ThueGTGT" HeaderText="Thuế phải đóng GTGT">
+                                        <telerik:GridBoundColumn UniqueName="SoTienGTGT1Thang" DataField="SoTienGTGT1Thang" HeaderText="Thuế phải đóng GTGT">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="ThueTNCN" DataField="ThueTNCN" HeaderText="Thuế phải đóng TNCN">
+                                        <telerik:GridBoundColumn UniqueName="SoTienTNCN1Thang" DataField="SoTienTNCN1Thang" HeaderText="Thuế phải đóng TNCN">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>

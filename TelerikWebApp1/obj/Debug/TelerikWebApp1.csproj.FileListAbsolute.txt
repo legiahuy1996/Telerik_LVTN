@@ -70,7 +70,6 @@ D:\Projects\LVTNTelerik\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll
 D:\Projects\LVTNTelerik\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.pdb
 D:\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CoreCompileInputs.cache
 D:\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CopyComplete
-
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojResolveAssemblyReference.cache
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll.licenses
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CoreCompileInputs.cache

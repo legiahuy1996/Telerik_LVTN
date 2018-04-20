@@ -15,30 +15,30 @@ namespace TelerikWebApp1
         {
             db = new DataClasses1DataContext();
         }
-        public int InsertData()
-        {
-            string mst = txtMST.Text;
-            int doanhthu = int.Parse(txtDoanhThu.Text);
-            string nam = txtNam.Text;
-            string idmonbai = txtMonBai.Text;
-            string sdt = txtSodt.Text;
-            string email = txtEmail.Text;
-            string ghichu = txtNote.Text;
-            string nghekinhdoanh = txtNgheKD.Text;
-            int dientich =int.Parse(txtDTKD.Text);
-            int soluongld = int.Parse(txtSoLuongLD.Text);
-            int tugio = int.Parse(txtTuGio.Text);
-            int dengio = int.Parse(txtDenGio.Text);
-            string diachi = txtDiaChiKD.Text;
-            bool trangthai = chkTrangThaiHoatDong.Checked;
+        //public int InsertData()
+        //{
+        //    string mst = txtMST.Text;
+        //    int doanhthu = int.Parse(txtDoanhThu.Text);
+        //    string nam = txtNam.Text;
+        //    string idmonbai = cboMonBai.SelectedValue;
+        //    string sdt = txtSodt.Text;
+        //    string email = txtEmail.Text;
+        //    string ghichu = txtNote.Text;
+        //    string nghekinhdoanh = cboMaNganh.SelectedValue;
+        //    int dientich =int.Parse(txtDTKD.Text);
+        //    int soluongld = int.Parse(txtSoLuongLD.Text);
+        //    int tugio = int.Parse(txtTuGio.Text);
+        //    int dengio = int.Parse(txtDenGio.Text);
+        //    string diachi = txtDiaChiKD.Text;
+        //    bool trangthai = chkTrangThaiHoatDong.Checked;
 
-            int lst = db.Insert_KhaiThue(null, mst, doanhthu, nam, idmonbai, sdt, email, ghichu, nghekinhdoanh, dientich, soluongld, tugio, dengio, diachi, trangthai, null, null, null, null);
-                return lst;
-        }
+        //    int lst = db.Insert_KhaiThue(null, mst, doanhthu, nam, idmonbai, sdt, email, ghichu, nghekinhdoanh, dientich, soluongld, tugio, dengio, diachi, trangthai, null, null, null, null);
+        //        return lst;
+        //}
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            InsertData();
-            Response.Redirect("KhaiThueChiTiet.aspx");
+            //InsertData();
+            //Response.Redirect("KhaiThueChiTiet.aspx");
         }
 
         protected void btnReset_Click(object sender, EventArgs e)

@@ -22,6 +22,15 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm frm;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// lblMST control.
         /// </summary>
         /// <remarks>
@@ -40,22 +49,13 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.TextBox txtMST;
         
         /// <summary>
-        /// lblDoanhThu control.
+        /// btnLayTuDanhBa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDoanhThu;
-        
-        /// <summary>
-        /// txtDoanhThu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDoanhThu;
+        protected global::System.Web.UI.WebControls.LinkButton btnLayTuDanhBa;
         
         /// <summary>
         /// lblNam control.
@@ -76,6 +76,24 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.TextBox txtNam;
         
         /// <summary>
+        /// lblMaNganh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMaNganh;
+        
+        /// <summary>
+        /// cboMaNganh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cboMaNganh;
+        
+        /// <summary>
         /// lblMonBai control.
         /// </summary>
         /// <remarks>
@@ -85,31 +103,31 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.Label lblMonBai;
         
         /// <summary>
-        /// txtMonBai control.
+        /// cboMonBai control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMonBai;
+        protected global::Telerik.Web.UI.RadComboBox cboMonBai;
         
         /// <summary>
-        /// lblSodt control.
+        /// lblTongDoanhThu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSodt;
+        protected global::System.Web.UI.WebControls.Label lblTongDoanhThu;
         
         /// <summary>
-        /// txtSodt control.
+        /// txtTongDoanhThu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSodt;
+        protected global::System.Web.UI.WebControls.TextBox txtTongDoanhThu;
         
         /// <summary>
         /// lblEmail control.
@@ -130,40 +148,40 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
-        /// lblNote control.
+        /// lblNgayKhaiThue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNote;
+        protected global::System.Web.UI.WebControls.Label lblNgayKhaiThue;
         
         /// <summary>
-        /// txtNote control.
+        /// txtMgayKhaiThue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNote;
+        protected global::System.Web.UI.WebControls.TextBox txtMgayKhaiThue;
         
         /// <summary>
-        /// lblNgheKD control.
+        /// lblDiaChiKD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNgheKD;
+        protected global::System.Web.UI.WebControls.Label lblDiaChiKD;
         
         /// <summary>
-        /// txtNgheKD control.
+        /// txtDiaChiKD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNgheKD;
+        protected global::System.Web.UI.WebControls.TextBox txtDiaChiKD;
         
         /// <summary>
         /// lblDTKD control.
@@ -238,22 +256,40 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.TextBox txtDenGio;
         
         /// <summary>
-        /// lblDiaChiKD control.
+        /// lblSodt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDiaChiKD;
+        protected global::System.Web.UI.WebControls.Label lblSodt;
         
         /// <summary>
-        /// txtDiaChiKD control.
+        /// txtSodt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDiaChiKD;
+        protected global::System.Web.UI.WebControls.TextBox txtSodt;
+        
+        /// <summary>
+        /// lblNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNote;
+        
+        /// <summary>
+        /// txtNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNote;
         
         /// <summary>
         /// lblTrangThaiHoatDong control.

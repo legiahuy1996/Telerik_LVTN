@@ -1,0 +1,39 @@
+﻿ALTER PROC [dbo].[getDSThue]
+    @masothue VARCHAR(14) = NULL ,
+    @sogiayphep VARCHAR(50) = NULL ,
+    @manganh VARCHAR(10) = NULL,
+	@nam		VARCHAR(4) = null
+AS
+    BEGIN 
+        SELECT  a.masothue ,
+                a.nam ,
+                d.bac ,
+                a.diachiKD ,
+				a.TongDoanhThu,
+				a.SoTienGTGT1Thang,a.SoTienTNCN1Thang,
+                CASE WHEN a.TrangThaiHoatDong =1 THEN N'Đang hoạt động' ELSE N'Ngừng hoạt động' END AS TrangThaiHoatDong ,
+                b.sogp ,
+                c.tennganh,b.nghekinhdoanh
+        FROM    dbo.KhaiThue a
+                LEFT JOIN dbo.DanhBa b ON b.masothue = a.masothue
+                LEFT JOIN dbo.manganh c ON c.manganh = b.manganh
+                LEFT JOIN dbo.thuemonbai d ON d.idMonBai = a.idMonBai
+        WHERE a.TrangThaiHoatDong = '1' AND 
+		( @nam IS NULL
+                  OR @nam = ''
+                  OR a.nam = @nam
+                ) AND 
+		( @masothue IS NULL
+                  OR @masothue = ''
+                  OR a.masothue = @masothue
+                )
+                AND ( @manganh IS NULL
+                      OR @manganh = ''
+                      OR c.manganh = @manganh
+                    )
+                AND ( @sogiayphep IS NULL
+                      OR @sogiayphep = ''
+                      OR b.sogp LIKE N'%' + @sogiayphep + '%'
+                    )
+
+    END
