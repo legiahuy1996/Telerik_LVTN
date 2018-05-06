@@ -16,31 +16,8 @@ namespace TelerikWebApp1
         {
             db = new DataClasses1DataContext();
         }
-        protected void ToggleRowSelection(object sender, EventArgs e)
-        {
-            ((sender as CheckBox).NamingContainer as GridItem).Selected = (sender as CheckBox).Checked;
-            bool checkHeader = true;
-            foreach (GridDataItem dataItem in grid.MasterTableView.Items)
-            {
-                if (!(dataItem.FindControl("CheckBox1") as CheckBox).Checked)
-                {
-                    checkHeader = false;
-                    break;
-                }
-            }
-            GridHeaderItem headerItem = grid.MasterTableView.GetItems(GridItemType.Header)[0] as GridHeaderItem;
-            (headerItem.FindControl("headerChkbox") as CheckBox).Checked = checkHeader;
-        }
-        protected void ToggleSelectedState(object sender, EventArgs e)
-        {
-            CheckBox headerCheckBox = (sender as CheckBox);
-            foreach (GridDataItem dataItem in grid.MasterTableView.Items)
-            {
-                (dataItem.FindControl("CheckBox1") as CheckBox).Checked = headerCheckBox.Checked;
-                dataItem.Selected = headerCheckBox.Checked;
-            }
-        }
-        public void loadData()
+     
+        public void loadData()  
         {
             string MST = txtMST.Text;
             string SoGP = txtSoGP.Text;

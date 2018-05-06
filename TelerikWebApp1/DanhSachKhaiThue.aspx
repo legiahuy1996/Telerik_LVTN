@@ -124,30 +124,23 @@
             </tr>
 
         </table>
-        <table width="100" cellpadding="0" cellspacing="0">
+        <table width="100%" cellpadding="1" cellspacing="1" border="0">
             <tr>
                 <td>
                     <telerik:RadScriptManager runat="server" ID="RadScriptManager2" />
                     <telerik:RadSkinManager ID="RadSkinManager2" runat="server" ShowChooser="true" />
-                    <telerik:RadSplitter ID="RadSplitter2" Width="650px" runat="server" Orientation="Horizontal">
-                        <telerik:RadPane ID="RadPane1" Height="650px" Width="100%" runat="server" Scrolling="Both">
-                            <telerik:RadGrid runat="server" Width="650px" ID="grid" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true" AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false">
+                    <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
+                        <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
+                            <telerik:RadGrid runat="server"  ID="grid" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true" AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false">
                                 <ClientSettings>
                                     <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
                                 </ClientSettings>
                                 <PagerStyle Mode="NextPrevNumericAndAdvanced" AlwaysVisible="true" />
                                 <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" AllowMultiColumnSorting="true">
                                     <Columns>
-                                        <telerik:GridTemplateColumn UniqueName="CheckBoxTemplateColumn">
-                                            <ItemTemplate>
-                                                <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="ToggleRowSelection"
-                                                    AutoPostBack="True" />
-                                            </ItemTemplate>
-                                            <HeaderTemplate>
-                                                <asp:CheckBox ID="headerChkbox" runat="server" OnCheckedChanged="ToggleSelectedState"
-                                                    AutoPostBack="True" />
-                                            </HeaderTemplate>
-                                        </telerik:GridTemplateColumn>
+                                        <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
+                                        </telerik:GridClientSelectColumn>
+
                                         <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

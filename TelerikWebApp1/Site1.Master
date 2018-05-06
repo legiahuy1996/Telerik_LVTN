@@ -113,9 +113,9 @@
                                             </tr>
                                             <tr>
                                                 <td align="left" valign="top" class="banner">
-                                                    <h2>Thuế Việt Nam<br />
+                                                  <%--  <h2>Thuế Việt Nam<br />
                                                         Tổng cục thuế bộ Tài Chính<br />
-                                                        Nước cộng hòa xã hội chủ nghĩa Việt Nam</h2>
+                                                        Nước cộng hòa xã hội chủ nghĩa Việt Nam</h2>--%>
                                                 </td>
                                             </tr>
                                         </table>
