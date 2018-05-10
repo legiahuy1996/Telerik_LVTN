@@ -17,7 +17,7 @@ namespace TelerikWebApp1
 {
     public partial class DanhSachSoBoThue : System.Web.UI.Page
     {
-        private List<spfrm_DanhSachSoBoThueResult> list;
+        private List<getDSSoBoThueResult> list;
         private DataClasses1DataContext db;
         public DanhSachSoBoThue()
         {
@@ -30,7 +30,6 @@ namespace TelerikWebApp1
 
         public void loadDataSearch()
         {
-            string Activity = "Search";
             string nghekinhdoanh = txtNgheKinhDoanh.Text;
             string MST = txtMST.Text;
             string tuthang = txtTuThang.Text;
@@ -41,12 +40,12 @@ namespace TelerikWebApp1
             string namlapbo = txtNamLapBo.Text;
 
 
-            List<spfrm_DanhSachSoBoThueResult> data = db.spfrm_DanhSachSoBoThue(MST, nghekinhdoanh, tuthang, denthang, hoten, diachi, thanglapbo, Activity).ToList();
+            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, tuthang, denthang,  diachi, hoten, thanglapbo,namlapbo).ToList();
             grid.DataSource = data;
             list = data;
             grid.Rebind();
         }
-        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<spfrm_DanhSachSoBoThueResult> listItems)
+        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<getDSSoBoThueResult> listItems)
         {
             // Set default width cho tất cả column
             worksheet.DefaultColWidth = 10;
@@ -102,8 +101,8 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 2].Value = item.hoten;
                 worksheet.Cells[i + 2, 3].Value = item.diachiKD;
                 worksheet.Cells[i + 2, 4].Value = item.nganhngheKD;
-                worksheet.Cells[i + 2, 5].Value = item.TuThang+"/"+DateTime.Now.Year+"";
-                worksheet.Cells[i + 2, 6].Value = item.DenThang + "/" + DateTime.Now.Year + "";
+                worksheet.Cells[i + 2, 5].Value = item.KDTuThang+"/"+DateTime.Now.Year+"";
+                worksheet.Cells[i + 2, 6].Value = item.KDDenThang + "/" + DateTime.Now.Year + "";
                 worksheet.Cells[i + 2, 7].Value = item.DoanhThuTinhThueGTGT;
                 worksheet.Cells[i + 2, 8].Value = item.TyLeTinhThueGTGT + "%";
                 worksheet.Cells[i + 2, 9].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT;
@@ -112,12 +111,12 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 12].Value = item.TyLeTinhThueTNCN + "%";
                 worksheet.Cells[i + 2, 13].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN;
                 worksheet.Cells[i + 2, 14].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN *12;
-                worksheet.Cells[i + 2, 15].Value = item.trangthai;
+                worksheet.Cells[i + 2, 15].Value = item.TinhTrangNopThue;
                 worksheet.Cells[i + 2, 16].Value = item.NgayLapBo;
 
 
                 // Format lại color nếu như thỏa điều kiện
-                if (item.trangthai == "Còn nợ thuế")
+                if (item.TinhTrangNopThue == false)
                 {
                     // Ở đây chúng ta sẽ format lại theo dạng fromRow,fromCol,toRow,toCol
                     using (var range = worksheet.Cells[i + 2, 1, i + 2, 16])
@@ -150,7 +149,6 @@ namespace TelerikWebApp1
         }
         private Stream CreateExcelFile(Stream stream = null)
         {
-            string Activity = "Search";
             string nghekinhdoanh = txtNgheKinhDoanh.Text;
             string MST = txtMST.Text;
             string tuthang = txtTuThang.Text;
@@ -159,7 +157,7 @@ namespace TelerikWebApp1
             string hoten = txtHoTen.Text;
             string thanglapbo = txtThangLapBo.Text;
             string namlapbo = txtNamLapBo.Text;
-            List<spfrm_DanhSachSoBoThueResult> list = db.spfrm_DanhSachSoBoThue(MST, nghekinhdoanh, tuthang, denthang, hoten, diachi, thanglapbo, Activity).ToList();
+            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, tuthang, denthang,  diachi, hoten, thanglapbo, namlapbo).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel

@@ -103,9 +103,13 @@
                                     <CommandItemSettings ShowAddNewRecordButton="false" />
                                     <Columns>
                                          <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
-                </telerik:GridClientSelectColumn>
+                                        </telerik:GridClientSelectColumn>
                                       
                                         <telerik:GridBoundColumn UniqueName="idKhaiThue" DataField="idKhaiThue" HeaderText="idKhaiThue" Visible="false">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
@@ -118,7 +122,7 @@
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                       
-                                        <telerik:GridBoundColumn UniqueName="thang" DataField="thang" HeaderText="Tháng lập bộ" Visible="false">
+                                        <telerik:GridBoundColumn UniqueName="NgayLapBo" DataField="NgayLapHo" HeaderText="Ngày lập bộ" Visible="false">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
@@ -132,15 +136,15 @@
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         
-                                        <telerik:GridBoundColumn UniqueName="TuThang" DataField="TuThang" HeaderText="Từ tháng">
+                                        <telerik:GridBoundColumn UniqueName="KDTuThang" DataField="KDTuThang" HeaderText="Từ tháng">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="DenThang" DataField="DenThang" HeaderText="Đến tháng">
+                                        <telerik:GridBoundColumn UniqueName="KDDenThang" DataField="KDDenThang" HeaderText="Đến tháng">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="trangthai" DataField="trangthai" HeaderText="Trạng thái">
+                                        <telerik:GridBoundColumn UniqueName="TinhTrangNopThue" DataField="TinhTrangNopThue" HeaderText="Trạng thái">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>

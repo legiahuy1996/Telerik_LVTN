@@ -267,8 +267,15 @@ namespace TelerikWebApp1.Model
 			return ((ISingleResult<spfrm_SoBoThueResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Insert_KhaiThue")]
-		public int Insert_KhaiThue(
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DanhSachHoCaThe")]
+		public ISingleResult<DanhSachHoCaTheResult> DanhSachHoCaThe([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MST", DbType="NVarChar(14)")] string mST, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CMND", DbType="NVarChar(20)")] string cMND, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TenCuaHang", DbType="NVarChar(100)")] string tenCuaHang, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NgayCap", DbType="NVarChar(10)")] string ngayCap, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SoGP", DbType="NVarChar(50)")] string soGP, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DiaChi", DbType="NVarChar(100)")] string diaChi, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="HoTen", DbType="NVarChar(100)")] string hoTen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NgayTinhThue", DbType="NVarChar(10)")] string ngayTinhThue, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MaNganh", DbType="NVarChar(14)")] string maNganh, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SDT", DbType="NVarChar(14)")] string sDT, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Activity", DbType="NVarChar(20)")] string activity)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mST, cMND, tenCuaHang, ngayCap, soGP, diaChi, hoTen, ngayTinhThue, maNganh, sDT, activity);
+			return ((ISingleResult<DanhSachHoCaTheResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Insert_KhaiThue", IsComposable=true)]
+		public object Insert_KhaiThue(
 					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(14)")] string idKhaiThue, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(14)")] string masothue, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="DoanhThu", DbType="Int")] System.Nullable<int> doanhThu, 
@@ -289,8 +296,7 @@ namespace TelerikWebApp1.Model
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TyLeTinhThueGTGT", DbType="Float")] System.Nullable<double> tyLeTinhThueGTGT, 
 					[global::System.Data.Linq.Mapping.ParameterAttribute(Name="TyLeTinhThueTNCN", DbType="Float")] System.Nullable<double> tyLeTinhThueTNCN)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idKhaiThue, masothue, doanhThu, nam, idMonBai, sodt, email, ghichu, nghekinhdoanh, dienTichKD, soLuongLD, tuGio, denGio, diachiKD, trangThaiHoatDong, doanhtThuTinhThueG, doanhThuTinhThueT, tyLeTinhThueGTGT, tyLeTinhThueTNCN);
-			return ((int)(result.ReturnValue));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idKhaiThue, masothue, doanhThu, nam, idMonBai, sodt, email, ghichu, nghekinhdoanh, dienTichKD, soLuongLD, tuGio, denGio, diachiKD, trangThaiHoatDong, doanhtThuTinhThueG, doanhThuTinhThueT, tyLeTinhThueGTGT, tyLeTinhThueTNCN).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.spfrm_DanhSachSoBoThue")]
@@ -305,6 +311,13 @@ namespace TelerikWebApp1.Model
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), masothue, sogiayphep, manganh, nam);
 			return ((ISingleResult<getDSThueResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.getDSSoBoThue")]
+		public ISingleResult<getDSSoBoThueResult> getDSSoBoThue([global::System.Data.Linq.Mapping.ParameterAttribute(Name="MST", DbType="NVarChar(14)")] string mST, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NgheKinhDoanh", DbType="NVarChar(250)")] string ngheKinhDoanh, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TuThang", DbType="NVarChar(2)")] string tuThang, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DenThang", DbType="NVarChar(2)")] string denThang, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DiaChi", DbType="NVarChar(250)")] string diaChi, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="HoTen", DbType="NVarChar(250)")] string hoTen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ThangLapBo", DbType="NVarChar(2)")] string thangLapBo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nam", DbType="VarChar(4)")] string nam)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mST, ngheKinhDoanh, tuThang, denThang, diaChi, hoTen, thangLapBo, nam);
+			return ((ISingleResult<getDSSoBoThueResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -2433,8 +2446,6 @@ namespace TelerikWebApp1.Model
 		
 		private string _nam;
 		
-		private int _idMonBai;
-		
 		private string _manganh;
 		
 		private string _sodt;
@@ -2457,17 +2468,19 @@ namespace TelerikWebApp1.Model
 		
 		private System.Nullable<bool> _TrangThaiHoatDong;
 		
+		private System.Nullable<int> _Lan;
+		
 		private EntitySet<ChiTietKhaiThue> _ChiTietKhaiThues;
 		
 		private EntitySet<SoBoThue> _SoBoThues;
 		
 		private EntitySet<thongtinngungnghi> _thongtinngungnghis;
 		
+		private EntityRef<thuemonbai> _thuemonbai;
+		
 		private EntityRef<DanhBa> _DanhBa;
 		
 		private EntityRef<manganh> _manganh1;
-		
-		private EntityRef<thuemonbai> _thuemonbai;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2481,8 +2494,6 @@ namespace TelerikWebApp1.Model
     partial void OnTongDoanhThuChanged();
     partial void OnnamChanging(string value);
     partial void OnnamChanged();
-    partial void OnidMonBaiChanging(int value);
-    partial void OnidMonBaiChanged();
     partial void OnmanganhChanging(string value);
     partial void OnmanganhChanged();
     partial void OnsodtChanging(string value);
@@ -2505,6 +2516,8 @@ namespace TelerikWebApp1.Model
     partial void OnSoTienTNCN1ThangChanged();
     partial void OnTrangThaiHoatDongChanging(System.Nullable<bool> value);
     partial void OnTrangThaiHoatDongChanged();
+    partial void OnLanChanging(System.Nullable<int> value);
+    partial void OnLanChanged();
     #endregion
 		
 		public KhaiThue()
@@ -2512,9 +2525,9 @@ namespace TelerikWebApp1.Model
 			this._ChiTietKhaiThues = new EntitySet<ChiTietKhaiThue>(new Action<ChiTietKhaiThue>(this.attach_ChiTietKhaiThues), new Action<ChiTietKhaiThue>(this.detach_ChiTietKhaiThues));
 			this._SoBoThues = new EntitySet<SoBoThue>(new Action<SoBoThue>(this.attach_SoBoThues), new Action<SoBoThue>(this.detach_SoBoThues));
 			this._thongtinngungnghis = new EntitySet<thongtinngungnghi>(new Action<thongtinngungnghi>(this.attach_thongtinngungnghis), new Action<thongtinngungnghi>(this.detach_thongtinngungnghis));
+			this._thuemonbai = default(EntityRef<thuemonbai>);
 			this._DanhBa = default(EntityRef<DanhBa>);
 			this._manganh1 = default(EntityRef<manganh>);
-			this._thuemonbai = default(EntityRef<thuemonbai>);
 			OnCreated();
 		}
 		
@@ -2598,30 +2611,6 @@ namespace TelerikWebApp1.Model
 					this._nam = value;
 					this.SendPropertyChanged("nam");
 					this.OnnamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMonBai", DbType="Int NOT NULL")]
-		public int idMonBai
-		{
-			get
-			{
-				return this._idMonBai;
-			}
-			set
-			{
-				if ((this._idMonBai != value))
-				{
-					if (this._thuemonbai.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidMonBaiChanging(value);
-					this.SendPropertyChanging();
-					this._idMonBai = value;
-					this.SendPropertyChanged("idMonBai");
-					this.OnidMonBaiChanged();
 				}
 			}
 		}
@@ -2850,6 +2839,26 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lan", DbType="Int")]
+		public System.Nullable<int> Lan
+		{
+			get
+			{
+				return this._Lan;
+			}
+			set
+			{
+				if ((this._Lan != value))
+				{
+					this.OnLanChanging(value);
+					this.SendPropertyChanging();
+					this._Lan = value;
+					this.SendPropertyChanged("Lan");
+					this.OnLanChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KhaiThue_ChiTietKhaiThue", Storage="_ChiTietKhaiThues", ThisKey="idKhaiThue", OtherKey="idKhaiThue")]
 		public EntitySet<ChiTietKhaiThue> ChiTietKhaiThues
 		{
@@ -2886,6 +2895,35 @@ namespace TelerikWebApp1.Model
 			set
 			{
 				this._thongtinngungnghis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KhaiThue_thuemonbai", Storage="_thuemonbai", ThisKey="idKhaiThue", OtherKey="idKhaiThue", IsUnique=true, IsForeignKey=false)]
+		public thuemonbai thuemonbai
+		{
+			get
+			{
+				return this._thuemonbai.Entity;
+			}
+			set
+			{
+				thuemonbai previousValue = this._thuemonbai.Entity;
+				if (((previousValue != value) 
+							|| (this._thuemonbai.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._thuemonbai.Entity = null;
+						previousValue.KhaiThue = null;
+					}
+					this._thuemonbai.Entity = value;
+					if ((value != null))
+					{
+						value.KhaiThue = this;
+					}
+					this.SendPropertyChanged("thuemonbai");
+				}
 			}
 		}
 		
@@ -2953,40 +2991,6 @@ namespace TelerikWebApp1.Model
 						this._manganh = default(string);
 					}
 					this.SendPropertyChanged("manganh1");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="thuemonbai_KhaiThue", Storage="_thuemonbai", ThisKey="idMonBai", OtherKey="idMonBai", IsForeignKey=true)]
-		public thuemonbai thuemonbai
-		{
-			get
-			{
-				return this._thuemonbai.Entity;
-			}
-			set
-			{
-				thuemonbai previousValue = this._thuemonbai.Entity;
-				if (((previousValue != value) 
-							|| (this._thuemonbai.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._thuemonbai.Entity = null;
-						previousValue.KhaiThues.Remove(this);
-					}
-					this._thuemonbai.Entity = value;
-					if ((value != null))
-					{
-						value.KhaiThues.Add(this);
-						this._idMonBai = value.idMonBai;
-					}
-					else
-					{
-						this._idMonBai = default(int);
-					}
-					this.SendPropertyChanged("thuemonbai");
 				}
 			}
 		}
@@ -5442,15 +5446,15 @@ namespace TelerikWebApp1.Model
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _nam;
-		
 		private int _idMonBai;
 		
 		private System.Nullable<bool> _trangthai;
 		
 		private string _Bac;
 		
-		private EntitySet<KhaiThue> _KhaiThues;
+		private int _idKhaiThue;
+		
+		private EntityRef<KhaiThue> _KhaiThue;
 		
 		private EntityRef<mucluc_MonBai> _mucluc_MonBai;
 		
@@ -5458,44 +5462,24 @@ namespace TelerikWebApp1.Model
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnnamChanging(string value);
-    partial void OnnamChanged();
     partial void OnidMonBaiChanging(int value);
     partial void OnidMonBaiChanged();
     partial void OntrangthaiChanging(System.Nullable<bool> value);
     partial void OntrangthaiChanged();
     partial void OnBacChanging(string value);
     partial void OnBacChanged();
+    partial void OnidKhaiThueChanging(int value);
+    partial void OnidKhaiThueChanged();
     #endregion
 		
 		public thuemonbai()
 		{
-			this._KhaiThues = new EntitySet<KhaiThue>(new Action<KhaiThue>(this.attach_KhaiThues), new Action<KhaiThue>(this.detach_KhaiThues));
+			this._KhaiThue = default(EntityRef<KhaiThue>);
 			this._mucluc_MonBai = default(EntityRef<mucluc_MonBai>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nam", DbType="VarChar(4)")]
-		public string nam
-		{
-			get
-			{
-				return this._nam;
-			}
-			set
-			{
-				if ((this._nam != value))
-				{
-					this.OnnamChanging(value);
-					this.SendPropertyChanging();
-					this._nam = value;
-					this.SendPropertyChanged("nam");
-					this.OnnamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMonBai", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMonBai", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
 		public int idMonBai
 		{
 			get
@@ -5559,16 +5543,61 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="thuemonbai_KhaiThue", Storage="_KhaiThues", ThisKey="idMonBai", OtherKey="idMonBai")]
-		public EntitySet<KhaiThue> KhaiThues
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idKhaiThue", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int idKhaiThue
 		{
 			get
 			{
-				return this._KhaiThues;
+				return this._idKhaiThue;
 			}
 			set
 			{
-				this._KhaiThues.Assign(value);
+				if ((this._idKhaiThue != value))
+				{
+					if (this._KhaiThue.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidKhaiThueChanging(value);
+					this.SendPropertyChanging();
+					this._idKhaiThue = value;
+					this.SendPropertyChanged("idKhaiThue");
+					this.OnidKhaiThueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KhaiThue_thuemonbai", Storage="_KhaiThue", ThisKey="idKhaiThue", OtherKey="idKhaiThue", IsForeignKey=true)]
+		public KhaiThue KhaiThue
+		{
+			get
+			{
+				return this._KhaiThue.Entity;
+			}
+			set
+			{
+				KhaiThue previousValue = this._KhaiThue.Entity;
+				if (((previousValue != value) 
+							|| (this._KhaiThue.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._KhaiThue.Entity = null;
+						previousValue.thuemonbai = null;
+					}
+					this._KhaiThue.Entity = value;
+					if ((value != null))
+					{
+						value.thuemonbai = this;
+						this._idKhaiThue = value.idKhaiThue;
+					}
+					else
+					{
+						this._idKhaiThue = default(int);
+					}
+					this.SendPropertyChanged("KhaiThue");
+				}
 			}
 		}
 		
@@ -5625,18 +5654,6 @@ namespace TelerikWebApp1.Model
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_KhaiThues(KhaiThue entity)
-		{
-			this.SendPropertyChanging();
-			entity.thuemonbai = this;
-		}
-		
-		private void detach_KhaiThues(KhaiThue entity)
-		{
-			this.SendPropertyChanging();
-			entity.thuemonbai = null;
-		}
 	}
 	
 	public partial class spfrm_SoBoThueResult
@@ -5646,8 +5663,6 @@ namespace TelerikWebApp1.Model
 		
 		private string _masothue;
 		
-		private System.Nullable<int> _DoanhThu;
-		
 		private string _nam;
 		
 		private string _sodt;
@@ -5656,21 +5671,17 @@ namespace TelerikWebApp1.Model
 		
 		private string _ghichu;
 		
-		private string _nghekinhdoanh;
+		private string _tennganh;
 		
 		private System.Nullable<int> _SoLuongLD;
 		
 		private System.Nullable<double> _DienTichKD;
 		
-		private System.Nullable<int> _TuGio;
-		
-		private System.Nullable<int> _DenGio;
-		
 		private string _diachiKD;
 		
 		private string _TrangThaiHoatDong;
 		
-		private System.Nullable<int> _DoanhThu1;
+		private System.Nullable<int> _TongDoanhThu;
 		
 		private System.Nullable<int> _DoanhThuTinhThueGTGT;
 		
@@ -5714,22 +5725,6 @@ namespace TelerikWebApp1.Model
 				if ((this._masothue != value))
 				{
 					this._masothue = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoanhThu", DbType="Int")]
-		public System.Nullable<int> DoanhThu
-		{
-			get
-			{
-				return this._DoanhThu;
-			}
-			set
-			{
-				if ((this._DoanhThu != value))
-				{
-					this._DoanhThu = value;
 				}
 			}
 		}
@@ -5798,18 +5793,18 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nghekinhdoanh", DbType="NVarChar(200)")]
-		public string nghekinhdoanh
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tennganh", DbType="NVarChar(100)")]
+		public string tennganh
 		{
 			get
 			{
-				return this._nghekinhdoanh;
+				return this._tennganh;
 			}
 			set
 			{
-				if ((this._nghekinhdoanh != value))
+				if ((this._tennganh != value))
 				{
-					this._nghekinhdoanh = value;
+					this._tennganh = value;
 				}
 			}
 		}
@@ -5846,38 +5841,6 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TuGio", DbType="Int")]
-		public System.Nullable<int> TuGio
-		{
-			get
-			{
-				return this._TuGio;
-			}
-			set
-			{
-				if ((this._TuGio != value))
-				{
-					this._TuGio = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DenGio", DbType="Int")]
-		public System.Nullable<int> DenGio
-		{
-			get
-			{
-				return this._DenGio;
-			}
-			set
-			{
-				if ((this._DenGio != value))
-				{
-					this._DenGio = value;
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_diachiKD", DbType="VarChar(255)")]
 		public string diachiKD
 		{
@@ -5910,18 +5873,18 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoanhThu1", DbType="Int")]
-		public System.Nullable<int> DoanhThu1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongDoanhThu", DbType="Int")]
+		public System.Nullable<int> TongDoanhThu
 		{
 			get
 			{
-				return this._DoanhThu1;
+				return this._TongDoanhThu;
 			}
 			set
 			{
-				if ((this._DoanhThu1 != value))
+				if ((this._TongDoanhThu != value))
 				{
-					this._DoanhThu1 = value;
+					this._TongDoanhThu = value;
 				}
 			}
 		}
@@ -6002,6 +5965,284 @@ namespace TelerikWebApp1.Model
 				if ((this._hoten != value))
 				{
 					this._hoten = value;
+				}
+			}
+		}
+	}
+	
+	public partial class DanhSachHoCaTheResult
+	{
+		
+		private string _masothue;
+		
+		private string _hoten;
+		
+		private string _cmnd;
+		
+		private string _tennganh;
+		
+		private System.Nullable<System.DateTime> _ngaysinh;
+		
+		private System.Nullable<System.DateTime> _ngaycapmst;
+		
+		private System.Nullable<System.DateTime> _ngaytinhthue;
+		
+		private string _manganh;
+		
+		private string _sodt;
+		
+		private string _tencuahang;
+		
+		private string _diachi;
+		
+		private string _nghekinhdoanh;
+		
+		private System.Nullable<System.DateTime> _ngaybatdaukd;
+		
+		private string _sogp;
+		
+		private string _tennganh1;
+		
+		public DanhSachHoCaTheResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_masothue", DbType="VarChar(14) NOT NULL", CanBeNull=false)]
+		public string masothue
+		{
+			get
+			{
+				return this._masothue;
+			}
+			set
+			{
+				if ((this._masothue != value))
+				{
+					this._masothue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hoten", DbType="NVarChar(100)")]
+		public string hoten
+		{
+			get
+			{
+				return this._hoten;
+			}
+			set
+			{
+				if ((this._hoten != value))
+				{
+					this._hoten = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cmnd", DbType="VarChar(20)")]
+		public string cmnd
+		{
+			get
+			{
+				return this._cmnd;
+			}
+			set
+			{
+				if ((this._cmnd != value))
+				{
+					this._cmnd = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tennganh", DbType="NVarChar(100)")]
+		public string tennganh
+		{
+			get
+			{
+				return this._tennganh;
+			}
+			set
+			{
+				if ((this._tennganh != value))
+				{
+					this._tennganh = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngaysinh", DbType="Date")]
+		public System.Nullable<System.DateTime> ngaysinh
+		{
+			get
+			{
+				return this._ngaysinh;
+			}
+			set
+			{
+				if ((this._ngaysinh != value))
+				{
+					this._ngaysinh = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngaycapmst", DbType="Date")]
+		public System.Nullable<System.DateTime> ngaycapmst
+		{
+			get
+			{
+				return this._ngaycapmst;
+			}
+			set
+			{
+				if ((this._ngaycapmst != value))
+				{
+					this._ngaycapmst = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngaytinhthue", DbType="Date")]
+		public System.Nullable<System.DateTime> ngaytinhthue
+		{
+			get
+			{
+				return this._ngaytinhthue;
+			}
+			set
+			{
+				if ((this._ngaytinhthue != value))
+				{
+					this._ngaytinhthue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_manganh", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string manganh
+		{
+			get
+			{
+				return this._manganh;
+			}
+			set
+			{
+				if ((this._manganh != value))
+				{
+					this._manganh = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sodt", DbType="VarChar(60)")]
+		public string sodt
+		{
+			get
+			{
+				return this._sodt;
+			}
+			set
+			{
+				if ((this._sodt != value))
+				{
+					this._sodt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tencuahang", DbType="NVarChar(100)")]
+		public string tencuahang
+		{
+			get
+			{
+				return this._tencuahang;
+			}
+			set
+			{
+				if ((this._tencuahang != value))
+				{
+					this._tencuahang = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_diachi", DbType="NVarChar(100)")]
+		public string diachi
+		{
+			get
+			{
+				return this._diachi;
+			}
+			set
+			{
+				if ((this._diachi != value))
+				{
+					this._diachi = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nghekinhdoanh", DbType="NVarChar(200)")]
+		public string nghekinhdoanh
+		{
+			get
+			{
+				return this._nghekinhdoanh;
+			}
+			set
+			{
+				if ((this._nghekinhdoanh != value))
+				{
+					this._nghekinhdoanh = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngaybatdaukd", DbType="Date")]
+		public System.Nullable<System.DateTime> ngaybatdaukd
+		{
+			get
+			{
+				return this._ngaybatdaukd;
+			}
+			set
+			{
+				if ((this._ngaybatdaukd != value))
+				{
+					this._ngaybatdaukd = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sogp", DbType="VarChar(50)")]
+		public string sogp
+		{
+			get
+			{
+				return this._sogp;
+			}
+			set
+			{
+				if ((this._sogp != value))
+				{
+					this._sogp = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tennganh1", DbType="NVarChar(100)")]
+		public string tennganh1
+		{
+			get
+			{
+				return this._tennganh1;
+			}
+			set
+			{
+				if ((this._tennganh1 != value))
+				{
+					this._tennganh1 = value;
 				}
 			}
 		}
@@ -6234,7 +6475,7 @@ namespace TelerikWebApp1.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_masothue", DbType="VarChar(14) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_masothue", DbType="VarChar(14)")]
 		public string masothue
 		{
 			get
@@ -6468,6 +6709,284 @@ namespace TelerikWebApp1.Model
 				if ((this._nghekinhdoanh != value))
 				{
 					this._nghekinhdoanh = value;
+				}
+			}
+		}
+	}
+	
+	public partial class getDSSoBoThueResult
+	{
+		
+		private string _nam;
+		
+		private string _masothue;
+		
+		private string _hoten;
+		
+		private string _NgayLapBo;
+		
+		private string _nganhngheKD;
+		
+		private string _diachiKD;
+		
+		private System.Nullable<int> _KDTuThang;
+		
+		private System.Nullable<int> _KDDenThang;
+		
+		private System.Nullable<bool> _TinhTrangNopThue;
+		
+		private System.Nullable<int> _DoanhThuTinhThueGTGT;
+		
+		private System.Nullable<double> _TyLeTinhThueGTGT;
+		
+		private System.Nullable<int> _ThueGTGT;
+		
+		private System.Nullable<int> _DoanhThuTinhThueTNCN;
+		
+		private System.Nullable<double> _TyLeTinhThueTNCN;
+		
+		private System.Nullable<int> _ThueTNCN;
+		
+		public getDSSoBoThueResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nam", DbType="VarChar(4)")]
+		public string nam
+		{
+			get
+			{
+				return this._nam;
+			}
+			set
+			{
+				if ((this._nam != value))
+				{
+					this._nam = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_masothue", DbType="VarChar(14)")]
+		public string masothue
+		{
+			get
+			{
+				return this._masothue;
+			}
+			set
+			{
+				if ((this._masothue != value))
+				{
+					this._masothue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hoten", DbType="NVarChar(50)")]
+		public string hoten
+		{
+			get
+			{
+				return this._hoten;
+			}
+			set
+			{
+				if ((this._hoten != value))
+				{
+					this._hoten = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayLapBo", DbType="NVarChar(10)")]
+		public string NgayLapBo
+		{
+			get
+			{
+				return this._NgayLapBo;
+			}
+			set
+			{
+				if ((this._NgayLapBo != value))
+				{
+					this._NgayLapBo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nganhngheKD", DbType="NVarChar(150)")]
+		public string nganhngheKD
+		{
+			get
+			{
+				return this._nganhngheKD;
+			}
+			set
+			{
+				if ((this._nganhngheKD != value))
+				{
+					this._nganhngheKD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_diachiKD", DbType="NVarChar(500)")]
+		public string diachiKD
+		{
+			get
+			{
+				return this._diachiKD;
+			}
+			set
+			{
+				if ((this._diachiKD != value))
+				{
+					this._diachiKD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KDTuThang", DbType="Int")]
+		public System.Nullable<int> KDTuThang
+		{
+			get
+			{
+				return this._KDTuThang;
+			}
+			set
+			{
+				if ((this._KDTuThang != value))
+				{
+					this._KDTuThang = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KDDenThang", DbType="Int")]
+		public System.Nullable<int> KDDenThang
+		{
+			get
+			{
+				return this._KDDenThang;
+			}
+			set
+			{
+				if ((this._KDDenThang != value))
+				{
+					this._KDDenThang = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinhTrangNopThue", DbType="Bit")]
+		public System.Nullable<bool> TinhTrangNopThue
+		{
+			get
+			{
+				return this._TinhTrangNopThue;
+			}
+			set
+			{
+				if ((this._TinhTrangNopThue != value))
+				{
+					this._TinhTrangNopThue = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoanhThuTinhThueGTGT", DbType="Int")]
+		public System.Nullable<int> DoanhThuTinhThueGTGT
+		{
+			get
+			{
+				return this._DoanhThuTinhThueGTGT;
+			}
+			set
+			{
+				if ((this._DoanhThuTinhThueGTGT != value))
+				{
+					this._DoanhThuTinhThueGTGT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TyLeTinhThueGTGT", DbType="Float")]
+		public System.Nullable<double> TyLeTinhThueGTGT
+		{
+			get
+			{
+				return this._TyLeTinhThueGTGT;
+			}
+			set
+			{
+				if ((this._TyLeTinhThueGTGT != value))
+				{
+					this._TyLeTinhThueGTGT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThueGTGT", DbType="Int")]
+		public System.Nullable<int> ThueGTGT
+		{
+			get
+			{
+				return this._ThueGTGT;
+			}
+			set
+			{
+				if ((this._ThueGTGT != value))
+				{
+					this._ThueGTGT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DoanhThuTinhThueTNCN", DbType="Int")]
+		public System.Nullable<int> DoanhThuTinhThueTNCN
+		{
+			get
+			{
+				return this._DoanhThuTinhThueTNCN;
+			}
+			set
+			{
+				if ((this._DoanhThuTinhThueTNCN != value))
+				{
+					this._DoanhThuTinhThueTNCN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TyLeTinhThueTNCN", DbType="Float")]
+		public System.Nullable<double> TyLeTinhThueTNCN
+		{
+			get
+			{
+				return this._TyLeTinhThueTNCN;
+			}
+			set
+			{
+				if ((this._TyLeTinhThueTNCN != value))
+				{
+					this._TyLeTinhThueTNCN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThueTNCN", DbType="Int")]
+		public System.Nullable<int> ThueTNCN
+		{
+			get
+			{
+				return this._ThueTNCN;
+			}
+			set
+			{
+				if ((this._ThueTNCN != value))
+				{
+					this._ThueTNCN = value;
 				}
 			}
 		}
