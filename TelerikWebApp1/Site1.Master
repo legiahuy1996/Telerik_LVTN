@@ -226,6 +226,11 @@
             </td>
         </tr>
     </table>
+    <script src="Content/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <link href="Content/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
+    <script src="Content/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="Content/jquery-ui-1.12.1.custom/jquery.ui.datepicker-vi-VN.js"></script>
+  <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 
 </body>
 
@@ -233,6 +238,6 @@
 
 
 
-
+    
 
 </html>
