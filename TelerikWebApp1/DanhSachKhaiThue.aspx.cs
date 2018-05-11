@@ -15,16 +15,26 @@ namespace TelerikWebApp1
         protected void Page_Load(object sender, EventArgs e)
         {
             db = new DataClasses1DataContext();
+            if (!IsPostBack)
+                LoadComBo();
         }
-     
+        protected void LoadComBo()
+        {
+
+            cboMaNganh.DataSource = (from a in db.manganhs where a.manganh1 != "07" select new { ma = a.manganh1, ten = a.tennganh }).ToList();
+            cboMaNganh.DataValueField = "ma";
+            cboMaNganh.DataTextField = "ten";
+            cboMaNganh.DataBind();
+            cboMaNganh.Items.Insert(0, "");
+            cboMaNganh.SelectedIndex = 0;
+        }
         public void loadData()  
         {
             string MST = txtMST.Text;
             string SoGP = txtSoGP.Text;
             string MaNganh = cboMaNganh.SelectedValue;
             string Nam = txtNam.Text;
-            List<getDSThueResult> lst = db.getDSThue(MST, SoGP, MaNganh,Nam).ToList();
-            grid.DataSource = lst;
+            grid.DataSource = db.getDSThue(MST, SoGP, MaNganh, Nam);
             grid.Rebind();
         }
 
