@@ -59,7 +59,6 @@ namespace TelerikWebApp1
                 dengio = int.Parse(txtDenGio.Text);
             else
                 dengio = 0;
-            string diachi = txtDiaChiKD.Text;
             bool trangthai;
             if (chkActive.Checked == true)
                 trangthai = true;
