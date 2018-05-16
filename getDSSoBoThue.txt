@@ -1,27 +1,25 @@
-alter PROC getDSSoBoThue
-@MST NVARCHAR(14) = NULL,
-@NgheKinhDoanh NVARCHAR(250) = NULL,
-@TuThang	NVARCHAR(2) = NULL,
-@DenThang	NVARCHAR(2) = NULL,
-@DiaChi		NVARCHAR(250) = NULL,
-@HoTen		NVARCHAR(250) = NULL,
-@ThangLapBo	NVARCHAR(2) = NULL,
-@Nam		VARCHAR(4) = NULL
-AS
-DECLARE @iTuThang INT,@iDenThang INT
-SET @iTuThang = CONVERT(INT,@TuThang)
-SET @iDenThang = CONVERT(INT,@DenThang)
-	SELECT b.nam,b.masothue,a.hoten,CONVERT(NVARCHAR(10),a.NgayLapBo,103) NgayLapBo,a.nganhngheKD
-	,a.diachiKD,a.KDTuThang,a.KDDenThang,a.TinhTrangNopThue,a.DoanhThuTinhThueGTGT,a.TyLeTinhThueGTGT
-	,a.SoTienGTGT1Thang ThueGTGT,a.DoanhThuTinhThueTNCN,a.TyLeTinhThueTNCN,a.SoTienTNCN1Thang ThueTNCN
-	FROM dbo.SoBoThue (NOLOCK) a 
-	LEFT JOIN dbo.KhaiThue (NOLOCK) b ON b.idKhaiThue = a.idKhaiThue
-	WHERE 1=1 
-		AND (@MST = '' OR @MST IS NULL OR b.masothue = @MST)
-		AND (@NgheKinhDoanh = '' OR @NgheKinhDoanh IS NULL OR a.nganhngheKD = @NgheKinhDoanh)
-		AND (@iTuThang = '' OR @iTuThang IS NULL OR a.KDTuThang = @iTuThang)
-		AND (@iDenThang = '' OR @iTuThang IS NULL OR a.KDDenThang = @iDenThang)
-		AND (@DiaChi = '' OR @DiaChi IS NULL OR a.diachiKD = @DiaChi)
-		AND (@HoTen = '' OR @HoTen IS NULL OR a.hoten = @HoTen)
-		AND (@Nam = '' OR @Nam IS NULL OR b.nam = @Nam)
-		AND (@ThangLapBo = '' OR @ThangLapBo IS NULL OR DATEPART(mm,CONVERT(DATE,a.NgayLapBo,103)) = @ThangLapBo) 
+ALTER PROC [dbo].[getDSSoBoThue]
+ @MST NVARCHAR(14) = NULL,
+ @NgheKinhDoanh NVARCHAR(250) = NULL,
+ @Thang	NVARCHAR(2) = NULL,
+ @DiaChi		NVARCHAR(250) = NULL,
+ @HoTen		NVARCHAR(250) = NULL,
+ @ThangLapBo	NVARCHAR(2) = NULL,
+ @Nam		VARCHAR(4) = NULL
+ AS
+ DECLARE @iThang INT
+ SET @iThang = CONVERT(INT,@Thang)
+ 	SELECT b.nam,b.masothue,c.hoten,CONVERT(NVARCHAR(10),a.NgayLapBo,103) NgayLapBo,c.nghekinhdoanh
+ 	,c.diachiKD,a.Thang,a.TinhTrangNopThue,a.DoanhThuTinhThueGTGT,a.TyLeTinhThueGTGT
+ 	,a.SoTienGTGT1Thang ThueGTGT,a.DoanhThuTinhThueTNCN,a.TyLeTinhThueTNCN,a.SoTienTNCN1Thang ThueTNCN
+ 	FROM dbo.SoBoThue (NOLOCK) a 
+ 	LEFT JOIN dbo.KhaiThue (NOLOCK) b ON b.idKhaiThue = a.idKhaiThue
+	LEFT JOIN dbo.DanhBa (NOLOCK) c ON c.masothue = b.masothue
+ 	WHERE 1=1 
+ 		AND (@MST = '' OR @MST IS NULL OR b.masothue = @MST)
+ 		AND (@NgheKinhDoanh = '' OR @NgheKinhDoanh IS NULL OR c.nghekinhdoanh = @NgheKinhDoanh)
+ 		AND (@iThang = '' OR @iThang IS NULL OR a.Thang = @iThang)
+ 		AND (@DiaChi = '' OR @DiaChi IS NULL OR c.diachiKD = @DiaChi)
+ 		AND (@HoTen = '' OR @HoTen IS NULL OR c.hoten = @HoTen)
+ 		AND (@Nam = '' OR @Nam IS NULL OR b.nam = @Nam)
+ 		AND (@ThangLapBo = '' OR @ThangLapBo IS NULL OR DATEPART(mm,CONVERT(DATE,a.NgayLapBo,103)) = @ThangLapBo) 
