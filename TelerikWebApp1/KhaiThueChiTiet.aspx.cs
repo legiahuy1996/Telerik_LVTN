@@ -23,6 +23,8 @@ namespace TelerikWebApp1
         {
             db = new DataClasses1DataContext();
             idKhaiThue = Request.QueryString["idKhaiThue"];
+            txtNgayKhaiThue.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtNam.Text = DateTime.Now.Year.ToString();
             if (!IsPostBack)
                 LoadComBo();
         }
@@ -39,16 +41,8 @@ namespace TelerikWebApp1
         public string InsertKhaiThue()
         {
             string mst = txtMST.Text;
-            int doanhthu,dientich,soluongld,tugio,dengio,lan;
-            if (txtDanhThu.Text != "")
-                doanhthu = int.Parse(txtDanhThu.Text);
-            else
-                doanhthu = 0;
+            int dientich, soluongld, tugio, dengio, lan;
             string nam = txtNam.Text;
-            string sdt = txtSodt.Text;
-            string email = txtEmail.Text;
-            string ghichu = txtNote.Text;
-            string nghekinhdoanh = cboMaNganh.SelectedValue;
             if (txtDienTichKD.Text != "")
                 dientich = int.Parse(txtDienTichKD.Text);
             else
@@ -68,17 +62,17 @@ namespace TelerikWebApp1
             string diachi = txtDiaChiKD.Text;
             bool trangthai;
             if (chkActive.Checked == true)
-                 trangthai = true;
+                trangthai = true;
             else
-                 trangthai = false;
+                trangthai = false;
             if (txtLan.Text != "")
                 lan = int.Parse(txtLan.Text);
             else
                 lan = 0;
-            string ngaykhaithue = txtNgayKhai.Text;
-            string ReturnMess = ""; 
+            string ngaykhaithue = txtNgayKhaiThue.Text;
+            string ReturnMess = "";
             string ReturnMessCode = "";
-            db.Insert_KhaiThue(idKhaiThue, mst,doanhthu,nam,sdt,email,ghichu,dientich,soluongld,tugio,dengio,diachi,trangthai,lan,ngaykhaithue,ref ReturnMessCode,ref ReturnMess);
+            db.Insert_KhaiThue(idKhaiThue,mst,nam,dientich,soluongld,tugio,dengio, trangthai,lan,ngaykhaithue,ref ReturnMessCode, ref ReturnMess);
             return ReturnMessCode;
         }
         protected void InsertChiTiet()
@@ -103,28 +97,27 @@ namespace TelerikWebApp1
             KhaiThue khaithue = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(id));
             txtMST.Text = khaithue.masothue;
             txtNam.Text = khaithue.nam;
-            txtNgayKhai.Text = khaithue.ngaykhaithue.ToString();
             txtLan.Text = khaithue.ToString();
-            txtEmail.Text = khaithue.email;
-            txtSodt.Text = khaithue.sodt;
-            txtNote.Text = khaithue.ghichu;
-            txtDiaChiKD.Text = khaithue.diachiKD;
+            //txtEmail.Text = khaithue.email;
+            //txtSodt.Text = khaithue.sodt;
+            //txtNote.Text = khaithue.ghichu;
+            //txtDiaChiKD.Text = khaithue.diachiKD;
             txtDienTichKD.Text = khaithue.DienTichKD.ToString();
             if (khaithue.TrangThaiHoatDong == true)
                 chkActive.Checked = true;
             else
                 chkNoActive.Checked = false;
             txtSoLuongLD.Text = khaithue.SoLuongLD.ToString();
-            if (db.Load_ChiTietKhaiThue(id) != null)
-                grid.DataSource = db.Load_ChiTietKhaiThue(id);
+            if (db.ChiTietKhaiThues.Where(x=>x.idKhaiThue == int.Parse(id)).ToList() != null)
+                grid.DataSource = db.ChiTietKhaiThues.Where(x => x.idKhaiThue == int.Parse(id)).ToList();
             else
                 grid.DataSource = new string[] { };
             
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-           string Err = InsertKhaiThue();
-            if(Err !="")
+            string Err = InsertKhaiThue();
+            if (Err != "")
             {
                 idKhaiThue = Err;
                 InsertChiTiet();
@@ -138,26 +131,6 @@ namespace TelerikWebApp1
             Response.Redirect("KhaiThueChiTiet.aspx");
         }
 
-        protected void btnLayTuDanhBa_Click(object sender, EventArgs e)
-        {
-            string MST = txtMST.Text;
-            if (MST != "")
-            {
-                DanhBa danhba = db.DanhBas.SingleOrDefault(x => x.masothue == MST);
-                if (danhba != null)
-                {
-                    txtMST.Text = MST;
-                    txtNam.Text = DateTime.Now.Year.ToString();
-                    txtMgayKhaiThue.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                    txtDiaChiKD.Text = danhba.diachi;
-                    txtEmail.Text = danhba.email;
-                    txtSodt.Text = danhba.sodt;
-                    txtNote.Text = danhba.ghichu;
-                }
-
-            }
-
-        }
         protected void ClearControl()
         {
             
@@ -169,12 +142,10 @@ namespace TelerikWebApp1
         private string LoadDetail(string Seq)
         {
             string ReturnCode = string.Empty, ReturnMess = string.Empty;
-            string manganh = "", DoanhThu = "", NgheKinhDoanh = "", NgayBDKinhDoanh = "";
+            string manganh = "", DoanhThu = "", NgheKinhDoanh = "";
             manganh = cboMaNganh.SelectedValue.Trim();
             DoanhThu = txtDanhThu.Text;
             NgheKinhDoanh = txtNgheKinhDoanh.Text;
-            NgayBDKinhDoanh = txtStartDate.Text;
-
             for (int i = 0; i < grid.Items.Count; i++)
             {
                 GridDataItem item = (GridDataItem)grid.Items[i];
@@ -219,7 +190,7 @@ namespace TelerikWebApp1
             manganh = cboMaNganh.SelectedValue.Trim();
             DoanhThu = txtDanhThu.Text;
             NgheKinhDoanh = txtNgheKinhDoanh.Text;
-            NgayBDKinhDoanh = txtStartDate.Text;
+            NgayBDKinhDoanh = txtNgayKhaiThue.Text;
             for (int i = 0; i < grid.Items.Count; i++)
             {
                 GridDataItem item = (GridDataItem)grid.Items[i];

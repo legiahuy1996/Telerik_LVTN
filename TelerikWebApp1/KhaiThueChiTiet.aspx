@@ -7,7 +7,7 @@
     <form id="frm" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-        <table cellspacing="0" cellpadding="0" width="100%" border="0" runat="server">
+        <table cellspacing="1" cellpadding="1" width="100%" border="0" runat="server">
 
             <tr>
                 <td style="width: 5%"></td>
@@ -24,9 +24,7 @@
                 </td>
                 <td>
                     <asp:TextBox class="input" runat="server" ID="txtMST" Width="50%"></asp:TextBox>
-                    <span class="btn1">
-                        <asp:LinkButton runat="server" ID="btnLayTuDanhBa" name="btnLayTuDanhBa" Width="30%" OnClick="btnLayTuDanhBa_Click"><span class="btnAdd" >L&#7845;y t&#7915; danh b&#7841;</span></asp:LinkButton>
-                    </span>
+                  
                 </td>
                 <td>
                     <asp:Label runat="server" ID="lblNam">N&#259;m</asp:Label>
@@ -41,9 +39,9 @@
                     <asp:Label runat="server" ID="lblNgayKhaiThue">Ngày khai thu&#7871;</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="input" runat="server" ID="txtMgayKhaiThue" Width="90px"></asp:TextBox>
+                    <asp:TextBox class="input" runat="server" ID="txtNgayKhaiThue" Width="90px"></asp:TextBox>
                 </td>
-                   <td>
+                <td>
                     <asp:Label runat="server" ID="Label8">Lần khai thuế</asp:Label>
                 </td>
                 <td>
@@ -63,54 +61,11 @@
                     <asp:Label runat="server" ID="Label2">&#272;&#7871;n Gi&#7901;</asp:Label>
                     <asp:TextBox class="input" runat="server" ID="txtDenGio" Width="50px"></asp:TextBox>
                 </td>
-                <td>
-                    <asp:Label runat="server" ID="lblEmail">Email</asp:Label>
-                </td>
-                <td>
-                    <br />
-                    <asp:TextBox ID="txtEmail" runat="server" class="input" onblur="return validateEmail<asp:RegularExpressionValidator runat=" RegularExpressionValidator="" server="" Width="80%"></asp:TextBox>
-                    <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                        ErrorMessage="Email không h&#7907;p l&#7879;" ControlToValidate="txtEmail" ForeColor="Red"
-                        SetFocusOnError="True"
-                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
-                    </asp:RegularExpressionValidator>
 
-
-                </td>
             </tr>
 
             <tr>
                 <td></td>
-                <td>
-                    <asp:Label runat="server" ID="lblSodt">S&#7889; &#273;i&#7879;n tho&#7841;i</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox class="input" runat="server" ID="txtSodt" Width="80%"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:Label runat="server" ID="lblNote">Ghi chú</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox class="input" runat="server" ID="txtNote" Width="80%" TextMode="MultiLine"></asp:TextBox>
-                </td>
-
-            </tr>
-            <tr>
-                <td>
-                </td>
-                 <td>
-                    <asp:Label runat="server" ID="lblDiaChiKD">&#272;&#7883;a ch&#7881; KD</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox class="input" runat="server" ID="txtDiaChiKD" Width="80%"></asp:TextBox>
-                </td>
-                  <td>
-                    <asp:Label runat="server" ID="Label9">Ngày khai thuế</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox runat="server" ID="txtNgayKhai" Width="90px"></asp:TextBox>
-                </td>
             </tr>
         </table>
         <table cellspacing="0" cellpadding="0" width="100%" border="0" runat="server">
@@ -221,7 +176,7 @@
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn SortExpression="idchitiet" UniqueName="idchitiet" DataField="idchitiet"
-                                            Visible="true" Display="false" >
+                                            Visible="true" Display="false">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn SortExpression="manganh" UniqueName="manganh" DataField="manganh"
@@ -283,12 +238,6 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" ID="Label6">Ngày b&#7855;t &#273;&#7847;u kinh doanh</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox runat="server" ID="txtStartDate" Width="90px"></asp:TextBox>
-                </td>
-                <td>
                     <asp:Label runat="server" ID="Label7">Diện tích kinh doanh</asp:Label>
                 </td>
                 <td>
@@ -324,21 +273,18 @@
             </tr>
         </table>
         <div id="divHidden" style="display: none">
-             <asp:TextBox ID="txtSeq" runat="server" />
-            </div>
+            <asp:TextBox ID="txtSeq" runat="server" />
+        </div>
     </form>
 
 </asp:Content>
 <asp:Content ContentPlaceHolderID="script" ID="script" runat="server">
     <script>
-        $("#<%=txtStartDate.ClientID%>").datepicker();
-        $("#<%=txtNgayKhai.ClientID%>").datepicker();
+        $("#<%=txtNgayKhaiThue.ClientID%>").datepicker();
+
         function validateEmail(email) {
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(String(email).toLowerCase());
         }
-
-
-
     </script>
 </asp:Content>
