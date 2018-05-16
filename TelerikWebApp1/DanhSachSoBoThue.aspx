@@ -28,11 +28,9 @@
                 <td width="25%">
                     <asp:Label runat="server" ID="lblCMND">Hoạt động kinh doanh </asp:Label>
                 </td>
-                <td width="30%">
-                    <asp:Label runat="server" ID="lblTuThang">Từ tháng: </asp:Label>
-                    <asp:TextBox class="input" runat="server" ID="txtTuThang" Width="30px"></asp:TextBox>
-                    <asp:Label runat="server" ID="lblDenThang">Đến tháng:</asp:Label>
-                    <asp:TextBox class="input" runat="server" ID="txtDenThang" Width="30px" onblur="return validateDOB(this);"></asp:TextBox>
+                <td width="30%">                    
+                    <asp:Label runat="server" ID="lblThang">Tháng:</asp:Label>
+                    <asp:TextBox class="input" runat="server" ID="txtThang" Width="50px" onblur="return validateDOB(this);"></asp:TextBox>
                 </td>
                
                  <td width="15%">

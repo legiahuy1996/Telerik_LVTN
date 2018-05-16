@@ -67,40 +67,22 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.Label lblCMND;
         
         /// <summary>
-        /// lblTuThang control.
+        /// lblThang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTuThang;
+        protected global::System.Web.UI.WebControls.Label lblThang;
         
         /// <summary>
-        /// txtTuThang control.
+        /// txtThang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTuThang;
-        
-        /// <summary>
-        /// lblDenThang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDenThang;
-        
-        /// <summary>
-        /// txtDenThang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDenThang;
+        protected global::System.Web.UI.WebControls.TextBox txtThang;
         
         /// <summary>
         /// lblDiaChi control.

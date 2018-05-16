@@ -32,15 +32,14 @@ namespace TelerikWebApp1
         {
             string nghekinhdoanh = txtNgheKinhDoanh.Text;
             string MST = txtMST.Text;
-            string tuthang = txtTuThang.Text;
-            string denthang = txtDenThang.Text;
+            string thang = txtThang.Text;
             string diachi = txtDiaChi.Text;
             string hoten = txtHoTen.Text;
             string thanglapbo = txtThangLapBo.Text;
             string namlapbo = txtNamLapBo.Text;
 
 
-            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, tuthang, denthang,  diachi, hoten, thanglapbo,namlapbo).ToList();
+            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, thang,  diachi, hoten, thanglapbo,namlapbo).ToList();
             grid.DataSource = data;
             list = data;
             grid.Rebind();
@@ -55,19 +54,17 @@ namespace TelerikWebApp1
             worksheet.Cells[1, 1].Value = "Mã số thuế";
             worksheet.Cells[1, 2].Value = "Họ tên";
             worksheet.Cells[1, 3].Value = "Địa chỉ kinh doanh";
-            worksheet.Cells[1, 4].Value = "Ngành nghề kinh doanh";
-            worksheet.Cells[1, 5].Value = "Từ tháng";
-            worksheet.Cells[1, 6].Value = "Đến tháng";
-            worksheet.Cells[1, 7].Value = "Doanh thu tính thuế GTGT";
-            worksheet.Cells[1, 8].Value = "Tỷ lệ tính thuế GTGT";
-            worksheet.Cells[1, 9].Value = "Thuế GTGT phải nộp 1 tháng";
-            worksheet.Cells[1, 10].Value = "Thuế GTGT phải nộp 1 năm";
-            worksheet.Cells[1, 11].Value = "Doanh thu tính thuế TNCN";
-            worksheet.Cells[1, 12].Value = "Tỷ lệ tính thuế TNCN";
-            worksheet.Cells[1, 13].Value = "Thuế TNCN phải nộp 1 tháng";
-            worksheet.Cells[1, 14].Value = "Thuế TNCN phải nộp 1 năm";
-            worksheet.Cells[1, 15].Value = "Trạng thái";
-            worksheet.Cells[1, 16].Value = "Ngày lập bộ";
+            worksheet.Cells[1, 4].Value = "Tháng";
+            worksheet.Cells[1, 5].Value = "Doanh thu tính thuế GTGT";
+            worksheet.Cells[1, 6].Value = "Tỷ lệ tính thuế GTGT";
+            worksheet.Cells[1, 7].Value = "Thuế GTGT phải nộp 1 tháng";
+            worksheet.Cells[1, 8].Value = "Thuế GTGT phải nộp 1 năm";
+            worksheet.Cells[1, 9].Value = "Doanh thu tính thuế TNCN";
+            worksheet.Cells[1, 10].Value = "Tỷ lệ tính thuế TNCN";
+            worksheet.Cells[1, 11].Value = "Thuế TNCN phải nộp 1 tháng";
+            worksheet.Cells[1, 12].Value = "Thuế TNCN phải nộp 1 năm";
+            worksheet.Cells[1, 13].Value = "Trạng thái";
+            worksheet.Cells[1, 14].Value = "Ngày lập bộ";
 
 
 
@@ -100,19 +97,17 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 1].Value = item.masothue;
                 worksheet.Cells[i + 2, 2].Value = item.hoten;
                 worksheet.Cells[i + 2, 3].Value = item.diachiKD;
-                worksheet.Cells[i + 2, 4].Value = item.nganhngheKD;
-                worksheet.Cells[i + 2, 5].Value = item.KDTuThang+"/"+DateTime.Now.Year+"";
-                worksheet.Cells[i + 2, 6].Value = item.KDDenThang + "/" + DateTime.Now.Year + "";
-                worksheet.Cells[i + 2, 7].Value = item.DoanhThuTinhThueGTGT;
-                worksheet.Cells[i + 2, 8].Value = item.TyLeTinhThueGTGT + "%";
-                worksheet.Cells[i + 2, 9].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT;
-                worksheet.Cells[i + 2, 10].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT *12;
-                worksheet.Cells[i + 2, 11].Value = item.DoanhThuTinhThueTNCN;
-                worksheet.Cells[i + 2, 12].Value = item.TyLeTinhThueTNCN + "%";
-                worksheet.Cells[i + 2, 13].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN;
-                worksheet.Cells[i + 2, 14].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN *12;
-                worksheet.Cells[i + 2, 15].Value = item.TinhTrangNopThue;
-                worksheet.Cells[i + 2, 16].Value = item.NgayLapBo;
+                worksheet.Cells[i + 2, 4].Value = item.Thang;
+                worksheet.Cells[i + 2, 5].Value = item.DoanhThuTinhThueGTGT;
+                worksheet.Cells[i + 2, 6].Value = item.TyLeTinhThueGTGT + "%";
+                worksheet.Cells[i + 2, 7].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT;
+                worksheet.Cells[i + 2, 8].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT *12;
+                worksheet.Cells[i + 2, 9].Value = item.DoanhThuTinhThueTNCN;
+                worksheet.Cells[i + 2, 10].Value = item.TyLeTinhThueTNCN + "%";
+                worksheet.Cells[i + 2, 11].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN;
+                worksheet.Cells[i + 2, 12].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN *12;
+                worksheet.Cells[i + 2, 13].Value = item.TinhTrangNopThue;
+                worksheet.Cells[i + 2, 14].Value = item.NgayLapBo;
 
 
                 // Format lại color nếu như thỏa điều kiện
@@ -150,14 +145,13 @@ namespace TelerikWebApp1
         private Stream CreateExcelFile(Stream stream = null)
         {
             string nghekinhdoanh = txtNgheKinhDoanh.Text;
-            string MST = txtMST.Text;
-            string tuthang = txtTuThang.Text;
-            string denthang = txtDenThang.Text;
+            string MST = txtMST.Text;            
+            string thang = txtThang.Text;
             string diachi = txtDiaChi.Text;
             string hoten = txtHoTen.Text;
             string thanglapbo = txtThangLapBo.Text;
             string namlapbo = txtNamLapBo.Text;
-            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, tuthang, denthang,  diachi, hoten, thanglapbo, namlapbo).ToList();
+            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, thang,  diachi, hoten, thanglapbo, namlapbo).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
