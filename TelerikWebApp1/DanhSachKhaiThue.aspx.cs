@@ -34,7 +34,7 @@ namespace TelerikWebApp1
             string SoGP = txtSoGP.Text;
             string MaNganh = cboMaNganh.SelectedValue;
             string Nam = txtNam.Text;
-            grid.DataSource = db.getDSThue(MST, SoGP, MaNganh, Nam);
+            grid.DataSource = db.getDSThue(MST,SoGP,MaNganh,Nam);
             grid.Rebind();
         }
 

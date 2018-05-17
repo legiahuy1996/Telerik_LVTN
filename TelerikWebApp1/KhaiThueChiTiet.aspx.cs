@@ -23,10 +23,12 @@ namespace TelerikWebApp1
         {
             db = new DataClasses1DataContext();
             idKhaiThue = Request.QueryString["idKhaiThue"];
-            txtNgayKhaiThue.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            txtNam.Text = DateTime.Now.Year.ToString();
             if (!IsPostBack)
+            {
                 LoadComBo();
+                txtNam.Text = DateTime.Now.Year.ToString();
+                txtNgayKhaiThue.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            }
         }
         protected void LoadComBo()
         {
@@ -71,12 +73,12 @@ namespace TelerikWebApp1
             string ngaykhaithue = txtNgayKhaiThue.Text;
             string ReturnMess = "";
             string ReturnMessCode = "";
-            db.Insert_KhaiThue(idKhaiThue,mst,nam,dientich,soluongld,tugio,dengio, trangthai,lan,ngaykhaithue,ref ReturnMessCode, ref ReturnMess);
+            db.Insert_KhaiThue(idKhaiThue, mst, nam, dientich, soluongld, tugio, dengio, trangthai, lan, ngaykhaithue, ref ReturnMessCode, ref ReturnMess);
             return ReturnMessCode;
         }
         protected void InsertChiTiet()
         {
-            
+
             foreach (GridDataItem item in grid.Items)
             {
                 sbXML.Append("<Record>");
@@ -89,7 +91,7 @@ namespace TelerikWebApp1
             }
             string strXML = "<Root>" + sbXML.ToString() + "</Root>";
             db.Insert_ChitietKhaiThue(strXML);
-           
+
         }
         protected void LoadDataByID(string id)
         {
@@ -107,11 +109,11 @@ namespace TelerikWebApp1
             else
                 chkNoActive.Checked = false;
             txtSoLuongLD.Text = khaithue.SoLuongLD.ToString();
-            if (db.ChiTietKhaiThues.Where(x=>x.idKhaiThue == int.Parse(id)).ToList() != null)
+            if (db.ChiTietKhaiThues.Where(x => x.idKhaiThue == int.Parse(id)).ToList() != null)
                 grid.DataSource = db.ChiTietKhaiThues.Where(x => x.idKhaiThue == int.Parse(id)).ToList();
             else
                 grid.DataSource = new string[] { };
-            
+
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -132,9 +134,9 @@ namespace TelerikWebApp1
 
         protected void ClearControl()
         {
-            
+
             cboMaNganh.SelectedIndex = 0;
-          
+
             txtDanhThu.Text = "";
             txtNgheKinhDoanh.Text = "";
         }
@@ -185,7 +187,7 @@ namespace TelerikWebApp1
         {
             string ReturnMess = string.Empty;
             string manganh = "", DoanhThu = "", NgheKinhDoanh = "", NgayBDKinhDoanh = "";
-          
+
             manganh = cboMaNganh.SelectedValue.Trim();
             DoanhThu = txtDanhThu.Text;
             NgheKinhDoanh = txtNgheKinhDoanh.Text;
@@ -227,7 +229,7 @@ namespace TelerikWebApp1
             }
             else
                 Response.Write(err);
-            
+
         }
 
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
@@ -256,12 +258,12 @@ namespace TelerikWebApp1
                     string idchitiet = item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", "") + "$";
                     if (item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", "") != "")
                     {
-                        db.thues.DeleteOnSubmit(db.thues.SingleOrDefault(x=>x.idChiTiet == int.Parse(idchitiet)));
+                        db.thues.DeleteOnSubmit(db.thues.SingleOrDefault(x => x.idChiTiet == int.Parse(idchitiet)));
                         ChiTietKhaiThue ct = db.ChiTietKhaiThues.SingleOrDefault(x => x.idChiTiet == int.Parse(idchitiet));
                         db.ChiTietKhaiThues.DeleteOnSubmit(ct);
                         db.SubmitChanges();
                     }
-                    txtSeq.Text ="";
+                    txtSeq.Text = "";
                     TextBox txtSeqRow = (TextBox)item_detail.FindControl("txtSeqRow");
                     LoadDetail(txtSeqRow.Text);
                 }

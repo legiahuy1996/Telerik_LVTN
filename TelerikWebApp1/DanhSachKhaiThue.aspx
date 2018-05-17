@@ -140,7 +140,14 @@
                                     <Columns>
                                         <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                         </telerik:GridClientSelectColumn>
-
+                                         <telerik:GridTemplateColumn UniqueName="Edit" HeaderText="Sửa">
+                                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                    <ItemTemplate>
+                                        <asp:ImageButton CssClass="rgpointer" ID="Edit" runat="server" 
+                                            ImageUrl="~/Images/edit.gif" CommandName="EDIT_DATA" />
+                                    </ItemTemplate>
+                                 </telerik:GridTemplateColumn>
                                         <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -161,14 +168,6 @@
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="nghekinhdoanh" DataField="nghekinhdoanh" HeaderText="Nghề kinh doanh">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="DienTichKD" DataField="DienTichKD" HeaderText="Diện tích kinh doanh">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="sogp" DataField="sogp" HeaderText="Số giấy phép">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -177,14 +176,7 @@
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="SoTienGTGT1Thang" DataField="SoTienGTGT1Thang" HeaderText="Thuế phải đóng GTGT">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="SoTienTNCN1Thang" DataField="SoTienTNCN1Thang" HeaderText="Thuế phải đóng TNCN">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
+                                       
                                         <telerik:GridBoundColumn UniqueName="TrangThaiHoatDong" DataField="TrangThaiHoatDong" HeaderText="Trạng thái">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
