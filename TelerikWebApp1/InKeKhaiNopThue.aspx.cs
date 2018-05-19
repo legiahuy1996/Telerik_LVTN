@@ -1,9 +1,7 @@
 ﻿using OfficeOpenXml;
 using OfficeOpenXml.Style;
-using OfficeOpenXml.Table;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -12,14 +10,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 using TelerikWebApp1.Model;
-
 namespace TelerikWebApp1
 {
-    public partial class DanhSachSoBoThue : System.Web.UI.Page
+    public partial class InKeKhaiNopThue : System.Web.UI.Page
     {
-        private List<getDSSoBoThueResult> list;
+        private List<getThongBaoNopThueResult> list;
         private DataClasses1DataContext db;
-        public DanhSachSoBoThue()
+        public InKeKhaiNopThue()
         {
             db = new DataClasses1DataContext();
         }
@@ -27,44 +24,20 @@ namespace TelerikWebApp1
         {
 
         }
-
-        public void loadDataSearch()
-        {
-            string nghekinhdoanh = txtNgheKinhDoanh.Text;
-            string MST = txtMST.Text;
-            string thang = txtThang.Text;
-            string diachi = txtDiaChi.Text;
-            string hoten = txtHoTen.Text;
-            string thanglapbo = txtThangLapBo.Text;
-            string namlapbo = txtNamLapBo.Text;
-
-
-            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, thang,  diachi, hoten, thanglapbo,namlapbo).ToList();
-            grid.DataSource = data;
-            list = data;
-            grid.Rebind();
-        }
-        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<getDSSoBoThueResult> listItems)
+        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<getThongBaoNopThueResult> listItems)
         {
             // Set default width cho tất cả column
             worksheet.DefaultColWidth = 10;
             // Tự động xuống hàng khi text quá dài
             worksheet.Cells.Style.WrapText = true;
             // Tạo header
-            worksheet.Cells[1, 1].Value = "Mã số thuế";
-            worksheet.Cells[1, 2].Value = "Họ tên";
-            worksheet.Cells[1, 3].Value = "Địa chỉ kinh doanh";
-            worksheet.Cells[1, 4].Value = "Tháng";
-            worksheet.Cells[1, 5].Value = "Doanh thu tính thuế GTGT";
-            worksheet.Cells[1, 6].Value = "Tỷ lệ tính thuế GTGT";
-            worksheet.Cells[1, 7].Value = "Thuế GTGT phải nộp 1 tháng";
-            worksheet.Cells[1, 8].Value = "Thuế GTGT phải nộp 1 năm";
-            worksheet.Cells[1, 9].Value = "Doanh thu tính thuế TNCN";
-            worksheet.Cells[1, 10].Value = "Tỷ lệ tính thuế TNCN";
-            worksheet.Cells[1, 11].Value = "Thuế TNCN phải nộp 1 tháng";
-            worksheet.Cells[1, 12].Value = "Thuế TNCN phải nộp 1 năm";
-            worksheet.Cells[1, 13].Value = "Trạng thái";
-            worksheet.Cells[1, 14].Value = "Ngày lập bộ";
+            worksheet.Cells[1, 1].Value = "Kỳ thuế";
+            worksheet.Cells[1, 2].Value = "ID Khai Thuế";
+            worksheet.Cells[1, 3].Value = "Tiền thuế GTGT";
+            worksheet.Cells[1, 4].Value = "Tiền thuế TNCN";
+            worksheet.Cells[1, 5].Value = "Tiền thuế môn bài";
+            worksheet.Cells[1, 6].Value = "Số nợ";
+            worksheet.Cells[1, 7].Value = "Tổng cộng";
 
 
 
@@ -87,43 +60,36 @@ namespace TelerikWebApp1
                 range.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
                 // Set màu ch Border
                 range.Style.Border.Bottom.Color.SetColor(Color.Blue);
-                
+
             }
 
             // Đỗ dữ liệu từ list vào 
             for (int i = 0; i < listItems.Count; i++)
             {
                 var item = listItems[i];
-                worksheet.Cells[i + 2, 1].Value = item.masothue;
-                worksheet.Cells[i + 2, 2].Value = item.hoten;
-                worksheet.Cells[i + 2, 3].Value = item.diachiKD;
-                worksheet.Cells[i + 2, 4].Value = item.Thang;
-                worksheet.Cells[i + 2, 5].Value = item.DoanhThuTinhThueGTGT;
-                worksheet.Cells[i + 2, 6].Value = item.TyLeTinhThueGTGT + "%";
-                worksheet.Cells[i + 2, 7].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT;
-                worksheet.Cells[i + 2, 8].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT *12;
-                worksheet.Cells[i + 2, 9].Value = item.DoanhThuTinhThueTNCN;
-                worksheet.Cells[i + 2, 10].Value = item.TyLeTinhThueTNCN + "%";
-                worksheet.Cells[i + 2, 11].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN;
-                worksheet.Cells[i + 2, 12].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN *12;
-                worksheet.Cells[i + 2, 13].Value = item.TinhTrangNopThue;
-                worksheet.Cells[i + 2, 14].Value = item.NgayLapBo;
+                worksheet.Cells[i + 2, 1].Value = item.KyThue;
+                worksheet.Cells[i + 2, 2].Value = item.idKhaiThue;
+                worksheet.Cells[i + 2, 3].Value = item.ThueGTGN;
+                worksheet.Cells[i + 2, 4].Value = item.ThueTNCN;
+                worksheet.Cells[i + 2, 5].Value = item.ThueMonBai;
+                worksheet.Cells[i + 2, 6].Value = item.SoNo;
+                worksheet.Cells[i + 2, 7].Value = item.TongCong;
 
 
-                // Format lại color nếu như thỏa điều kiện
-                if (item.TinhTrangNopThue == "0")
-                {
-                    // Ở đây chúng ta sẽ format lại theo dạng fromRow,fromCol,toRow,toCol
-                    using (var range = worksheet.Cells[i + 2, 1, i + 2, 16])
-                    {
-                        // Format text đỏ và đậm
-                        range.Style.Font.Color.SetColor(Color.Red);
-                        range.Style.Font.Bold = true;
-                    }
-                }
+                //// Format lại color nếu như thỏa điều kiện
+                //if (item.TinhTrangNopThue == "0")
+                //{
+                //    // Ở đây chúng ta sẽ format lại theo dạng fromRow,fromCol,toRow,toCol
+                //    using (var range = worksheet.Cells[i + 2, 1, i + 2, 16])
+                //    {
+                //        // Format text đỏ và đậm
+                //        range.Style.Font.Color.SetColor(Color.Red);
+                //        range.Style.Font.Bold = true;
+                //    }
+                //}
 
             }
-            worksheet.Cells[2,16,2,16].Style.Numberformat.Format = "dd/MM/yyyy";
+            //worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
             // Format lại định dạng xuất ra ở cột Money
             //worksheet.Cells[2, 4, listItems.Count + 4, 4].Style.Numberformat.Format = "$#,##.00";
             // fix lại width của column với minimum width là 15
@@ -144,14 +110,8 @@ namespace TelerikWebApp1
         }
         private Stream CreateExcelFile(Stream stream = null)
         {
-            string nghekinhdoanh = txtNgheKinhDoanh.Text;
-            string MST = txtMST.Text;            
-            string thang = txtThang.Text;
-            string diachi = txtDiaChi.Text;
-            string hoten = txtHoTen.Text;
-            string thanglapbo = txtThangLapBo.Text;
-            string namlapbo = txtNamLapBo.Text;
-            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, thang,  diachi, hoten, thanglapbo, namlapbo).ToList();
+            string Thang = txtThangNam.Text;
+            List<getThongBaoNopThueResult> list = db.getThongBaoNopThue(Thang).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
@@ -165,7 +125,7 @@ namespace TelerikWebApp1
                 // Lấy Sheet bạn vừa mới tạo ra để thao tác 
                 var workSheet = excelPackage.Workbook.Worksheets[1];
                 // Đổ data vào Excel file
-                
+
                 BindingFormatForExcel(workSheet, list);
                 excelPackage.Save();
                 return excelPackage.Stream;
@@ -190,19 +150,10 @@ namespace TelerikWebApp1
             Response.End();
         }
 
-
-
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            loadDataSearch();
-        }
-
         protected void btnExport_Click(object sender, EventArgs e)
         {
             Export();
-            Response.Redirect("DanhSachSoBoThue.aspx");
-
+            Response.Redirect("InKeKhaiNopThue.aspx");
         }
     }
 }
