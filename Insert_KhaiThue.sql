@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Insert_KhaiThue]    Script Date: 5/17/2018 10:33:24 PM ******/
+/****** Object:  StoredProcedure [dbo].[Insert_KhaiThue]    Script Date: 5/19/2018 12:49:29 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -23,6 +23,11 @@ ALTER PROC [dbo].[Insert_KhaiThue]
 @ReturnMess			nvarchar(500) = null OUT
 AS
 BEGIN
+IF NOT EXISTS(SELECT TOP 1 1 FROM dbo.DanhBa WHERE masothue = @masothue)
+BEGIN
+	SET @ReturnCode = '-1'
+	return
+END 
 		IF(ISNULL(@idKhaiThue,'') ='')
 		BEGIN
 			DECLARE @curdate DATETIME,@id INT,@date datetime
