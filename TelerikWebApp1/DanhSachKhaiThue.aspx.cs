@@ -28,13 +28,13 @@ namespace TelerikWebApp1
             cboMaNganh.Items.Insert(0, "");
             cboMaNganh.SelectedIndex = 0;
         }
-        public void loadData()  
+        public void loadData()
         {
             string MST = txtMST.Text;
             string SoGP = txtSoGP.Text;
             string MaNganh = cboMaNganh.SelectedValue;
             string Nam = txtNam.Text;
-            grid.DataSource = db.getDSThue(MST,SoGP,MaNganh,Nam);
+            grid.DataSource = db.getDSThue(MST, SoGP, MaNganh, Nam);
             grid.Rebind();
         }
 
@@ -50,6 +50,41 @@ namespace TelerikWebApp1
 
         protected void btnLock_Click(object sender, EventArgs e)
         {
+        }
+
+        protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            try
+            {
+                string MST = txtMST.Text;
+                string SoGP = txtSoGP.Text;
+                string MaNganh = cboMaNganh.SelectedValue;
+                string Nam = txtNam.Text;
+                (sender as RadGrid).DataSource = db.getDSThue(MST, SoGP, MaNganh, Nam);
+            }
+            catch
+            {
+                if (grid.DataSource == null)
+                    grid.DataSource = new string[] { };
+            }
+        }
+
+        protected void grid_ItemCommand(object sender, GridCommandEventArgs e)
+        {
+            string commandName = e.CommandName.ToUpper();
+            GridDataItem item;
+            if (commandName == "EDIT_DATA")
+            {
+                if (e.Item is GridDataItem)
+                {
+                    item = (GridDataItem)e.Item;
+                    if (item["idKhaiThue"].Text.Trim().Replace("&nbsp;", "") != "")
+                    {
+                        string url = "KhaiThueChiTiet.aspx?idKhaiThue=" + item["idKhaiThue"].Text.Trim().Replace("&nbsp;", "");
+                        Response.Redirect(url);
+                    }
+                }
+            }
         }
     }
 }

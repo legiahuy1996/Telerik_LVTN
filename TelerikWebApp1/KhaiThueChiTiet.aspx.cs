@@ -23,8 +23,13 @@ namespace TelerikWebApp1
         {
             db = new DataClasses1DataContext();
             idKhaiThue = Request.QueryString["idKhaiThue"];
+           
             if (!IsPostBack)
             {
+                if (idKhaiThue != "" && idKhaiThue != null)
+                {
+                    LoadDataByID(idKhaiThue);
+                }
                 LoadComBo();
                 txtNam.Text = DateTime.Now.Year.ToString();
                 txtNgayKhaiThue.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -98,7 +103,7 @@ namespace TelerikWebApp1
             KhaiThue khaithue = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(id));
             txtMST.Text = khaithue.masothue;
             txtNam.Text = khaithue.nam;
-            txtLan.Text = khaithue.ToString();
+            txtLan.Text = khaithue.Lan.ToString();
             //txtEmail.Text = khaithue.email;
             //txtSodt.Text = khaithue.sodt;
             //txtNote.Text = khaithue.ghichu;
@@ -109,8 +114,8 @@ namespace TelerikWebApp1
             else
                 chkNoActive.Checked = false;
             txtSoLuongLD.Text = khaithue.SoLuongLD.ToString();
-            if (db.ChiTietKhaiThues.Where(x => x.idKhaiThue == int.Parse(id)).ToList() != null)
-                grid.DataSource = db.ChiTietKhaiThues.Where(x => x.idKhaiThue == int.Parse(id)).ToList();
+            if (db.Load_ChiTietKhaiThue(id) != null)
+                grid.DataSource = db.Load_ChiTietKhaiThue(id);
             else
                 grid.DataSource = new string[] { };
 
@@ -120,12 +125,12 @@ namespace TelerikWebApp1
             if(grid.Items.Count != 0)
             {
                 string Err = InsertKhaiThue();
-                if (Err != "" && Err != "-1")
+                if (Err != "-1")
                 {
                     idKhaiThue = Err;
                     InsertChiTiet();
                     LoadDataByID(idKhaiThue);
-                    Response.Redirect("KhaiThueChiTiet.aspx");
+                    
                 }
                 else
                     Response.Write("<script>alert('Không tồn tại mã số thuế này');</script>");
@@ -272,9 +277,9 @@ namespace TelerikWebApp1
                     string idchitiet = item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", "") + "$";
                     if (item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", "") != "")
                     {
-                        db.thues.DeleteOnSubmit(db.thues.SingleOrDefault(x => x.idChiTiet == int.Parse(idchitiet)));
-                        ChiTietKhaiThue ct = db.ChiTietKhaiThues.SingleOrDefault(x => x.idChiTiet == int.Parse(idchitiet));
-                        db.ChiTietKhaiThues.DeleteOnSubmit(ct);
+                        int id = int.Parse(item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", ""));
+                        ChiTietKhaiThue chitiet = db.ChiTietKhaiThues.SingleOrDefault(x => x.idChiTiet == id);
+                        db.ChiTietKhaiThues.DeleteOnSubmit(chitiet);
                         db.SubmitChanges();
                     }
                     txtSeq.Text = "";
