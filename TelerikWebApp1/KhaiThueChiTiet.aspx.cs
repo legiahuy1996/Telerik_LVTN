@@ -67,7 +67,7 @@ namespace TelerikWebApp1
             else
                 trangthai = false;
             if (txtLan.Text != "")
-                lan = int.Parse(txtLan.Text);
+                lan = int.Parse(txtLan.Text.Replace(",",""));
             else
                 lan = 0;
             string ngaykhaithue = txtNgayKhaiThue.Text;
@@ -117,14 +117,23 @@ namespace TelerikWebApp1
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string Err = InsertKhaiThue();
-            if (Err != "")
+            if(grid.Items.Count != 0)
             {
-                idKhaiThue = Err;
-                InsertChiTiet();
-                LoadDataByID(idKhaiThue);
+                string Err = InsertKhaiThue();
+                if (Err != "" && Err != "-1")
+                {
+                    idKhaiThue = Err;
+                    InsertChiTiet();
+                    LoadDataByID(idKhaiThue);
+                    Response.Redirect("KhaiThueChiTiet.aspx");
+                }
+                else
+                    Response.Write("<script>alert('Không tồn tại mã số thuế này');</script>");
             }
-            Response.Redirect("KhaiThueChiTiet.aspx");
+            else
+                Response.Write("<script>alert('Chưa nhập nội dung khai thuế');</script>");
+
+
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
@@ -145,7 +154,7 @@ namespace TelerikWebApp1
             string ReturnCode = string.Empty, ReturnMess = string.Empty;
             string manganh = "", DoanhThu = "", NgheKinhDoanh = "";
             manganh = cboMaNganh.SelectedValue.Trim();
-            DoanhThu = txtDanhThu.Text;
+            DoanhThu = txtDanhThu.Text.Replace(",", "");
             NgheKinhDoanh = txtNgheKinhDoanh.Text;
             for (int i = 0; i < grid.Items.Count; i++)
             {
@@ -180,6 +189,11 @@ namespace TelerikWebApp1
                 grid.DataSource = db.LoadChiTietKhaiThueXML(strXML, ref ReturnCode, ref ReturnMess, "LoadDetailXML");
                 grid.DataBind();
             }
+            else
+            {
+                grid.DataSource = new string[] { };
+                grid.DataBind();
+            }
             ClearControl();
             return ReturnMess;
         }
@@ -189,7 +203,7 @@ namespace TelerikWebApp1
             string manganh = "", DoanhThu = "", NgheKinhDoanh = "", NgayBDKinhDoanh = "";
 
             manganh = cboMaNganh.SelectedValue.Trim();
-            DoanhThu = txtDanhThu.Text;
+            DoanhThu = txtDanhThu.Text.Replace(",","");
             NgheKinhDoanh = txtNgheKinhDoanh.Text;
             NgayBDKinhDoanh = txtNgayKhaiThue.Text;
             for (int i = 0; i < grid.Items.Count; i++)
@@ -228,7 +242,7 @@ namespace TelerikWebApp1
                 LoadDetail("");
             }
             else
-                Response.Write(err);
+                Response.Write("<script>alert('"+err+"');</script>");
 
         }
 
@@ -268,6 +282,11 @@ namespace TelerikWebApp1
                     LoadDetail(txtSeqRow.Text);
                 }
             }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DanhSachKhaiThue.aspx");
         }
     }
 }

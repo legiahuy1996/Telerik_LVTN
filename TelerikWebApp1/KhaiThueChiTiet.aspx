@@ -19,18 +19,18 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" CssClass="labelRequire" ID="lblMST">Mã s&#7889; thu&#7871;</asp:Label>
+                    <asp:Label runat="server" CssClass="labelRequire"  ID="lblMST">Mã s&#7889; thu&#7871;</asp:Label>
 
                 </td>
                 <td>
-                    <asp:TextBox class="input" runat="server" ID="txtMST" Width="50%"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtMST" Width="80%" onblur="javascript:checkNumber(this);"></asp:TextBox>
                   
                 </td>
                 <td>
-                    <asp:Label runat="server" ID="lblNam">N&#259;m</asp:Label>
+                    <asp:Label runat="server" CssClass="labelRequire" ID="lblNam">N&#259;m</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="input" runat="server" ID="txtNam" Width="50px"></asp:TextBox>
+                    <asp:TextBox class="InputCenter" runat="server" ID="txtNam" Width="50px" onblur="javascript:CheckYear1900(this);return true"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -39,13 +39,13 @@
                     <asp:Label runat="server" ID="lblNgayKhaiThue">Ngày khai thu&#7871;</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="input" runat="server" ID="txtNgayKhaiThue" Width="90px"></asp:TextBox>
+                    <asp:TextBox class="InputDate" runat="server" ID="txtNgayKhaiThue" Width="90px" onblur="javascript:CheckDate(this);"></asp:TextBox>
                 </td>
                 <td>
                     <asp:Label runat="server" ID="Label8">Lần khai thuế</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="input" runat="server" ID="txtLan" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="InputCenter" runat="server" ID="txtLan" Width="50px" onblur="javascript:checkNumeric(this,3);"></asp:TextBox>
                 </td>
 
             </tr>
@@ -57,9 +57,9 @@
                 </td>
                 <td>
                     <asp:Label runat="server" ID="Label1">T&#7915; Gi&#7901;</asp:Label>
-                    <asp:TextBox class="input" runat="server" ID="txtTuGio" Width="50px"></asp:TextBox>
+                    <asp:TextBox class="input" runat="server" CssClass="InputCenter" ID="txtTuGio" Width="50px" onblur="javascript:checkNumeric(this,23);" ></asp:TextBox>
                     <asp:Label runat="server" ID="Label2">&#272;&#7871;n Gi&#7901;</asp:Label>
-                    <asp:TextBox class="input" runat="server" ID="txtDenGio" Width="50px"></asp:TextBox>
+                    <asp:TextBox class="input" runat="server" CssClass="InputCenter" ID="txtDenGio" Width="50px" onblur="javascript:checkNumeric(this,23);"></asp:TextBox>
                 </td>
 
             </tr>
@@ -93,17 +93,17 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" ID="lblMaNganh">Ngành</asp:Label>
+                    <asp:Label runat="server" CssClass="labelRequire" ID="lblMaNganh">Ngành</asp:Label>
                 </td>
                 <td>
 
                     <telerik:RadComboBox class="input" ID="cboMaNganh" Width="80%" runat="server"></telerik:RadComboBox>
                 </td>
                 <td>
-                    <asp:Label runat="server" ID="Label4">Doanh thu hàng tháng</asp:Label>
+                    <asp:Label runat="server" ID="Label4" CssClass="labelRequire">Doanh thu hàng tháng</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtDanhThu" Width="80%"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtDanhThu" Width="80px" CssClass="InputCenter" onblur="javascript:checkNumeric(this);"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -114,7 +114,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" ID="Label5">Ngh&#7873; kinh doanh</asp:Label>
+                    <asp:Label runat="server" CssClass="labelRequire" ID="Label5">Ngh&#7873; kinh doanh</asp:Label>
                 </td>
                 <td>
                     <asp:TextBox runat="server" ID="txtNgheKinhDoanh" Width="80%"></asp:TextBox>
@@ -122,7 +122,7 @@
 
             </tr>
         </table>
-        <asp:Button ID="btnAddDetail" class="ButtonCommand" runat="server" Style="width: 25px; height: 19px" Text="V" OnClick="btnAddDetail_Click" OnClientClick="return focus()"></asp:Button>
+        <asp:Button ID="btnAddDetail" class="ButtonCommand" runat="server" Style="width: 25px; height: 19px" Text="V" OnClick="btnAddDetail_Click" OnClientClick="return validateform()"></asp:Button>
         <table cellspacing="1" cellpadding="1" width="100%" border="0">
             <tr>
                 <td colspan="3" align="center"></td>
@@ -225,7 +225,7 @@
                     <asp:Label runat="server" ID="lblSoLuongLD">S&#7889; l&#432;&#7907;ng LD</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="input" runat="server" ID="txtSoLuongLD" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="InputCenter" runat="server" ID="txtSoLuongLD" Width="50px" onblur="javascript:checkNumeric(this,10);"></asp:TextBox>
                 </td>
 
 
@@ -238,10 +238,10 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" ID="Label7">Diện tích kinh doanh</asp:Label>
+                    <asp:Label runat="server" ID="Label7">Diện tích kinh doanh (Mét vuông)</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="input" runat="server" ID="txtDienTichKD" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="input" runat="server" ID="txtDienTichKD" Width="80px" onblur="javascript:checkNumeric(this,999);"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -260,10 +260,10 @@
                     <span class="btn1">
                         <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" OnClick="btnReset_Click"><span class="btnReset">Làm m&#7899;i</span>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSave_Click"><span class="btnSave">L&#432;u</span>
+                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSave_Click" OnClientClick="return checkSave();"><span class="btnSave">L&#432;u</span>
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnBack" name="btnBack" AccessKey="L" runat="server" ToolTip="ALT+L"
-                            OnClientClick="DisableAllButton('_ctl0:btnList'); return true;">
+                            OnClientClick="DisableAllButton('_ctl0:btnList'); return true;" OnClick="btnBack_Click">
                     <span class="btnBack">V&#7873; DS YC</span>
                         </asp:LinkButton>
 
@@ -285,6 +285,15 @@
         function validateEmail(email) {
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(String(email).toLowerCase());
+        }
+        function validateform() {
+            if (CheckIsNull_RCB('cboMaNganh') == false) return false;
+            if (CheckIsNull('txtDanhThu') == false) return false;
+            if (CheckIsNull('txtNgheKinhDoanh') == false) return false;
+        }
+        function checkSave() {
+            if (CheckIsNull('txtMST') == false) return false;
+            if (CheckIsNull('txtNam') == false) return false;
         }
     </script>
 </asp:Content>

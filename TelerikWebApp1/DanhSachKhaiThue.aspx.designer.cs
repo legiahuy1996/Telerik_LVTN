@@ -130,24 +130,6 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.LinkButton btnAddNew;
         
         /// <summary>
-        /// tdTinhLai control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell tdTinhLai;
-        
-        /// <summary>
-        /// btnReCalc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnReCalc;
-        
-        /// <summary>
         /// tdKhoa control.
         /// </summary>
         /// <remarks>
