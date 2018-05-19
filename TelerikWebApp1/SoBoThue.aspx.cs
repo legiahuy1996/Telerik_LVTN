@@ -19,10 +19,23 @@ namespace TelerikWebApp1
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+            if(!IsPostBack)
+            {
+                loadDataSearch();
+                LoadComBo();
+            }
         }
         #region method
+        protected void LoadComBo()
+        {
 
+            cboMaNganh.DataSource = (from a in db.manganhs where a.manganh1 != "07" select new { ma = a.manganh1, ten = a.tennganh }).ToList();
+            cboMaNganh.DataValueField = "ma";
+            cboMaNganh.DataTextField = "ten";
+            cboMaNganh.DataBind();
+            cboMaNganh.Items.Insert(0, "");
+            cboMaNganh.SelectedIndex = 0;
+        }
         public void loadDataSearch()
         {
             string Activity = "Search";
@@ -35,7 +48,7 @@ namespace TelerikWebApp1
             string diachi = txtDiaChi.Text;
             string hoten = txtHoTen.Text;
             string ngaytinhthue = txtNgayTinhThue.Text;
-            string manganh = txtMaNganh.Text;
+            string manganh = cboMaNganh.SelectedValue.Trim();
             string sdt = txtSDT.Text;
 
 

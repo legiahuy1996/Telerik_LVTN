@@ -81,7 +81,7 @@
                                                                         <a href="DanhSachSoBoThue.aspx"><span>Danh sách sổ bộ thuế</span></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href='#'><span>In bảng kê nộp thuế</span></a>
+                                                                        <a href='InKeKhaiNopThue.aspx'><span>In bảng kê nộp thuế</span></a>
                                                                     </li>
                                                                 </ul>
                                                             </li>

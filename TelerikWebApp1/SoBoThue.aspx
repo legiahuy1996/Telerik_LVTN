@@ -10,13 +10,21 @@
 
         <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
             <tr>
-                <td width="15%">
+                <td width="5%"></td>
+                <td width="10%"></td>
+                <td width="25%"></td>
+                <td width="10%"></td>
+                <td width="25%"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td width="10%">
                     <asp:Label runat="server" ID="lblMST">Mã số thuế</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtMST" Width="80%"></asp:TextBox>
                 </td>
-                <td width="15%">
+                <td width="10%">
                     <asp:Label runat="server" ID="lblTenCuaHang">Tên cửa hàng</asp:Label>
                 </td>
                 <td width="25%">
@@ -24,13 +32,14 @@
                 </td>
             </tr>
             <tr>
-                <td width="15%">
+                <td></td>
+                <td width="10%">
                     <asp:Label runat="server" ID="lblCMND">CMND</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtCMND" Width="80%"></asp:TextBox>
                 </td>
-                <td width="15%">
+                <td width="10%">
                     <asp:Label runat="server" ID="lblNayCap">Ngày cấp CMND</asp:Label>
                 </td>
                 <td width="25%">
@@ -38,13 +47,14 @@
                 </td>
             </tr>
             <tr>
-                <td width="15%">
+                <td></td>
+                <td width="10%">
                     <asp:Label runat="server" ID="lblSoGP">Số giấy phép</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtSoGP" Width="80%"></asp:TextBox>
                 </td>
-                <td width="15%">
+                <td width="10%">
                     <asp:Label runat="server" ID="lblDiaChi">Địa chỉ kinh doanh</asp:Label>
                 </td>
                 <td width="25%">
@@ -52,13 +62,14 @@
                 </td>
             </tr>
             <tr>
-                <td width="15%">
+                <td></td>
+                <td width="10%">
                     <asp:Label runat="server" ID="Label5">Họ Tên</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtHoTen" Width="80%"></asp:TextBox>
                 </td>
-                <td width="15%">
+                <td width="10%">
                     <asp:Label runat="server" ID="Label6">Ngày tính thuế</asp:Label>
                 </td>
                 <td width="25%">
@@ -66,13 +77,14 @@
                 </td>
             </tr>
             <tr>
-                <td width="15%">
-                    <asp:Label runat="server" ID="Label7">Mã ngành</asp:Label>
+                <td></td>
+                <td width="10%">
+                    <asp:Label runat="server" ID="Label7">Ngành</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtMaNganh" Width="80%"></asp:TextBox>
+                    <telerik:RadComboBox class="input" ID="cboMaNganh" Width="80%" runat="server"></telerik:RadComboBox>
                 </td>
-                <td width="15%">
+                <td width="10%">
                     <asp:Label runat="server" ID="Label8">Số điện thoại</asp:Label>
                 </td>
                 <td width="25%">
@@ -102,15 +114,15 @@
                 </td>
             </tr>
         </table>
-
+        <br />
        
-        <table width="100" cellpadding="0" cellspacing="0">
+        <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
                     <telerik:RadScriptManager runat="server" ID="RadScriptManager2" />
                     <telerik:RadSkinManager ID="RadSkinManager2" runat="server" />
-                    <telerik:RadSplitter ID="RadSplitter2" Width="730px" runat="server" Orientation="Horizontal">
-                        <telerik:RadPane ID="RadPane1" Height="300px" Width="100%" runat="server" Scrolling="Both">
+                    <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
+                        <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
                             <telerik:RadGrid runat="server"  AllowMultiRowSelection="true" Width="650px" Height="500px" ID="grid" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true" AllowSorting="true" AutoGenerateColumns="false">
                                 <ClientSettings>
                                     <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
@@ -153,11 +165,7 @@
                                         <telerik:GridBoundColumn UniqueName="ghichu" DataField="ghichu" HeaderText="Ghi chú">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="ghichu" DataField="ghichu" HeaderText="Ghi chú">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
+                                        </telerik:GridBoundColumn>                                        
                                         <telerik:GridBoundColumn UniqueName="nghekinhdoanh" DataField="nghekinhdoanh" HeaderText="Nghề kinh doanh">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -166,7 +174,7 @@
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="SoLuongLD" DataField="SoLuongLD" HeaderText="Diện tích kinh doanh">
+                                        <telerik:GridBoundColumn UniqueName="SoLuongLD" DataField="SoLuongLD" HeaderText="Số lượng lao lượng">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
