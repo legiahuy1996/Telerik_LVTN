@@ -94,6 +94,15 @@ namespace TelerikWebApp1 {
         protected global::Telerik.Web.UI.RadComboBox cboMaNganh;
         
         /// <summary>
+        /// rdbTinhTrang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbTinhTrang;
+        
+        /// <summary>
         /// tdTimKem control.
         /// </summary>
         /// <remarks>
@@ -139,13 +148,13 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.HtmlControls.HtmlTableCell tdSaoChep;
         
         /// <summary>
-        /// btnSave control.
+        /// btnCopy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSave;
+        protected global::System.Web.UI.WebControls.LinkButton btnCopy;
         
         /// <summary>
         /// tdKhoa control.
@@ -164,6 +173,15 @@ namespace TelerikWebApp1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnLock;
+        
+        /// <summary>
+        /// btnUnLock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnUnLock;
         
         /// <summary>
         /// tdXuatDL control.

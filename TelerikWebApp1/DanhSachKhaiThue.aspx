@@ -65,6 +65,31 @@
                     <telerik:RadComboBox class="input" runat="server" ID="cboMaNganh" Width="40%"></telerik:RadComboBox>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <asp:Label runat="server">Trạng thái</asp:Label></td>
+                <td colspan="3">
+                    <table cellspacing="0" cellpadding="1" width="100%" border="0">
+                        <tr>
+                            <td style="display: inline-block">
+                                <asp:RadioButtonList runat="server" ID="rdbTinhTrang" RepeatDirection="Horizontal">
+                                    <asp:ListItem Value="0">Tạm ngưng nghỉ</asp:ListItem>
+                                    <asp:ListItem Value="1">Đang hoạt động</asp:ListItem>
+                                    <asp:ListItem Value="2" Selected="True">Tất cả</asp:ListItem>
+                                </asp:RadioButtonList>
+                            </td>
+                        </tr>
+
+                    </table>
+                </td>
+
+            </tr>
 
         </table>
 
@@ -88,8 +113,8 @@
                 </td>
                 <td id="tdSaoChep" runat="server">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S"
-                            runat="server" ToolTip="ALT+S" OnClientClick="return CheckCopy();">
+                        <asp:LinkButton ID="btnCopy" name="btnCopy" AccessKey="S" OnClick="btnCopy_Click"
+                            runat="server" ToolTip="ALT+S">
                     <span class="btnCopy">Sao chép</span>
                         </asp:LinkButton>
                     </span>
@@ -98,6 +123,14 @@
                     <span class="btn1">
                         <asp:LinkButton ID="btnLock" name="btnLock" runat="server" AccessKey="L" ToolTip="Alt+L" OnClick="btnLock_Click">
 		                    <span class="btnLock">Khóa</span>
+                        </asp:LinkButton>
+                    </span>
+                </td>
+                <td runat="server">
+                    <span class="btn1">
+                        <asp:LinkButton ID="btnUnLock" name="btnUnLock" AccessKey="U"
+                            runat="server" ToolTip="ALT+U" OnClick="btnUnLock_Click" OnClientClick="return CheckUnLock()">
+                    <span class="btnUnLock">Mở Khóa</span>
                         </asp:LinkButton>
                     </span>
                 </td>
@@ -129,7 +162,8 @@
                         <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
                             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
                                 <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
-                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource" OnItemCommand="grid_ItemCommand">
+                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false" 
+                                    OnNeedDataSource="grid_NeedDataSource" OnItemCommand="grid_ItemCommand" OnItemDataBound="grid_ItemDataBound">
                                     <ClientSettings>
                                         <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
                                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
@@ -141,6 +175,14 @@
                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                                 <HeaderStyle Width="50px" />
                                             </telerik:GridClientSelectColumn>
+                                            <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
+                                                <HeaderStyle Width="50px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <ItemTemplate >
+                                                    <asp:Label ID="numberLabel" runat="server"/>
+                                                </ItemTemplate>
+                                                
+                                            </telerik:GridTemplateColumn>
                                             <telerik:GridTemplateColumn UniqueName="Edit" HeaderText="Sửa">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

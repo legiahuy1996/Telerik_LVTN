@@ -76,8 +76,8 @@ span.btn1 a
 }
 span.btn1 a:hover 
 {	
-	background-color:#ffaf36; color:white; border:none; height:28px;border-radius:5px;
-	border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;
+	background-color:#90784C; color:white; border:none; height:28px;border-radius:5px;
+	border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;
 	border-top-width:1px;border-bottom-width:1px;border-left-width:1px;border-right-width: 1px;
 	border-top-style:solid;border-bottom-style:solid;border-left-style:solid;border-right-style:solid;
 }
@@ -102,8 +102,8 @@ span.btn2 a
 }
 span.btn2 a:hover 
 {
-	background-color:#ffaf36;color:white;border:none;height:24px;border-radius:5px;
-	border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;
+	background-color:#90784C;color:white;border:none;height:24px;border-radius:5px;
+	border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;
 	border-top-width:1px;border-bottom-width:1px;border-left-width: 1px;border-right-width: 1px;
 	border-top-style:solid;border-bottom-style:solid;border-left-style:solid;border-right-style:solid;						
 }
@@ -128,8 +128,8 @@ span.btn3 a
 }
 span.btn3 a:hover 
 {
-	background-color:#ffaf36;color:white;border:none;height:24px;border-radius:5px;
-	border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;
+	background-color:#90784C;color:white;border:none;height:24px;border-radius:5px;
+	border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;
 	border-top-width:1px;border-bottom-width:1px;border-left-width: 1px;border-right-width: 1px;
 	border-top-style:solid;border-bottom-style:solid;border-left-style:solid;border-right-style:solid;						
 }
@@ -184,7 +184,7 @@ span.btn1 a.disable .btnRemove {background:url(../../Images/icon/remove_ico_hove
 }
 .btnRemoveOther:hover {
 	background:url(../../Images/icon/remove_ico_hover.png) no-repeat 5px center; 	
-	color:white;background-color:#ffaf36;border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;	
+	color:white;background-color:#90784C;border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;	
 	width:110px; height:28px;line-height:30px;font-weight:bold; display:inline-block;cursor:pointer; clear:right;text-align:center; padding:0 0 0 5px; margin:5px 5px 0px 0; text-decoration:none;outline:none;
 	border-radius:5px;border-top-width: 1px;border-top-style:solid;border-bottom-width: 1px;border-bottom-style:solid;
 	border-left-width: 1px;border-left-style:solid;border-right-width: 1px;border-right-style:solid;	
@@ -243,7 +243,7 @@ span.btn1 a.disable .btnClose {background:url(../../Images/icon/close_ico_hover.
 }
 .btnCloseOther:hover {
 	background:url(../../Images/icon/close_ico_hover.png) no-repeat 5px center; 	
-	color:white;background-color:#ffaf36;border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;	
+	color:white;background-color:#90784C;border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;	
 	width:110px; height:28px;line-height:30px;font-weight:bold; display:inline-block;cursor:pointer; clear:right;text-align:center; padding:0 0 0 5px; margin:5px 5px 0px 0; text-decoration:none;outline:none;
 	border-radius:5px;border-top-width: 1px;border-top-style:solid;border-bottom-width: 1px;border-bottom-style:solid;
 	border-left-width: 1px;border-left-style:solid;border-right-width: 1px;border-right-style:solid;	
@@ -282,7 +282,7 @@ span.btn1 a.disable .btnSave {background:url(../../Images/icon/save_ico_hover.pn
 }
 .btnSaveOther:hover {
 	background:url(../../Images/icon/save_ico_hover.png) no-repeat 5px center; 	
-	color:white;background-color:#ffaf36;border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;	
+	color:white;background-color:#90784C;border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;	
 	width:110px; height:28px;line-height:30px;font-weight:bold; display:inline-block;cursor:pointer; clear:right;text-align:center; padding:0 0 0 5px; margin:5px 5px 0px 0; text-decoration:none;outline:none;
 	border-radius:5px;border-top-width: 1px;border-top-style:solid;border-bottom-width: 1px;border-bottom-style:solid;
 	border-left-width: 1px;border-left-style:solid;border-right-width: 1px;border-right-style:solid;	
@@ -354,7 +354,7 @@ span.btn1 a.disable .btnExport {background:url(../../Images/icon/export_ico_hove
 }
 .btnImportOther:hover {
 	background:url(../../Images/icon/import_ico_hover.png) no-repeat 5px center; 	
-	color:white;background-color:#ffaf36;border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;	
+	color:white;background-color:#90784C;border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;	
 	width:110px; height:28px;line-height:30px;font-weight:bold; display:inline-block;cursor:pointer; clear:right;text-align:center; padding:0 0 0 5px; margin:5px 5px 0px 0; text-decoration:none;outline:none;
 	border-radius:5px;border-top-width: 1px;border-top-style:solid;border-bottom-width: 1px;border-bottom-style:solid;
 	border-left-width: 1px;border-left-style:solid;border-right-width: 1px;border-right-style:solid;	
@@ -383,7 +383,7 @@ span.btn1 a.disable .btnExport {background:url(../../Images/icon/export_ico_hove
 }
 .btnExportOther:hover {
 	background:url(../../Images/icon/export_ico_hover.png) no-repeat 5px center; 	
-	color:white;background-color:#ffaf36;border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;	
+	color:white;background-color:#90784C;border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;	
 	width:110px; height:28px;line-height:30px;font-weight:bold; display:inline-block;cursor:pointer; clear:right;text-align:center; padding:0 0 0 5px; margin:5px 5px 0px 0; text-decoration:none;outline:none;
 	border-radius:5px;border-top-width: 1px;border-top-style:solid;border-bottom-width: 1px;border-bottom-style:solid;
 	border-left-width: 1px;border-left-style:solid;border-right-width: 1px;border-right-style:solid;	
@@ -447,7 +447,7 @@ span.btn1 a.disable .btnSelect {background:url(../../Images/icon/select_ico_hove
 }
 .btnSelectOther:hover {
 	background:url(../../Images/icon/submit_ico_hover.png) no-repeat 5px center; 	
-	color:white;background-color:#ffaf36;border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;	
+	color:white;background-color:#90784C;border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;	
 	width:110px; height:28px;line-height:30px;font-weight:bold; display:inline-block;cursor:pointer; clear:right;text-align:center; padding:0 0 0 5px; margin:5px 5px 0px 0; text-decoration:none;outline:none;
 	border-radius:5px;border-top-width: 1px;border-top-style:solid;border-bottom-width: 1px;border-bottom-style:solid;
 	border-left-width: 1px;border-left-style:solid;border-right-width: 1px;border-right-style:solid;	
@@ -486,7 +486,7 @@ span.btn1 a.disable .btnView {background:url(../../Images/icon/view_ico_hover.pn
 }
 .btnViewOther:hover {
 	background:url(../../Images/icon/view_ico_hover.png) no-repeat 5px center; 	
-	color:white;background-color:#ffaf36;border-top-color:#ffaf36;border-bottom-color:#ffaf36;border-left-color:#ffaf36;border-right-color:#ffaf36;	
+	color:white;background-color:#90784C;border-top-color:#90784C;border-bottom-color:#90784C;border-left-color:#90784C;border-right-color:#90784C;	
 	width:110px; height:28px;line-height:30px;font-weight:bold; display:inline-block;cursor:pointer; clear:right;text-align:center; padding:0 0 0 5px; margin:5px 5px 0px 0; text-decoration:none;outline:none;
 	border-radius:5px;border-top-width: 1px;border-top-style:solid;border-bottom-width: 1px;border-bottom-style:solid;
 	border-left-width: 1px;border-left-style:solid;border-right-width: 1px;border-right-style:solid;	

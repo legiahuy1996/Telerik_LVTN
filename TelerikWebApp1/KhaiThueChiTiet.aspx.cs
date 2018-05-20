@@ -112,7 +112,7 @@ namespace TelerikWebApp1
             if (khaithue.TrangThaiHoatDong == true)
                 chkActive.Checked = true;
             else
-                chkNoActive.Checked = false;
+                chkNoActive.Checked = true;
             txtSoLuongLD.Text = khaithue.SoLuongLD.ToString();
             if (db.Load_ChiTietKhaiThue(id) != null)
                 grid.DataSource = db.Load_ChiTietKhaiThue(id);
@@ -128,19 +128,25 @@ namespace TelerikWebApp1
                 if (grid.Items.Count != 0)
                 {
                     string Err = InsertKhaiThue();
-                    if (Err != "-1")
+                    if (Err == "-2")
+                    {
+                        st.Append("$.notify('Đã tồn tại dữ liệu của năm " + txtNam.Text + "',{className: 'error',globalPosition: 'bottom right'});");
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                        txtNam.Focus();
+                    }
+                    else if (Err == "-1")
+                    {
+                        st.Append("$.notify('Không tồn tại mã số thuế này',{className: 'error',globalPosition: 'bottom right'});");
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                        txtMST.Focus();
+                    }
+                    else
                     {
                         idKhaiThue = Err;
                         InsertChiTiet();
                         LoadDataByID(idKhaiThue);
                         st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                    }
-                    else
-                    {
-                        st.Append("$.notify('Không tồn tại mã số thuế này',{className: 'error',globalPosition: 'bottom right'});");
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                        txtMST.Focus();
                     }
                 }
                 else
@@ -152,7 +158,7 @@ namespace TelerikWebApp1
             }
             catch (Exception mess)
             {
-                st.Append("$.notify('" + mess + "',{className: 'error',globalPosition: 'bottom right'});");
+                st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
 
@@ -277,7 +283,7 @@ namespace TelerikWebApp1
             }
             catch (Exception mess)
             {
-                st.Append("$.notify('" + mess + "',{className: 'error',globalPosition: 'bottom right'});");
+                st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
 
@@ -326,7 +332,7 @@ namespace TelerikWebApp1
                 }
                 catch (Exception mess)
                 {
-                    st.Append("$.notify('" + mess + "',{className: 'error',globalPosition: 'bottom right'});");
+                    st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                 }
 
