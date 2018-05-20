@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue]    Script Date: 5/19/2018 8:05:42 PM ******/
+/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue]    Script Date: 5/20/2018 9:33:07 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -40,7 +40,7 @@ AS
 				NgheKinhDoanh NVARCHAR(100),
 				manganh NVARCHAR(14)
 			) A		
-		--SELECT * FROM @Temp1
+		SELECT * FROM @Temp1
 			
         DECLARE @id NVARCHAR(14) ,
             @TongDanhThu FLOAT ,
@@ -54,8 +54,9 @@ AS
 				@nghekinhdoanh = NgheKinhDoanh,
 				@doanhthu = DoanhThu
 
-        FROM    @Temp1
-        IF ( ISNULL(@idchitiet, '') = '' )
+        FROM    @Temp1 
+
+        IF EXISTS (SELECT TOP 1 1 FROM @Temp1 WHERE idchitiet ='')
             BEGIN
 			PRINT  'insert'
                 INSERT  INTO dbo.ChiTietKhaiThue

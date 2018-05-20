@@ -157,9 +157,9 @@
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
 
-                                        <telerik:GridBoundColumn UniqueName="doanhthu" DataField="doanhthu" HeaderText="Doanh Thu">
+                                        <telerik:GridBoundColumn UniqueName="doanhthu" DataField="doanhthu" HeaderText="Doanh Thu" DataFormatString="{0:N0}">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="120px" />
-                                            <ItemStyle HorizontalAlign="left" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="left" VerticalAlign="Middle"  />
                                         </telerik:GridBoundColumn>
 
                                         <telerik:GridBoundColumn UniqueName="TyLeTinhThueGTGT" DataField="TyLeTinhThueGTGT" HeaderText="T&#7927; l&#7879; thu&#7871; GTGT">
@@ -281,7 +281,7 @@
 <asp:Content ContentPlaceHolderID="script" ID="script" runat="server">
     <script>
         $("#<%=txtNgayKhaiThue.ClientID%>").datepicker();
-
+       
         function validateEmail(email) {
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(String(email).toLowerCase());

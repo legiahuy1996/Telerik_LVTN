@@ -15,15 +15,15 @@ namespace TelerikWebApp1
     public partial class KhaiThueChiTiet : System.Web.UI.Page
     {
         private DataClasses1DataContext db;
+        StringBuilder st = new StringBuilder();
         protected StringBuilder sbXML = new StringBuilder();
         StringBuilder sbXMLNew = new StringBuilder();
         string idKhaiThue = "";
-
         protected void Page_Load(object sender, EventArgs e)
         {
             db = new DataClasses1DataContext();
             idKhaiThue = Request.QueryString["idKhaiThue"];
-           
+
             if (!IsPostBack)
             {
                 if (idKhaiThue != "" && idKhaiThue != null)
@@ -72,7 +72,7 @@ namespace TelerikWebApp1
             else
                 trangthai = false;
             if (txtLan.Text != "")
-                lan = int.Parse(txtLan.Text.Replace(",",""));
+                lan = int.Parse(txtLan.Text.Replace(",", ""));
             else
                 lan = 0;
             string ngaykhaithue = txtNgayKhaiThue.Text;
@@ -90,7 +90,7 @@ namespace TelerikWebApp1
                 sbXML.Append("<idKhaiThue>" + idKhaiThue + "</idKhaiThue>");
                 sbXML.Append("<idchitiet>" + item["idchitiet"].Text.Trim().Replace("&nbsp;", "") + "</idchitiet>");
                 sbXML.Append("<manganh>" + item["manganh"].Text.Trim().Replace("&nbsp;", "") + "</manganh>");
-                sbXML.Append("<DoanhThu>" + item["DoanhThu"].Text.Trim().Replace("&nbsp;", "") + "</DoanhThu>");
+                sbXML.Append("<DoanhThu>" + item["DoanhThu"].Text.Trim().Replace(",", "") + "</DoanhThu>");
                 sbXML.Append("<NgheKinhDoanh>" + item["NgheKinhDoanh"].Text.Trim().Replace("&nbsp;", "") + "</NgheKinhDoanh>");
                 sbXML.Append("</Record>");
             }
@@ -122,21 +122,39 @@ namespace TelerikWebApp1
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if(grid.Items.Count != 0)
+            st.Clear();
+            try
             {
-                string Err = InsertKhaiThue();
-                if (Err != "-1")
+                if (grid.Items.Count != 0)
                 {
-                    idKhaiThue = Err;
-                    InsertChiTiet();
-                    LoadDataByID(idKhaiThue);
-                    
+                    string Err = InsertKhaiThue();
+                    if (Err != "-1")
+                    {
+                        idKhaiThue = Err;
+                        InsertChiTiet();
+                        LoadDataByID(idKhaiThue);
+                        st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                    }
+                    else
+                    {
+                        st.Append("$.notify('Không tồn tại mã số thuế này',{className: 'error',globalPosition: 'bottom right'});");
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                        txtMST.Focus();
+                    }
                 }
                 else
-                    Response.Write("<script>alert('Không tồn tại mã số thuế này');</script>");
+                {
+                    st.Append("$.notify('Chưa nhập nội dung khai thuế',{className: 'error',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                    cboMaNganh.Focus();
+                }
             }
-            else
-                Response.Write("<script>alert('Chưa nhập nội dung khai thuế');</script>");
+            catch (Exception mess)
+            {
+                st.Append("$.notify('" + mess + "',{className: 'error',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+            }
 
 
         }
@@ -159,7 +177,7 @@ namespace TelerikWebApp1
             string ReturnCode = string.Empty, ReturnMess = string.Empty;
             string manganh = "", DoanhThu = "", NgheKinhDoanh = "";
             manganh = cboMaNganh.SelectedValue.Trim();
-            DoanhThu = txtDanhThu.Text.Replace(",", "");
+            DoanhThu = txtDanhThu.Text.Replace("&nbsp;", "");
             NgheKinhDoanh = txtNgheKinhDoanh.Text;
             for (int i = 0; i < grid.Items.Count; i++)
             {
@@ -208,7 +226,7 @@ namespace TelerikWebApp1
             string manganh = "", DoanhThu = "", NgheKinhDoanh = "", NgayBDKinhDoanh = "";
 
             manganh = cboMaNganh.SelectedValue.Trim();
-            DoanhThu = txtDanhThu.Text.Replace(",","");
+            DoanhThu = txtDanhThu.Text.Replace(",", "");
             NgheKinhDoanh = txtNgheKinhDoanh.Text;
             NgayBDKinhDoanh = txtNgayKhaiThue.Text;
             for (int i = 0; i < grid.Items.Count; i++)
@@ -219,7 +237,7 @@ namespace TelerikWebApp1
                     sbXML.Append("<idKhaiThue>" + idKhaiThue + "</idKhaiThue>");
                     sbXML.Append("<idchitiet>" + item["idchitiet"].Text.Trim().Replace("&nbsp;", "") + "</idchitiet>");
                     sbXML.Append("<manganh>" + item["manganh"].Text.Trim().Replace("&nbsp;", "") + "</manganh>");
-                    sbXML.Append("<DoanhThu>" + item["DoanhThu"].Text.Trim().Replace("&nbsp;", "") + "</DoanhThu>");
+                    sbXML.Append("<DoanhThu>" + item["DoanhThu"].Text.Trim().Replace(",", "") + "</DoanhThu>");
                     sbXML.Append("<NgheKinhDoanh>" + item["NgheKinhDoanh"].Text.Trim().Replace("&nbsp;", "") + "</NgheKinhDoanh>");
                     sbXML.Append("</Record>");
                 }
@@ -240,14 +258,29 @@ namespace TelerikWebApp1
         }
         protected void btnAddDetail_Click(object sender, EventArgs e)
         {
-            string err = CheckTrungChiTiet();
-            if (err == "")
+            st.Clear();
+            try
             {
-                sbXML.Clear();
-                LoadDetail("");
+                string err = CheckTrungChiTiet();
+                if (err == "")
+                {
+                    sbXML.Clear();
+                    LoadDetail("");
+                    st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                }
+                else
+                {
+                    st.Append("$.notify('" + err + "',{className: 'error',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                }
             }
-            else
-                Response.Write("<script>alert('"+err+"');</script>");
+            catch (Exception mess)
+            {
+                st.Append("$.notify('" + mess + "',{className: 'error',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+            }
+
 
         }
 
@@ -271,21 +304,32 @@ namespace TelerikWebApp1
             GridDataItem item_detail;
             if (commandName == "DELETE_DEMAND")
             {
-                if (e.Item is GridDataItem)
+                try
                 {
-                    item_detail = (GridDataItem)e.Item;
-                    string idchitiet = item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", "") + "$";
-                    if (item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", "") != "")
+                    if (e.Item is GridDataItem)
                     {
-                        int id = int.Parse(item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", ""));
-                        ChiTietKhaiThue chitiet = db.ChiTietKhaiThues.SingleOrDefault(x => x.idChiTiet == id);
-                        db.ChiTietKhaiThues.DeleteOnSubmit(chitiet);
-                        db.SubmitChanges();
+                        item_detail = (GridDataItem)e.Item;
+                        string idchitiet = item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", "") + "$";
+                        if (item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", "") != "")
+                        {
+                            int id = int.Parse(item_detail["idchitiet"].Text.Trim().Replace("&nbsp;", ""));
+                            ChiTietKhaiThue chitiet = db.ChiTietKhaiThues.SingleOrDefault(x => x.idChiTiet == id);
+                            db.ChiTietKhaiThues.DeleteOnSubmit(chitiet);
+                            db.SubmitChanges();
+                            st.Append("$.notify('Xoá thành công',{className: 'success',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                        }
+                        txtSeq.Text = "";
+                        TextBox txtSeqRow = (TextBox)item_detail.FindControl("txtSeqRow");
+                        LoadDetail(txtSeqRow.Text);
                     }
-                    txtSeq.Text = "";
-                    TextBox txtSeqRow = (TextBox)item_detail.FindControl("txtSeqRow");
-                    LoadDetail(txtSeqRow.Text);
                 }
+                catch (Exception mess)
+                {
+                    st.Append("$.notify('" + mess + "',{className: 'error',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                }
+
             }
         }
 

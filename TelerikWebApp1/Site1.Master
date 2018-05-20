@@ -17,6 +17,16 @@
     <link href="Content/menuStyle.css" rel="stylesheet" />
     <link href="Content/myStyles.css" rel="stylesheet" />
     <link href="Content/overlay.css" rel="stylesheet" />
+    <script src="Content/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <link href="Content/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
+    <script src="Content/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="Content/notify.min.js"></script>
+    <style>
+        /*.notifyjs-corner{
+    width:300px;
+    height:100px;
+}*/
+    </style>
 </head>
 <body>
     <table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -71,11 +81,11 @@
                                                                     </li>
                                                                 </ul>
                                                             </li>
-                                                            <li class='has-sub'> 
+                                                            <li class='has-sub'>
                                                                 <a href='#'><span>Lập sổ bộ</span></a>
                                                                 <ul>
                                                                     <li>
-                                                                        <a href ="SoBoThue.aspx"><span>Lập sổ bộ thuế</span></a>
+                                                                        <a href="SoBoThue.aspx"><span>Lập sổ bộ thuế</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="DanhSachSoBoThue.aspx"><span>Danh sách sổ bộ thuế</span></a>
@@ -104,7 +114,7 @@
                                                                         <a href='#'><span>Chấm bộ thuế</span></a>
                                                                     </li>
                                                                 </ul>
-                                                             </li>
+                                                            </li>
                                                             <li><a href='#'><span>Contact</span></a></li>
                                                         </ul>
                                                     </div>
@@ -113,7 +123,7 @@
                                             </tr>
                                             <tr>
                                                 <td align="left" valign="top" class="banner">
-                                                  <%--  <h2>Thuế Việt Nam<br />
+                                                    <%--  <h2>Thuế Việt Nam<br />
                                                         Tổng cục thuế bộ Tài Chính<br />
                                                         Nước cộng hòa xã hội chủ nghĩa Việt Nam</h2>--%>
                                                 </td>
@@ -128,7 +138,7 @@
                         <td align="left" valign="top" class="paddingTop30">
                             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                 <tr>
-<%--                                    <td width="208" align="left" valign="top" class="leftPanlbotm">
+                                    <%--                                    <td width="208" align="left" valign="top" class="leftPanlbotm">
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                             <tr>
                                                 <td align="left" valign="top" class="leftPanltop"></td>
@@ -226,14 +236,13 @@
             </td>
         </tr>
     </table>
-    <script src="Content/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
-    <link href="Content/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
-    <script src="Content/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
     <script src="Content/jquery-ui-1.12.1.custom/jquery.ui.datepicker-vi-VN.js"></script>
     <script src="Content/jquery.ui.datepicker-vi-VN.js"></script>
     <script src="Content/Javascript/MyLibrary.js"></script>
+
     <script src="Content/Javascript/common.js"></script>
-  <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 
 </body>
 
@@ -241,6 +250,6 @@
 
 
 
-    
+
 
 </html>

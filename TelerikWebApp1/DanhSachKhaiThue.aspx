@@ -8,7 +8,7 @@
     <br />
     <form id="frm" runat="server">
 
-        <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
+        <table cellspacing="0" cellpadding="0" width="100%" border="0" runat="server">
             <tr align="center">
                 <td width="20%"></td>
                 <td width="10%"></td>
@@ -122,6 +122,7 @@
         <table width="100%" cellpadding="1" cellspacing="1" border="0">
             <tr>
                 <td>
+                    <hr />
                     <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
                     <telerik:RadSkinManager ID="RadSkinManager2" runat="server" Skin="Office2007" />
                     <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
