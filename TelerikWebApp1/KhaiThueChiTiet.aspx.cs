@@ -272,7 +272,6 @@ namespace TelerikWebApp1
                 {
                     sbXML.Clear();
                     LoadDetail("");
-                    st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                 }
                 else

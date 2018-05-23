@@ -157,7 +157,7 @@
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
 
-                                        <telerik:GridBoundColumn UniqueName="doanhthu" DataField="doanhthu" HeaderText="Doanh Thu" DataFormatString="{0:N0}">
+                                        <telerik:GridBoundColumn UniqueName="doanhthu" DataField="doanhthu" HeaderText="Doanh Thu" dataformatstring="{0:N0}">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="120px" />
                                             <ItemStyle HorizontalAlign="left" VerticalAlign="Middle"  />
                                         </telerik:GridBoundColumn>
@@ -241,7 +241,7 @@
                     <asp:Label runat="server" ID="Label7">Diện tích kinh doanh (Mét vuông)</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="input" runat="server" ID="txtDienTichKD" Width="80px" onblur="javascript:checkNumeric(this,999);"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtDienTichKD" Width="80px" onblur="javascript:checkNumeric(this,999);"></asp:TextBox>
                 </td>
             </tr>
             <tr>

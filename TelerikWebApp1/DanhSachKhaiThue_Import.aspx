@@ -1,157 +1,76 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site1.Master" CodeBehind="DanhSachKhaiThue.aspx.cs" Inherits="TelerikWebApp1.DanhSachKhaiThue" %>
-
-<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DanhSachKhaiThue_Import.aspx.cs" MasterPageFile="~/Site1.Master" Inherits="TelerikWebApp1.DanhSachKhaiThue_Import" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="content" runat="server">
-    <h1 style="font-size: 20px;">Danh Sách Khai Thuế</h1>
-    <br />
-    <form id="frm" runat="server">
+    <form id="frm" runat="server" enctype="multipart/form-data">
 
-        <table cellspacing="0" cellpadding="0" width="100%" border="0" runat="server">
-            <tr align="center">
-                <td width="20%"></td>
+        <table id="Table1" cellspacing="1" cellpadding="1" width="100%" border="0">
+            <tr>
+                <td width="30%"></td>
                 <td width="10%"></td>
-                <td width="50%" align="center"></td>
+                <td width="60%"></td>
             </tr>
             <tr>
-                <td></td>
-                <td>
-                    <asp:Label runat="server" ID="lblNam">Năm</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox class="InputCenter" runat="server" ID="txtNam" Width="50px" onblur="javascript:CheckYear1900(this);"></asp:TextBox>
+                <td colspan="3" height="20" align="center">
+                    <asp:Label ID="lblTitle" runat="server" Style="font-weight: bold; font-size: 20px"
+                        align="center">NHẬP DỮ LIỆU</asp:Label>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <br />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <asp:Label runat="server" ID="lblMST">Mã số thuế</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox class="Input1" runat="server" ID="txtMST" Width="80px" onblur="javascript:checkNumber(this);"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <br />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <asp:Label runat="server" ID="lblSoGP">Số giấy phép</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox class="Input1" runat="server" ID="txtSoGP" Width="80px"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <br />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <asp:Label runat="server" ID="lblMaNganh">Mã ngành</asp:Label>
-                </td>
-                <td>
-                    <telerik:RadComboBox class="input" runat="server" ID="cboMaNganh" Width="40%"></telerik:RadComboBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <br />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <asp:Label runat="server">Trạng thái</asp:Label></td>
                 <td colspan="3">
-                    <table cellspacing="0" cellpadding="1" width="100%" border="0">
-                        <tr>
-                            <td style="display: inline-block">
-                                <asp:RadioButtonList runat="server" ID="rdbTinhTrang" RepeatDirection="Horizontal">
-                                    <asp:ListItem Value="0">Tạm ngưng nghỉ</asp:ListItem>
-                                    <asp:ListItem Value="1">Đang hoạt động</asp:ListItem>
-                                    <asp:ListItem Value="2" Selected="True">Tất cả</asp:ListItem>
-                                </asp:RadioButtonList>
-                            </td>
-                        </tr>
-
-                    </table>
+                    <br />
                 </td>
-
             </tr>
-
-        </table>
-
-        <hr />
-        <table width="100" cellpadding="0" cellspacing="0">
             <tr>
-                <td id="tdTimKem" runat="server">
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnSearch" name="btnSearch" runat="server" AccessKey="F" ToolTip="Alt+F" OnClick="btnSearch_Click">
-		                    <span class="btnSearch">Tìm kiếm</span>
-                        </asp:LinkButton>
-                    </span>
+                <td align="center" colspan="3">
+                    <asp:Label ID="lblErr" runat="server" Width="221px" Style="font-weight: bold; font-size: 15px" ForeColor="Red"></asp:Label>
                 </td>
-
-                <td id="tdLamMoi" runat="server">
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnAddNew" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" OnClick="btnAddNew_Click">
-		                    <span class="btnReset">Làm mới</span>
-                        </asp:LinkButton>
-                    </span>
-                </td>
-                <td id="tdSaoChep" runat="server">
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnCopy" name="btnCopy" AccessKey="S" OnClick="btnCopy_Click"
-                            runat="server" ToolTip="ALT+S">
-                    <span class="btnCopy">Sao chép</span>
-                        </asp:LinkButton>
-                    </span>
-                </td>
-                <td id="tdKhoa" runat="server">
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnLock" name="btnLock" runat="server" AccessKey="L" ToolTip="Alt+L" OnClick="btnLock_Click">
-		                    <span class="btnLock">Khóa</span>
-                        </asp:LinkButton>
-                    </span>
-                </td>
-                <td runat="server">
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnUnLock" name="btnUnLock" AccessKey="U"
-                            runat="server" ToolTip="ALT+U" OnClick="btnUnLock_Click" OnClientClick="return CheckUnLock()">
-                    <span class="btnUnLock">Mở Khóa</span>
-                        </asp:LinkButton>
-                    </span>
-                </td>
-                <td id="tdXuatDL" runat="server">
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnExport" name="btnExport" runat="server" AccessKey="E" ToolTip="Alt+E" OnClick="btnExport_Click">
-		                    <span class="btnExport">Export DL</span>
-                        </asp:LinkButton>
-                    </span>
-                </td>
-                <td id="tdThemDL" runat="server">
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnImport" name="btnImport" runat="server" AccessKey="E" ToolTip="Alt+E">
-		                    <span class="btnImport">Import DL</span>
-                        </asp:LinkButton>
-                    </span>
-                </td>
-
             </tr>
-
+            <tr>
+                <td align="center" colspan="3">
+                    <asp:TextBox ID="txtMAKHDBLD" runat="server" Style="display: none"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    <asp:Label ID="lblSelectFile" runat="server" CssClass="LabelRequire"></asp:Label>
+                </td>
+                <td></td>
+                <td align="left">
+                    <asp:Label ID="lblWarning" runat="server" CssClass="LabelRequire" Text="Chỉ được chọn tối đa 1 file để xem dữ liệu"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 150px">
+                    <div style="overflow: auto; width: 97%; height: 150px">
+                        <asp:FileUpload ID="FileUpload1" runat="server" />
+                    </div>
+                </td>
+                <td style="height: 150px" valign="top" align="center">
+                    <div>
+                        <asp:LinkButton ID="btnSelect" name="btnSelect" AccessKey="A" ToolTip="ALT+A" runat="server" CssClass="btnSelectOther" OnClick="btnSelect_Click"
+                            Text="Chọn">                                
+                        </asp:LinkButton>
+                    </div>
+                </td>
+                
+            </tr>
+            <tr>
+                
+                <td colspan="3" align="center">
+                    <span class="btn1">
+                        <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R"><span class="btnReset">Làm m&#7899;i</span>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();"><span class="btnSave">L&#432;u</span>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btnClose" name="btnClose" AccessKey="C" ToolTip="ALT+C" runat="server" CssClass="btnCloseOther" OnClick="btnClose_Click"
+                            Text="Đóng">                            
+                        </asp:LinkButton>
+                    </span>
+                </td>
+            </tr>
         </table>
+
+
         <table width="100%" cellpadding="1" cellspacing="1" border="0">
             <tr>
                 <td>
@@ -161,9 +80,9 @@
                     <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
                         <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
                             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
-                                <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
-                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false"
-                                    OnNeedDataSource="grid_NeedDataSource" OnItemCommand="grid_ItemCommand" OnItemDataBound="grid_ItemDataBound">
+                                <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" 
+                                    AllowAutomaticUpdates="true"
+                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="true" OnNeedDataSource="grid_NeedDataSource">
                                     <ClientSettings>
                                         <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
                                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
@@ -172,7 +91,7 @@
                                     <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
-                                            <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
+                                       <%--     <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                                 <HeaderStyle Width="50px" />
                                             </telerik:GridClientSelectColumn>
                                             <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
@@ -198,8 +117,8 @@
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn> 
-                                            <telerik:GridBoundColumn UniqueName="TongDoanhThu" DataField="TongDoanhThu" HeaderText="Tổng Doanh thu" dataformatstring="{0:N0}">
+                                            </telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn UniqueName="TongDoanhThu" DataField="TongDoanhThu" HeaderText="Tổng Doanh thu">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
@@ -227,7 +146,7 @@
                                             <telerik:GridBoundColumn UniqueName="TrangThaiHoatDong" DataField="TrangThaiHoatDong" HeaderText="Trạng thái">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
+                                            </telerik:GridBoundColumn>--%>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
@@ -237,14 +156,5 @@
                 </td>
             </tr>
         </table>
-
     </form>
-</asp:Content>
-<asp:Content ContentPlaceHolderID="script" ID="script" runat="server">
-    <script>
-        function ShowExcelSelectPage() {
-            window.open("DanhSachKhaiThue_Import.aspx", 'SelectFile', 'status=1,toolbar=0,scrollbars=1,resizable=0,alwaysRaised=Yes, top=20, left=30, width=1200, height=600,1 ,align=center');
-            return false;
-        }
-    </script>
 </asp:Content>
