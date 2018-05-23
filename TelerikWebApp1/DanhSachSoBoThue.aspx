@@ -111,7 +111,10 @@
                                     <Columns>
                                          <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                         </telerik:GridClientSelectColumn>
-                                      
+                                      <telerik:GridBoundColumn UniqueName="idSoBoThue" DataField="idSoBoThue" HeaderText="idSoBoThue" Visible="false">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="idKhaiThue" DataField="idKhaiThue" HeaderText="idKhaiThue" Visible="false">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

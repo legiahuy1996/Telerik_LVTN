@@ -103,37 +103,15 @@
                                                 </ItemTemplate>
 
                                             </telerik:GridTemplateColumn>
-                                           <telerik:GridBoundColumn UniqueName="idKhaiThue" DataField="idKhaiThue" HeaderText="idKhaiThue" Visible="false">
+                                        <telerik:GridBoundColumn UniqueName="idKhaiThue" DataField="idKhaiThue" HeaderText="Mã khai thuế">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="Tên người nộp thuế">
-                                            <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="150px"/>
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
+                                        </telerik:GridBoundColumn>                                   
                                       
-                                        <telerik:GridBoundColumn UniqueName="NgayLapBo" DataField="NgayLapHo" HeaderText="Ngày lập bộ" Visible="false">
+                                        <telerik:GridBoundColumn UniqueName="NgayLapBo" DataField="NgayLapHo" HeaderText="Ngày lập bộ">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                    
-                                        <telerik:GridBoundColumn UniqueName="nghekinhdoanh" DataField="nghekinhdoanh" HeaderText="Nghề kinh doanh">
-                                            <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="150px"/>
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="diachiKD" DataField="diachiKD" HeaderText="Địa chỉ kinh doanh">
-                                            <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="150px"/>
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        
+                                        </telerik:GridBoundColumn>                              
                                         <telerik:GridBoundColumn UniqueName="Thang" DataField="Thang" HeaderText="Tháng kinh doanh">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
