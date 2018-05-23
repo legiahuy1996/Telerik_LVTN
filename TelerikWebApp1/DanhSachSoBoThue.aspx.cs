@@ -25,7 +25,7 @@ namespace TelerikWebApp1
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            btnImport.Attributes.Add("OnClick", "return ShowExcelSelectPage()");
         }
 
         public void loadDataSearch()
