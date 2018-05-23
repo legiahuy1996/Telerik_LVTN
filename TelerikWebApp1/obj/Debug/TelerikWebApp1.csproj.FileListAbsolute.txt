@@ -102,7 +102,6 @@ D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.dll
 D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.xml
 D:\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.pdb
 D:\Projects\LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojResolveAssemblyReference.cache
-E:\New folder\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojAssemblyReference.cache
 E:\New folder\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll.licenses
 E:\New folder\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CoreCompileInputs.cache
 E:\New folder\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll
@@ -131,3 +130,10 @@ E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Spreadsh
 E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.xml
 E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Zip.xml
 E:\New folder\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CopyComplete
+E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\ICSharpCode.SharpZipLib.dll
+E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.dll
+E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OOXML.dll
+E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OpenXml4Net.dll
+E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OpenXmlFormats.dll
+E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.xml
+E:\New folder\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojAssemblyReference.cache

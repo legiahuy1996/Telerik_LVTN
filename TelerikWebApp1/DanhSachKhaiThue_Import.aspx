@@ -58,9 +58,9 @@
                 
                 <td colspan="3" align="center">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R"><span class="btnReset">Làm m&#7899;i</span>
+                        <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" OnClick="btnReset_Click"><span class="btnReset">Làm m&#7899;i</span>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();"><span class="btnSave">L&#432;u</span>
+                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();" OnClick="btnSave_Click"><span class="btnSave">L&#432;u</span>
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnClose" name="btnClose" AccessKey="C" ToolTip="ALT+C" runat="server" CssClass="btnCloseOther" OnClick="btnClose_Click"
                             Text="Đóng">                            
@@ -68,6 +68,9 @@
                     </span>
                 </td>
             </tr>
+            <tr style="display:none">
+                <asp:TextBox runat="server" ID="txtFilepath" Visible="false"></asp:TextBox>
+                 </tr>
         </table>
 
 
@@ -82,7 +85,7 @@
                             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
                                 <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" 
                                     AllowAutomaticUpdates="true"
-                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="true" OnNeedDataSource="grid_NeedDataSource">
+                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource">
                                     <ClientSettings>
                                         <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
                                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
@@ -91,7 +94,7 @@
                                     <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
-                                       <%--     <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
+                                            <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                                 <HeaderStyle Width="50px" />
                                             </telerik:GridClientSelectColumn>
                                             <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
@@ -146,7 +149,7 @@
                                             <telerik:GridBoundColumn UniqueName="TrangThaiHoatDong" DataField="TrangThaiHoatDong" HeaderText="Trạng thái">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>--%>
+                                            </telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>

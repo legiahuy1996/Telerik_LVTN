@@ -111,16 +111,16 @@ namespace TelerikWebApp1
 
 
                 // Format lại color nếu như thỏa điều kiện
-                if (item.TinhTrangNopThue == "0")
-                {
-                    // Ở đây chúng ta sẽ format lại theo dạng fromRow,fromCol,toRow,toCol
-                    using (var range = worksheet.Cells[i + 2, 1, i + 2, 16])
-                    {
-                        // Format text đỏ và đậm
-                        range.Style.Font.Color.SetColor(Color.Red);
-                        range.Style.Font.Bold = true;
-                    }
-                }
+                //if (item.TinhTrangNopThue == "0")
+                //{
+                //    // Ở đây chúng ta sẽ format lại theo dạng fromRow,fromCol,toRow,toCol
+                //    using (var range = worksheet.Cells[i + 2, 1, i + 2, 16])
+                //    {
+                //        // Format text đỏ và đậm
+                //        range.Style.Font.Color.SetColor(Color.Red);
+                //        range.Style.Font.Bold = true;
+                //    }
+                //}
 
             }
             worksheet.Cells[2,16,2,16].Style.Numberformat.Format = "dd/MM/yyyy";

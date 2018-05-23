@@ -1,4 +1,4 @@
-ALTER PROC getThongBaoNopThue
+alter PROC getThongBaoNopThue
 @thang	NVARCHAR(7) = NULL
 AS
 DECLARE @dThang int,@dNam	VARCHAR(4)

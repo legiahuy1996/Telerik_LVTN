@@ -49,6 +49,21 @@
     <Reference Include="EPPlusEnumerable, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlusEnumerable.1.4.0.2\lib\EPPlusEnumerable.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -102,6 +117,13 @@
     <Compile Include="DanhSachKhaiThue.aspx.designer.cs">
       <DependentUpon>DanhSachKhaiThue.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DanhSachKhaiThue_Import.aspx.cs">
+      <DependentUpon>DanhSachKhaiThue_Import.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachKhaiThue_Import.aspx.designer.cs">
+      <DependentUpon>DanhSachKhaiThue_Import.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DanhSachSoBoThue.aspx.cs">
       <DependentUpon>DanhSachSoBoThue.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -122,6 +144,13 @@
     </Compile>
     <Compile Include="DieuChinhHoCaThe.aspx.designer.cs">
       <DependentUpon>DieuChinhHoCaThe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InKeKhaiNopThue.aspx.cs">
+      <DependentUpon>InKeKhaiNopThue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InKeKhaiNopThue.aspx.designer.cs">
+      <DependentUpon>InKeKhaiNopThue.aspx</DependentUpon>
     </Compile>
     <Compile Include="KhaiThueChiTiet.aspx.cs">
       <DependentUpon>KhaiThueChiTiet.aspx</DependentUpon>
@@ -201,16 +230,36 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\buttonStyle.css" />
     <Content Include="Content\dhtmlxmessage.css" />
+    <Content Include="Content\Javascript\AlertMessage_EN.js" />
+    <Content Include="Content\Javascript\AlertMessage_VN.js" />
+    <Content Include="Content\Javascript\CheckDate.js" />
+    <Content Include="Content\Javascript\Client-Side_Validn.js" />
+    <Content Include="Content\Javascript\common.js" />
+    <Content Include="Content\Javascript\common_3.js" />
+    <Content Include="Content\Javascript\DynamicRadComboList.js" />
+    <Content Include="Content\Javascript\DynamicRCBScript.js" />
+    <Content Include="Content\Javascript\getorgchart\getorgchart.css" />
+    <Content Include="Content\Javascript\getorgchart\getorgchart.js" />
+    <Content Include="Content\Javascript\getorgchart\graphics.png" />
+    <Content Include="Content\Javascript\jquery.min.js" />
+    <Content Include="Content\Javascript\jsDate.js" />
+    <Content Include="Content\Javascript\MyLibrary.js" />
+    <Content Include="Content\Javascript\overlay.js" />
+    <Content Include="Content\Javascript\RCBScript.js" />
+    <Content Include="Content\Javascript\tooltip.js" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\jquery.ui.datepicker-vi-VN.js" />
     <Content Include="Content\MDF.css" />
     <Content Include="Content\menuStyle.css" />
     <Content Include="Content\myStyles.css" />
+    <Content Include="Content\notify.min.js" />
     <Content Include="Content\overlay.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\styles.css" />
     <Content Include="DanhSachHoCaThe.aspx" />
     <Content Include="DanhSachKhaiThue.aspx" />
+    <Content Include="DanhSachKhaiThue_Import.aspx" />
     <Content Include="DanhSachSoBoThue.aspx" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -419,6 +468,7 @@
     <Content Include="images\table_21.jpg" />
     <Content Include="images\table_23.jpg" />
     <Content Include="images\table_25.jpg" />
+    <Content Include="InKeKhaiNopThue.aspx" />
     <Content Include="KhaiThueChiTiet.aspx" />
     <Content Include="SoBoThue.aspx" />
     <Content Include="ThongTinHoCaThe.aspx" />
@@ -431,7 +481,9 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -447,6 +499,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="file\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
