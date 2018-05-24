@@ -101,13 +101,16 @@
                     <telerik:RadSkinManager ID="RadSkinManager2" runat="server" />
                     <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
                         <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
-                            <telerik:RadGrid runat="server"  AllowMultiRowSelection="true" Width="100%" Height="500px" ID="grid" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true" AllowSorting="true" AutoGenerateColumns="false">
+                            <telerik:RadGrid runat="server"  AllowMultiRowSelection="true" Width="100%" Height="500px" ID="grid" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
+                                     AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource">
                                 <ClientSettings>
-                                    <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
+                                    <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
+                                     <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
                                 </ClientSettings>
                                 <PagerStyle Mode="NextPrevNumericAndAdvanced" AlwaysVisible="true" />
-                                <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" AllowMultiColumnSorting="true">
-                                    <CommandItemSettings ShowAddNewRecordButton="false" />
+                                <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
+                               
+                                    <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                     <Columns>
                                          <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                         </telerik:GridClientSelectColumn>

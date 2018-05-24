@@ -26,6 +26,10 @@ namespace TelerikWebApp1
         protected void Page_Load(object sender, EventArgs e)
         {
             btnImport.Attributes.Add("OnClick", "return ShowExcelSelectPage()");
+            if(!IsPostBack)
+            {
+                loadDataSearch();
+            }
         }
 
         public void loadDataSearch()
@@ -203,6 +207,19 @@ namespace TelerikWebApp1
             Export();
             Response.Redirect("DanhSachSoBoThue.aspx");
 
+        }
+
+        protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            try
+            {
+                loadDataSearch();
+            }
+            catch
+            {
+                if (grid.DataSource == null)
+                    grid.DataSource = new string[] { };
+            }
         }
     }
 }
