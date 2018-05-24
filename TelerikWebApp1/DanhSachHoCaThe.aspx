@@ -147,7 +147,7 @@
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                        
-                                        <telerik:GridBoundColumn UniqueName="diachi" DataField="diachi" HeaderText="Địa chỉ kinh doanh">
+                                        <telerik:GridBoundColumn UniqueName="diachiKD" DataField="diachiKD" HeaderText="Địa chỉ kinh doanh">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="120px" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>

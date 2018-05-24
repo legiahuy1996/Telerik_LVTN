@@ -20,68 +20,68 @@ namespace TelerikWebApp1
             db = new DataClasses1DataContext();
           
         }
-        //private void BindingFormatForExcel(ExcelWorksheet worksheet, List<DanhSachHoCaTheResult> listItems)
-        //{
-        //    // Set default width cho tất cả column
-        //    worksheet.DefaultColWidth = 10;
-        //    // Tự động xuống hàng khi text quá dài
-        //    worksheet.Cells.Style.WrapText = true;
-        //    // Tạo header
-        //    worksheet.Cells[1, 1].Value = "Mã số thuế";
-        //    worksheet.Cells[1, 2].Value = "CMND";
-        //    worksheet.Cells[1, 3].Value = "Tên cửa hàng";
-        //    worksheet.Cells[1, 4].Value = "Ngày cấp";
-        //    worksheet.Cells[1, 5].Value = "Số giấy phép";
-        //    worksheet.Cells[1, 6].Value = "Địa chỉ";
-        //    worksheet.Cells[1, 7].Value = "Họ tên";
-        //    worksheet.Cells[1, 8].Value = "Ngày tính thuế";
-        //    worksheet.Cells[1, 9].Value = "Mã ngành";
-        //    worksheet.Cells[1, 10].Value = "Số điện thoại";
+        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<DanhSachHoCaTheResult> listItems)
+        {
+            // Set default width cho tất cả column
+            worksheet.DefaultColWidth = 10;
+            // Tự động xuống hàng khi text quá dài
+            worksheet.Cells.Style.WrapText = true;
+            // Tạo header
+            worksheet.Cells[1, 1].Value = "Mã số thuế";
+            worksheet.Cells[1, 2].Value = "CMND";
+            worksheet.Cells[1, 3].Value = "Tên cửa hàng";
+            worksheet.Cells[1, 4].Value = "Ngày cấp";
+            worksheet.Cells[1, 5].Value = "Số giấy phép";
+            worksheet.Cells[1, 6].Value = "Địa chỉ";
+            worksheet.Cells[1, 7].Value = "Họ tên";
+            worksheet.Cells[1, 8].Value = "Ngày tính thuế";
+            worksheet.Cells[1, 9].Value = "Mã ngành";
+            worksheet.Cells[1, 10].Value = "Số điện thoại";
 
 
 
 
 
-        //    // Lấy range vào tạo format cho range đó ở đây là từ A1 tới Q1
-        //    using (var range = worksheet.Cells["A1:P1"])
-        //    {
-        //        // Set PatternType
-        //        range.Style.Fill.PatternType = ExcelFillStyle.DarkGray;
-        //        // Set Màu cho Background
-        //        range.Style.Fill.BackgroundColor.SetColor(Color.White);
-        //        //
-        //        range.Style.Font.Color.SetColor(Color.Black);
-        //        // Canh giữa cho các text
-        //        range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-        //        // Set Font cho text  trong Range hiện tại
-        //        range.Style.Font.SetFromFont(new Font("Arial", 10));
-        //        // Set Border
-        //        range.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
-        //        // Set màu ch Border
-        //        range.Style.Border.Bottom.Color.SetColor(Color.Blue);
+            // Lấy range vào tạo format cho range đó ở đây là từ A1 tới Q1
+            using (var range = worksheet.Cells["A1:P1"])
+            {
+                // Set PatternType
+                range.Style.Fill.PatternType = ExcelFillStyle.DarkGray;
+                // Set Màu cho Background
+                range.Style.Fill.BackgroundColor.SetColor(Color.White);
+                //
+                range.Style.Font.Color.SetColor(Color.Black);
+                // Canh giữa cho các text
+                range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                // Set Font cho text  trong Range hiện tại
+                range.Style.Font.SetFromFont(new Font("Arial", 10));
+                // Set Border
+                range.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
+                // Set màu ch Border
+                range.Style.Border.Bottom.Color.SetColor(Color.Blue);
 
-        //    }
+            }
 
-        //    // Đỗ dữ liệu từ list vào 
-        //    for (int i = 0; i < listItems.Count; i++)
-        //    {
-        //        var item = listItems[i];
-        //        worksheet.Cells[i + 2, 1].Value = item.masothue;
-        //        worksheet.Cells[i + 2, 2].Value = item.cmnd;
-        //        worksheet.Cells[i + 2, 3].Value = item.tencuahang;
-        //        worksheet.Cells[i + 2, 4].Value = item.ngaycapmst;
-        //        worksheet.Cells[i + 2, 5].Value = item.sogp;
-        //        worksheet.Cells[i + 2, 6].Value = item.diachi;
-        //        worksheet.Cells[i + 2, 7].Value = item.hoten;
-        //        worksheet.Cells[i + 2, 8].Value = item.ngaytinhthue;
-        //        worksheet.Cells[i + 2, 9].Value = item.manganh;
-        //        worksheet.Cells[i + 2, 10].Value = item.sodt;
+            // Đỗ dữ liệu từ list vào 
+            for (int i = 0; i < listItems.Count; i++)
+            {
+                var item = listItems[i];
+                worksheet.Cells[i + 2, 1].Value = item.masothue;
+                worksheet.Cells[i + 2, 2].Value = item.cmnd;
+                worksheet.Cells[i + 2, 3].Value = item.tencuahang;
+                worksheet.Cells[i + 2, 4].Value = item.ngaycapmst;
+                worksheet.Cells[i + 2, 5].Value = item.sogp;
+                worksheet.Cells[i + 2, 6].Value = item.diachiKD;
+                worksheet.Cells[i + 2, 7].Value = item.hoten;
+                worksheet.Cells[i + 2, 8].Value = item.ngaytinhthue;
+                worksheet.Cells[i + 2, 9].Value = item.manganh;
+                worksheet.Cells[i + 2, 10].Value = item.sodt;
 
 
-        //    }
-        //    worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
-         
-        //}
+            }
+            worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
+
+        }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             string mst = txtMST.Text.Trim();
@@ -94,8 +94,8 @@ namespace TelerikWebApp1
             string ngaytinhthue = txtNgayTinhThue.Text.Trim();
             string sdt = txtSDT.Text.Trim();
             string hoten = txtHoTen.Text;
-            //grid.DataSource = db.DanhSachHoCaThe(mst,cmnd,tencuahang,ngaycap,sogp,diachi,hoten,ngaytinhthue,manganh, sdt, "Search");
-            //grid.DataBind();
+            grid.DataSource = db.DanhSachHoCaThe(mst, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, manganh, sdt, "Search");
+            grid.DataBind();
         }
         private Stream CreateExcelFile(Stream stream = null)
         {
@@ -110,7 +110,7 @@ namespace TelerikWebApp1
             string ngaycap = txtNgayCap.Text;
             string ngaytinhthue = txtNgayTinhThue.Text;
             string sdt = txtSDT.Text;
-            //List<DanhSachHoCaTheResult> list = db.DanhSachHoCaThe(MST, cmnd, tencuahang, ngaycap, sogp, diachi, hoten,ngaytinhthue,manganh,sdt, Activity).ToList();
+            List<DanhSachHoCaTheResult> list = db.DanhSachHoCaThe(MST, cmnd, tencuahang, ngaycap, sogp, diachi, hoten,ngaytinhthue,manganh,sdt, Activity).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
@@ -125,8 +125,8 @@ namespace TelerikWebApp1
                 var workSheet = excelPackage.Workbook.Worksheets[1];
                 // Đổ data vào Excel file
 
-                //BindingFormatForExcel(workSheet, list);
-                //excelPackage.Save();
+                BindingFormatForExcel(workSheet, list);
+                excelPackage.Save();
                 return excelPackage.Stream;
             }
         }
