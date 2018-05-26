@@ -1,14 +1,14 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue_NotXML]    Script Date: 5/23/2018 9:02:00 PM ******/
+/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue_NotXML]    Script Date: 5/26/2018 12:55:46 PM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROC [dbo].[Insert_ChitietKhaiThue_NotXML]
+ALTER PROC [dbo].[Insert_ChitietKhaiThue_NotXML]
     @idKhaiThue NVARCHAR(14) = NULL ,
     @DoanhThu NVARCHAR(14) = NULL ,
     @manganh NVARCHAR(14) = NULL ,
@@ -24,23 +24,36 @@ AS
         FROM    dbo.manganh
         WHERE   manganh = @manganh
         SET @TongSoTienNop = ( @SoTienGTGT1Thang + @SoTienTNCN1Thang )
-        INSERT  INTO dbo.ChiTietKhaiThue
-                ( idKhaiThue ,
-                  DoanhThu ,
-                  SoTienGTGT1Thang ,
-                  SoTienTNCN1Thang ,
-                  TongSoTienNop ,
-                  manganh ,
-                  nghekinhdoanh
-			    )
-        VALUES  ( @idKhaiThue , -- idKhaiThue - int
-                  @DoanhThu , -- DoanhThu - int
-                  @SoTienGTGT1Thang , -- SoTienGTGT1Thang - int
-                  @SoTienTNCN1Thang , -- SoTienTNCN1Thang - int
-                  @TongSoTienNop , -- TongSoTienNop - int
-                  @manganh , -- manganh - nvarchar(10)
-                  @nghekinhdoanh -- nghekinhdoanh - nvarchar(50)
-			    )
+		IF NOT EXISTS(SELECT TOP 1 1 FROM dbo.ChiTietKhaiThue WHERE manganh = @manganh AND idKhaiThue = @idKhaiThue)
+		begin
+			INSERT  INTO dbo.ChiTietKhaiThue
+					( idKhaiThue ,
+					  DoanhThu ,
+					  SoTienGTGT1Thang ,
+					  SoTienTNCN1Thang ,
+					  TongSoTienNop ,
+					  manganh ,
+					  nghekinhdoanh
+					)
+			VALUES  ( @idKhaiThue , -- idKhaiThue - int
+					  @DoanhThu , -- DoanhThu - int
+					  @SoTienGTGT1Thang , -- SoTienGTGT1Thang - int
+					  @SoTienTNCN1Thang , -- SoTienTNCN1Thang - int
+					  @TongSoTienNop , -- TongSoTienNop - int
+					  @manganh , -- manganh - nvarchar(10)
+					  @nghekinhdoanh -- nghekinhdoanh - nvarchar(50)
+					)
+		END 
+		ELSE
+			BEGIN
+				UPDATE dbo.ChiTietKhaiThue
+				SET DoanhThu = @DoanhThu,
+					SoTienGTGT1Thang = @SoTienGTGT1Thang,
+					SoTienTNCN1Thang = @SoTienTNCN1Thang,
+					TongSoTienNop =@TongSoTienNop,
+					nghekinhdoanh =CASE WHEN nghekinhdoanh <> @nghekinhdoanh then ( nghekinhdoanh +', '+ @nghekinhdoanh) ELSE @nghekinhdoanh END 
+				WHERE manganh = @manganh
+            END 
         SELECT  @TongDanhThu = TongDoanhThu 
         FROM    dbo.KhaiThue
         WHERE   idKhaiThue = @idKhaiThue
