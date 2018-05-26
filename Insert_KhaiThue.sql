@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Insert_KhaiThue]    Script Date: 5/20/2018 11:09:43 PM ******/
+/****** Object:  StoredProcedure [dbo].[Insert_KhaiThue]    Script Date: 5/26/2018 11:39:29 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -17,7 +17,6 @@ ALTER PROC [dbo].[Insert_KhaiThue]
     @TuGio INT = NULL ,
     @DenGio INT = NULL ,
     @TrangThaiHoatDong BIT = NULL ,
-    @Lan INT = NULL ,
     @ngaykhaithue NVARCHAR(50) = NULL ,
     @ReturnCode NVARCHAR(255) = NULL OUT ,
     @ReturnMess NVARCHAR(500) = NULL OUT
@@ -37,12 +36,22 @@ AS
                 RETURN
             END 
         DECLARE @curdate DATETIME ,
-            @id INT 
+            @id INT ,@lan INT 		
         SET @curdate = GETDATE()
+
+		--tự động kiểm tra khai thuế lần thứ mấy
+		
         IF ( ISNULL(@idKhaiThue, '') = '' )
             BEGIN
 				PRINT'insert'
-		
+				IF NOT EXISTS (SELECT TOP 1 1 FROM dbo.KhaiThue WHERE masothue = @masothue AND nam = @nam)
+				BEGIN
+					SET @lan = 1
+				END 
+				ELSE
+				BEGIN
+					SELECT @lan = (Lan +1) FROM dbo.KhaiThue WHERE masothue = @masothue AND nam = @nam
+				END 
                 INSERT  INTO dbo.KhaiThue
                         ( masothue ,
                           TongDoanhThu ,
@@ -65,7 +74,7 @@ AS
                           @SoLuongLD , -- SoLuongLD - int
                           @date ,
                           @TrangThaiHoatDong , -- TrangThaiHoatDong - bit
-                          @Lan , -- Lan - int,
+                          @lan , -- Lan - int,
                           @TuGio ,
                           @DenGio ,
                           GETDATE() 
@@ -86,7 +95,6 @@ AS
                         DienTichKD = @DienTichKD ,
                         SoLuongLD = @SoLuongLD ,
                         ngaykhaithue = @date ,
-                        Lan = @Lan ,
                         TuGio = @TuGio ,
                         DenGio = @DenGio,
 						TrangThaiHoatDong = @TrangThaiHoatDong

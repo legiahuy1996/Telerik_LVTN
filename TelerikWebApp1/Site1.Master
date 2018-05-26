@@ -98,6 +98,7 @@
                                                             <li class='has-sub '>
                                                                 <a href='#'><span>Kết sổ bộ</span></a>
                                                                 <ul>
+                                                                    <li><a href="NhapSoLieuThue.aspx"><span>Nhập số liệu nộp thuế</span></a></li>
                                                                     <li>
                                                                         <a href='#'><span>Danh sách hộ được lên sổ bộ trong tháng</span></a>
                                                                     </li>

@@ -1,12 +1,9 @@
-﻿using NPOI.HSSF.UserModel;
-using NPOI.SS.UserModel;
+﻿using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Data.OleDb;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,10 +15,11 @@ using TelerikWebApp1.Model;
 
 namespace TelerikWebApp1
 {
-    public partial class DanhSachKhaiThue_Import : System.Web.UI.Page
+    public partial class NhapSoLieuThue : System.Web.UI.Page
     {
         private DataClasses1DataContext db = new DataClasses1DataContext();
         private string FilePath = "";
+        private int cotNgayNop;
         StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,23 +52,41 @@ namespace TelerikWebApp1
                 ISheet sheet = xssfworkbook.GetSheetAt(0);
                 System.Collections.IEnumerator rows = sheet.GetRowEnumerator();
 
-                IRow headerRow = sheet.GetRow(1);
+                IRow headerRow = sheet.GetRow(0);
                 int cellCount = headerRow.LastCellNum;
-
+                int dem = 0;
                 for (int j = 0; j < cellCount; j++)
                 {
                     ICell cell = headerRow.GetCell(j);
-                    dt.Columns.Add(cell.ToString());
+                    if (cell.ToString() == "Tính chất khoản nộp" || cell.ToString() == "T.Tệ" || cell.ToString() == "Trạng thái lô chứng từ" || cell.ToString() == "Tên NNT" || cell.ToString() == "Kỳ tính thuế")
+                    {
+                        dem++;
+                        dt.Columns.Add(cell.ToString() + dem.ToString());
+                    }
+                    else if(cell.ToString()== "Ngày nộp thuế")
+                    {
+                        dt.Columns.Add(cell.ToString());
+                        cotNgayNop = dt.Columns.IndexOf(cell.ToString());
+                    }
+                    else
+                        dt.Columns.Add(cell.ToString());
                 }
 
-                for (int i = (sheet.FirstRowNum + 2); i <= sheet.LastRowNum; i++)
+                for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
                 {
                     IRow row = sheet.GetRow(i);
                     if (!checkEmptyRow(row))
                     {
                         DataRow dataRow = dt.NewRow();
-                        for (int j = row.FirstCellNum; j < cellCount; j++)
+                        for (int j = row.FirstCellNum; j < dt.Columns.Count; j++)
                         {
+                            if(j == cotNgayNop)
+                            {
+                                DateTime a = DateTime.Parse(row.GetCell(j).ToString());
+                                string b = a.ToString("dd/MM/yyyy");
+                                dataRow[j] = b;
+                                continue;
+                            }
                             if (row.GetCell(j) != null && row.GetCell(j).ToString() != "")
                                 dataRow[j] = row.GetCell(j).ToString();
                             else
@@ -83,6 +99,14 @@ namespace TelerikWebApp1
             }
             return null;
         }
+        protected void btnTemplate_Click(object sender, EventArgs e)
+        {
+            Response.ContentType = "Application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=SoLieuNopThue.xlsx");
+            Response.TransmitFile(Server.MapPath("~/Template/SoLieuNopThue.xlsx"));
+            Response.End();
+        }
+
         protected void btnSelect_Click(object sender, EventArgs e)
         {
             try
@@ -120,25 +144,6 @@ namespace TelerikWebApp1
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
         }
-        protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
-        {
-            var data = ReadFromExcelfile(txtFilepath.Text);
-            grid.DataSource = data;
-
-            if (grid.DataSource == null)
-                grid.DataSource = new string[] { };
-        }
-
-
-        protected void btnClose_Click(object sender, EventArgs e)
-        {
-            ClientScript.RegisterClientScriptBlock(Page.GetType(), "script", "window.close();", true);
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("DanhSachKhaiThue_Import.aspx");
-        }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -152,49 +157,21 @@ namespace TelerikWebApp1
                 {
                     try
                     {
-                        string masothue = item["masothue"].Text.Trim();
-                        string nam = item["nam"].Text.Trim();
-                        string IDKHAITHUE = "";
-                        KhaiThue kt = db.KhaiThues.SingleOrDefault(x => x.masothue == masothue && x.nam == nam);
-                        if (kt != null)
-                            IDKHAITHUE = kt.idKhaiThue.ToString();
-                        string ReturnMess = "";
-                        string ReturnMessCode = "";
-                        bool trangthai;
-                        float dientich = float.Parse(item["dientichKD"].Text.Trim());
-                        int soluongld = int.Parse(item["soluongLD"].Text.Trim());
-                        int tugio = int.Parse(item["TuGio"].Text.Trim());
-                        int dengio = int.Parse(item["DenGio"].Text.Trim());
-                        string manganh = item["manganh"].Text.Trim();
-                        string doanhthu = item["doanhthu"].Text.Trim();
-                        string nghekinhdoanh = item["nghekinhdoanh"].Text.Trim();
-                        string status = item["trangthai"].Text.Trim();
-                        if (status.ToUpper() == "TRUE")
-                            trangthai = true;
-                        else
-                            trangthai = false;
-                        string ngaykhaithue = item["ngaykhaithue"].Text.Trim();
-                        db.Insert_KhaiThue(IDKHAITHUE, masothue, nam, dientich, soluongld, tugio, dengio, trangthai, ngaykhaithue, ref ReturnMessCode, ref ReturnMess);
-                        if (ReturnMessCode == "-2")
+                        string masothue = item["Mã số thuế"].Text.Trim();
+                        string macbql = item["Mã cán bộ"].Text.Trim();
+                        double sotiennop =double.Parse(item["Số tiền theo VND"].Text.Trim());
+                        string ngaynop = item["Ngày nộp thuế"].Text.Trim();
+                        string kythue = item["Kỳ tính thuế5"].Text.Trim();
+                        string tieumuc = item["Tiểu mục"].Text.Trim();
+                        string muc = item["Mã mục"].Text.Trim();
+                        db.Insert_SoLieuNopThue(masothue,macbql,sotiennop,ngaynop, kythue, tieumuc,muc);
+                        if ((System.IO.File.Exists(txtFilepath.Text)))
                         {
-                            st.Append("$.notify('Đã tồn tại dữ liệu của năm " + nam + "',{className: 'error',globalPosition: 'bottom right'});");
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                            System.IO.File.Delete(txtFilepath.Text);
                         }
-                        else if (ReturnMessCode == "-1")
-                        {
-                            st.Append("$.notify('Không tồn tại mã số thuế " + masothue + "',{className: 'error',globalPosition: 'bottom right'});");
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                        }
-                        else
-                        {
-                            db.Insert_ChitietKhaiThue_NotXML(ReturnMessCode, doanhthu, manganh, nghekinhdoanh);
-                            if ((System.IO.File.Exists(txtFilepath.Text)))
-                            {
-                                System.IO.File.Delete(txtFilepath.Text);
-                            }
-                            st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                        }
+                        st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+
 
                     }
                     catch (Exception ms)
@@ -204,14 +181,6 @@ namespace TelerikWebApp1
                     }
                 }
             }
-        }
-
-        protected void btnTemplate_Click(object sender, EventArgs e)
-        {
-            Response.ContentType = "Application/pdf";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=DanhSachKhaiThue_Import.xlsx");
-            Response.TransmitFile(Server.MapPath("~/Template/DanhSachKhaiThue_Import.xlsx"));
-            Response.End();
         }
     }
 }

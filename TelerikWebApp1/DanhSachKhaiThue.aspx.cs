@@ -289,7 +289,7 @@ namespace TelerikWebApp1
                                     string ReturnMessCode = "";
                                     db.Insert_KhaiThue(""
                                         , kt.masothue, DateTime.Now.Year.ToString(), kt.DienTichKD, kt.SoLuongLD, kt.TuGio, kt.DenGio, kt.TrangThaiHoatDong,
-                                        kt.Lan, DateTime.Now.ToString("dd/MM/yyyy"), ref ReturnMessCode,ref ReturnMess
+                                         DateTime.Now.ToString("dd/MM/yyyy"), ref ReturnMessCode,ref ReturnMess
                                         );
                                     string idKhaiThueNew = ReturnMessCode;
                                     foreach(ChiTietKhaiThue ct in ctkt)

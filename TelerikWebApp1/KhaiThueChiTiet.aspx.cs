@@ -71,14 +71,10 @@ namespace TelerikWebApp1
                 trangthai = true;
             else
                 trangthai = false;
-            if (txtLan.Text != "")
-                lan = int.Parse(txtLan.Text.Replace(",", ""));
-            else
-                lan = 0;
             string ngaykhaithue = txtNgayKhaiThue.Text;
             string ReturnMess = "";
             string ReturnMessCode = "";
-            db.Insert_KhaiThue(idKhaiThue, mst, nam, dientich, soluongld, tugio, dengio, trangthai, lan, ngaykhaithue, ref ReturnMessCode, ref ReturnMess);
+            db.Insert_KhaiThue(idKhaiThue, mst, nam, dientich, soluongld, tugio, dengio, trangthai, ngaykhaithue, ref ReturnMessCode, ref ReturnMess);
             return ReturnMessCode;
         }
         protected void InsertChiTiet()
@@ -103,7 +99,6 @@ namespace TelerikWebApp1
             KhaiThue khaithue = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(id));
             txtMST.Text = khaithue.masothue;
             txtNam.Text = khaithue.nam;
-            txtLan.Text = khaithue.Lan.ToString();
             //txtEmail.Text = khaithue.email;
             //txtSodt.Text = khaithue.sodt;
             //txtNote.Text = khaithue.ghichu;
@@ -128,13 +123,7 @@ namespace TelerikWebApp1
                 if (grid.Items.Count != 0)
                 {
                     string Err = InsertKhaiThue();
-                    if (Err == "-2")
-                    {
-                        st.Append("$.notify('Đã tồn tại dữ liệu của năm " + txtNam.Text + "',{className: 'error',globalPosition: 'bottom right'});");
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                        txtNam.Focus();
-                    }
-                    else if (Err == "-1")
+                    if (Err == "-1")
                     {
                         st.Append("$.notify('Không tồn tại mã số thuế này',{className: 'error',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);

@@ -42,17 +42,6 @@
                     <asp:TextBox class="InputDate" runat="server" ID="txtNgayKhaiThue" Width="90px" onblur="javascript:CheckDate(this);"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Label runat="server" ID="Label8">Lần khai thuế</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox class="InputCenter" runat="server" ID="txtLan" Width="50px" onblur="javascript:checkNumeric(this,3);"></asp:TextBox>
-                </td>
-
-            </tr>
-
-            <tr>
-                <td></td>
-                <td>
                     <asp:Label runat="server" ID="lblTuGio">Th&#7901;i gian kinh doanh</asp:Label>
                 </td>
                 <td>
@@ -61,15 +50,9 @@
                     <asp:Label runat="server" ID="Label2">&#272;&#7871;n Gi&#7901;</asp:Label>
                     <asp:TextBox class="input" runat="server" CssClass="InputCenter" ID="txtDenGio" Width="50px" onblur="javascript:checkNumeric(this,23);"></asp:TextBox>
                 </td>
-
-            </tr>
-
-            <tr>
-                <td></td>
             </tr>
         </table>
         <table cellspacing="0" cellpadding="0" width="100%" border="0" runat="server">
-
             <tr>
                 <td style="width: 5%"></td>
                 <td style="width: 15%"></td>
@@ -77,7 +60,6 @@
                 <td style="width: 20%"></td>
                 <td style="width: 30%"></td>
             </tr>
-
             <tr>
                 <td></td>
                 <td>

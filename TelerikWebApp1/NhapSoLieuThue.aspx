@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DanhSachKhaiThue_Import.aspx.cs" MasterPageFile="~/Site1.Master" Inherits="TelerikWebApp1.DanhSachKhaiThue_Import" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NhapSoLieuThue.aspx.cs" MasterPageFile="~/Site1.Master" Inherits="TelerikWebApp1.NhapSoLieuThue" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="content" runat="server">
     <form id="frm" runat="server" enctype="multipart/form-data">
@@ -12,7 +12,7 @@
             <tr>
                 <td colspan="3" height="20" align="center">
                     <asp:Label ID="lblTitle" runat="server" Style="font-weight: bold; font-size: 20px"
-                        align="center">NHẬP DỮ LIỆU</asp:Label>
+                        align="center">NHẬP DỮ LIỆU NỘP THUẾ</asp:Label>
                 </td>
             </tr>
             <tr>
@@ -58,15 +58,15 @@
                 
                 <td colspan="3" align="center">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" OnClick="btnReset_Click"><span class="btnReset">Làm m&#7899;i</span>
+                        <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R"><span class="btnReset">Làm m&#7899;i</span>
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();" OnClick="btnSave_Click"><span class="btnSave">L&#432;u</span>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnClose" name="btnClose" AccessKey="C" ToolTip="ALT+C" runat="server" CssClass="btnCloseOther" OnClick="btnClose_Click"
+                        <asp:LinkButton ID="btnClose" name="btnClose" AccessKey="C" ToolTip="ALT+C" runat="server" CssClass="btnCloseOther" 
                             Text="Đóng">                            
                         </asp:LinkButton>
-                       <asp:LinkButton ID="btnTemplate" name="btnTemplate" AccessKey="S" ToolTip="ALT+S" runat="server" CssClass="btnViewOther"
-                            Text="Xem file mẫu" OnClick="btnTemplate_Click">
+                       <asp:LinkButton ID="btnTemplate" name="btnTemplate" AccessKey="S" ToolTip="ALT+S" runat="server" CssClass="btnViewOther" OnClick="btnTemplate_Click"
+                            Text="Xem file mẫu">
                         </asp:LinkButton>
                     </span>
                 </td>
@@ -88,7 +88,7 @@
                             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
                                 <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" 
                                     AllowAutomaticUpdates="true"
-                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource">
+                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="true">
                                     <ClientSettings>
                                         <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
                                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
@@ -98,9 +98,9 @@
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
-                                                <HeaderStyle Width="50px" />
+                                                <HeaderStyle />
                                             </telerik:GridClientSelectColumn>
-                                            <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
+                                           <%-- <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
                                                 <HeaderStyle Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemTemplate>
@@ -156,7 +156,7 @@
                                             <telerik:GridBoundColumn UniqueName="trangthai" DataField="trangthai" HeaderText="Trạng thái">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
+                                            </telerik:GridBoundColumn>--%>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
