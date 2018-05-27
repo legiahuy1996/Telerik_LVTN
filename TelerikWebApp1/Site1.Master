@@ -112,7 +112,7 @@
                                                                         <a href='#'><span>Danh sách số hộ ngưng nghỉ</span></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href='#'><span>Chấm bộ thuế</span></a>
+                                                                        <a href="ChamBoThue.aspx"><span>Chấm bộ thuế</span></a>
                                                                     </li>
                                                                 </ul>
                                                             </li>
