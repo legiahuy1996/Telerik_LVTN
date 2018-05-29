@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Load_ChiTietKhaiThue]    Script Date: 5/19/2018 8:05:08 PM ******/
+/****** Object:  StoredProcedure [dbo].[Load_ChiTietKhaiThue]    Script Date: 5/29/2018 9:36:02 PM ******/
 SET ANSI_NULLS ON
 GO
 
