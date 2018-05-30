@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,6 +16,7 @@ namespace TelerikWebApp1
     public partial class DanhSachHoCaThe : System.Web.UI.Page
     {
         private DataClasses1DataContext db;
+        StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
             db = new DataClasses1DataContext();
@@ -95,7 +97,6 @@ namespace TelerikWebApp1
             string sdt = txtSDT.Text.Trim();
             string hoten = txtHoTen.Text;
             grid.DataSource = db.DanhSachHoCaThe(mst, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, manganh, sdt, "Search");
-            grid.DataBind();
         }
         private Stream CreateExcelFile(Stream stream = null)
         {
@@ -156,6 +157,42 @@ namespace TelerikWebApp1
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
             Response.Redirect("DanhSachHoCaThe.aspx");
+        }
+
+        protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            btnSearch_Click(null, null);
+            if (grid.DataSource == null)
+                grid.DataSource = new string[] { };
+        }
+
+        protected void grid_ItemCommand(object sender, GridCommandEventArgs e)
+        {
+            string commandName = e.CommandName.ToUpper();
+            GridDataItem item_detail;
+            if (commandName == "LINKMST")
+            {
+                try
+                {
+                    if (e.Item is GridDataItem)
+                    {
+                        item_detail = (GridDataItem)e.Item;
+                        string masothue = item_detail["masothue"].Text.Trim().Replace("&nbsp;", "");
+                        if(masothue!="")
+                        {
+                            string url = "ThongTinHoCaThe.aspx?masothue=" + item_detail["masothue"].Text.Trim().Replace("&nbsp;", "");
+                            Response.Redirect(url);
+                        }
+                        
+                    }
+                }
+                catch (Exception mess)
+                {
+                    st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                }
+
+            }
         }
     }
 }

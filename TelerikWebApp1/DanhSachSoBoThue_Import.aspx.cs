@@ -151,14 +151,14 @@ namespace TelerikWebApp1
                         string idKhaiThue = item["idKhaiThue"].Text.Trim();
                         int thang = int.Parse(item["Thang"].Text.Trim());
                         string kt = db.GetDSChuaLapBo(idKhaiThue, thang).ToString();
-                        string ngaylapbo = DateTime.Parse(item["NgayLapBo"].Text).ToString();
+                        string ngaylapbo = item["NgayLapBo"].Text;
                         int doanhthuGTGT = int.Parse(item["DoanhThuTinhThueGTGT"].Text.Trim());
                         int doanhthuTNCN = int.Parse(item["DoanhThuTinhThueTNCN"].Text.Trim());
                         float tyleGTGT = float.Parse(item["TyLeTinhThueGTGT"].Text);
                         float tyleTNCN = float.Parse(item["TyLeTinhThueTNCN"].Text);
                         if (kt == null || kt == "")
                         {
-                            db.Insert_SoBoThue(idKhaiThue, ngaylapbo, thang, doanhthuGTGT, doanhthuTNCN, tyleGTGT, tyleTNCN, Ressmess);
+                            //db.Insert_SoBoThue(idKhaiThue, ngaylapbo, thang, doanhthuGTGT, doanhthuTNCN, tyleGTGT, tyleTNCN, Ressmess);
                             if (Ressmess != "")
                             {
                                 st.Append("$.notify('Khong thanh cong! " + Ressmess + "',{className: 'error',globalPosition: 'bottom right'});");
