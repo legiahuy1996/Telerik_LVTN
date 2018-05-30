@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,6 +19,7 @@ namespace TelerikWebApp1
     public partial class DanhSachSoBoThue : System.Web.UI.Page
     {
         private List<getDSSoBoThueResult> list;
+        StringBuilder st = new StringBuilder();
         private DataClasses1DataContext db;
         public DanhSachSoBoThue()
         {
@@ -48,6 +50,7 @@ namespace TelerikWebApp1
             list = data;
             grid.Rebind();
         }
+
         private void BindingFormatForExcel(ExcelWorksheet worksheet, List<getDSSoBoThueResult> listItems)
         {
             // Set default width cho tất cả column
@@ -194,7 +197,23 @@ namespace TelerikWebApp1
             Response.End();
         }
 
-
+        protected void grid_ItemCommand(object sender, GridCommandEventArgs e)
+        {
+            string commandName = e.CommandName.ToUpper();
+            GridDataItem item;
+            if (commandName == "EDIT_DATA")
+            {
+                if (e.Item is GridDataItem)
+                {
+                    item = (GridDataItem)e.Item;
+                    if (item["idSoBoThue"].Text.Trim().Replace("&nbsp;", "") != "")
+                    {
+                        string url = "SoBoChiTiet.aspx?idSoBoThue=" + item["idSoBoThue"].Text.Trim().Replace("&nbsp;", "");
+                        Response.Redirect(url);
+                    }
+                }
+            }
+        }
 
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -219,6 +238,42 @@ namespace TelerikWebApp1
             {
                 if (grid.DataSource == null)
                     grid.DataSource = new string[] { };
+            }
+        }
+
+        protected void btnCopy_Click(object sender, EventArgs e)
+        {
+            GridDataItem item;
+            st.Clear();
+            for (int i = 0; i < grid.Items.Count; i++)
+            {
+                item = (GridDataItem)grid.Items[i];
+                CheckBox checkBox = (CheckBox)item["ClientSelectColumn"].Controls[0];
+                if (checkBox.Checked == true)
+                {
+                    try
+                    {
+                        string idKhaiThue =item["idKhaiThue"].Text.Trim();
+                        int lstsobothue = db.GetDSChuaLapBo(idKhaiThue,DateTime.Now.Month).Count();
+                        if (lstsobothue != 0)
+                        {
+                           db.spfrm_SoBoThue(null, null, null, null, null, null, null, null, null, null, int.Parse(idKhaiThue), "Create", "");
+                            st.Append("$.notify('Sao chép thông tin thành công',{className: 'success',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                        }
+                        else
+                        {
+                            st.Append("$.notify('Đã tồn tại dữ liệu của thang " + DateTime.Now.Month + "',{className: 'error',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                            txtThang.Focus();
+                        }
+                    }
+                    catch (Exception mess)
+                    {
+                        st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                    }
+                }
             }
         }
     }

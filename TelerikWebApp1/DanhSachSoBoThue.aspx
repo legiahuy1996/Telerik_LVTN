@@ -88,46 +88,62 @@
                          <asp:LinkButton ID="btnImport" name="btnImport" runat="server" AccessKey="E" ToolTip="Alt+E">
 		                    <span class="btnImport">Import DL</span>
                         </asp:LinkButton>
+                        <asp:LinkButton ID="btnCopy" name="btnCopy" AccessKey="S" OnClick="btnCopy_Click"
+                            runat="server" ToolTip="ALT+S">
+                            <span class="btnCopy">Sao chép</span>
+                        </asp:LinkButton>
                     </span>
                 </td>
             </tr>
         </table>
 
-       
+       <br />
         <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <telerik:RadScriptManager runat="server" ID="RadScriptManager2" />
-                    <telerik:RadSkinManager ID="RadSkinManager2" runat="server" />
+                   <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
+                    <telerik:RadSkinManager ID="RadSkinManager2" runat="server" Skin="Office2007" />
                     <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
                         <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
-                            <telerik:RadGrid runat="server"  AllowMultiRowSelection="true" Width="100%" Height="500px" ID="grid" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
-                                     AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource">
-                                <ClientSettings>
-                                    <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
-                                     <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
-                                </ClientSettings>
-                                <PagerStyle Mode="NextPrevNumericAndAdvanced" AlwaysVisible="true" />
-                                <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
-                               
-                                    <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
+                            <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
+                                <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
+                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false"
+                                    OnNeedDataSource="grid_NeedDataSource" OnItemCommand="grid_ItemCommand">
+                                    <ClientSettings>
+                                        <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
+                                        <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
+                                    </ClientSettings>
+
+                                    <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
+                                        <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                     <Columns>
                                          <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
+                                             <HeaderStyle width="50px"/>
                                         </telerik:GridClientSelectColumn>
-                                      <telerik:GridBoundColumn UniqueName="idSoBoThue" DataField="idSoBoThue" HeaderText="idSoBoThue" Visible="false">
+
+                                        <telerik:GridTemplateColumn UniqueName="Edit" HeaderText="Sửa">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <ItemTemplate>
+                                                    <asp:ImageButton CssClass="rgpointer" ID="Edit" runat="server"
+                                                        ImageUrl="~/Images/edit.gif" CommandName="EDIT_DATA" />
+                                                </ItemTemplate>
+                                            </telerik:GridTemplateColumn>
+                                      <telerik:GridBoundColumn UniqueName="idSoBoThue" DataField="idSoBoThue" HeaderText="idSoBoThue">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="idKhaiThue" DataField="idKhaiThue" HeaderText="idKhaiThue" Visible="false">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        <telerik:GridBoundColumn UniqueName="idKhaiThue" DataField="idKhaiThue" HeaderText="idKhaiThue">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="50px"/>
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
+                                       
                                         <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px"/>
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="Tên người nộp thuế">
@@ -149,8 +165,8 @@
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         
-                                        <telerik:GridBoundColumn UniqueName="Thang" DataField="Thang" HeaderText="Tháng kinh doanh">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        <telerik:GridBoundColumn UniqueName="Thang" DataField="Thang" HeaderText="Tháng lập bộ">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px"/>
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="TinhTrangNopThue" DataField="TinhTrangNopThue" HeaderText="Trạng thái">
@@ -158,29 +174,29 @@
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="DoanhThuTinhThueGTGT" DataField="DoanhThuTinhThueGTGT" HeaderText="Doanh thu tính thuế GTGT">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="100px"/>
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="TyLeTinhThueGTGT" DataField="TyLeTinhThueGTGT" HeaderText="Tỷ lệ tính thuế GTGT">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px"/>
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="ThueGTGT" DataField="ThueGTGT" HeaderText="Thuế GTGT phải nộp 1 tháng">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="100px" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
 
                                         <telerik:GridBoundColumn UniqueName="DoanhThuTinhThueTNCN" DataField="DoanhThuTinhThueTNCN" HeaderText="Doanh thu tính thuế TNCN">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="100px"/>
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         
                                         <telerik:GridBoundColumn UniqueName="TyLeTinhThueTNCN" DataField="TyLeTinhThueTNCN" HeaderText="Tỷ lệ tính thuế TNCN">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px"/>
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="ThueTNCN" DataField="ThueTNCN" HeaderText="Thuế TNCN phải nộp 1 tháng">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="100px"/>
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
 
@@ -193,7 +209,7 @@
                             </Columns>--%>
                                 </MasterTableView>
                             </telerik:RadGrid>
-
+                          </telerik:RadAjaxPanel>
                         </telerik:RadPane>
                     </telerik:RadSplitter>
                 </td>

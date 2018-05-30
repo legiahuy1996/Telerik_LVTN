@@ -119,20 +119,23 @@
         <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <telerik:RadScriptManager runat="server" ID="RadScriptManager2" />
-                    <telerik:RadSkinManager ID="RadSkinManager2" runat="server" />
+                    <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
+                    <telerik:RadSkinManager ID="RadSkinManager2" runat="server" Skin="Office2007" />
                     <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
                         <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
-                            <telerik:RadGrid runat="server"  AllowMultiRowSelection="true" Width="650px" Height="500px" ID="grid" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true" AllowSorting="true" AutoGenerateColumns="false">
-                                <ClientSettings>
-                                    <Selecting AllowRowSelect="true" EnableDragToSelectRows="true" />
-                                </ClientSettings>
-                                <PagerStyle Mode="NextPrevNumericAndAdvanced" AlwaysVisible="true" />
-                                <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" AllowMultiColumnSorting="true">
-                                    <CommandItemSettings ShowAddNewRecordButton="false" />
+                            <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
+                                <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
+                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false">
+                                    <ClientSettings>
+                                        <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
+                                        <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
+                                    </ClientSettings>
+
+                                    <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
+                                        <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                     <Columns>
                                          <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
-                </telerik:GridClientSelectColumn>
+                                </telerik:GridClientSelectColumn>
                                       
                                         <telerik:GridBoundColumn UniqueName="idKhaiThue" DataField="idKhaiThue" HeaderText="idKhaiThue" Visible="true">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -154,18 +157,6 @@
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                             <%--           <telerik:GridBoundColumn UniqueName="sodt" DataField="sodt" HeaderText="Số điện thoại">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="email" DataField="email" HeaderText="Email">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="ghichu" DataField="ghichu" HeaderText="Ghi chú">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>                                   --%>     
                                         <telerik:GridBoundColumn UniqueName="nghekinhdoanh" DataField="nghekinhdoanh" HeaderText="Nghề kinh doanh">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -220,7 +211,7 @@
                             </Columns>--%>
                                 </MasterTableView>
                             </telerik:RadGrid>
-
+                            </telerik:RadAjaxPanel>
                         </telerik:RadPane>
                     </telerik:RadSplitter>
                 </td>

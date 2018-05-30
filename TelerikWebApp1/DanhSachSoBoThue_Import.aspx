@@ -65,6 +65,8 @@
                         <asp:LinkButton ID="btnClose" name="btnClose" AccessKey="C" ToolTip="ALT+C" runat="server" CssClass="btnCloseOther" OnClick="btnClose_Click"
                             Text="Đóng">                            
                         </asp:LinkButton>
+                         <asp:LinkButton ID="btnTemplate" name="btnTemplate" AccessKey="S" ToolTip="ALT+S" runat="server" CssClass="btnViewOther" Text="Xem file mẫu" OnClick="btnTemplate_Click">
+                        </asp:LinkButton>
                     </span>
                 </td>
             </tr>
@@ -116,19 +118,11 @@
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="TinhTrangNopThue" DataField="TinhTrangNopThue" HeaderText="Trạng thái">
-                                            <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="70px"/>
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="DoanhThuTinhThueGTGT" DataField="DoanhThuTinhThueGTGT" HeaderText="Doanh thu tính thuế GTGT">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn UniqueName="TyLeTinhThueGTGT" DataField="TyLeTinhThueGTGT" HeaderText="Tỷ lệ tính thuế GTGT">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="ThueGTGT" DataField="ThueGTGT" HeaderText="Thuế GTGT phải nộp 1 tháng">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
@@ -139,10 +133,6 @@
                                         </telerik:GridBoundColumn>
                                         
                                         <telerik:GridBoundColumn UniqueName="TyLeTinhThueTNCN" DataField="TyLeTinhThueTNCN" HeaderText="Tỷ lệ tính thuế TNCN">
-                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn UniqueName="ThueTNCN" DataField="ThueTNCN" HeaderText="Thuế TNCN phải nộp 1 tháng">
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
