@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[getDSThue]    Script Date: 5/26/2018 11:39:14 PM ******/
+/****** Object:  StoredProcedure [dbo].[getDSThue]    Script Date: 5/27/2018 2:24:05 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -17,7 +17,7 @@ ALTER PROC [dbo].[getDSThue]
     @TrangThai NVARCHAR(1) = NULL
 AS
     BEGIN 
-        SELECT 
+        SELECT DISTINCT
                 a.idKhaiThue ,
                 a.masothue ,
                 a.TongDoanhThu ,
@@ -61,7 +61,8 @@ AS
                       OR @sogiayphep = ''
                       OR b.sogp LIKE N'%' + @sogiayphep + '%'
                     )
-        ORDER BY a.masothue
+        ORDER BY a.masothue,a.Lan
+		
     END
 GO
 
