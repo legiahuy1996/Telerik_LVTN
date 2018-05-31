@@ -78,5 +78,21 @@ namespace TelerikWebApp1
         {
             Response.Redirect("DanhSachSoBoThue.aspx");
         }
+
+        protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
+        {
+
+            try
+            {
+                grid.DataSource = db.DanhSachThongTinHoCaThe(int.Parse(idSoBoThue));
+                grid.Rebind();
+
+            }
+            catch
+            {
+                if (grid.DataSource == null)
+                    grid.DataSource = new string[] { };
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿alter PROC DanhSachThongTinHoCaThe
+@idSoBoThue INT = NULL
 AS
 BEGIN
 	SELECT a.masothue,a.hoten, a.nam,e.Thang
@@ -15,4 +16,5 @@ BEGIN
 	LEFT JOIN dbo.thuemonbai (NOLOCK) f ON f.idKhaiThue = d.idKhaiThue
 	LEFT JOIN dbo.mucluc_MonBai (NOLOCK) h ON h.Bac = f.Bac
 	LEFT JOIN dbo.SoLieuTuNganHang (NOLOCK) j ON j.masothue = a.masothue
+	WHERE e.idSoBoThue = @idSoBoThue
 END
