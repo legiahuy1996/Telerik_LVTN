@@ -103,7 +103,7 @@
                                                                         <a href='#'><span>Danh sách hộ được lên sổ bộ trong tháng</span></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href='#'><span>Danh sách hộ còn nợ thuế</span></a>
+                                                                        <a href='DanhSachNoThue.aspx'><span>Danh sách hộ còn nợ thuế</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href='#'><span>Danh sách tổng số tiền phải thu</span></a>

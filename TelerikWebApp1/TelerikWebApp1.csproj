@@ -124,12 +124,26 @@
     <Compile Include="DanhSachKhaiThue_Import.aspx.designer.cs">
       <DependentUpon>DanhSachKhaiThue_Import.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DanhSachNoThue.aspx.cs">
+      <DependentUpon>DanhSachNoThue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachNoThue.aspx.designer.cs">
+      <DependentUpon>DanhSachNoThue.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DanhSachSoBoThue.aspx.cs">
       <DependentUpon>DanhSachSoBoThue.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DanhSachSoBoThue.aspx.designer.cs">
       <DependentUpon>DanhSachSoBoThue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DanhSachSoBoThue_Import.aspx.cs">
+      <DependentUpon>DanhSachSoBoThue_Import.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachSoBoThue_Import.aspx.designer.cs">
+      <DependentUpon>DanhSachSoBoThue_Import.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -171,6 +185,13 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SoBoChiTiet.aspx.cs">
+      <DependentUpon>SoBoChiTiet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SoBoChiTiet.aspx.designer.cs">
+      <DependentUpon>SoBoChiTiet.aspx</DependentUpon>
     </Compile>
     <Compile Include="SoBoThue.aspx.cs">
       <DependentUpon>SoBoThue.aspx</DependentUpon>
@@ -260,7 +281,9 @@
     <Content Include="DanhSachHoCaThe.aspx" />
     <Content Include="DanhSachKhaiThue.aspx" />
     <Content Include="DanhSachKhaiThue_Import.aspx" />
+    <Content Include="DanhSachNoThue.aspx" />
     <Content Include="DanhSachSoBoThue.aspx" />
+    <Content Include="DanhSachSoBoThue_Import.aspx" />
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -470,6 +493,7 @@
     <Content Include="images\table_25.jpg" />
     <Content Include="InKeKhaiNopThue.aspx" />
     <Content Include="KhaiThueChiTiet.aspx" />
+    <Content Include="SoBoChiTiet.aspx" />
     <Content Include="SoBoThue.aspx" />
     <Content Include="ThongTinHoCaThe.aspx" />
     <Content Include="web.config" />
@@ -481,6 +505,9 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Model\DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -492,9 +519,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Model\DataClasses1.dbml.layout">
-      <DependentUpon>DataClasses1.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
@@ -534,7 +558,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

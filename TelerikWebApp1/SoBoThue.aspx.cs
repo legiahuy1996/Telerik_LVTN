@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,6 +14,7 @@ namespace TelerikWebApp1
     public partial class SoBoThue : System.Web.UI.Page
     {
         private DataClasses1DataContext db;
+        StringBuilder st = new StringBuilder();
         public SoBoThue()
         {
             db = new DataClasses1DataContext();
@@ -84,12 +86,10 @@ namespace TelerikWebApp1
                     {
                         idkhaithue = item["idKhaiThue"].Text;
                         db.spfrm_SoBoThue(null, null, null, null, null, null, null, null, null, null, int.Parse(idkhaithue), "Create", null);
-
-
-
                     }
                 }
-
+                st.Append("$.notify('Lập sổ bộ thành công',{className: 'success',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                 btnSearch_Click(null, null);
             }catch(Exception err)
             {
