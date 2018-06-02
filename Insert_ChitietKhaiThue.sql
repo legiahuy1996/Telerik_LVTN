@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue]    Script Date: 5/29/2018 9:35:22 PM ******/
+/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue]    Script Date: 6/2/2018 8:50:20 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -80,16 +80,18 @@ AS
             END 
         ELSE
             BEGIN
-			PRINT 'update'
-                UPDATE  dbo.ChiTietKhaiThue 
-               SET manganh = @manganh,
-				   NgheKinhDoanh = @nghekinhdoanh,
-                   DoanhThu = @doanhthu
-			WHERE idChiTiet = @idchitiet
-				
+				PRINT 'update'
+					UPDATE  dbo.ChiTietKhaiThue 
+				   SET manganh = @manganh,
+					   NgheKinhDoanh = @nghekinhdoanh,
+					   DoanhThu = @doanhthu
+				WHERE idChiTiet = @idchitiet
             END 
-        SELECT  @TongDanhThu = ( TongDoanhThu * 12 )
+        SELECT  @TongDanhThu =TongDoanhThu
         FROM    dbo.KhaiThue
+        WHERE   idKhaiThue = @id
+		  UPDATE  dbo.KhaiThue
+        SET     TongDoanhThu = @TongDanhThu
         WHERE   idKhaiThue = @id
         IF ( @TongDanhThu > 100000000 )
             BEGIN
