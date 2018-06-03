@@ -3,7 +3,7 @@
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="content" runat="server">
-    <h1>CHI TIẾT SỔ BỘ THUẾ</h1>
+    <h1>CHI TI&#7870;T S&#7892; B&#7896; THU&#7870;</h1>
     <br />
     <form id="frm" runat="server">
         <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
@@ -23,7 +23,7 @@
                     <asp:TextBox class="input" runat="server" ID="txtThang" Width="10%" ReadOnly="true"></asp:TextBox>
                 </td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="lblNgayLapBo">Ngày lập bộ</asp:Label>
+                    <asp:Label runat="server" ID="lblNgayLapBo">Ngày l&#7853;p b&#7897;</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtNgayLapBo" Width="30%" ReadOnly="true"></asp:TextBox>
@@ -47,13 +47,13 @@
             <tr>
                 <td></td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="lblTyLeGTGT">Tỷ lệ GTGT</asp:Label>
+                    <asp:Label runat="server" ID="lblTyLeGTGT">T&#7927; l&#7879; GTGT</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtTyLeGTGT" Width="10%" ReadOnly="true"></asp:TextBox>
                 </td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="lblTyLeTNCN">Tỷ lệ TNCN</asp:Label>
+                    <asp:Label runat="server" ID="lblTyLeTNCN">T&#7927; l&#7879; TNCN</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtTyLeTNCN" Width="10%" ReadOnly="true"></asp:TextBox>
@@ -62,13 +62,13 @@
             <tr>
                 <td></td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="lblSoTienGTGT">Số tiền GTGT</asp:Label>
+                    <asp:Label runat="server" ID="lblSoTienGTGT">S&#7889; ti&#7873;n GTGT</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtSoTienGTGT" Width="30%" ReadOnly="true"></asp:TextBox>
                 </td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="lblSoTienTNCN">Số tiền TNCN</asp:Label>
+                    <asp:Label runat="server" ID="lblSoTienTNCN">S&#7889; ti&#7873;n TNCN</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtSoTienTNCN" Width="30%" ReadOnly="true"></asp:TextBox>
@@ -77,16 +77,16 @@
             <tr>
                 <td></td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="lblTrangThai">Trạng thái</asp:Label>
+                    <asp:Label runat="server" ID="lblTrangThai">Tr&#7841;ng thái</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:Label>Đã nộp</asp:Label>
+                    <asp:Label>&#272;ã n&#7897;p</asp:Label>
                     <asp:RadioButton runat="server" ID="chkActive" GroupName="Status" Checked="true" />
-                    <asp:Label>Chưa nộp thuế</asp:Label>
+                    <asp:Label>Ch&#432;a n&#7897;p thu&#7871;</asp:Label>
                     <asp:RadioButton runat="server" ID="chkNoActive" GroupName="Status" />
                 </td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="Label1">Mã Khai Thuế</asp:Label>
+                    <asp:Label runat="server" ID="Label1">Mã Khai Thu&#7871;</asp:Label>
                 </td>
                 <td width="25%">  
                     <asp:TextBox class="input" runat="server" ID="txtIDKhaiThue" Width="30%" ReadOnly="true"></asp:TextBox>
@@ -130,15 +130,15 @@
                                     <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
-                                            <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
+                                            <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã s&#7889; thu&#7871;">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>                                           
-                                            <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="Họ tên">
+                                            <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="H&#7885; tên">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm tính thuế">
+                                            <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="N&#259;m tính thu&#7871;">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
@@ -146,22 +146,26 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="SoTienPhaiDong" DataField="SoTienPhaiDong" HeaderText="Số tiền phải đóng">
+                                            <telerik:GridBoundColumn UniqueName="tieumuc" DataField="tieumuc" HeaderText="Tiểu mục">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>   
+                                            <telerik:GridBoundColumn UniqueName="tengoi" DataField="tengoi" HeaderText="Tên gọi">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>                                            
-                                            <telerik:GridBoundColumn UniqueName="SoTienDaNop" DataField="SoTienDaNop" HeaderText="Số tiền đã nộp">
+                                            <telerik:GridBoundColumn UniqueName="SoTienDaNop" DataField="SoTienDaNop" HeaderText="S&#7889; ti&#7873;n &#273;ã n&#7897;p" DataFormatString="{0:N0}">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="SoTienConNo" DataField="SoTienConNo" HeaderText="Số tiền còn nợ">
+                                            <telerik:GridBoundColumn UniqueName="SoTienConNo" DataField="SoTienConNo" HeaderText="S&#7889; ti&#7873;n còn n&#7907;" DataFormatString="{0:N0}">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="100px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="TinhTrang" DataField="TinhTrang" HeaderText="Tình trạng">
+                                            <telerik:GridBoundColumn UniqueName="SoTienDu" DataField="SoTienDu" HeaderText="Số tiền dư" DataFormatString="{0:N0}">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="100px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>                                           
+                                            </telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>

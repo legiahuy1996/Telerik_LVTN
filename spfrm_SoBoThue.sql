@@ -1,12 +1,13 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 5/24/2018 7:54:14 PM ******/
+/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 6/3/2018 9:49:47 AM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 ALTER  PROC [dbo].[spfrm_SoBoThue]
 @MST VARCHAR(50) = NULL,
@@ -60,29 +61,37 @@ BEGIN
 					IF(@count =1)
 					BEGIN
 							SELECT	   
-							 @TyLeTinhThueGTGT = c.TyLeTinhThueTNCN,@TyLeTinhThueTNCN = c.TyLeTinhThueTNCN
-							FROM dbo.KhaiThue a 
+							 @TyLeTinhThueGTGT = c.TyLeTinhThueGTGT,@TyLeTinhThueTNCN = c.TyLeTinhThueTNCN
+							FROM dbo. KhaiThue a 
 							LEFT JOIN dbo.DanhBa b ON b.masothue = a.masothue
-							LEFT JOIN dbo.manganh c ON c.manganh = b.manganh
 							LEFT JOIN dbo.ChiTietKhaiThue d ON d.idKhaiThue = a.idKhaiThue
+							LEFT JOIN dbo.manganh c ON c.manganh = d.manganh
 							LEFT JOIN dbo.thue e ON e.idChiTiet = d.idChiTiet
 							WHERE a.idKhaiThue = @idKhaiThue
                     END
 					ELSE
 					begin
-						SET @TyLeTinhThueGTGT =null
-						SET @TyLeTinhThueTNCN=NULL
+						SELECT	   
+							 @TyLeTinhThueGTGT = c.TyLeTinhThueGTGT,@TyLeTinhThueTNCN = c.TyLeTinhThueTNCN
+							FROM dbo.KhaiThue a 
+							LEFT JOIN dbo.DanhBa b ON b.masothue = a.masothue
+							LEFT JOIN dbo.ChiTietKhaiThue d ON d.idKhaiThue = a.idKhaiThue
+							LEFT JOIN dbo.manganh c ON c.manganh = d.manganh
+							LEFT JOIN dbo.thue e ON e.idChiTiet = d.idChiTiet
+							WHERE a.idKhaiThue = @idKhaiThue
+							AND c.manganh = @manganh
 					end
 
 					SET @TongCong = @SoTienGTGT1Thang + @SoTienTNCN1Thang + @ThueMonBai + @SoNo
-
+					SET @SoTienGTGT1Thang = @doanhthutinhthueGTGT * (@TyLeTinhThueGTGT/100)
+					SET @SoTienTNCN1Thang = @doanhthutinhthueTNCN * (@TyLeTinhThueTNCN/100)
                    
 	IF(@Activity = 'Search')
 		BEGIN 
 					PRINT 'search'
 
 				SELECT a.idKhaiThue,b.masothue,a.nam,b.sodt,b.email,b.ghichu,c.tennganh,a.SoLuongLD,a.DienTichKD,b.diachiKD, 
-					   CASE WHEN a.TrangThaiHoatDong = 1 THEN N'Đang hoạt động' ELSE N'Ngưng hoạt động' END AS TrangThaiHoatDong,
+					   CASE WHEN a.TrangThaiHoatDong = 1 THEN N'?ang ho?t ??ng' ELSE N'Ng?ng ho?t ??ng' END AS TrangThaiHoatDong,
 					   a.TongDoanhThu,a.TongDoanhThu AS DoanhThuTinhThueGTGT,a.TongDoanhThu AS DoanhThuTinhThueTNCN,c.TyLeTinhThueGTGT,c.TyLeTinhThueTNCN,b.hoten,b.nghekinhdoanh
 					   ,a.TuGio,a.DenGio
 				FROM dbo.KhaiThue a 
@@ -105,8 +114,6 @@ BEGIN
 	ELSE 
 		IF (@Activity = 'Create')
 			BEGIN
-			SET @SoTienGTGT1Thang = (@doanhthutinhthueGTGT * @TyLeTinhThueGTGT)/100
-			SET @SoTienTNCN1Thang = (@doanhthutinhthueTNCN * @TyLeTinhThueTNCN)/100
 			DECLARE @tennganh NVARCHAR(50)
 			SELECT @tennganh = tennganh FROM dbo.manganh WHERE manganh = @manganh
 			PRINT 'Create'
@@ -154,5 +161,6 @@ BEGIN
 			
 		
 END
+
 GO
 
