@@ -73,7 +73,7 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 3].Value = item.tencuahang;
                 worksheet.Cells[i + 2, 4].Value = item.ngaycapmst;
                 worksheet.Cells[i + 2, 5].Value = item.sogp;
-                worksheet.Cells[i + 2, 6].Value = item.diachiKD;
+                worksheet.Cells[i + 2, 6].Value = item.diachi;
                 worksheet.Cells[i + 2, 7].Value = item.hoten;
                 worksheet.Cells[i + 2, 8].Value = item.ngaytinhthue;
                 worksheet.Cells[i + 2, 9].Value = item.manganh;

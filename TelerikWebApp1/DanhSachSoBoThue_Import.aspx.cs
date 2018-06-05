@@ -150,34 +150,30 @@ namespace TelerikWebApp1
                         string Ressmess = "";
                         string idKhaiThue = item["idKhaiThue"].Text.Trim();
                         int thang = int.Parse(item["Thang"].Text.Trim());
-                        string kt = db.GetDSChuaLapBo(idKhaiThue, thang).ToString();
                         string ngaylapbo = item["NgayLapBo"].Text;
                         int doanhthuGTGT = int.Parse(item["DoanhThuTinhThueGTGT"].Text.Trim());
                         int doanhthuTNCN = int.Parse(item["DoanhThuTinhThueTNCN"].Text.Trim());
                         float tyleGTGT = float.Parse(item["TyLeTinhThueGTGT"].Text);
                         float tyleTNCN = float.Parse(item["TyLeTinhThueTNCN"].Text);
-                        if (kt == null || kt == "")
+                        db.Insert_SoBoThue(idKhaiThue, ngaylapbo, thang, doanhthuGTGT, doanhthuTNCN, tyleGTGT, tyleTNCN, Ressmess);
+                        if (Ressmess != "")
                         {
-                            //db.Insert_SoBoThue(idKhaiThue, ngaylapbo, thang, doanhthuGTGT, doanhthuTNCN, tyleGTGT, tyleTNCN, Ressmess);
-                            if (Ressmess != "")
+                            st.Append("$.notify('Khong thanh cong! " + Ressmess + "',{className: 'error',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                        }
+                        else
+                        {
+                            if ((System.IO.File.Exists(txtFilepath.Text)))
                             {
-                                st.Append("$.notify('Khong thanh cong! " + Ressmess + "',{className: 'error',globalPosition: 'bottom right'});");
-                                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                                System.IO.File.Delete(txtFilepath.Text);
                             }
-                            else
-                            {
-                                if ((System.IO.File.Exists(txtFilepath.Text)))
-                                {
-                                    System.IO.File.Delete(txtFilepath.Text);
-                                }
-                                st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
-                                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                            }
-                        }                       
+                            st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                        }
                     }
                     catch (Exception ms)
                     {
-                        st.Append("$.notify('" + ms.Message + "',{className: 'error',globalPosition: 'bottom right'});");
+                        st.Append("$.notify('" + ms.Message.Replace("'", "") + "',{className: 'error',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     }
                 }
@@ -185,7 +181,7 @@ namespace TelerikWebApp1
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            Save(); 
+            Save();
         }
         protected void btnTemplate_Click(object sender, EventArgs e)
         {
