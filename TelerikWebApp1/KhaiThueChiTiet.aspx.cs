@@ -23,7 +23,8 @@ namespace TelerikWebApp1
         {
             db = new DataClasses1DataContext();
             idKhaiThue = Request.QueryString["idKhaiThue"];
-
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
             if (!IsPostBack)
             {
                 if (idKhaiThue != "" && idKhaiThue != null)

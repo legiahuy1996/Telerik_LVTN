@@ -12,6 +12,8 @@ namespace TelerikWebApp1
         private DataClasses1DataContext db;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
             db = new DataClasses1DataContext();
             if (!IsPostBack)
             {

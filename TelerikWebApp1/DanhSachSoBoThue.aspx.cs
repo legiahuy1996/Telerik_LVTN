@@ -23,6 +23,8 @@ namespace TelerikWebApp1
         private DataClasses1DataContext db;
         public DanhSachSoBoThue()
         {
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
             db = new DataClasses1DataContext();
         }
         protected void Page_Load(object sender, EventArgs e)

@@ -16,6 +16,8 @@ namespace TelerikWebApp1
         private string masothue = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
             db = new DataClasses1DataContext();
             masothue = Request.QueryString["masothue"];
             if (!IsPostBack)

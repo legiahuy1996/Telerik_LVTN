@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="DanhSachNgungNghi.aspx.cs" Inherits="TelerikWebApp1.DanhSachNgungNghi" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="content" runat="server">
-      <h1>Danh Sách Hộ Nợ Thuế</h1>
+      <h1>Danh Sách Hộ Ngưng Nghỉ</h1>
     <br />
     <form id="frm" runat="server">
          <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">

@@ -20,6 +20,8 @@ namespace TelerikWebApp1
         StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
             db = new DataClasses1DataContext();
             btnImport.Attributes.Add("OnClick", "return ShowExcelSelectPage()");
             if (!IsPostBack)

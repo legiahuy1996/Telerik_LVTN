@@ -21,7 +21,9 @@ namespace TelerikWebApp1
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
+            if (!IsPostBack)
             {
                 loadDataSearch();
                 LoadComBo();

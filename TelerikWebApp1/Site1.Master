@@ -109,7 +109,7 @@
                                                                         <a href='#'><span>Danh sách tổng số tiền phải thu</span></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href='#'><span>Danh sách số hộ ngưng nghỉ</span></a>
+                                                                        <a href="DanhSachNgungNghi.aspx"><span>Danh sách số hộ ngưng nghỉ</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="ChamBoThue.aspx"><span>Chấm bộ thuế</span></a>

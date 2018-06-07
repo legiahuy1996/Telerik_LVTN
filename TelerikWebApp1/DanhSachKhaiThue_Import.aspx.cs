@@ -25,7 +25,8 @@ namespace TelerikWebApp1
         StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
         }
         private bool checkEmptyRow(IRow row)
         {

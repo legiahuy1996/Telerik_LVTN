@@ -20,7 +20,8 @@ namespace TelerikWebApp1
         protected void Page_Load(object sender, EventArgs e)
         {
             db = new DataClasses1DataContext();
-          
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
         }
         private void BindingFormatForExcel(ExcelWorksheet worksheet, List<DanhSachHoCaTheResult> listItems)
         {
