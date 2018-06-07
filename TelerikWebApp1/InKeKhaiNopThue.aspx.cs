@@ -22,7 +22,7 @@ namespace TelerikWebApp1
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtThangNam.Text = DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString(); 
         }
         private void BindingFormatForExcel(ExcelWorksheet worksheet, List<getThongBaoNopThueResult> listItems)
         {
