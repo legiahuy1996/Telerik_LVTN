@@ -8,23 +8,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Telerik.Web.UI;
 using TelerikWebApp1.Model;
+
 namespace TelerikWebApp1
 {
-    public partial class InKeKhaiNopThue : System.Web.UI.Page
+    public partial class DanhSachTongSoTienPhaiThu : System.Web.UI.Page
     {
-        private List<getThongBaoNopThueResult> list;
         private DataClasses1DataContext db;
-        public InKeKhaiNopThue()
+        public DanhSachTongSoTienPhaiThu()
         {
             db = new DataClasses1DataContext();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["taikhoan"] == null)
-                Response.Redirect("Login.aspx");
-           if (!IsPostBack)
+            if (!IsPostBack)
             {
                 if(DateTime.Now.Month < 10)
                 {
@@ -36,20 +33,20 @@ namespace TelerikWebApp1
                 }                    
             }
         }
-        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<getThongBaoNopThueResult> listItems)
+        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<GetDanhSachTongTienPhaiThuResult> listItems)
         {
             // Set default width cho tất cả column
             worksheet.DefaultColWidth = 10;
             // Tự động xuống hàng khi text quá dài
             worksheet.Cells.Style.WrapText = true;
             // Tạo header
-            worksheet.Cells[1, 1].Value = "Kỳ thuế";
-            worksheet.Cells[1, 2].Value = "ID Khai Thuế";
-            worksheet.Cells[1, 3].Value = "Tiền thuế GTGT";
-            worksheet.Cells[1, 4].Value = "Tiền thuế TNCN";
-            worksheet.Cells[1, 5].Value = "Tiền thuế môn bài";
-            worksheet.Cells[1, 6].Value = "Số nợ";
-            worksheet.Cells[1, 7].Value = "Tổng cộng";
+            worksheet.Cells[1, 1].Value = "Mã số thuế";
+            worksheet.Cells[1, 2].Value = "Năm";
+            worksheet.Cells[1, 3].Value = "Tháng";
+            worksheet.Cells[1, 4].Value = "Tiền GTGT";
+            worksheet.Cells[1, 5].Value = "Tiền TNCN";
+            worksheet.Cells[1, 6].Value = "Tổng số tiền nộp";
+            worksheet.Cells[1, 7].Value = "Số nợ";
 
 
 
@@ -79,14 +76,13 @@ namespace TelerikWebApp1
             for (int i = 0; i < listItems.Count; i++)
             {
                 var item = listItems[i];
-                worksheet.Cells[i + 2, 1].Value = item.KyThue;
-                worksheet.Cells[i + 2, 2].Value = item.idKhaiThue;
-                worksheet.Cells[i + 2, 3].Value = item.ThueGTGN;
-                worksheet.Cells[i + 2, 4].Value = item.ThueTNCN;
-                worksheet.Cells[i + 2, 5].Value = item.ThueMonBai;
-                worksheet.Cells[i + 2, 6].Value = item.SoNo;
-                worksheet.Cells[i + 2, 7].Value = item.TongCong;
-
+                worksheet.Cells[i + 2, 1].Value = item.masothue;
+                worksheet.Cells[i + 2, 2].Value = item.nam;
+                worksheet.Cells[i + 2, 3].Value = item.Thang;
+                worksheet.Cells[i + 2, 4].Value = item.SoTienGTGT1Thang;
+                worksheet.Cells[i + 2, 5].Value = item.SoTienTNCN1Thang;
+                worksheet.Cells[i + 2, 6].Value = item.TongSoTienNop;
+                worksheet.Cells[i + 2, 7].Value = item.SoTien;
 
                 //// Format lại color nếu như thỏa điều kiện
                 //if (item.TinhTrangNopThue == "0")
@@ -123,7 +119,7 @@ namespace TelerikWebApp1
         private Stream CreateExcelFile(Stream stream = null)
         {
             string Thang = txtThangNam.Text;
-            List<getThongBaoNopThueResult> list = db.getThongBaoNopThue(Thang).ToList();
+            List<GetDanhSachTongTienPhaiThuResult> list = db.GetDanhSachTongTienPhaiThu(Thang).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
@@ -143,7 +139,6 @@ namespace TelerikWebApp1
                 return excelPackage.Stream;
             }
         }
-
         public void Export()
         {
             // Gọi lại hàm để tạo file excel
@@ -154,18 +149,17 @@ namespace TelerikWebApp1
             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
             // Dòng này rất quan trọng, vì chạy trên firefox hay IE thì dòng này sẽ hiện Save As dialog cho người dùng chọn thư mục để lưu
             // File name của Excel này là ExcelDemo
-            Response.AddHeader("Content-Disposition", "attachment; filename=DanhSachSoBoThue.xlsx");
+            Response.AddHeader("Content-Disposition", "attachment; filename=DanhSachTongSoTienPhaiThu.xlsx");
             // Lưu file excel của chúng ta như 1 mảng byte để trả về response
             Response.BinaryWrite(buffer.ToArray());
             // Send tất cả ouput bytes về phía clients
             Response.Flush();
             Response.End();
         }
-
         protected void btnExport_Click(object sender, EventArgs e)
         {
             Export();
-            Response.Redirect("InKeKhaiNopThue.aspx");
+            Response.Redirect("DanhSachTongSoTienPhaiThu.aspx");
         }
     }
 }
