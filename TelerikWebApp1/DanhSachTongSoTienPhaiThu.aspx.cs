@@ -46,12 +46,6 @@ namespace TelerikWebApp1
             worksheet.Cells[1, 4].Value = "Tiền GTGT";
             worksheet.Cells[1, 5].Value = "Tiền TNCN";
             worksheet.Cells[1, 6].Value = "Tổng số tiền nộp";
-            worksheet.Cells[1, 7].Value = "Số nợ";
-
-
-
-
-
             // Lấy range vào tạo format cho range đó ở đây là từ A1 tới Q1
             using (var range = worksheet.Cells["A1:P1"])
             {
@@ -69,7 +63,6 @@ namespace TelerikWebApp1
                 range.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
                 // Set màu ch Border
                 range.Style.Border.Bottom.Color.SetColor(Color.Blue);
-
             }
 
             // Đỗ dữ liệu từ list vào 
@@ -81,8 +74,7 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 3].Value = item.Thang;
                 worksheet.Cells[i + 2, 4].Value = item.SoTienGTGT1Thang;
                 worksheet.Cells[i + 2, 5].Value = item.SoTienTNCN1Thang;
-                worksheet.Cells[i + 2, 6].Value = item.TongSoTienNop;
-                worksheet.Cells[i + 2, 7].Value = item.SoTien;
+                worksheet.Cells[i + 2, 6].Value = item.TongSoTien;
 
                 //// Format lại color nếu như thỏa điều kiện
                 //if (item.TinhTrangNopThue == "0")
@@ -99,15 +91,15 @@ namespace TelerikWebApp1
             }
             //worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
             // Format lại định dạng xuất ra ở cột Money
-            //worksheet.Cells[2, 4, listItems.Count + 4, 4].Style.Numberformat.Format = "$#,##.00";
+            worksheet.Cells[2, 4, listItems.Count + 4, 6].Style.Numberformat.Format = "#,##";
             // fix lại width của column với minimum width là 15
-            //worksheet.Cells[1, 1, listItems.Count + 5, 4].AutoFitColumns(15);
+            worksheet.Cells[1, 1, listItems.Count + 5, 6].AutoFitColumns(15);
 
-            //// Thực hiện tính theo formula trong excel
-            // Hàm Sum 
-            //worksheet.Cells[listItems.Count + 3, 3].Value = "Total is :";
-            //worksheet.Cells[listItems.Count + 3, 4].Formula = "SUM(D2:D" + (listItems.Count + 1) + ")";
-            //// Hàm SumIf
+            //// Thực hiện tính theo foxrmula trong excel
+            //Hàm Sum
+            worksheet.Cells[listItems.Count + 3, 5].Value = "Tổng tiền thu :";
+            worksheet.Cells[listItems.Count + 3, 6].Formula = "SUM(F2:F" + (listItems.Count + 1) + ")";
+            // Hàm SumIf
             //worksheet.Cells[listItems.Count + 4, 3].Value = "Greater than 20050 :";
             //worksheet.Cells[listItems.Count + 4, 4].Formula = "SUMIF(D2:D" + (listItems.Count + 1) + ",\">20050\")";
             //// Tinh theo %
