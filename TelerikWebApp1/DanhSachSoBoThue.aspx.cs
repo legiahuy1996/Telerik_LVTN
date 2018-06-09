@@ -23,15 +23,15 @@ namespace TelerikWebApp1
         private DataClasses1DataContext db;
         public DanhSachSoBoThue()
         {
-            if (Session["taikhoan"] == null)
-                Response.Redirect("Login.aspx");
             db = new DataClasses1DataContext();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             btnImport.Attributes.Add("OnClick", "return ShowExcelSelectPage()");
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
+                if (Session["taikhoan"] == null)
+                    Response.Redirect("Login.aspx");
                 loadDataSearch();
             }
         }
@@ -47,7 +47,7 @@ namespace TelerikWebApp1
             string namlapbo = txtNamLapBo.Text;
 
 
-            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, thang,  diachi, hoten, thanglapbo,namlapbo).ToList();
+            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, thang, diachi, hoten, thanglapbo, namlapbo).ToList();
             grid.DataSource = data;
             list = data;
             grid.Rebind();
@@ -96,7 +96,7 @@ namespace TelerikWebApp1
                 range.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
                 // Set màu ch Border
                 range.Style.Border.Bottom.Color.SetColor(Color.Blue);
-                
+
             }
 
             // Đỗ dữ liệu từ list vào 
@@ -110,11 +110,11 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 5].Value = item.DoanhThuTinhThueGTGT;
                 worksheet.Cells[i + 2, 6].Value = item.TyLeTinhThueGTGT + "%";
                 worksheet.Cells[i + 2, 7].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT;
-                worksheet.Cells[i + 2, 8].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT *12;
+                worksheet.Cells[i + 2, 8].Value = item.DoanhThuTinhThueGTGT * item.TyLeTinhThueGTGT * 12;
                 worksheet.Cells[i + 2, 9].Value = item.DoanhThuTinhThueTNCN;
                 worksheet.Cells[i + 2, 10].Value = item.TyLeTinhThueTNCN + "%";
                 worksheet.Cells[i + 2, 11].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN;
-                worksheet.Cells[i + 2, 12].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN *12;
+                worksheet.Cells[i + 2, 12].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN * 12;
                 worksheet.Cells[i + 2, 13].Value = item.TinhTrangNopThue;
                 worksheet.Cells[i + 2, 14].Value = item.NgayLapBo;
 
@@ -132,7 +132,7 @@ namespace TelerikWebApp1
                 //}
 
             }
-            worksheet.Cells[2,16,2,16].Style.Numberformat.Format = "dd/MM/yyyy";
+            worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
             // Format lại định dạng xuất ra ở cột Money
             //worksheet.Cells[2, 4, listItems.Count + 4, 4].Style.Numberformat.Format = "$#,##.00";
             // fix lại width của column với minimum width là 15
@@ -154,13 +154,13 @@ namespace TelerikWebApp1
         private Stream CreateExcelFile(Stream stream = null)
         {
             string nghekinhdoanh = txtNgheKinhDoanh.Text;
-            string MST = txtMST.Text;            
+            string MST = txtMST.Text;
             string thang = txtThang.Text;
             string diachi = txtDiaChi.Text;
             string hoten = txtHoTen.Text;
             string thanglapbo = txtThangLapBo.Text;
             string namlapbo = txtNamLapBo.Text;
-            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, thang,  diachi, hoten, thanglapbo, namlapbo).ToList();
+            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, thang, diachi, hoten, thanglapbo, namlapbo).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
@@ -174,7 +174,7 @@ namespace TelerikWebApp1
                 // Lấy Sheet bạn vừa mới tạo ra để thao tác 
                 var workSheet = excelPackage.Workbook.Worksheets[1];
                 // Đổ data vào Excel file
-                
+
                 BindingFormatForExcel(workSheet, list);
                 excelPackage.Save();
                 return excelPackage.Stream;
@@ -255,11 +255,11 @@ namespace TelerikWebApp1
                 {
                     try
                     {
-                        string idKhaiThue =item["idKhaiThue"].Text.Trim();
-                        int lstsobothue = db.GetDSChuaLapBo(idKhaiThue,DateTime.Now.Month).Count();
+                        string idKhaiThue = item["idKhaiThue"].Text.Trim();
+                        int lstsobothue = db.GetDSChuaLapBo(idKhaiThue, DateTime.Now.Month).Count();
                         if (lstsobothue != 0)
                         {
-                           db.spfrm_SoBoThue(null, null, null, null, null, null, null, null, null, null, int.Parse(idKhaiThue), "Create", "");
+                            db.spfrm_SoBoThue(null, null, null, null, null, null, null, null, null, null, int.Parse(idKhaiThue), "Create", "");
                             st.Append("$.notify('Sao chép thông tin thành công',{className: 'success',globalPosition: 'bottom right'});");
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                         }
