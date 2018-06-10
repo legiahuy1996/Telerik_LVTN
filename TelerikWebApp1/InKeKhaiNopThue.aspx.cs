@@ -44,12 +44,11 @@ namespace TelerikWebApp1
             worksheet.Cells.Style.WrapText = true;
             // Tạo header
             worksheet.Cells[1, 1].Value = "Kỳ thuế";
-            worksheet.Cells[1, 2].Value = "ID Khai Thuế";
-            worksheet.Cells[1, 3].Value = "Tiền thuế GTGT";
-            worksheet.Cells[1, 4].Value = "Tiền thuế TNCN";
-            worksheet.Cells[1, 5].Value = "Tiền thuế môn bài";
-            worksheet.Cells[1, 6].Value = "Số nợ";
-            worksheet.Cells[1, 7].Value = "Tổng cộng";
+            worksheet.Cells[1, 2].Value = "Tiền thuế GTGT";
+            worksheet.Cells[1, 3].Value = "Tiền thuế TNCN";
+            worksheet.Cells[1, 4].Value = "Tiền thuế môn bài";
+            worksheet.Cells[1, 5].Value = "Số nợ";
+            worksheet.Cells[1, 6].Value = "Tổng cộng";
 
 
 
@@ -80,12 +79,11 @@ namespace TelerikWebApp1
             {
                 var item = listItems[i];
                 worksheet.Cells[i + 2, 1].Value = item.KyThue;
-                worksheet.Cells[i + 2, 2].Value = item.idKhaiThue;
-                worksheet.Cells[i + 2, 3].Value = item.ThueGTGN;
-                worksheet.Cells[i + 2, 4].Value = item.ThueTNCN;
-                worksheet.Cells[i + 2, 5].Value = item.ThueMonBai;
-                worksheet.Cells[i + 2, 6].Value = item.SoNo;
-                worksheet.Cells[i + 2, 7].Value = item.TongCong;
+                worksheet.Cells[i + 2, 2].Value = item.ThueGTGN;
+                worksheet.Cells[i + 2, 3].Value = item.ThueTNCN;
+                worksheet.Cells[i + 2, 4].Value = item.ThueMonBai;
+                worksheet.Cells[i + 2, 5].Value = (item.SoNo * -1);
+                worksheet.Cells[i + 2, 6].Value = item.TongCong;
 
 
                 //// Format lại color nếu như thỏa điều kiện
@@ -103,9 +101,9 @@ namespace TelerikWebApp1
             }
             //worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
             // Format lại định dạng xuất ra ở cột Money
-            //worksheet.Cells[2, 4, listItems.Count + 4, 4].Style.Numberformat.Format = "$#,##.00";
-            // fix lại width của column với minimum width là 15
-            //worksheet.Cells[1, 1, listItems.Count + 5, 4].AutoFitColumns(15);
+            worksheet.Cells[2,2, listItems.Count + 4, 6].Style.Numberformat.Format = "#,##";
+          //  fix lại width của column với minimum width là 15
+            worksheet.Cells[1, 1, listItems.Count + 5, 4].AutoFitColumns(15);
 
             //// Thực hiện tính theo formula trong excel
             // Hàm Sum 

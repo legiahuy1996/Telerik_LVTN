@@ -62,9 +62,6 @@
                                                                     <li>
                                                                         <a href="DanhSachHoCaThe.aspx"><span>Danh sách hộ cá thể</span></a>
                                                                     </li>
-                                                                    <li>
-                                                                        <a href="DieuChinhHoCaThe.aspx"><span>Điều chỉnh thông tin hộ cá thể</span></a>
-                                                                    </li>
                                                                 </ul>
                                                             </li>
                                                             <li class='has-sub '>
