@@ -62,9 +62,6 @@
                                                                     <li>
                                                                         <a href="DanhSachHoCaThe.aspx"><span>Danh sách hộ cá thể</span></a>
                                                                     </li>
-                                                                    <li>
-                                                                        <a href="DieuChinhHoCaThe.aspx"><span>Điều chỉnh thông tin hộ cá thể</span></a>
-                                                                    </li>
                                                                 </ul>
                                                             </li>
                                                             <li class='has-sub '>
@@ -106,7 +103,7 @@
                                                                         <a href='DanhSachNoThue.aspx'><span>Danh sách hộ còn nợ thuế</span></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href='#'><span>Danh sách tổng số tiền phải thu</span></a>
+                                                                        <a href="DanhSachTongSoTienPhaiThu.aspx"><span>Danh sách tổng số tiền phải thu</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="DanhSachNgungNghi.aspx"><span>Danh sách số hộ ngưng nghỉ</span></a>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site1.Master" CodeBehind="DanhSachSoBoThue.aspx.cs" Inherits="TelerikWebApp1.DanhSachSoBoThue" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site1.Master" CodeBehind="DanhSachSoBoThue.aspx.cs" Inherits="TelerikWebApp1.DanhSachSoBoThue" EnableSessionState="True" %>
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 
