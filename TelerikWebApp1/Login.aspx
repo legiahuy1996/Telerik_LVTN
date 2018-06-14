@@ -8,7 +8,7 @@
 	<!DOCTYPE html>
 	<html>
 	<head>
-		<title>Plain Login Form a Flat Responsive Widget Template :: w3layouts</title>
+		<title>Chào mừng bạn đến với trang đăng nhập thuế</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,300italic,300,100italic,100,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 		<link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700' rel='stylesheet' type='text/css'>
@@ -25,7 +25,7 @@
 	</head>
 	<body>
 
-	<h1>PLAIN LOGIN FORM</h1>
+	<h1>Đăng nhập tài khoản</h1>
 	<!---728x90--->
 	<script src='//publisher.eboundservices.com/dynamicAds/dynamicScript.js'></script>
 	<div style='margin: 0 auto;text-align: center;margin-top: 5px;'><script>
@@ -50,11 +50,11 @@
 	user_tag_config['ebound_header_tag']['mobile']['adsCode'] = '';
 	</script></div>
 	   <div class="main">
-	   <h2>Login Here</h2>
+	   <h2>Đăng nhập tại đây</h2>
 		   <form runat="server">
-				<asp:TextBox runat="server" ID="txtTaiKhoan" ></asp:TextBox>
-               <asp:TextBox TextMode="Password" runat="server" ID="txtMatKhau"></asp:TextBox>
-				<asp:Button runat="server" ID="btnLogin" OnClick="btnLogin_Click" />
+				<asp:TextBox runat="server" ID="txtTaiKhoan" placeholder="Tên đăng nhập"></asp:TextBox>
+               <asp:TextBox TextMode="Password" runat="server" ID="txtMatKhau" placeholder="Mật khẩu"></asp:TextBox>
+				<asp:Button runat="server" ID="btnLogin" OnClick="btnLogin_Click" Text="Đăng nhập"/>
 			</form>	
 	   </div>
 	   <div class="footer">

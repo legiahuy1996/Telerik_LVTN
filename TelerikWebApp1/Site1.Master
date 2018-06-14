@@ -97,7 +97,7 @@
                                                                 <ul>
                                                                     <li><a href="NhapSoLieuThue.aspx"><span>Nhập số liệu nộp thuế</span></a></li>
                                                                     <li>
-                                                                        <a href='#'><span>Danh sách hộ được lên sổ bộ trong tháng</span></a>
+                                                                        <a href='DanhSachDuocLenSoBo.aspx'><span>Danh sách hộ được lên sổ bộ trong tháng</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href='DanhSachNoThue.aspx'><span>Danh sách hộ còn nợ thuế</span></a>
@@ -113,7 +113,13 @@
                                                                     </li>
                                                                 </ul>
                                                             </li>
-                                                            <li><a href='#'><span>Contact</span></a></li>
+                                                            <li class='has-sub '><a href='#'><span>Hướng dẫn</span></a>
+                                                                <ul>
+                                                                    <li>
+                                                                        <a href="#"><span>Hướng dẫn sử dụng chương trình</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                     <div style="clear: both; margin: 0 0 30px 0;">&nbsp;</div>
