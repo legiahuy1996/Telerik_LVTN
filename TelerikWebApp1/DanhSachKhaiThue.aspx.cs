@@ -44,7 +44,7 @@ namespace TelerikWebApp1
             string MaNganh = cboMaNganh.SelectedValue;
             string Nam = txtNam.Text;
             string trangthai = rdbTinhTrang.SelectedValue.Trim();
-            grid.DataSource = db.getDSThue(MST, SoGP, MaNganh, Nam,trangthai);
+            grid.DataSource = db.getDSThue(MST, SoGP, MaNganh, Nam, trangthai);
             grid.Rebind();
         }
 
@@ -71,26 +71,44 @@ namespace TelerikWebApp1
                 {
                     try
                     {
-                        string idKhaiThue = item["idKhaiThue"].Text.Trim().Replace("&nbsp;", "");
-                        KhaiThue kt = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(idKhaiThue));
-                        if (kt != null)
+                        TextBox txb = (TextBox)item["ClientSelectColumn"].FindControl("txtLyDo");
+                        if (txb.Text == "")
                         {
-                            kt.TrangThaiHoatDong = false;
-                            db.SubmitChanges();
+                            item.FindControl("txtLyDo").Focus();
+                            st.Append("$.notify('Vui lòng nhập lý do',{className: 'error',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                         }
-                    }catch(Exception mess)
+                        else
+                        {
+                            string idKhaiThue = item["idKhaiThue"].Text.Trim().Replace("&nbsp;", "");
+                            KhaiThue kt = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(idKhaiThue));
+                            if (kt != null)
+                            {
+                                kt.TrangThaiHoatDong = false;
+                                thongtinngungnghi a = new thongtinngungnghi { idKhaiThue = int.Parse(idKhaiThue), lydo = txb.Text };
+                                db.thongtinngungnghis.InsertOnSubmit(a);
+                                db.SubmitChanges();
+                            }
+                        }
+
+                    }
+                    catch (Exception mess)
                     {
                         st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     }
-                   
+                    st.Append("$.notify('Khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                    loadData();
+                }
+                else
+                {
+                    st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+
                 }
             }
-            st.Append("$.notify('Khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-            loadData();
         }
-
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             try
@@ -264,7 +282,7 @@ namespace TelerikWebApp1
 
         protected void btnCopy_Click(object sender, EventArgs e)
         {
-            
+
             GridDataItem item;
             st.Clear();
             string strErr = "";
@@ -279,31 +297,31 @@ namespace TelerikWebApp1
                         string masothue = item["masothue"].Text.Trim().Replace("&nbsp;", "");
                         string idKhaiThue = item["idKhaiThue"].Text.Trim().Replace("&nbsp;", "");
                         List<KhaiThue> lstkhaithue = db.KhaiThues.Where(x => x.masothue == masothue && x.nam == DateTime.Now.Year.ToString()).ToList();
-                        if (lstkhaithue.Count ==0)
+                        if (lstkhaithue.Count == 0)
                         {
                             KhaiThue kt = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(idKhaiThue));
-                            if(kt!=null)
+                            if (kt != null)
                             {
-                                List<ChiTietKhaiThue> ctkt = db.ChiTietKhaiThues.Where(x=>x.idKhaiThue == kt.idKhaiThue).ToList();
-                                if(ctkt.Count >0)
+                                List<ChiTietKhaiThue> ctkt = db.ChiTietKhaiThues.Where(x => x.idKhaiThue == kt.idKhaiThue).ToList();
+                                if (ctkt.Count > 0)
                                 {
                                     string ReturnMess = "";
                                     string ReturnMessCode = "";
                                     db.Insert_KhaiThue(""
                                         , kt.masothue, DateTime.Now.Year.ToString(), kt.DienTichKD, kt.SoLuongLD, kt.TuGio, kt.DenGio, kt.TrangThaiHoatDong,
-                                         DateTime.Now.ToString("dd/MM/yyyy"), ref ReturnMessCode,ref ReturnMess
+                                         DateTime.Now.ToString("dd/MM/yyyy"), ref ReturnMessCode, ref ReturnMess
                                         );
                                     string idKhaiThueNew = ReturnMessCode;
-                                    foreach(ChiTietKhaiThue ct in ctkt)
+                                    foreach (ChiTietKhaiThue ct in ctkt)
                                     {
-                                        db.Insert_ChitietKhaiThue_NotXML(idKhaiThueNew, ct.DoanhThu.ToString(),ct.manganh,ct.nghekinhdoanh);
+                                        db.Insert_ChitietKhaiThue_NotXML(idKhaiThueNew, ct.DoanhThu.ToString(), ct.manganh, ct.nghekinhdoanh);
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            st.Append("$.notify('Đã tồn tại dữ liệu của năm " +DateTime.Now.Year.ToString()+ "',{className: 'error',globalPosition: 'bottom right'});");
+                            st.Append("$.notify('Đã tồn tại dữ liệu của năm " + DateTime.Now.Year.ToString() + "',{className: 'error',globalPosition: 'bottom right'});");
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                             txtNam.Focus();
                         }

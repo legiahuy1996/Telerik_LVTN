@@ -233,6 +233,13 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
+                                            <telerik:GridTemplateColumn UniqueName="LyDo" DataField="LyDo" HeaderText="Lý do">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <ItemTemplate>
+                                                    <asp:TextBox runat="server" ID="txtLyDo"></asp:TextBox>
+                                                </ItemTemplate>
+                                            </telerik:GridTemplateColumn>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>

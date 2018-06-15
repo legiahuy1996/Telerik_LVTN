@@ -22,15 +22,15 @@
                     <asp:Label runat="server" ID="lblMST">Mã số thuế</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtMST" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtMST" Width="80%"></asp:TextBox>
                 </td>
                 <td width="10%">
                     <asp:Label runat="server" ID="Label6">Tháng lập bộ</asp:Label>
                 </td>
                 <td width="40%">
-                    <asp:TextBox class="input" runat="server" ID="txtThangLapBo" Width="30px"></asp:TextBox>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <asp:TextBox class="Input" runat="server" ID="txtThangLapBo" Width="30px"></asp:TextBox>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     <asp:Label runat="server" ID="Label2">Năm lập bộ</asp:Label>
-                      <asp:TextBox class="input" runat="server" ID="txtNamLapBo" Width="30px"></asp:TextBox>
+                      <asp:TextBox class="Input" runat="server" ID="txtNamLapBo" Width="30px"></asp:TextBox>
                 </td>                
             </tr>
             <tr>
@@ -39,14 +39,14 @@
                     <asp:Label runat="server" ID="lblCMND">Tháng kinh doanh </asp:Label>
                 </td>
                 <td width="30%">                    
-                    <asp:TextBox class="input" runat="server" ID="txtThang" Width="50px" onblur="return validateDOB(this);"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtThang" Width="50px" onblur="return validateDOB(this);"></asp:TextBox>
                 </td>
                
                  <td width="10%">
                     <asp:Label runat="server" ID="lblDiaChi">Địa chỉ kinh doanh</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtDiaChi" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtDiaChi" Width="80%"></asp:TextBox>
                 </td>
             </tr>
            
@@ -56,13 +56,13 @@
                     <asp:Label runat="server" ID="Label5">Họ Tên</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtHoTen" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtHoTen" Width="80%"></asp:TextBox>
                 </td>
                 <td width="10%">
                     <asp:Label runat="server" ID="lblNgheKinhDoanh">Nghề kinh doanh</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtNgheKinhDoanh" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtNgheKinhDoanh" Width="80%"></asp:TextBox>
                 </td>        
             </tr>
            
