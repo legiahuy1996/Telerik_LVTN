@@ -101,6 +101,18 @@ namespace TelerikWebApp1
 
         }
 
-       
+        protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            try
+            {
+                loadDataSearch();
+            }
+            catch
+            {
+                if (grid.DataSource == null)
+                    grid.DataSource = new string[] { };
+            }
+
+        }
     }
 }
