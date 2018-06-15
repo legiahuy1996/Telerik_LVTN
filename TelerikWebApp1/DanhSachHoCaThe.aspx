@@ -86,6 +86,7 @@
 
 
         </table>
+        <hr />
         <table cellspacing="1" cellpadding="1" width="100%" border="0">
             <tr>
                 <td colspan="3" align="center">
@@ -101,7 +102,9 @@
 			            <span class="btnExport">Xuất DL</span>
                         </asp:LinkButton>
                     </span>
+                    <hr />
                 </td>
+
             </tr>
             <tr>
                 <td width="100%">
@@ -123,12 +126,12 @@
                                         <Columns>
                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                             </telerik:GridClientSelectColumn>
-                                            <telerik:GridTemplateColumn SortExpression="Detail" UniqueName="Detail" 
+                                            <telerik:GridTemplateColumn SortExpression="Detail" UniqueName="Detail"
                                                 HeaderText="Chi tiết">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemTemplate>
-                                                    <asp:LinkButton ID="lnkMST"  CssClass="Hlink" runat="server"
+                                                    <asp:LinkButton ID="lnkMST" CssClass="Hlink" runat="server"
                                                         CommandName="LINKMST">Chi tiết</asp:LinkButton>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>

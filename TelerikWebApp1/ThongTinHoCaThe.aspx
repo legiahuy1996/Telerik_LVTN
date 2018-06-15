@@ -97,14 +97,14 @@
                 <td>
                     <asp:Label runat="server">Mã đường phố</asp:Label></td>
                 <td>
-                    <telerik:RadComboBox class="Input" ID="cboMaDuongPho" Width="80%" runat="server"></telerik:RadComboBox>
+                    <telerik:RadComboBox class="Input" ID="cboMaDuongPho" Width="80%" runat="server" Skin="Office2007"></telerik:RadComboBox>
                 </td>
                 <td>
 
                     <asp:Label runat="server">Năm</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="50px"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="50px" ID="txtNam"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -118,12 +118,12 @@
                     <asp:Label runat="server" CssClass="label" ID="lblMaNganh">Ngành</asp:Label>
                 </td>
                 <td>
-                    <telerik:RadComboBox class="Input" ID="cboMaNganh" Width="80%" runat="server"></telerik:RadComboBox>
+                    <telerik:RadComboBox class="Input" ID="cboMaNganh" Width="80%" runat="server" Skin="Office2007"></telerik:RadComboBox>
                 </td>
                 <td>
                     <asp:Label runat="server">Nghề kinh doanh</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80%" ID="txtNghekinhDoanh"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -136,13 +136,13 @@
                 <td>
                     <asp:Label runat="server">Vốn kinh doanh</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="15" Width="80%"></asp:TextBox></td>
+                    <asp:TextBox class="Input" runat="server" MaxLength="15" Width="80%" ID="txtVonKD"></asp:TextBox></td>
                 <td>
 
                     <asp:Label runat="server">Ngày bắt đầu kinh doanh</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80px"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80px" ID="txtNgayBatDauKD"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -161,7 +161,7 @@
                     <asp:Label runat="server">Số giấy phép</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80%" ID="txtSoGP"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -174,13 +174,14 @@
                 <td>
                     <asp:Label runat="server">Số điện thoại</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="15" Width="80%"></asp:TextBox></td>
+                    <asp:TextBox class="Input" runat="server" MaxLength="15" Width="80%" ID="txtSoDT"></asp:TextBox></td>
                 <td>
 
                     <asp:Label runat="server">Email</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80%" ID="txtEmail"></asp:TextBox>
+                    <%--<asp:RegularExpressionValidator ID="regexEmailValid" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ErrorMessage="Email không hợp lệ"></asp:RegularExpressionValidator>--%>
                 </td>
             </tr>
             <tr>
@@ -193,7 +194,7 @@
                 <td>
                     <asp:Label runat="server">Ghi chú</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="15" Width="80%" TextMode="MultiLine"></asp:TextBox></td>
+                    <asp:TextBox class="Input" runat="server" MaxLength="15" Width="80%" TextMode="MultiLine" ID="txtGhiChu"></asp:TextBox></td>
 
             </tr>
             <tr>
@@ -211,10 +212,15 @@
             <tr>
                 <td colspan="3" align="center">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R"><span class="btnReset">Làm mới</span>
+                        <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" OnClick="btnReset_Click"><span class="btnReset">Làm mới</span>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server"><span class="btnSave">Lưu</span>
+                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSave_Click" OnClientClick="return validateform();"><span class="btnSave">Lưu</span>
                         </asp:LinkButton>
+                        <asp:LinkButton ID="btnBack" name="btnBack" AccessKey="L" runat="server" ToolTip="ALT+L"
+                            OnClientClick="DisableAllButton('_ctl0:btnList'); return true;" OnClick="btnBack_Click">
+                    <span class="btnBack">V&#7873; danh sách</span>
+                        </asp:LinkButton>
+
                     </span>
                 </td>
             </tr>
@@ -227,6 +233,7 @@
         $("#<%=txtNgayCapMST.ClientID%>").datepicker();
         $("#<%=txtNgaySinh.ClientID%>").datepicker();
         $("#<%=txtNgayTinhThue.ClientID%>").datepicker();
+        $("#<%=txtNgayBatDauKD.ClientID%>").datepicker();
         //function validateEmail(email) {
         //    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         //    return re.test(String(email).toLowerCase());

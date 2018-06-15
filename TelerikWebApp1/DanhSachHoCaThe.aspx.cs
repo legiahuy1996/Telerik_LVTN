@@ -85,7 +85,7 @@ namespace TelerikWebApp1
             worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
 
         }
-        protected void btnSearch_Click(object sender, EventArgs e)
+        protected void LoadDataSearch()
         {
             string mst = txtMST.Text.Trim();
             string cmnd = txtCMND.Text.Trim();
@@ -98,6 +98,11 @@ namespace TelerikWebApp1
             string sdt = txtSDT.Text.Trim();
             string hoten = txtHoTen.Text;
             grid.DataSource = db.DanhSachHoCaThe(mst, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, manganh, sdt, "Search");
+            grid.DataBind();
+        }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadDataSearch();
         }
         private Stream CreateExcelFile(Stream stream = null)
         {
@@ -112,7 +117,7 @@ namespace TelerikWebApp1
             string ngaycap = txtNgayCap.Text;
             string ngaytinhthue = txtNgayTinhThue.Text;
             string sdt = txtSDT.Text;
-            List<DanhSachHoCaTheResult> list = db.DanhSachHoCaThe(MST, cmnd, tencuahang, ngaycap, sogp, diachi, hoten,ngaytinhthue,manganh,sdt, Activity).ToList();
+            List<DanhSachHoCaTheResult> list = db.DanhSachHoCaThe(MST, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, manganh, sdt, Activity).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
@@ -149,7 +154,7 @@ namespace TelerikWebApp1
             Response.Flush();
             Response.End();
         }
-        protected void btnExportGrid_Click(object sender, EventArgs e)  
+        protected void btnExportGrid_Click(object sender, EventArgs e)
         {
             Export();
             Response.Redirect("DanhSachHoCaThe.aspx");
@@ -162,9 +167,15 @@ namespace TelerikWebApp1
 
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            btnSearch_Click(null, null);
-            if (grid.DataSource == null)
-                grid.DataSource = new string[] { };
+            try
+            {
+                LoadDataSearch();
+            }
+            catch
+            {
+                if (grid.DataSource == null)
+                    grid.DataSource = new string[] { };
+            }
         }
 
         protected void grid_ItemCommand(object sender, GridCommandEventArgs e)
@@ -179,12 +190,12 @@ namespace TelerikWebApp1
                     {
                         item_detail = (GridDataItem)e.Item;
                         string masothue = item_detail["masothue"].Text.Trim().Replace("&nbsp;", "");
-                        if(masothue!="")
+                        if (masothue != "")
                         {
                             string url = "ThongTinHoCaThe.aspx?masothue=" + item_detail["masothue"].Text.Trim().Replace("&nbsp;", "");
                             Response.Redirect(url);
                         }
-                        
+
                     }
                 }
                 catch (Exception mess)
