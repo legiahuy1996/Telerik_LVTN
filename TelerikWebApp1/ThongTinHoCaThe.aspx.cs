@@ -35,13 +35,6 @@ namespace TelerikWebApp1
             cboMaDuongPho.DataBind();
             cboMaDuongPho.Items.Insert(0, "");
             cboMaDuongPho.SelectedIndex = 0;
-
-            cboMaNganh.DataSource = (from a in db.manganhs where a.manganh1 != "07" && a.manganh1!="99" select new { ma = a.manganh1, ten = a.tennganh }).ToList();
-            cboMaNganh.DataValueField = "ma";
-            cboMaNganh.DataTextField = "ten";
-            cboMaNganh.DataBind();
-            cboMaNganh.Items.Insert(0, "");
-            cboMaNganh.SelectedIndex = 0;
         }
         protected void LoadDataByID(string id)
         {
@@ -79,7 +72,6 @@ namespace TelerikWebApp1
                 txtNgaySinh.Text = ngaysinh.ToString("dd/MM/yyyy");
                 txtTenCuaHang.Text = danhba.tencuahang;
                 cboMaDuongPho.SelectedValue = danhba.madp;
-                cboMaNganh.SelectedValue = danhba.manganh;
                 txtNghekinhDoanh.Text = danhba.nghekinhdoanh;
                 txtNam.Text = danhba.nam;
                 txtVonKD.Text = danhba.vonkd.ToString();
@@ -113,7 +105,6 @@ namespace TelerikWebApp1
             string diachi = txtDiaChi.Text;
             string ngaycapcmnd = txtNgayCapCMND.Text;
             string madp = cboMaDuongPho.SelectedValue.Trim();
-            string manganh = cboMaNganh.SelectedValue.Trim();
             string nam = txtNam.Text;
             string nghekinhdoanh = txtNghekinhDoanh.Text;
             string vonkd = txtVonKD.Text;
@@ -126,7 +117,7 @@ namespace TelerikWebApp1
             int err;
             try
             {
-                err = db.Insert_HoCaThe(masothue, ngaycapmst, hoten, tencuahang, ngaysinh, cmnd, diachi, ngaycapcmnd, madp, nam, manganh, nghekinhdoanh, vonkd, ngaybatdaukd, ngaytinhthue, sogp, sodt, email, ghichu);
+                err = db.Insert_HoCaThe(masothue, ngaycapmst, hoten, tencuahang, ngaysinh, cmnd, diachi, ngaycapcmnd, madp, nam, nghekinhdoanh, vonkd, ngaybatdaukd, ngaytinhthue, sogp, sodt, email, ghichu);
                 if(err == 0)
                 {
                     st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");

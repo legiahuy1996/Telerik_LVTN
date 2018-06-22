@@ -23,7 +23,7 @@
                     <asp:TextBox class="Input" ID="txtNgayCapMST" runat="server" MaxLength="15" Width="80px"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Label runat="server">Mã số thuế</asp:Label>
+                    <asp:Label runat="server" ID="lblMST">Mã số thuế</asp:Label>
                 </td>
                 <td>
                     <asp:TextBox class="Input" ID="txtMST" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
@@ -41,12 +41,12 @@
                 <td>
                     <asp:TextBox class="Input" ID="txtHoTen" runat="server" MaxLength="15" Width="80%"></asp:TextBox>
                 </td>
-                <td>
 
-                    <asp:Label runat="server">Tên cửa hàng</asp:Label>
+                <td>
+                    <asp:Label runat="server" ID="lblCMND">CMND</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" ID="txtTenCuaHang" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" ID="txtCMND" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -62,11 +62,13 @@
                     <asp:TextBox class="Input" ID="txtNgaySinh" runat="server" MaxLength="15" Width="80px"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Label runat="server">CMND</asp:Label>
+
+                    <asp:Label runat="server">Tên cửa hàng</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" ID="txtCMND" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" ID="txtTenCuaHang" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
                 </td>
+
             </tr>
             <tr>
                 <td>
@@ -114,12 +116,6 @@
             </tr>
             <tr>
                 <td></td>
-                <td>
-                    <asp:Label runat="server" CssClass="label" ID="lblMaNganh">Ngành</asp:Label>
-                </td>
-                <td>
-                    <telerik:RadComboBox class="Input" ID="cboMaNganh" Width="80%" runat="server" Skin="Office2007"></telerik:RadComboBox>
-                </td>
                 <td>
                     <asp:Label runat="server">Nghề kinh doanh</asp:Label></td>
                 <td>
@@ -234,15 +230,16 @@
         $("#<%=txtNgaySinh.ClientID%>").datepicker();
         $("#<%=txtNgayTinhThue.ClientID%>").datepicker();
         $("#<%=txtNgayBatDauKD.ClientID%>").datepicker();
+        $('#<%=lblMST.ClientID%>').attr('class', 'labelRequire');
+        $('#<%=lblCMND.ClientID%>').attr('class', 'labelRequire');
         //function validateEmail(email) {
         //    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         //    return re.test(String(email).toLowerCase());
         //}
-        //function validateform() {
-        //    if (CheckIsNull_RCB('cboMaNganh') == false) return false;
-        //    if (CheckIsNull('txtDanhThu') == false) return false;
-        //    if (CheckIsNull('txtNgheKinhDoanh') == false) return false;
-        //}
+        function validateform() {
+            if (CheckIsNull('txtMST') == false) return false;
+            if (CheckIsNull('txtCMND') == false) return false;
+        }
         //function checkSave() {
         //    if (CheckIsNull('txtMST') == false) return false;
         //    if (CheckIsNull('txtNam') == false) return false;
