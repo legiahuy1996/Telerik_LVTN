@@ -2,20 +2,26 @@
 using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
+using System.IO.Compression;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
+using System.Text;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 using TelerikWebApp1.Model;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using DocumentFormat.OpenXml;
+using Telerik.Windows.Zip;
+using ICSharpCode.SharpZipLib.Zip;
+using System.IO;
+
 namespace TelerikWebApp1
 {
     public partial class InKeKhaiNopThue : System.Web.UI.Page
     {
         private List<getThongBaoNopThueResult> list;
         private DataClasses1DataContext db;
+        StringBuilder st = new StringBuilder();
         public InKeKhaiNopThue()
         {
             db = new DataClasses1DataContext();
@@ -24,16 +30,16 @@ namespace TelerikWebApp1
         {
             if (Session["taikhoan"] == null)
                 Response.Redirect("Login.aspx");
-           if (!IsPostBack)
+            if (!IsPostBack)
             {
-                if(DateTime.Now.Month < 10)
+                if (DateTime.Now.Month < 10)
                 {
                     txtThangNam.Text = "0" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
                 }
                 else
                 {
                     txtThangNam.Text = DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
-                }                    
+                }
             }
         }
         private void BindingFormatForExcel(ExcelWorksheet worksheet, List<getThongBaoNopThueResult> listItems)
@@ -60,17 +66,17 @@ namespace TelerikWebApp1
                 // Set PatternType
                 range.Style.Fill.PatternType = ExcelFillStyle.DarkGray;
                 // Set Màu cho Background
-                range.Style.Fill.BackgroundColor.SetColor(Color.White);
+                range.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.White);
                 //
-                range.Style.Font.Color.SetColor(Color.Black);
+                range.Style.Font.Color.SetColor(System.Drawing.Color.Black);
                 // Canh giữa cho các text
                 range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 // Set Font cho text  trong Range hiện tại
-                range.Style.Font.SetFromFont(new Font("Arial", 10));
+                range.Style.Font.SetFromFont(new System.Drawing.Font("Arial", 10));
                 // Set Border
                 range.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
                 // Set màu ch Border
-                range.Style.Border.Bottom.Color.SetColor(Color.Blue);
+                range.Style.Border.Bottom.Color.SetColor(System.Drawing.Color.Blue);
 
             }
 
@@ -82,7 +88,7 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 2].Value = item.ThueGTGN;
                 worksheet.Cells[i + 2, 3].Value = item.ThueTNCN;
                 worksheet.Cells[i + 2, 4].Value = item.ThueMonBai;
-                worksheet.Cells[i + 2, 5].Value = (item.SoNo * -1);
+                worksheet.Cells[i + 2, 5].Value = (int.Parse(item.SoNo.Replace(",", "")) * -1);
                 worksheet.Cells[i + 2, 6].Value = item.TongCong;
 
 
@@ -101,8 +107,8 @@ namespace TelerikWebApp1
             }
             //worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
             // Format lại định dạng xuất ra ở cột Money
-            worksheet.Cells[2,2, listItems.Count + 4, 6].Style.Numberformat.Format = "#,##";
-          //  fix lại width của column với minimum width là 15
+            worksheet.Cells[2, 2, listItems.Count + 4, 6].Style.Numberformat.Format = "#,##";
+            //  fix lại width của column với minimum width là 15
             worksheet.Cells[1, 1, listItems.Count + 5, 4].AutoFitColumns(15);
 
             //// Thực hiện tính theo formula trong excel
@@ -160,10 +166,144 @@ namespace TelerikWebApp1
             Response.End();
         }
 
+
+
+        private void ReplaceMergeFieldWithText(IEnumerable<FieldCode> fields, string mergeFieldName, string replacementText)
+        {
+            var field = fields
+                .Where(f => f.InnerText.Contains(mergeFieldName))
+                .FirstOrDefault();
+
+            if (field != null)
+            {
+                // Get the Run that contains our FieldCode
+                // Then get the parent container of this Run
+                Run rFldCode = (Run)field.Parent;
+
+                // Get the three (3) other Runs that make up our merge field
+                Run rBegin = rFldCode.PreviousSibling<Run>();
+                Run rSep = rFldCode.NextSibling<Run>();
+                Run rText = rSep.NextSibling<Run>();
+                Run rEnd = rText.NextSibling<Run>();
+
+                // Get the Run that holds the Text element for our merge field
+                // Get the Text element and replace the text content 
+                Text t = rText.GetFirstChild<Text>();
+                t.Text = replacementText;
+
+                // Remove all the four (4) Runs for our merge field
+                rFldCode.Remove();
+                rBegin.Remove();
+                rSep.Remove();
+                rEnd.Remove();
+            }
+
+        }
+
         protected void btnExport_Click(object sender, EventArgs e)
         {
-            Export();
-            Response.Redirect("InKeKhaiNopThue.aspx");
+            //Export();
+            try
+            {
+                string Thang = txtThangNam.Text;
+                List<getThongBaoNopThueResult> list = db.getThongBaoNopThue(Thang).ToList();
+                //List<FileInfo> lst = new List<FileInfo>();
+                int i = 0;
+                foreach (getThongBaoNopThueResult g in list)
+                {
+                    string filepath = Server.MapPath("~/Template/kb02.dotx");
+                    string targetFile = Server.MapPath("~/file/"+ g.hoten+ i + ".docx");
+                    FileInfo tf = new FileInfo(targetFile);
+                    if (tf.Exists)
+                        System.IO.File.Delete(targetFile);
+                    Dictionary<string, string> dic = new Dictionary<string, string>();
+                    // Xuất các dữ liệu mình chuẩn bị ở Field (ở đây mình lọc lấy dữ liệu ở dạng linq)
+                    dic.Add("hoten", g.hoten);
+                    dic.Add("masothue", g.masothue);
+                    dic.Add("diachi", g.diachiKD);
+                    dic.Add("KyThue", g.KyThue.ToString());
+                    dic.Add("KyThue2", g.KyThue2.ToString());
+                    dic.Add("ThueMonBai", g.ThueMonBai.ToString());
+                    dic.Add("ThueGTGN", g.ThueGTGN.ToString());
+                    dic.Add("ThueTNCN", g.ThueTNCN.ToString());
+                    dic.Add("SoNo", g.SoNo.ToString());
+                    dic.Add("TongCong", g.TongCong.ToString());
+                    File.Copy(filepath, targetFile, true);
+                    using (WordprocessingDocument document = WordprocessingDocument.Open(targetFile, true))
+                    {
+                        // If your sourceFile is a different type (e.g., .DOTX), you will need to change the target type like so:
+
+                        document.ChangeDocumentType(WordprocessingDocumentType.Document);
+                        // Get the MainPart of the document
+                        MainDocumentPart mainPart = document.MainDocumentPart;
+
+                        var mergeFields = mainPart.RootElement.Descendants<FieldCode>();
+                        foreach (var a in dic)
+                        {
+                            var mergeFieldName = a.Key;
+                            var replacementText = a.Value;
+                            ReplaceMergeFieldWithText(mergeFields, mergeFieldName, replacementText);
+                        }
+                        // Save the document
+                        mainPart.Document.Save();
+
+                        System.IO.FileInfo file = new System.IO.FileInfo(targetFile);
+                        //lst.Add(file);
+                        i++;
+                    }
+                }
+                //what folder to zip - include trailing slash
+                string dirRoot = Server.MapPath("~/file");
+               //get a list of files
+                string[] filesToZip = Directory.GetFiles(dirRoot, "*.*", SearchOption.AllDirectories);
+                using (MemoryStream zipMS = new MemoryStream())
+                {
+                    using (System.IO.Compression.ZipArchive zipArchive = new System.IO.Compression.ZipArchive(zipMS, System.IO.Compression.ZipArchiveMode.Create, true))
+                    {
+                        //loop through files to add
+                        foreach (string fileToZip in filesToZip)
+                        {
+                            //exclude some files? -I don't want to ZIP other .zips in the folder.
+                            if (new FileInfo(fileToZip).Extension == ".zip") continue;
+
+                            //exclude some file names maybe?
+                            if (fileToZip.Contains("node_modules")) continue;
+
+                            //read the file bytes
+                            byte[] fileToZipBytes = System.IO.File.ReadAllBytes(fileToZip);
+
+                            //create the entry - this is the zipped filename
+                            //change slashes - now it's VALID
+                            System.IO.Compression.ZipArchiveEntry zipFileEntry = zipArchive.CreateEntry(fileToZip.Replace(dirRoot, "").Replace('\\', '/'));
+
+                            //add the file contents
+                            using (Stream zipEntryStream = zipFileEntry.Open())
+                            using (BinaryWriter zipFileBinary = new BinaryWriter(zipEntryStream))
+                            {
+                                zipFileBinary.Write(fileToZipBytes);
+                            }
+
+                            //lstLog.Items.Add("zipped: " + fileToZip);
+                        }
+                    }
+
+                    using (FileStream finalZipFileStream = new FileStream(Server.MapPath("~/file/DanhSachBangKe.zip"), FileMode.Create))
+                    {
+                        zipMS.Seek(0, SeekOrigin.Begin);
+                        zipMS.CopyTo(finalZipFileStream);
+                    }
+                }
+                Response.ContentType = "application/zip";
+                Response.AppendHeader("Content-Disposition", "attachment; filename=BangKe.zip");
+                Response.TransmitFile(Server.MapPath("~/file/DanhSachBangKe.zip"));
+                Response.End();
+
+            }
+            catch (Exception mess)
+            {
+                st.Append("$.notify('" + mess.Message.Replace("\n", "") + "',{className: 'error',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+            }
         }
     }
 }

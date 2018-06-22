@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 6/3/2018 9:49:47 AM ******/
+/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 6/15/2018 5:28:50 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -91,7 +91,7 @@ BEGIN
 					PRINT 'search'
 
 				SELECT a.idKhaiThue,b.masothue,a.nam,b.sodt,b.email,b.ghichu,c.tennganh,a.SoLuongLD,a.DienTichKD,b.diachiKD, 
-					   CASE WHEN a.TrangThaiHoatDong = 1 THEN N'?ang ho?t ??ng' ELSE N'Ng?ng ho?t ??ng' END AS TrangThaiHoatDong,
+					   CASE WHEN a.TrangThaiHoatDong = 1 THEN N'Đang hoạt động' ELSE N'Ngừng hoạt động' END AS TrangThaiHoatDong,
 					   a.TongDoanhThu,a.TongDoanhThu AS DoanhThuTinhThueGTGT,a.TongDoanhThu AS DoanhThuTinhThueTNCN,c.TyLeTinhThueGTGT,c.TyLeTinhThueTNCN,b.hoten,b.nghekinhdoanh
 					   ,a.TuGio,a.DenGio
 				FROM dbo.KhaiThue a 
@@ -107,7 +107,7 @@ BEGIN
 				AND (@ngaytinhthue ='' OR @ngaytinhthue = NULL OR b.ngaytinhthue = @ngaytinhthue)
 				AND (@manganh ='' OR @manganh = NULL OR b.manganh =@manganh)
 				AND (@sdt ='' OR @sdt = NULL OR b.sodt =@sdt)
-				AND a.idKhaiThue NOT IN (SELECT a.idKhaiThue FROM dbo.SoBoThue a LEFT JOIN dbo.KhaiThue b ON b.idKhaiThue = a.idKhaiThue WHERE a.Thang = DATEPART(MM,GETDATE()))
+				AND a.idKhaiThue NOT IN (SELECT a.idKhaiThue FROM dbo.SoBoThue a LEFT JOIN dbo.KhaiThue b ON b.idKhaiThue = a.idKhaiThue WHERE a.Thang = DATEPART(MM,GETDATE()) AND b.nam = DATEPART(YEAR,GETDATE()))
 					
 
 	    END
