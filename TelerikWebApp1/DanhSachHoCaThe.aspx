@@ -71,12 +71,6 @@
             <tr>
                 <td style="width: 5%"></td>
                 <td width="15%">
-                    <asp:Label runat="server" ID="Label7">Mã ngành</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="Input" runat="server" ID="txtMaNganh" Width="80%"></asp:TextBox>
-                </td>
-                <td width="15%">
                     <asp:Label runat="server" ID="Label8">Số điện thoại</asp:Label>
                 </td>
                 <td width="25%">
@@ -173,10 +167,7 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="tennganh" DataField="tennganh" HeaderText="Nhóm ngành">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="150px" />
-                                                <ItemStyle HorizontalAlign="left" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
+                                           
 
 
 

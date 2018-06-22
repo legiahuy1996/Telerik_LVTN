@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[ChamBoThue_LoadData]    Script Date: 5/27/2018 2:23:50 PM ******/
+/****** Object:  StoredProcedure [dbo].[ChamBoThue_LoadData]    Script Date: 6/22/2018 5:54:10 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,7 +20,7 @@ GO
  		LEFT JOIN dbo.KhaiThue (NOLOCK) b ON b.idKhaiThue = a.idKhaiThue
 		LEFT JOIN dbo.ChiTietKhaiThue f ON f.idKhaiThue = b.idKhaiThue
 		LEFT JOIN dbo.DanhBa (NOLOCK) c ON c.masothue = b.masothue
-		LEFT JOIN dbo.manganh (NOLOCK) e ON e.manganh = c.manganh
+		LEFT JOIN dbo.manganh (NOLOCK) e ON e.manganh = b.manganh
  		WHERE 1=1 
  			AND (@MST = '' OR @MST IS NULL OR b.masothue = @MST)
  			AND (@NgheKinhDoanh = '' OR @NgheKinhDoanh IS NULL OR c.nghekinhdoanh = @NgheKinhDoanh)

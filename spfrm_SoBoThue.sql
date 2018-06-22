@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 6/15/2018 5:28:50 PM ******/
+/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 6/22/2018 5:52:09 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -105,7 +105,7 @@ BEGIN
 				AND (@sogp ='' OR @sogp = NULL OR b.sogp =@sogp)
 				AND (@diachi ='' OR @diachi = NULL OR b.diachiKD LIKE N'%'+@diachi+'%')
 				AND (@ngaytinhthue ='' OR @ngaytinhthue = NULL OR b.ngaytinhthue = @ngaytinhthue)
-				AND (@manganh ='' OR @manganh = NULL OR b.manganh =@manganh)
+				AND (@manganh ='' OR @manganh = NULL OR a.manganh =@manganh)
 				AND (@sdt ='' OR @sdt = NULL OR b.sodt =@sdt)
 				AND a.idKhaiThue NOT IN (SELECT a.idKhaiThue FROM dbo.SoBoThue a LEFT JOIN dbo.KhaiThue b ON b.idKhaiThue = a.idKhaiThue WHERE a.Thang = DATEPART(MM,GETDATE()) AND b.nam = DATEPART(YEAR,GETDATE()))
 					

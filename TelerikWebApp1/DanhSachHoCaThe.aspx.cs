@@ -77,7 +77,6 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 6].Value = item.diachiKD;
                 worksheet.Cells[i + 2, 7].Value = item.hoten;
                 worksheet.Cells[i + 2, 8].Value = item.ngaytinhthue;
-                worksheet.Cells[i + 2, 9].Value = item.manganh;
                 worksheet.Cells[i + 2, 10].Value = item.sodt;
 
 
@@ -91,13 +90,12 @@ namespace TelerikWebApp1
             string cmnd = txtCMND.Text.Trim();
             string tencuahang = txtTenCuaHang.Text;
             string sogp = txtSoGP.Text.Trim();
-            string manganh = txtMaNganh.Text.Trim();
             string ngaycap = txtNgayCap.Text.Trim();
             string diachi = txtDiaChi.Text;
             string ngaytinhthue = txtNgayTinhThue.Text.Trim();
             string sdt = txtSDT.Text.Trim();
             string hoten = txtHoTen.Text;
-            grid.DataSource = db.DanhSachHoCaThe(mst, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, manganh, sdt, "Search");
+            grid.DataSource = db.DanhSachHoCaThe(mst, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, sdt, "Search");
             grid.DataBind();
         }
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -113,11 +111,11 @@ namespace TelerikWebApp1
             string sogp = txtSoGP.Text;
             string diachi = txtDiaChi.Text;
             string hoten = txtHoTen.Text;
-            string manganh = txtMaNganh.Text;
+   
             string ngaycap = txtNgayCap.Text;
             string ngaytinhthue = txtNgayTinhThue.Text;
             string sdt = txtSDT.Text;
-            List<DanhSachHoCaTheResult> list = db.DanhSachHoCaThe(MST, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, manganh, sdt, Activity).ToList();
+            List<DanhSachHoCaTheResult> list = db.DanhSachHoCaThe(MST, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, sdt, Activity).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel

@@ -137,3 +137,41 @@ E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OpenXml4Net.dll
 E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OpenXmlFormats.dll
 E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.xml
 E:\New folder\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojAssemblyReference.cache
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojAssemblyReference.cache
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll.licenses
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CoreCompileInputs.cache
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.pdb
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\TelerikWebApp1.dll.config
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\TelerikWebApp1.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\TelerikWebApp1.pdb
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\DocumentFormat.OpenXml.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\NPOI.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OOXML.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OpenXml4Net.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OpenXmlFormats.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Web.Spreadsheet.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Web.UI.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Web.UI.Skins.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Core.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Flow.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Spreadsheet.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Zip.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Newtonsoft.Json.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Microsoft.AnalysisServices.AdomdClient.dll
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\DocumentFormat.OpenXml.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlus.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\EPPlusEnumerable.pdb
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\NPOI.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Web.Spreadsheet.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Web.UI.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Core.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Flow.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Spreadsheet.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Zip.xml
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CopyComplete

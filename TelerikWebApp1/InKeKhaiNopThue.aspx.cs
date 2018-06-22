@@ -88,7 +88,7 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 2].Value = item.ThueGTGN;
                 worksheet.Cells[i + 2, 3].Value = item.ThueTNCN;
                 worksheet.Cells[i + 2, 4].Value = item.ThueMonBai;
-                worksheet.Cells[i + 2, 5].Value = (int.Parse(item.SoNo.Replace(",", "")) * -1);
+                worksheet.Cells[i + 2, 5].Value = (item.SoNo * -1);
                 worksheet.Cells[i + 2, 6].Value = item.TongCong;
 
 
@@ -294,8 +294,12 @@ namespace TelerikWebApp1
                     }
                 }
                 Response.ContentType = "application/zip";
-                Response.AppendHeader("Content-Disposition", "attachment; filename=BangKe.zip");
-                Response.TransmitFile(Server.MapPath("~/file/DanhSachBangKe.zip"));
+                Response.AppendHeader("Content-Disposition", "attachment; filename=DanhSachBangKe.zip");
+                //Response.TransmitFile(Server.MapPath("~/file/DanhSachBangKe.zip"));
+                //Response.End();
+                Response.Flush();
+                Response.WriteFile(Server.MapPath("~/file/DanhSachBangKe.zip"));
+
                 Response.End();
 
             }

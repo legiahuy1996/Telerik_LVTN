@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[getDSSoBoThue]    Script Date: 5/31/2018 7:04:23 AM ******/
+/****** Object:  StoredProcedure [dbo].[getDSSoBoThue]    Script Date: 6/22/2018 5:50:19 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -19,13 +19,13 @@ GO
 	 AS
 	 DECLARE @iThang INT
 	 SET @iThang = CONVERT(INT,@Thang)
- 		SELECT b.nam,b.masothue,c.hoten,CONVERT(NVARCHAR(10),a.NgayLapBo,103) NgayLapBo,c.nghekinhdoanh,a.idKhaiThue
+ 		SELECT b.nam,b.masothue,c.hoten,CONVERT(NVARCHAR(10),a.NgayLapBo,103) NgayLapBo,c.nghekinhdoanh
  		,c.diachiKD,a.Thang,CASE WHEN a.TinhTrangNopThue = '1' THEN N'Đã nộp' ELSE N'Chưa nộp' END TinhTrangNopThue,a.DoanhThuTinhThueGTGT,e.TyLeTinhThueGTGT
  		,a.SoTienGTGT1Thang ThueGTGT,a.DoanhThuTinhThueTNCN,e.TyLeTinhThueTNCN,a.SoTienTNCN1Thang ThueTNCN,a.idSoBoThue
  		FROM dbo.SoBoThue (NOLOCK) a 
  		LEFT JOIN dbo.KhaiThue (NOLOCK) b ON b.idKhaiThue = a.idKhaiThue
 		LEFT JOIN dbo.DanhBa (NOLOCK) c ON c.masothue = b.masothue
-		LEFT JOIN dbo.manganh (NOLOCK) e ON e.manganh = c.manganh
+		LEFT JOIN dbo.manganh (NOLOCK) e ON e.manganh = b.manganh
  		WHERE 1=1 
  			AND (@MST = '' OR @MST IS NULL OR b.masothue = @MST)
  			AND (@NgheKinhDoanh = '' OR @NgheKinhDoanh IS NULL OR c.nghekinhdoanh = @NgheKinhDoanh)
@@ -34,5 +34,7 @@ GO
  			AND (@HoTen = '' OR @HoTen IS NULL OR c.hoten = @HoTen)
  			AND (@Nam = '' OR @Nam IS NULL OR b.nam = @Nam)
  			AND (@ThangLapBo = '' OR @ThangLapBo IS NULL OR DATEPART(mm,CONVERT(DATE,a.NgayLapBo,103)) = @ThangLapBo) 
+
+			ORDER BY a.Thang
 GO
 
