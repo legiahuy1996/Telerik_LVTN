@@ -233,11 +233,15 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn UniqueName="mattngungnghi" DataField="mattngungnghi" HeaderText="mattngungnghi" Display="false" >
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>
                                             <telerik:GridTemplateColumn UniqueName="LyDo" DataField="LyDo" HeaderText="Lý do">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemTemplate>
-                                                    <asp:TextBox runat="server" ID="txtLyDo"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtLyDo" Text='<%# Eval("LyDo") %>'></asp:TextBox>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
                                         </Columns>
@@ -257,6 +261,6 @@
         function ShowExcelSelectPage() {
             window.open("DanhSachKhaiThue_Import.aspx", 'SelectFile', 'status=1,toolbar=0,scrollbars=1,resizable=0,alwaysRaised=Yes, top=20, left=30, width=1200, height=600,1 ,align=center');
             return false;
-        }
+        }    
     </script>
 </asp:Content>

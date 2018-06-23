@@ -118,7 +118,8 @@
                                     <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" AllowMultiColumnSorting="true">
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
-                                            <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
+                                            <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" >
+                                                <HeaderStyle  Width="50px"/>
                                             </telerik:GridClientSelectColumn>
                                             <telerik:GridTemplateColumn SortExpression="Detail" UniqueName="Detail"
                                                 HeaderText="Chi tiết">

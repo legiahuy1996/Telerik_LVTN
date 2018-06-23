@@ -104,9 +104,9 @@ input[type="submit"] {
 	-o-transition: 0.5s all;
 	-ms-transition: 0.5s all;
 }
-input[type="submit"]:hover {
-	background-color:#07cbc9;
-}
+    input[type="submit"]:hover {
+        background-color: #05AF27;
+    }
 .footer p{
 	text-align:center;
 	font-size: 18px;

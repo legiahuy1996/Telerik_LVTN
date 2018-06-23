@@ -62,6 +62,7 @@ namespace TelerikWebApp1
         {
             GridDataItem item;
             st.Clear();
+            int dem = 0;
             string strErr = "";
             for (int i = 0; i < grid.Items.Count; i++)
             {
@@ -71,12 +72,14 @@ namespace TelerikWebApp1
                 {
                     try
                     {
+                        dem++;
                         TextBox txb = (TextBox)item["ClientSelectColumn"].FindControl("txtLyDo");
                         if (txb.Text == "")
                         {
-                            item.FindControl("txtLyDo").Focus();
                             st.Append("$.notify('Vui lòng nhập lý do',{className: 'error',globalPosition: 'bottom right'});");
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                            txb.Focus();
+                            break;
                         }
                         else
                         {
@@ -85,28 +88,30 @@ namespace TelerikWebApp1
                             if (kt != null)
                             {
                                 kt.TrangThaiHoatDong = false;
-                                thongtinngungnghi a = new thongtinngungnghi { idKhaiThue = int.Parse(idKhaiThue), lydo = txb.Text };
+                                var tt = db.thongtinngungnghis.OrderByDescending(x => x.mattngungnghi).FirstOrDefault();
+                                int idngungnghi = 0;
+                                if (tt != null)
+                                    idngungnghi = tt.mattngungnghi+1;
+                                thongtinngungnghi a = new thongtinngungnghi {mattngungnghi = idngungnghi, idKhaiThue = int.Parse(idKhaiThue), lydo = txb.Text };
                                 db.thongtinngungnghis.InsertOnSubmit(a);
                                 db.SubmitChanges();
+                                st.Append("$.notify('Khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
+                                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                                loadData();
                             }
                         }
-
                     }
                     catch (Exception mess)
                     {
                         st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     }
-                    st.Append("$.notify('Khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                    loadData();
                 }
-                else
-                {
-                    st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-
-                }
+            }
+            if (dem == 0)
+            {
+                st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
         }
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
@@ -240,6 +245,7 @@ namespace TelerikWebApp1
             GridDataItem item;
             st.Clear();
             string strErr = "";
+            int dem = 0;
             for (int i = 0; i < grid.Items.Count; i++)
             {
                 item = (GridDataItem)grid.Items[i];
@@ -248,12 +254,20 @@ namespace TelerikWebApp1
                 {
                     try
                     {
+                        dem++;
                         string idKhaiThue = item["idKhaiThue"].Text.Trim().Replace("&nbsp;", "");
                         KhaiThue kt = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(idKhaiThue));
                         if (kt != null)
                         {
                             kt.TrangThaiHoatDong = true;
+                            int idngungnghi = int.Parse(item["mattngungnghi"].Text.Trim());
+                            thongtinngungnghi tt = db.thongtinngungnghis.SingleOrDefault(x => x.mattngungnghi == idngungnghi);
+                            if (tt != null)
+                                db.thongtinngungnghis.DeleteOnSubmit(tt);
                             db.SubmitChanges();
+                            st.Append("$.notify('Mở khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                            loadData();
                         }
                     }
                     catch (Exception mess)
@@ -261,14 +275,14 @@ namespace TelerikWebApp1
                         st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     }
-
                 }
             }
-            st.Append("$.notify('Mở khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-            loadData();
+            if (dem==0)
+            {
+                st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+            }
         }
-
         protected void grid_ItemDataBound(object sender, GridItemEventArgs e)
         {
             if (e.Item is GridDataItem)
@@ -286,6 +300,7 @@ namespace TelerikWebApp1
             GridDataItem item;
             st.Clear();
             string strErr = "";
+            int dem = 0;
             for (int i = 0; i < grid.Items.Count; i++)
             {
                 item = (GridDataItem)grid.Items[i];
@@ -294,6 +309,7 @@ namespace TelerikWebApp1
                 {
                     try
                     {
+                        dem++;
                         string masothue = item["masothue"].Text.Trim().Replace("&nbsp;", "");
                         string idKhaiThue = item["idKhaiThue"].Text.Trim().Replace("&nbsp;", "");
                         List<KhaiThue> lstkhaithue = db.KhaiThues.Where(x => x.masothue == masothue && x.nam == DateTime.Now.Year.ToString()).ToList();
@@ -331,14 +347,20 @@ namespace TelerikWebApp1
                         st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     }
-
                 }
             }
-            st.Append("$.notify('Sao chép thông tin thành công',{className: 'success',globalPosition: 'bottom right'});");
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-            loadData();
+            if (dem == 0)
+            {
+                st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+            }
+            else
+            {
+                st.Append("$.notify('Sao chép thông tin thành công',{className: 'success',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                loadData();
+            }
         }
-
         protected void btnExport_Click(object sender, EventArgs e)
         {
             Export();

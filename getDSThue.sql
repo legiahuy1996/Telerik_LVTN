@@ -1,7 +1,7 @@
 USE [thue]
 GO
 
-/****** Object:  StoredProcedure [dbo].[getDSThue]    Script Date: 5/27/2018 2:24:05 PM ******/
+/****** Object:  StoredProcedure [dbo].[getDSThue]    Script Date: 6/23/2018 1:07:19 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -34,12 +34,15 @@ AS
                 b.sogp ,
                 CASE WHEN a.manganh = '07' THEN N'Hoạt động nhiều ngành nghề'
                      ELSE c.tennganh
-                END AS tennganh
+                END AS tennganh,
+				f.lydo AS LyDo
+				,f.mattngungnghi 
         FROM    dbo.KhaiThue a
                 LEFT JOIN dbo.DanhBa b ON b.masothue = a.masothue
                 LEFT JOIN dbo.manganh c ON c.manganh = a.manganh
                 LEFT JOIN dbo.thuemonbai d ON d.idKhaiThue = a.idKhaiThue
                 LEFT JOIN dbo.ChiTietKhaiThue e ON e.idKhaiThue = a.idKhaiThue
+				LEFT JOIN dbo.thongtinngungnghi f ON f.idKhaiThue = a.idKhaiThue
         WHERE   1 = 1
                 AND ( @TrangThai IS NULL
                       OR @TrangThai = '2'

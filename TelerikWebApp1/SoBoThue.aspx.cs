@@ -79,6 +79,7 @@ namespace TelerikWebApp1
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             string idkhaithue = "";
+            int dem = 0;
             try
             {
                 foreach (GridDataItem item in grid.SelectedItems)
@@ -86,13 +87,23 @@ namespace TelerikWebApp1
                     CheckBox chk = (CheckBox)item["ClientSelectColumn"].Controls[0];
                     if (chk.Checked == true)
                     {
+                        dem++;
                         idkhaithue = item["idKhaiThue"].Text;
                         db.spfrm_SoBoThue(null, null, null, null, null, null, null, null, null, null, int.Parse(idkhaithue), "Create", null);
                     }
                 }
-                st.Append("$.notify('Lập sổ bộ thành công',{className: 'success',globalPosition: 'bottom right'});");
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                btnSearch_Click(null, null);
+                if(dem==0)
+                {
+                    st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                }
+                else
+                {
+                    st.Append("$.notify('Lập sổ bộ thành công',{className: 'success',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                    btnSearch_Click(null, null);
+                }
+              
             }catch(Exception err)
             {
                 Response.Write(err);
