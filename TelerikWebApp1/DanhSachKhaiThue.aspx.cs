@@ -3,6 +3,7 @@ using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -57,7 +58,17 @@ namespace TelerikWebApp1
         {
             Response.Redirect("DanhSachKhaiThue.aspx");
         }
-
+        protected bool IsNullTextBox(TextBox textBox)
+        {
+            if (textBox.Text == "" || textBox.Text == null)
+                return true;
+            return false;
+        }
+        protected void ShowMess(string message)
+        {
+            st.Append("$.notify('" + message + "',{className: 'error',globalPosition: 'bottom right'});");
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+        }
         protected void btnLock_Click(object sender, EventArgs e)
         {
             GridDataItem item;
@@ -74,15 +85,33 @@ namespace TelerikWebApp1
                     {
                         dem++;
                         TextBox txb = (TextBox)item["ClientSelectColumn"].FindControl("txtLyDo");
-                        if (txb.Text == "")
+                        TextBox txttungay = (TextBox)item["ClientSelectColumn"].FindControl("txttungay");
+                        TextBox txtdenngay = (TextBox)item["ClientSelectColumn"].FindControl("txtdenngay");
+                        TextBox txtNgayNopDon = (TextBox)item["ClientSelectColumn"].FindControl("txtNgayNopDon");
+                        if (IsNullTextBox(txttungay))
                         {
-                            st.Append("$.notify('Vui lòng nhập lý do',{className: 'error',globalPosition: 'bottom right'});");
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                            ShowMess("Không được để trống trường này");
+                            txttungay.Focus();
+                            break;
+                        }
+                        if (IsNullTextBox(txtdenngay))
+                        {
+                            ShowMess("Không được để trống trường này");
+                            txtdenngay.Focus();
+                            break;
+                        }
+                        if (IsNullTextBox(txb))
+                        {
+                            ShowMess("Không được để trống trường này");
                             txb.Focus();
                             break;
                         }
                         else
                         {
+                            DateTime dTuNgay, dDenNgay, dNgayNop;
+                            dTuNgay = DateTime.ParseExact(txttungay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            dDenNgay = DateTime.ParseExact(txtdenngay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            dNgayNop = DateTime.ParseExact(txtNgayNopDon.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                             string idKhaiThue = item["idKhaiThue"].Text.Trim().Replace("&nbsp;", "");
                             KhaiThue kt = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(idKhaiThue));
                             if (kt != null)
@@ -91,8 +120,8 @@ namespace TelerikWebApp1
                                 var tt = db.thongtinngungnghis.OrderByDescending(x => x.mattngungnghi).FirstOrDefault();
                                 int idngungnghi = 0;
                                 if (tt != null)
-                                    idngungnghi = tt.mattngungnghi+1;
-                                thongtinngungnghi a = new thongtinngungnghi {mattngungnghi = idngungnghi, idKhaiThue = int.Parse(idKhaiThue), lydo = txb.Text };
+                                    idngungnghi = tt.mattngungnghi + 1;
+                                thongtinngungnghi a = new thongtinngungnghi { mattngungnghi = idngungnghi, idKhaiThue = int.Parse(idKhaiThue),tungay =dTuNgay ,denngay =dDenNgay,ngaynopdon=dNgayNop , lydo = txb.Text };
                                 db.thongtinngungnghis.InsertOnSubmit(a);
                                 db.SubmitChanges();
                                 st.Append("$.notify('Khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
@@ -277,7 +306,7 @@ namespace TelerikWebApp1
                     }
                 }
             }
-            if (dem==0)
+            if (dem == 0)
             {
                 st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
