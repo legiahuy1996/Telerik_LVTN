@@ -100,6 +100,12 @@ namespace TelerikWebApp1
                             txtdenngay.Focus();
                             break;
                         }
+                        if (IsNullTextBox(txtNgayNopDon))
+                        {
+                            ShowMess("Không được để trống trường này");
+                            txtNgayNopDon.Focus();
+                            break;
+                        }
                         if (IsNullTextBox(txb))
                         {
                             ShowMess("Không được để trống trường này");
@@ -112,8 +118,16 @@ namespace TelerikWebApp1
                             dTuNgay = DateTime.ParseExact(txttungay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                             dDenNgay = DateTime.ParseExact(txtdenngay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                             dNgayNop = DateTime.ParseExact(txtNgayNopDon.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            int Result = DateTime.Compare(dTuNgay, dDenNgay);
+                            if (Result > 0)
+                            {
+                                ShowMess("Từ ngày phải nhỏ hơn hoặc bằng đến ngày");
+                                txtdenngay.Focus();
+                                break;
+                            }
                             string idKhaiThue = item["idKhaiThue"].Text.Trim().Replace("&nbsp;", "");
                             KhaiThue kt = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(idKhaiThue));
+                           
                             if (kt != null)
                             {
                                 kt.TrangThaiHoatDong = false;
