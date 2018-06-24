@@ -277,6 +277,17 @@
     </form>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="script" ID="script" runat="server">
+      <script type="text/javascript">
+        $(document).ready(function () {
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindPicker);
+            bindPicker();
+        });
+        function bindPicker() {
+            $("input[type=text][id*=txttungay]").datepicker();
+            $("input[type=text][id*=txtdenngay]").datepicker();
+            $("input[type=text][id*=txtNgayNopDon]").datepicker();
+        }
+    </script>
     <script> 
 
         function ShowExcelSelectPage() {
