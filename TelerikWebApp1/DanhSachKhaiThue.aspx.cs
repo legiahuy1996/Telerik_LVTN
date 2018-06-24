@@ -140,7 +140,7 @@ namespace TelerikWebApp1
                                 db.SubmitChanges();
                                 st.Append("$.notify('Khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
                                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                                loadData();
+                                
                             }
                         }
                     }
@@ -150,12 +150,15 @@ namespace TelerikWebApp1
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     }
                 }
+               
             }
+
             if (dem == 0)
             {
                 st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
+            loadData();
         }
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
@@ -310,7 +313,7 @@ namespace TelerikWebApp1
                             db.SubmitChanges();
                             st.Append("$.notify('Mở khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                            loadData();
+                            
                         }
                     }
                     catch (Exception mess)
@@ -325,6 +328,7 @@ namespace TelerikWebApp1
                 st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
+            loadData();
         }
         protected void grid_ItemDataBound(object sender, GridItemEventArgs e)
         {

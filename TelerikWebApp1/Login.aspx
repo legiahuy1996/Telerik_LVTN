@@ -25,7 +25,7 @@
 	</head>
 	<body>
 
-	<h1>Đăng nhập tài khoản</h1>
+	
 	<!---728x90--->
 	<script src='//publisher.eboundservices.com/dynamicAds/dynamicScript.js'></script>
 	<div style='margin: 0 auto;text-align: center;margin-top: 5px;'><script>
@@ -50,7 +50,7 @@
 	user_tag_config['ebound_header_tag']['mobile']['adsCode'] = '';
 	</script></div>
 	   <div class="main">
-	   <h2>Đăng nhập tại đây</h2>
+	   <h2>Đăng nhập tài khoản</h2>
 		   <form runat="server">
 				<asp:TextBox runat="server" ID="txtTaiKhoan" placeholder="Tên đăng nhập"></asp:TextBox>
                <asp:TextBox TextMode="Password" runat="server" ID="txtMatKhau" placeholder="Mật khẩu"></asp:TextBox>
