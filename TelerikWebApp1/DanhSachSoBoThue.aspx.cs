@@ -33,11 +33,40 @@ namespace TelerikWebApp1
                 if (Session["taikhoan"] == null)
                     Response.Redirect("Login.aspx");
                 loadDataSearch();
+                
             }
         }
+        public void ShowHideControl()
+        {
+            if (rblLoaiThue.SelectedValue == "1")
+            {
+                grid.MasterTableView.GetColumn("ThueTNCN").Display = false;
+                grid.MasterTableView.GetColumn("ThueGTGT").Display = true;
+                grid.MasterTableView.GetColumn("MucThue").Display = false;
+            }
+            else if (rblLoaiThue.SelectedValue == "2")
+            {
+                grid.MasterTableView.GetColumn("ThueTNCN").Display = true;
+                grid.MasterTableView.GetColumn("ThueGTGT").Display = false;
+                grid.MasterTableView.GetColumn("MucThue").Display = false;
 
+            }
+            else if (rblLoaiThue.SelectedValue == "3")
+            {
+                grid.MasterTableView.GetColumn("ThueTNCN").Display = false;
+                grid.MasterTableView.GetColumn("ThueGTGT").Display = false;
+                grid.MasterTableView.GetColumn("MucThue").Display = true;
+            }
+            else
+            {
+                grid.MasterTableView.GetColumn("ThueTNCN").Display = true;
+                grid.MasterTableView.GetColumn("ThueGTGT").Display = true;
+                grid.MasterTableView.GetColumn("MucThue").Display = true;
+            }
+        }
         public void loadDataSearch()
         {
+           
             string nghekinhdoanh = txtNgheKinhDoanh.Text;
             string MST = txtMST.Text;
             string thang = txtThang.Text;
@@ -45,8 +74,6 @@ namespace TelerikWebApp1
             string hoten = txtHoTen.Text;
             string thanglapbo = txtThangLapBo.Text;
             string namlapbo = txtNamLapBo.Text;
-
-
             List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, thang, diachi, hoten, thanglapbo, namlapbo).ToList();
             grid.DataSource = data;
             list = data;
@@ -220,6 +247,7 @@ namespace TelerikWebApp1
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            ShowHideControl();
             loadDataSearch();
         }
 
