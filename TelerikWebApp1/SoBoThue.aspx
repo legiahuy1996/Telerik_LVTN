@@ -25,73 +25,12 @@
                     <asp:TextBox class="input" runat="server" ID="txtMST" Width="80%"></asp:TextBox>
                 </td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="lblTenCuaHang">Tên cửa hàng</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtTenCuaHang" Width="80%"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td width="10%">
                     <asp:Label runat="server" ID="lblCMND">CMND</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtCMND" Width="80%"></asp:TextBox>
                 </td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="lblNayCap">Ngày cấp CMND</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtNgayCapCMND" Width="80%" onblur="return validateDOB(this);"></asp:TextBox>
-                </td>
             </tr>
-            <tr>
-                <td></td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="lblSoGP">Số giấy phép</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtSoGP" Width="80%"></asp:TextBox>
-                </td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="lblDiaChi">Địa chỉ kinh doanh</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtDiaChi" Width="80%"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="Label5">Họ Tên</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtHoTen" Width="80%"></asp:TextBox>
-                </td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="Label6">Ngày tính thuế</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtNgayTinhThue" Width="80%"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="Label7">Ngành</asp:Label>
-                </td>
-                <td width="25%">
-                    <telerik:RadComboBox class="input" ID="cboMaNganh" Width="80%" runat="server"></telerik:RadComboBox>
-                </td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="Label8">Số điện thoại</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtSDT" Width="80%"></asp:TextBox>
-                </td>
-            </tr>
-
         </table>
 
         <hr />
@@ -201,7 +140,11 @@
                                             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                         </telerik:GridBoundColumn>
-
+                                          <telerik:GridBoundColumn UniqueName="MucThue" DataField="MucThue" HeaderText="thuế môn bài">
+                                            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                        </telerik:GridBoundColumn>
+                                        
                                     </Columns>
                                     <%--                            <Columns>
                                     <telerik:GridBoundColumn SortExpression="EmpID" UniqueName="EmpID" DataField="EmpID"

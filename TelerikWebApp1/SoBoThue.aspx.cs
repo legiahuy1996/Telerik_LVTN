@@ -26,40 +26,15 @@ namespace TelerikWebApp1
             if (!IsPostBack)
             {
                 loadDataSearch();
-                LoadComBo();
             }
         }
         #region method
-        protected void LoadComBo()
-        {
-
-            cboMaNganh.DataSource = (from a in db.manganhs where a.manganh1 != "07" select new { ma = a.manganh1, ten = a.tennganh }).ToList();
-            cboMaNganh.DataValueField = "ma";
-            cboMaNganh.DataTextField = "ten";
-            cboMaNganh.DataBind();
-            cboMaNganh.Items.Insert(0, "");
-            cboMaNganh.SelectedIndex = 0;
-        }
         public void loadDataSearch()
         {
             string Activity = "Search";
-
             string MST = txtMST.Text;
             string CMND = txtCMND.Text;
-            string tencuahang = txtTenCuaHang.Text;
-            string ngaycapCMND = txtNgayCapCMND.Text;
-            string sogp = txtSoGP.Text;
-            string diachi = txtDiaChi.Text;
-            string hoten = txtHoTen.Text;
-            string ngaytinhthue = txtNgayTinhThue.Text;
-            string manganh = cboMaNganh.SelectedValue.Trim();
-            string sdt = txtSDT.Text;
-
-
-
-
-
-            List<spfrm_SoBoThueResult> data = db.spfrm_SoBoThue(MST, CMND, tencuahang, ngaycapCMND, sogp, diachi, hoten, ngaytinhthue, manganh, sdt, null, Activity, null).ToList();
+           List<spfrm_SoBoThueResult> data = db.spfrm_SoBoThue(MST, CMND, null, null, null, null, null, null, null, null, null, Activity, null).ToList();
             grid.DataSource = data;
             grid.Rebind();
         }
