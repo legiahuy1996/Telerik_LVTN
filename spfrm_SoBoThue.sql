@@ -1,7 +1,7 @@
-USE [thue]
+USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 6/22/2018 5:52:09 PM ******/
+/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 6/30/2018 8:59:23 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -92,25 +92,27 @@ BEGIN
 
 				SELECT a.idKhaiThue,b.masothue,a.nam,b.sodt,b.email,b.ghichu,c.tennganh,a.SoLuongLD,a.DienTichKD,b.diachiKD, 
 					   CASE WHEN a.TrangThaiHoatDong = 1 THEN N'Đang hoạt động' ELSE N'Ngừng hoạt động' END AS TrangThaiHoatDong,
-					   a.TongDoanhThu,a.TongDoanhThu AS DoanhThuTinhThueGTGT,a.TongDoanhThu AS DoanhThuTinhThueTNCN,c.TyLeTinhThueGTGT,c.TyLeTinhThueTNCN,b.hoten,b.nghekinhdoanh
-					   ,a.TuGio,a.DenGio
+					   a.TongDoanhThu,a.TongDoanhThu AS DoanhThuTinhThueGTGT,a.TongDoanhThu AS DoanhThuTinhThueTNCN,c.TyLeTinhThueGTGT,c.TyLeTinhThueTNCN,b.hoten,
+					   a.TuGio,a.DenGio,tennganh.nghekinhdoanh,m_monbai.MucThue
 				FROM dbo.KhaiThue a 
+				LEFT JOIN dbo.ChiTietKhaiThue e ON e.idKhaiThue = a.idKhaiThue
 				INNER JOIN dbo.DanhBa b ON b.masothue = a.masothue
 				INNER JOIN dbo.manganh c ON c.manganh = a.manganh
 				LEFT JOIN dbo.SoBoThue d ON d.idKhaiThue = a.idKhaiThue
-				WHERE (@TenCuaHang ='' OR @TenCuaHang = NULL OR b.tencuahang LIKE N'%'+@TenCuaHang+'%')
-				AND (@MST ='' OR @MST = NULL OR b.masothue =@MST)
-				AND (@CMND ='' OR @CMND = NULL OR b.cmnd =@CMND)
-				AND (@ngaycapCMND ='' OR @ngaycapCMND = NULL OR b.ngaycapcmnd =@ngaycapCMND)
-				AND (@sogp ='' OR @sogp = NULL OR b.sogp =@sogp)
-				AND (@diachi ='' OR @diachi = NULL OR b.diachiKD LIKE N'%'+@diachi+'%')
-				AND (@ngaytinhthue ='' OR @ngaytinhthue = NULL OR b.ngaytinhthue = @ngaytinhthue)
-				AND (@manganh ='' OR @manganh = NULL OR a.manganh =@manganh)
-				AND (@sdt ='' OR @sdt = NULL OR b.sodt =@sdt)
-				AND a.idKhaiThue NOT IN (SELECT a.idKhaiThue FROM dbo.SoBoThue a LEFT JOIN dbo.KhaiThue b ON b.idKhaiThue = a.idKhaiThue WHERE a.Thang = DATEPART(MM,GETDATE()) AND b.nam = DATEPART(YEAR,GETDATE()))
-					
-
-	    END
+				LEFT JOIN (SELECT CASE WHEN COUNT(e.idChiTiet)>1 THEN 'Hoạt động kinh doanh nhiều ngành nghề' ELSE e.nghekinhdoanh END AS nghekinhdoanh,e.idChiTiet
+				FROM dbo.ChiTietKhaiThue e
+				LEFT JOIN manganh f ON f.manganh = e.manganh
+				GROUP BY e.idChiTiet,e.nghekinhdoanh) tennganh ON tennganh.idChiTiet = e.idChiTiet
+				LEFT JOIN dbo.thuemonbai monbai ON monbai.idKhaiThue = a.idKhaiThue
+				LEFT JOIN dbo.mucluc_MonBai m_monbai ON m_monbai.Bac = monbai.Bac
+				WHERE 1=1 
+				AND (@MST ='' OR @MST is NULL OR b.masothue =@MST)
+				AND (@CMND ='' OR @CMND is NULL OR b.cmnd =@CMND)
+				AND a.idKhaiThue not IN (SELECT a.idKhaiThue FROM dbo.SoBoThue a LEFT JOIN dbo.KhaiThue b ON b.idKhaiThue = a.idKhaiThue WHERE a.Thang = DATEPART(MM,GETDATE()) AND b.nam = DATEPART(YEAR,GETDATE()))
+				AND a.nam = DATEPART(year,GETDATE())
+				AND DATEPART(MONTH,a.ngaykhaithue) = DATEPART(MONTH,GETDATE())
+				
+		END
 	ELSE 
 		IF (@Activity = 'Create')
 			BEGIN
