@@ -9,17 +9,16 @@
 
         #loader {
             position: absolute;
-            top: calc(100% + 440px);
-            left: 50%;
+            top: calc(100% + 140px);
+            left: 54%;
             z-index: 1;
-            width: 150px;
-            height: 150px;
+            width: 50px;
+            height: 50px;
             margin: -75px 0 0 -75px;
             border: 16px solid #f3f3f3;
             border-radius: 50%;
             border-top: 16px solid #3498db;
-            width: 120px;
-            height: 120px;
+         
             -webkit-animation: spin 2s linear infinite;
             animation: spin 2s linear infinite;
         }
@@ -80,6 +79,10 @@
         #myDiv {
             display: none;
             text-align: center;
+        }
+        #ctl00_content_grid_ctl00_ctl03_ctl01_PageSizeComboBox_Arrow:after{
+            pointer-events:none;
+            z-index:0;
         }
     </style>
     <form id="frm" runat="server" enctype="multipart/form-data">
@@ -277,9 +280,18 @@
 <asp:Content ContentPlaceHolderID="script" ID="script" runat="server">
     <script>
         const a = document.getElementById('ctl00_content_grid_ctl00_ctl03_ctl01_PageSizeComboBox_Input');
-        a.onchange = function () {
+
+        function Loader() {
             document.getElementById('loader').style.display = "";
             setTimeout(function () { document.getElementById('loader').style.display = "none"; }, 3000);
         }
+        $("body").on('change', '#ctl00_content_grid_ctl00_ctl03_ctl01_PageSizeComboBox_Input', function (e) {
+            Loader();
+        });
+      
+         $("body").on('click', '.rgPager .rgWrap a,button', function (e) {
+            Loader();
+        });
+
     </script>
 </asp:Content>
