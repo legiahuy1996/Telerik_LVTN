@@ -12,10 +12,10 @@ using TelerikWebApp1.Model;
 
 namespace TelerikWebApp1
 {
-    public partial class DanhSachTongSoTienPhaiThu : System.Web.UI.Page
+    public partial class SoThueMonBai : System.Web.UI.Page
     {
         private DataClasses1DataContext db;
-        public DanhSachTongSoTienPhaiThu()
+        public SoThueMonBai()
         {
             db = new DataClasses1DataContext();
         }
@@ -23,17 +23,17 @@ namespace TelerikWebApp1
         {
             if (!IsPostBack)
             {
-                if(DateTime.Now.Month < 10)
+                if (DateTime.Now.Month < 10)
                 {
                     txtThangNam.Text = "0" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
                 }
                 else
                 {
                     txtThangNam.Text = DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
-                }                    
+                }
             }
         }
-        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<GetDanhSachTongTienPhaiThuResult> listItems)
+        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<GetSoThueMonBaiResult> listItems)
         {
             // Set default width cho tất cả column
             worksheet.DefaultColWidth = 10;
@@ -41,14 +41,10 @@ namespace TelerikWebApp1
             worksheet.Cells.Style.WrapText = true;
             // Tạo header
             worksheet.Cells[1, 1].Value = "Mã số thuế";
-            worksheet.Cells[1, 2].Value = "Năm";
-            worksheet.Cells[1, 3].Value = "Tháng";
-            worksheet.Cells[1, 4].Value = "Doanh thu tính thuế";
-            worksheet.Cells[1, 5].Value = "Tiền GTGT 1 tháng";
-            worksheet.Cells[1, 6].Value = "Tiền GTGT 1 năm";
-            worksheet.Cells[1, 7].Value = "Tiền TNCN 1 tháng";
-            worksheet.Cells[1, 8].Value = "Tiền TNCN 1 năm";
-            worksheet.Cells[1, 9].Value = "Tổng thuế GTGT, TNCN phải nộp trong năm";
+            worksheet.Cells[1, 2].Value = "Họ tên";
+            worksheet.Cells[1, 3].Value = "Vốn đăng ký";
+            worksheet.Cells[1, 4].Value = "Bậc môn bài";
+            worksheet.Cells[1, 5].Value = "Mức thuế";
             // Lấy range vào tạo format cho range đó ở đây là từ A1 tới Q1
             using (var range = worksheet.Cells["A1:P1"])
             {
@@ -73,15 +69,10 @@ namespace TelerikWebApp1
             {
                 var item = listItems[i];
                 worksheet.Cells[i + 2, 1].Value = item.masothue;
-                worksheet.Cells[i + 2, 2].Value = item.nam;
-                worksheet.Cells[i + 2, 3].Value = item.Thang;
-                worksheet.Cells[i + 2, 4].Value = item.TongDoanhThu;
-                worksheet.Cells[i + 2, 5].Value = item.SoTienGTGT1Thang;
-                worksheet.Cells[i + 2, 6].Value = item.SoTienGTGT1Thang*12;
-                worksheet.Cells[i + 2, 7].Value = item.SoTienTNCN1Thang;
-                worksheet.Cells[i + 2, 8].Value = item.SoTienTNCN1Thang*12;
-                worksheet.Cells[i + 2, 9].Value = (item.SoTienTNCN1Thang * 12)+(item.SoTienGTGT1Thang*12);
-
+                worksheet.Cells[i + 2, 2].Value = item.hoten;
+                worksheet.Cells[i + 2, 3].Value = item.vonkd;
+                worksheet.Cells[i + 2, 4].Value = item.Bac;
+                worksheet.Cells[i + 2, 5].Value = item.MucThue;
                 //// Format lại color nếu như thỏa điều kiện
                 //if (item.TinhTrangNopThue == "0")
                 //{
@@ -97,7 +88,8 @@ namespace TelerikWebApp1
             }
             //worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
             // Format lại định dạng xuất ra ở cột Money
-            worksheet.Cells[2, 4, listItems.Count + 4, 9].Style.Numberformat.Format = "#,##";
+            worksheet.Cells[2, 5, listItems.Count + 4, 5].Style.Numberformat.Format = "#,##";
+            worksheet.Cells[2, 3, listItems.Count + 4, 3].Style.Numberformat.Format = "#,##";
             // fix lại width của column với minimum width là 15
             worksheet.Cells[1, 1, listItems.Count + 5, 6].AutoFitColumns(15);
 
@@ -107,8 +99,8 @@ namespace TelerikWebApp1
             worksheet.Cells[listItems.Count + 3, 1].Style.Font.Bold = true;
             worksheet.Cells[listItems.Count + 3, 5].Formula = "SUM(E2:E" + (listItems.Count + 1) + ")";
             worksheet.Cells[listItems.Count + 3, 5].Style.Font.Bold = true;
-            worksheet.Cells[listItems.Count + 3, 7].Formula = "SUM(G2:G" + (listItems.Count + 1) + ")";
-            worksheet.Cells[listItems.Count + 3, 7].Style.Font.Bold = true;
+            worksheet.Cells[listItems.Count + 3, 3].Formula = "SUM(C2:C" + (listItems.Count + 1) + ")";
+            worksheet.Cells[listItems.Count + 3, 3].Style.Font.Bold = true;
             // Hàm SumIf
             //worksheet.Cells[listItems.Count + 4, 3].Value = "Greater than 20050 :";
             //worksheet.Cells[listItems.Count + 4, 4].Formula = "SUMIF(D2:D" + (listItems.Count + 1) + ",\">20050\")";
@@ -121,7 +113,7 @@ namespace TelerikWebApp1
         private Stream CreateExcelFile(Stream stream = null)
         {
             string Thang = txtThangNam.Text;
-            List<GetDanhSachTongTienPhaiThuResult> list = db.GetDanhSachTongTienPhaiThu(Thang).ToList();
+            List<GetSoThueMonBaiResult> list = db.GetSoThueMonBai(Thang).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
@@ -141,6 +133,7 @@ namespace TelerikWebApp1
                 return excelPackage.Stream;
             }
         }
+      
         public void Export()
         {
             // Gọi lại hàm để tạo file excel
@@ -161,7 +154,7 @@ namespace TelerikWebApp1
         protected void btnExport_Click(object sender, EventArgs e)
         {
             Export();
-            Response.Redirect("DanhSachTongSoTienPhaiThu.aspx");
+            Response.Redirect("SoThueMonBai.aspx");
         }
     }
 }

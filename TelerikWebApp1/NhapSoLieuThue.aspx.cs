@@ -63,7 +63,7 @@ namespace TelerikWebApp1
                         dem++;
                         dt.Columns.Add(cell.ToString() + dem.ToString());
                     }
-                    else if(cell.ToString()== "Ngày nộp thuế")
+                    else if (cell.ToString() == "Ngày nộp thuế")
                     {
                         dt.Columns.Add(cell.ToString());
                         cotNgayNop = dt.Columns.IndexOf(cell.ToString());
@@ -71,31 +71,42 @@ namespace TelerikWebApp1
                     else
                         dt.Columns.Add(cell.ToString());
                 }
-
-                for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
+                try
                 {
-                    IRow row = sheet.GetRow(i);
-                    if (!checkEmptyRow(row))
+                    for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
                     {
-                        DataRow dataRow = dt.NewRow();
-                        for (int j = row.FirstCellNum; j < dt.Columns.Count; j++)
+                        IRow row = sheet.GetRow(i);
+                        if (!checkEmptyRow(row))
                         {
-                            if(j == cotNgayNop)
+                            DataRow dataRow = dt.NewRow();
+                            for (int j = row.FirstCellNum; j < dt.Columns.Count; j++)
                             {
-                                DateTime a = DateTime.Parse(row.GetCell(j).ToString());
-                                string b = a.ToString("dd/MM/yyyy");
-                                dataRow[j] = b;
-                                continue;
+                                if (j == cotNgayNop)
+                                {
+                                    if (row.GetCell(j) != null && row.GetCell(j).ToString() != "")
+                                    {
+                                        DateTime a = DateTime.Parse(row.GetCell(j).ToString());
+                                        string b = a.ToString("dd/MM/yyyy");
+                                        dataRow[j] = b;
+                                        continue;
+                                    }
+                                    else
+                                        continue;
+                                }
+                                if (row.GetCell(j) != null && row.GetCell(j).ToString() != "")
+                                    dataRow[j] = row.GetCell(j).ToString();
+                                else
+                                    continue;
                             }
-                            if (row.GetCell(j) != null && row.GetCell(j).ToString() != "")
-                                dataRow[j] = row.GetCell(j).ToString();
-                            else
-                                continue;
+                            dt.Rows.Add(dataRow);
                         }
-                        dt.Rows.Add(dataRow);
                     }
+                    return dt;
                 }
-                return dt;
+                catch (Exception ex)
+                {
+
+                }
             }
             return null;
         }
@@ -159,12 +170,15 @@ namespace TelerikWebApp1
                     {
                         string masothue = item["Mã số thuế"].Text.Trim();
                         string macbql = item["Mã cán bộ"].Text.Trim();
-                        double sotiennop =double.Parse(item["Số tiền theo VND"].Text.Trim());
+                        double sotiennop = double.Parse(item["Số tiền theo VND"].Text.Trim());
                         string ngaynop = item["Ngày nộp thuế"].Text.Trim();
                         string kythue = item["Kỳ tính thuế5"].Text.Trim();
                         string tieumuc = item["Tiểu mục"].Text.Trim();
                         string muc = item["Mã mục"].Text.Trim();
-                        db.Insert_SoLieuNopThue(masothue,macbql,sotiennop,ngaynop, kythue, tieumuc,muc);
+                        DanhBa danhba = db.DanhBas.SingleOrDefault(x => x.masothue == masothue);
+                        if (danhba == null)
+                            continue;
+                        db.Insert_SoLieuNopThue(masothue, macbql, sotiennop, ngaynop, kythue, tieumuc, muc);
                         if ((System.IO.File.Exists(txtFilepath.Text)))
                         {
                             System.IO.File.Delete(txtFilepath.Text);
@@ -180,6 +194,26 @@ namespace TelerikWebApp1
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     }
                 }
+            }
+        }
+
+        protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            var data = ReadFromExcelfile(txtFilepath.Text);
+            grid.DataSource = data;
+
+            if (grid.DataSource == null)
+                grid.DataSource = new string[] { };
+        }
+
+        protected void grid_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            if (e.Item is GridDataItem)
+            {
+                int rowCounter = new int();
+                Label lbl = e.Item.FindControl("numberLabel") as Label;
+                rowCounter = grid.MasterTableView.PageSize * grid.MasterTableView.CurrentPageIndex;
+                lbl.Text = (e.Item.ItemIndex + 1 + rowCounter).ToString();
             }
         }
     }

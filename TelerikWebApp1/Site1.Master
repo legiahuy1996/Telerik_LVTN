@@ -86,7 +86,7 @@
                                                                         <a href="SoBoThue.aspx"><span>Lập sổ bộ thuế</span></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="DanhSachSoBoThue.aspx"><span>Danh sách sổ bộ thuế</span></a>
+                                                                        <a href="DanhSachSoBoThue.aspx"><span>Sổ bộ thuế</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href='InKeKhaiNopThue.aspx'><span>In bảng kê nộp thuế</span></a>
@@ -104,7 +104,10 @@
                                                                         <a href='DanhSachNoThue.aspx'><span>Danh sách hộ còn nợ thuế</span></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="DanhSachTongSoTienPhaiThu.aspx"><span>Danh sách tổng số tiền phải thu</span></a>
+                                                                        <a href="DanhSachTongSoTienPhaiThu.aspx"><span>In sổ thuế</span></a>
+                                                                    </li>
+                                                                     <li>
+                                                                        <a href="SoThueMonBai.aspx"><span>In sổ thuế môn bài</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="DanhSachNgungNghi.aspx"><span>Danh sách số hộ ngưng nghỉ</span></a>

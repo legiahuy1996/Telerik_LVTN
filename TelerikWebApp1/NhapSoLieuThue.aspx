@@ -1,6 +1,87 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NhapSoLieuThue.aspx.cs" MasterPageFile="~/Site1.Master" Inherits="TelerikWebApp1.NhapSoLieuThue" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="content" runat="server">
+    <style>
+        /* Center the loader */
+        #ctl00_content_grid {
+            position: relative;
+        }
+
+        #loader {
+            position: absolute;
+            top: calc(100% + 440px);
+            left: 50%;
+            z-index: 1;
+            width: 150px;
+            height: 150px;
+            margin: -75px 0 0 -75px;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Add animation to "page content" */
+        .animate-bottom {
+            position: relative;
+            -webkit-animation-name: animatebottom;
+            -webkit-animation-duration: 1s;
+            animation-name: animatebottom;
+            animation-duration: 1s
+        }
+
+        @-webkit-keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
+
+            to {
+                bottom: 0px;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
+
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+
+        #myDiv {
+            display: none;
+            text-align: center;
+        }
+    </style>
     <form id="frm" runat="server" enctype="multipart/form-data">
 
         <table id="Table1" cellspacing="1" cellpadding="1" width="100%" border="0">
@@ -52,55 +133,77 @@
                         </asp:LinkButton>
                     </div>
                 </td>
-                
+
             </tr>
             <tr>
-                
+
                 <td colspan="3" align="center">
                     <span class="btn1">
                         <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R"><span class="btnReset">Làm m&#7899;i</span>
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();" OnClick="btnSave_Click"><span class="btnSave">L&#432;u</span>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnClose" name="btnClose" AccessKey="C" ToolTip="ALT+C" runat="server" CssClass="btnCloseOther" 
+                        <asp:LinkButton ID="btnClose" name="btnClose" AccessKey="C" ToolTip="ALT+C" runat="server" CssClass="btnCloseOther"
                             Text="Đóng">                            
                         </asp:LinkButton>
-                       <asp:LinkButton ID="btnTemplate" name="btnTemplate" AccessKey="S" ToolTip="ALT+S" runat="server" CssClass="btnViewOther" OnClick="btnTemplate_Click"
+                        <asp:LinkButton ID="btnTemplate" name="btnTemplate" AccessKey="S" ToolTip="ALT+S" runat="server" CssClass="btnViewOther" OnClick="btnTemplate_Click"
                             Text="Xem file mẫu">
                         </asp:LinkButton>
                     </span>
                 </td>
             </tr>
-            <tr style="display:none">
+            <tr style="display: none">
                 <asp:TextBox runat="server" ID="txtFilepath" Visible="false"></asp:TextBox>
-                 </tr>
+            </tr>
         </table>
 
+        <table width="100%" cellpadding="1" cellspacing="1" border="0" style="position: relative;" id="tablex">
+            <tbody>
+                <div id="loader" class="loader" style="display: none">
+                </div>
+                <tr>
+                    <td>
+                        <hr />
+                        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
+                        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+                            <AjaxSettings>
+                                <telerik:AjaxSetting AjaxControlID="RadGrid1">
+                                    <UpdatedControls>
+                                        <telerik:AjaxUpdatedControl ControlID="RadGrid1" LoadingPanelID="RadAjaxLoadingPanel1" />
+                                    </UpdatedControls>
+                                </telerik:AjaxSetting>
+                            </AjaxSettings>
+                        </telerik:RadAjaxManager>
+                        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" />
+                        <telerik:RadSkinManager ID="RadSkinManager2" runat="server" Skin="Office2007" />
+                        <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
+                            <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
+                                <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
+                                    <telerik:RadFormDecorator RenderMode="Lightweight" runat="server" DecorationZoneID="demo" EnableRoundedCorners="false" DecoratedControls="All" />
 
-        <table width="100%" cellpadding="1" cellspacing="1" border="0">
-            <tr>
-                <td>
-                    <hr />
-                    <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
-                    <telerik:RadSkinManager ID="RadSkinManager2" runat="server" Skin="Office2007" />
-                    <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
-                        <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
-                            <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
-                                <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" 
-                                    AllowAutomaticUpdates="true"
-                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="true">
-                                    <ClientSettings>
-                                        <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
-                                        <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
-                                    </ClientSettings>
+                                    <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" OnNeedDataSource="grid_NeedDataSource" OnItemDataBound="grid_ItemDataBound"
+                                        AllowAutomaticUpdates="true"
+                                        AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="true">
+                                        <ClientSettings>
+                                            <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
+                                            <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
+                                        </ClientSettings>
 
-                                    <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
-                                        <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
-                                        <Columns>
-                                            <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
-                                                <HeaderStyle />
-                                            </telerik:GridClientSelectColumn>
-                                           <%-- <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
+                                        <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="50,100,150,200" AllowMultiColumnSorting="true">
+                                            <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
+                                            <Columns>
+                                                <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
+                                                    <HeaderStyle />
+                                                </telerik:GridClientSelectColumn>
+                                                <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
+                                                    <HeaderStyle />
+                                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="numberLabel" runat="server" />
+                                                    </ItemTemplate>
+
+                                                </telerik:GridTemplateColumn>
+                                                <%-- <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
                                                 <HeaderStyle Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemTemplate>
@@ -157,14 +260,26 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>--%>
-                                        </Columns>
-                                    </MasterTableView>
-                                </telerik:RadGrid>
-                            </telerik:RadAjaxPanel>
-                        </telerik:RadPane>
-                    </telerik:RadSplitter>
-                </td>
-            </tr>
+                                            </Columns>
+                                        </MasterTableView>
+                                    </telerik:RadGrid>
+
+                                </telerik:RadAjaxPanel>
+                            </telerik:RadPane>
+                        </telerik:RadSplitter>
+                    </td>
+                </tr>
+            </tbody>
+
         </table>
     </form>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="script" ID="script" runat="server">
+    <script>
+        const a = document.getElementById('ctl00_content_grid_ctl00_ctl03_ctl01_PageSizeComboBox_Input');
+        a.onchange = function () {
+            document.getElementById('loader').style.display = "";
+            setTimeout(function () { document.getElementById('loader').style.display = "none"; }, 3000);
+        }
+    </script>
 </asp:Content>

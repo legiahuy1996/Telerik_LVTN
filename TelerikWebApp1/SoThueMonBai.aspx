@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="DanhSachTongSoTienPhaiThu.aspx.cs" Inherits="TelerikWebApp1.DanhSachTongSoTienPhaiThu" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SoThueMonBai.aspx.cs" MasterPageFile="~/Site1.Master" Inherits="TelerikWebApp1.SoThueMonBai" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="content" runat="server">
-    <h1>Sổ thuế</h1>
+    <h1>Sổ thuế môn bài</h1>
     <br />
     <form id="frm" runat="server">
         <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server" height="100px">
@@ -20,7 +20,7 @@
             <tr>
                 <td colspan="3" align="center">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnExport" name="btnExport" runat="server" AccessKey="E" ToolTip="Alt+E" OnClick="btnExport_Click">
+                        <asp:LinkButton ID="btnExport" name="btnExport" runat="server" AccessKey="E" ToolTip="Alt+E" OnClick="btnExport_Click"  >
 		                    <span class="btnExport">Xuất DL</span>
                         </asp:LinkButton>
                     </span>
