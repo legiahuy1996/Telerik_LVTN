@@ -1,7 +1,7 @@
-USE [thue]
+USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue]    Script Date: 6/2/2018 8:50:20 AM ******/
+/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue]    Script Date: 7/1/2018 10:08:42 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -71,8 +71,8 @@ AS
                                 a.manganh ,
                                 a.NgheKinhDoanh ,
                                 a.DoanhThu ,
-                                ( a.DoanhThu * b.TyLeTinhThueGTGT ) ,
-                                ( a.DoanhThu * b.TyLeTinhThueTNCN )
+                                ( a.DoanhThu * (b.TyLeTinhThueGTGT/100) ) ,
+                                ( a.DoanhThu * (b.TyLeTinhThueTNCN/100) )
                         FROM    @Temp1 a
                                 LEFT JOIN dbo.manganh b ON b.manganh = a.manganh
                         WHERE   idchitiet IS NULL

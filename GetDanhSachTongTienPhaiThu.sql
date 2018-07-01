@@ -1,7 +1,7 @@
 USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetDanhSachTongTienPhaiThu]    Script Date: 7/1/2018 2:11:02 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetDanhSachTongTienPhaiThu]    Script Date: 7/1/2018 10:07:19 PM ******/
 SET ANSI_NULLS ON
 GO
 

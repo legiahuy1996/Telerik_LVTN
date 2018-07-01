@@ -23,17 +23,17 @@ namespace TelerikWebApp1
         {
             if (!IsPostBack)
             {
-                if(DateTime.Now.Month < 10)
+                if (DateTime.Now.Month < 10)
                 {
                     txtThangNam.Text = "0" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
                 }
                 else
                 {
                     txtThangNam.Text = DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
-                }                    
+                }
             }
         }
-        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<GetDanhSachTongTienPhaiThuResult> listItems)
+        private void BindingFormatForExcel(ExcelWorksheet worksheet, List<GetDanhSachTongTienPhaiThuResult> listItems, List<GetSoThueNgungNghiResult> listNN)
         {
             // Set default width cho tất cả column
             worksheet.DefaultColWidth = 10;
@@ -77,22 +77,11 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 3].Value = item.Thang;
                 worksheet.Cells[i + 2, 4].Value = item.TongDoanhThu;
                 worksheet.Cells[i + 2, 5].Value = item.SoTienGTGT1Thang;
-                worksheet.Cells[i + 2, 6].Value = item.SoTienGTGT1Thang*12;
+                worksheet.Cells[i + 2, 6].Value = item.SoTienGTGT1Thang * 12;
                 worksheet.Cells[i + 2, 7].Value = item.SoTienTNCN1Thang;
-                worksheet.Cells[i + 2, 8].Value = item.SoTienTNCN1Thang*12;
-                worksheet.Cells[i + 2, 9].Value = (item.SoTienTNCN1Thang * 12)+(item.SoTienGTGT1Thang*12);
+                worksheet.Cells[i + 2, 8].Value = item.SoTienTNCN1Thang * 12;
+                worksheet.Cells[i + 2, 9].Value = (item.SoTienTNCN1Thang * 12) + (item.SoTienGTGT1Thang * 12);
 
-                //// Format lại color nếu như thỏa điều kiện
-                //if (item.TinhTrangNopThue == "0")
-                //{
-                //    // Ở đây chúng ta sẽ format lại theo dạng fromRow,fromCol,toRow,toCol
-                //    using (var range = worksheet.Cells[i + 2, 1, i + 2, 16])
-                //    {
-                //        // Format text đỏ và đậm
-                //        range.Style.Font.Color.SetColor(Color.Red);
-                //        range.Style.Font.Bold = true;
-                //    }
-                //}
 
             }
             //worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
@@ -100,7 +89,6 @@ namespace TelerikWebApp1
             worksheet.Cells[2, 4, listItems.Count + 4, 9].Style.Numberformat.Format = "#,##";
             // fix lại width của column với minimum width là 15
             worksheet.Cells[1, 1, listItems.Count + 5, 6].AutoFitColumns(15);
-
             //// Thực hiện tính theo foxrmula trong excel
             //Hàm Sum
             worksheet.Cells[listItems.Count + 3, 1].Value = "Tổng:";
@@ -109,19 +97,35 @@ namespace TelerikWebApp1
             worksheet.Cells[listItems.Count + 3, 5].Style.Font.Bold = true;
             worksheet.Cells[listItems.Count + 3, 7].Formula = "SUM(G2:G" + (listItems.Count + 1) + ")";
             worksheet.Cells[listItems.Count + 3, 7].Style.Font.Bold = true;
-            // Hàm SumIf
-            //worksheet.Cells[listItems.Count + 4, 3].Value = "Greater than 20050 :";
-            //worksheet.Cells[listItems.Count + 4, 4].Formula = "SUMIF(D2:D" + (listItems.Count + 1) + ",\">20050\")";
-            //// Tinh theo %
-            //worksheet.Cells[listItems.Count + 5, 3].Value = "Percentatge: ";
-            //worksheet.Cells[listItems.Count + 5, 4].Style.Numberformat.Format = "0.00%";
-            //// Dòng này có nghĩa là ở column hiện tại lấy với địa chỉ (Row hiện tại - 1)/ (Row hiện tại - 2) Cùng một colum
-            //worksheet.Cells[listItems.Count + 5, 4].FormulaR1C1 = "(R[-1]C/R[-2]C)";
+            worksheet.Cells[listItems.Count + 4, 1].Value = "CNKD ngừng, nghỉ trong tháng";
+            worksheet.Cells[listItems.Count + 4, 1].Style.Font.Bold = true;
+            worksheet.Cells["A" + (listItems.Count + 4) + ":I" + (listItems.Count + 4)].Merge = true;
+            for (int i = 0; i < listNN.Count; i++)
+            {
+                var item = listNN[i];
+                worksheet.Cells[listItems.Count + 5 + i, 1].Value = item.masothue;
+                worksheet.Cells[listItems.Count + 5 + i, 2].Value = item.nam;
+                worksheet.Cells[listItems.Count + 5 + i, 3].Value = item.thang;
+                worksheet.Cells[listItems.Count + 5 + i, 4].Value = item.TongDoanhThu;
+                worksheet.Cells[listItems.Count + 5 + i, 5].Value = item.GTGT;
+                worksheet.Cells[listItems.Count + 5 + i, 6].Value = item.GTGT * 12;
+                worksheet.Cells[listItems.Count + 5 + i, 7].Value = item.TNCN;
+                worksheet.Cells[listItems.Count + 5 + i, 8].Value = item.TNCN * 12;
+                worksheet.Cells[listItems.Count + 5 + i, 9].Value = (item.TNCN * 12) + (item.GTGT * 12);
+            }
+            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 1].Value = "Tổng:";
+            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 1].Style.Font.Bold = true;
+            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 5].Formula = "SUM(E" + (listItems.Count + 5) + ":E" + (listItems.Count + 5 + listNN.Count) + ")";
+            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 5].Style.Font.Bold = true;
+            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 7].Formula = "SUM(G" + (listItems.Count + 5) + ":G" + (listItems.Count + 5 + listNN.Count) + ")";
+            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 7].Style.Font.Bold = true;
+            worksheet.Cells[2, 4, listItems.Count + 5 + listNN.Count + 1, 9].Style.Numberformat.Format = "#,##";
         }
         private Stream CreateExcelFile(Stream stream = null)
         {
             string Thang = txtThangNam.Text;
             List<GetDanhSachTongTienPhaiThuResult> list = db.GetDanhSachTongTienPhaiThu(Thang).ToList();
+            List<GetSoThueNgungNghiResult> listNN = db.GetSoThueNgungNghi(Thang).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
@@ -136,7 +140,7 @@ namespace TelerikWebApp1
                 var workSheet = excelPackage.Workbook.Worksheets[1];
                 // Đổ data vào Excel file
 
-                BindingFormatForExcel(workSheet, list);
+                BindingFormatForExcel(workSheet, list, listNN);
                 excelPackage.Save();
                 return excelPackage.Stream;
             }
