@@ -1,14 +1,14 @@
 USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetSoThueNgungNghi]    Script Date: 7/1/2018 10:08:07 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetSoThueNgungNghi]    Script Date: 7/3/2018 4:18:34 PM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROC [dbo].[GetSoThueNgungNghi]
+ALTER PROC [dbo].[GetSoThueNgungNghi]
 @thang	NVARCHAR(7) = NULL
 AS
 BEGIN

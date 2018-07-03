@@ -42,6 +42,11 @@
                         <asp:LinkButton ID="btnSearch" name="btnSearch" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSearch_Click" ><span class="btnSearch">Tìm kiếm</span>
                         </asp:LinkButton>
                     </span>
+                     <span class="btn1">
+                        <asp:LinkButton ID="btnExport" name="btnExport" runat="server" AccessKey="E" ToolTip="Alt+E" OnClick="btnExport_Click">
+		                    <span class="btnExport">Xuất DL</span>
+                        </asp:LinkButton>
+                    </span>
                 </td>
             </tr>
         </table>
@@ -68,24 +73,24 @@
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>                                           
-                                            <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="Số tiền nộp">
+                                            </telerik:GridBoundColumn>          
+                                            <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="Họ tên">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Kỳ thuế">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
-                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="nghekinhdoanh" DataField="nghekinhdoanh" HeaderText="Ngày nộp">
+                                            <telerik:GridBoundColumn UniqueName="SoTienNop" DataField="SoTienNop" HeaderText="Số tiền nộp" DataFormatString="{0:N0}">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="KyThue" DataField="KyThue" HeaderText="Kỳ thuế">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn UniqueName="NgayNop" DataField="NgayNop" HeaderText="Ngày nộp">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>                                            
-                                            <telerik:GridBoundColumn UniqueName="SoTien" DataField="SoTien" HeaderText="Loại thuế">
+                                            </telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn UniqueName="tieumuc" DataField="tieumuc" HeaderText="Loại thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
