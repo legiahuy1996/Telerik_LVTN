@@ -47,6 +47,7 @@ namespace TelerikWebApp1
             worksheet.Cells[1, 3].Value = "Vốn đăng ký";
             worksheet.Cells[1, 4].Value = "Bậc môn bài";
             worksheet.Cells[1, 5].Value = "Mức thuế";
+            worksheet.Cells[1, 6].Value = "Ngày khai thuế";
             // Lấy range vào tạo format cho range đó ở đây là từ A1 tới Q1
             using (var range = worksheet.Cells["A1:P1"])
             {
@@ -75,6 +76,7 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 3].Value = item.vonkd;
                 worksheet.Cells[i + 2, 4].Value = item.Bac;
                 worksheet.Cells[i + 2, 5].Value = item.MucThue;
+                worksheet.Cells[i + 2, 6].Value = item.ngaykhaithue;
                 //// Format lại color nếu như thỏa điều kiện
                 //if (item.TinhTrangNopThue == "0")
                 //{
@@ -88,7 +90,7 @@ namespace TelerikWebApp1
                 //}
 
             }
-            //worksheet.Cells[2, 16, 2, 16].Style.Numberformat.Format = "dd/MM/yyyy";
+            //worksheet.Cells[2, 6, listItems.Count+4,].Style.Numberformat.Format = "dd/MM/yyyy";
             // Format lại định dạng xuất ra ở cột Money
             worksheet.Cells[2, 5, listItems.Count + 4, 5].Style.Numberformat.Format = "#,##";
             worksheet.Cells[2, 3, listItems.Count + 4, 3].Style.Numberformat.Format = "#,##";

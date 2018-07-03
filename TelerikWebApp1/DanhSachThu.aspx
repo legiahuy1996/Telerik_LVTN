@@ -39,7 +39,7 @@
             <tr>
                 <td colspan="3" align="center">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnSearch" name="btnSearch" AccessKey="S" ToolTip="ALT+S" runat="server" ><span class="btnSearch">Tìm kiếm</span>
+                        <asp:LinkButton ID="btnSearch" name="btnSearch" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSearch_Click" ><span class="btnSearch">Tìm kiếm</span>
                         </asp:LinkButton>
                     </span>
                 </td>
@@ -55,7 +55,7 @@
                         <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
                             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
                                 <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
-                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false"  OnNeedDataSource="grid_NeedDataSource"
+                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource"
                                    >
                                     <ClientSettings>
                                         <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
