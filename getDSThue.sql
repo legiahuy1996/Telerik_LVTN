@@ -1,7 +1,7 @@
-USE [thue]
+USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[getDSThue]    Script Date: 6/23/2018 1:07:19 PM ******/
+/****** Object:  StoredProcedure [dbo].[getDSThue]    Script Date: 7/3/2018 6:24:19 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -31,18 +31,23 @@ AS
                 END AS TrangThaiHoatDong ,
                 a.TongDoanhThu * c.TyLeTinhThueGTGT AS ThueGTGT ,
                 a.TongDoanhThu * c.TyLeTinhThueTNCN AS ThueTNCN ,
-                b.sogp ,
-                CASE WHEN a.manganh = '07' THEN N'Hoạt động nhiều ngành nghề'
-                     ELSE c.tennganh
-                END AS tennganh,
+                b.sogp ,k.tennganh,
 				f.lydo AS LyDo
-				,f.mattngungnghi 
+				,f.mattngungnghi
+				,CONVERT(NVARCHAR(10),f.tungay,103) AS tungay
+				,CONVERT(NVARCHAR(10),f.denngay,103) AS denngay
+				,CONVERT(NVARCHAR(10),f.ngaynopdon,103) AS ngaynopdon 
         FROM    dbo.KhaiThue a
                 LEFT JOIN dbo.DanhBa b ON b.masothue = a.masothue
                 LEFT JOIN dbo.manganh c ON c.manganh = a.manganh
                 LEFT JOIN dbo.thuemonbai d ON d.idKhaiThue = a.idKhaiThue
                 LEFT JOIN dbo.ChiTietKhaiThue e ON e.idKhaiThue = a.idKhaiThue
 				LEFT JOIN dbo.thongtinngungnghi f ON f.idKhaiThue = a.idKhaiThue
+				LEFT JOIN dbo.manganh g ON g.manganh = e.manganh
+				LEFT JOIN (SELECT h.idKhaiThue, CASE WHEN COUNT(h.idChiTiet)>0 THEN N'Hoạt động nhiều ngành nghề' ELSE j.tennganh END tennganh
+				FROM dbo.ChiTietKhaiThue h LEFT JOIN dbo.manganh j ON j.manganh = h.manganh
+				GROUP BY j.tennganh,h.idKhaiThue
+				) k ON k.idKhaiThue = a.idKhaiThue
         WHERE   1 = 1
                 AND ( @TrangThai IS NULL
                       OR @TrangThai = '2'

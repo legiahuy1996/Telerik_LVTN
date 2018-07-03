@@ -81,7 +81,6 @@
 	user_tag_config['ebound_header_tag']['mobile']['cpm'] = '';
 	user_tag_config['ebound_header_tag']['mobile']['adsCode'] = '';
 	</script></div>
-			<p> &copy; 2016 Plain Login Form. All Rights Reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 	<!---728x90--->
 	<script src='//publisher.eboundservices.com/dynamicAds/dynamicScript.js'></script>
 	<div style='margin: 0 auto;text-align: center;margin-top: 5px;'><script>

@@ -5,32 +5,40 @@
     <h1>Sổ Thu</h1>
     <br />
     <form id="frm" runat="server">
-         <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
-              <tr>
+        <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
+            <tr>
                 <td></td>
-                <td width="10%">
-                </td>
+                <td width="10%"></td>
                 <td width="10%">
                     <asp:Label runat="server" ID="lblMaSoThue">Mã số thuế</asp:Label>
                 </td>
                 <td width="25%">
-                   <asp:TextBox class="Input" runat="server" ID="txtMST" Width="50%"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtMST" Width="50%"></asp:TextBox>
                 </td>
-                <td width="25%">            
-                </td>
+                <td width="25%"></td>
             </tr>
-                   <tr>
+            <tr>
                 <td></td>
+                <td width="10%"></td>
                 <td width="10%">
-                </td>
-                <td width="10%">
-                   <h3>
-                        <asp:Label runat="server" ID="lblThangNam">Tháng in bảng kê khai(MM/yy)</asp:Label></h3>
+                        <asp:Label runat="server" ID="lblThangNam">Tháng in bảng kê khai(MM/yy)</asp:Label>
                 </td>
                 <td width="25%">
-                   <asp:TextBox class="Input" runat="server" ID="txtThangNam" onblur="return CheckMonthYear(this)" Width="20%" MaxLength="7"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtThangNam" onblur="return CheckMonthYear(this)" Width="20%" MaxLength="7"></asp:TextBox>
                 </td>
-                <td width="25%">            
+                <td width="25%"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                    
+                <td colspan="3">
+                    <asp:RadioButtonList runat="server" ID="rblLoaiThue" RepeatDirection="Horizontal">
+                        <asp:ListItem Value="1701">Thuế GTGT</asp:ListItem>
+                        <asp:ListItem Value="1003">Thuế TNCN</asp:ListItem>
+                        <asp:ListItem Value="0000">Thuế môn bài</asp:ListItem>
+                        <asp:ListItem Value="" Selected="True">Tất cả</asp:ListItem>
+                    </asp:RadioButtonList>
                 </td>
             </tr>
         </table>
@@ -39,10 +47,10 @@
             <tr>
                 <td colspan="3" align="center">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnSearch" name="btnSearch" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSearch_Click" ><span class="btnSearch">Tìm kiếm</span>
+                        <asp:LinkButton ID="btnSearch" name="btnSearch" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSearch_Click"><span class="btnSearch">Tìm kiếm</span>
                         </asp:LinkButton>
                     </span>
-                     <span class="btn1">
+                    <span class="btn1">
                         <asp:LinkButton ID="btnExport" name="btnExport" runat="server" AccessKey="E" ToolTip="Alt+E" OnClick="btnExport_Click">
 		                    <span class="btnExport">Xuất DL</span>
                         </asp:LinkButton>
@@ -51,7 +59,7 @@
             </tr>
         </table>
         <br />
-          <table width="100%" cellpadding="1" cellspacing="1" border="0">
+        <table width="100%" cellpadding="1" cellspacing="1" border="0">
             <tr>
                 <td>
                     <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
@@ -60,8 +68,7 @@
                         <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
                             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
                                 <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
-                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource"
-                                   >
+                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource">
                                     <ClientSettings>
                                         <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
                                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
@@ -73,7 +80,7 @@
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>          
+                                            </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="Họ tên">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -91,7 +98,7 @@
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="tieumuc" DataField="tieumuc" HeaderText="Loại thuế">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px"/>
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                         </Columns>

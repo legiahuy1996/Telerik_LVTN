@@ -34,7 +34,8 @@ namespace TelerikWebApp1
         {
             string mst = txtMST.Text;
             string thang = txtThangNam.Text;
-            grid.DataSource = db.GetSoThu(mst, thang);
+            string loaithue = rblLoaiThue.SelectedValue;
+            grid.DataSource = db.GetSoThu(mst, thang,loaithue);
             grid.Rebind();
         }
         protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
