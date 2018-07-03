@@ -19,5 +19,10 @@ namespace TelerikWebApp1
             if (grid.DataSource == null)
                 grid.DataSource = new string[] { };
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
