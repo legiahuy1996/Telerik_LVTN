@@ -1,7 +1,7 @@
 USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[getDSThue]    Script Date: 7/3/2018 6:24:19 PM ******/
+/****** Object:  StoredProcedure [dbo].[getDSThue]    Script Date: 7/3/2018 8:32:19 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -31,7 +31,7 @@ AS
                 END AS TrangThaiHoatDong ,
                 a.TongDoanhThu * c.TyLeTinhThueGTGT AS ThueGTGT ,
                 a.TongDoanhThu * c.TyLeTinhThueTNCN AS ThueTNCN ,
-                b.sogp ,k.tennganh,
+                b.sogp ,CASE WHEN a.manganh ='07' THEN N'Hoạt động nhiều ngành nghề' ELSE e.nghekinhdoanh END tennganh,
 				f.lydo AS LyDo
 				,f.mattngungnghi
 				,CONVERT(NVARCHAR(10),f.tungay,103) AS tungay
@@ -44,10 +44,6 @@ AS
                 LEFT JOIN dbo.ChiTietKhaiThue e ON e.idKhaiThue = a.idKhaiThue
 				LEFT JOIN dbo.thongtinngungnghi f ON f.idKhaiThue = a.idKhaiThue
 				LEFT JOIN dbo.manganh g ON g.manganh = e.manganh
-				LEFT JOIN (SELECT h.idKhaiThue, CASE WHEN COUNT(h.idChiTiet)>0 THEN N'Hoạt động nhiều ngành nghề' ELSE j.tennganh END tennganh
-				FROM dbo.ChiTietKhaiThue h LEFT JOIN dbo.manganh j ON j.manganh = h.manganh
-				GROUP BY j.tennganh,h.idKhaiThue
-				) k ON k.idKhaiThue = a.idKhaiThue
         WHERE   1 = 1
                 AND ( @TrangThai IS NULL
                       OR @TrangThai = '2'

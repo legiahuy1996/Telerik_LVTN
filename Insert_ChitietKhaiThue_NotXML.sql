@@ -1,7 +1,7 @@
-USE [thue]
+USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue_NotXML]    Script Date: 5/29/2018 9:35:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue_NotXML]    Script Date: 7/3/2018 8:32:34 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,16 +16,21 @@ ALTER PROC [dbo].[Insert_ChitietKhaiThue_NotXML]
 AS
     BEGIN
         DECLARE @TongDanhThu BIGINT ,
-            @SoTienGTGT1Thang INT ,
-            @SoTienTNCN1Thang INT ,
-            @TongSoTienNop INT
-        SELECT  @SoTienGTGT1Thang = ( TyLeTinhThueGTGT * @DoanhThu ) ,
-                @SoTienTNCN1Thang = ( TyLeTinhThueTNCN * @DoanhThu )
+            @SoTienGTGT1Thang BIGINT ,
+            @SoTienTNCN1Thang BIGINT ,
+            @TongSoTienNop BIGINT
+        SELECT  @SoTienGTGT1Thang = ( (TyLeTinhThueGTGT/100) * @DoanhThu ) ,
+                @SoTienTNCN1Thang = ( (TyLeTinhThueTNCN/100) * @DoanhThu )
         FROM    dbo.manganh
         WHERE   manganh = @manganh
         SET @TongSoTienNop = ( @SoTienGTGT1Thang + @SoTienTNCN1Thang )
+		PRINT @SoTienGTGT1Thang
+		PRINT @SoTienTNCN1Thang
+		PRINT @DoanhThu
+		PRINT @TongSoTienNop
 		IF NOT EXISTS(SELECT TOP 1 1 FROM dbo.ChiTietKhaiThue WHERE manganh = @manganh AND idKhaiThue = @idKhaiThue)
-		begin
+		BEGIN
+        PRINT ' insert'
 			INSERT  INTO dbo.ChiTietKhaiThue
 					( idKhaiThue ,
 					  DoanhThu ,
@@ -42,10 +47,11 @@ AS
 					  @TongSoTienNop , -- TongSoTienNop - int
 					  @manganh , -- manganh - nvarchar(10)
 					  @nghekinhdoanh -- nghekinhdoanh - nvarchar(50)
-					)
+					)PRINT 'a'
 		END 
 		ELSE
 			BEGIN
+			PRINT 'update'
 				UPDATE dbo.ChiTietKhaiThue
 				SET DoanhThu = @DoanhThu,
 					SoTienGTGT1Thang = @SoTienGTGT1Thang,
@@ -57,7 +63,7 @@ AS
         SELECT  @TongDanhThu = TongDoanhThu 
         FROM    dbo.KhaiThue
         WHERE   idKhaiThue = @idKhaiThue
-		PRINT @TongDanhThu
+		
         UPDATE  dbo.KhaiThue
         SET     TongDoanhThu = @TongDanhThu
         WHERE   idKhaiThue = @idKhaiThue

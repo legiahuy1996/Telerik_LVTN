@@ -156,16 +156,31 @@ namespace TelerikWebApp1
                         string masothue = item["masothue"].Text.Trim();
                         string nam = item["nam"].Text.Trim();
                         string IDKHAITHUE = "";
+                        float dientich;
+                        int soluongld, tugio, dengio;
+
                         KhaiThue kt = db.KhaiThues.SingleOrDefault(x => x.masothue == masothue && x.nam == nam);
                         if (kt != null)
                             IDKHAITHUE = kt.idKhaiThue.ToString();
                         string ReturnMess = "";
                         string ReturnMessCode = "";
                         bool trangthai;
-                        float dientich = float.Parse(item["dientichKD"].Text.Trim());
-                        int soluongld = int.Parse(item["soluongLD"].Text.Trim());
-                        int tugio = int.Parse(item["TuGio"].Text.Trim());
-                        int dengio = int.Parse(item["DenGio"].Text.Trim());
+                        if (item["dientichKD"].Text.Trim() != "" && item["dientichKD"].Text.Trim() != "&nbsp;")
+                            dientich = float.Parse(item["dientichKD"].Text.Trim());
+                        else
+                            dientich = 0;
+                        if (item["soluongLD"].Text.Trim() != "" &&  item["soluongLD"].Text.Trim()!= "&nbsp;")
+                            soluongld = int.Parse(item["soluongLD"].Text.Trim());
+                        else
+                            soluongld = 0;
+                        if (item["TuGio"].Text.Trim() != "" && item["TuGio"].Text.Trim() != "&nbsp;")
+                            tugio = int.Parse(item["TuGio"].Text.Trim());
+                        else
+                            tugio = 0;
+                        if (item["DenGio"].Text.Trim() != "" && item["DenGio"].Text.Trim() != "&nbsp;")
+                            dengio = int.Parse(item["DenGio"].Text.Trim());
+                        else
+                            dengio = 23;
                         string manganh = item["manganh"].Text.Trim();
                         string doanhthu = item["doanhthu"].Text.Trim();
                         string nghekinhdoanh = item["nghekinhdoanh"].Text.Trim();
