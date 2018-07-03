@@ -1,4 +1,14 @@
-CREATE TRIGGER dbo.themvaosonosodu ON dbo.SoLieuTuNganHang FOR INSERT,UPDATE,DELETE
+USE [up6]
+GO
+
+/****** Object:  Trigger [dbo].[themvaosonosodu]    Script Date: 7/3/2018 10:25:50 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER TRIGGER [dbo].[themvaosonosodu] ON [dbo].[SoLieuTuNganHang] FOR INSERT,UPDATE,DELETE
 AS
 DECLARE @masothue NVARCHAR(14), @thuemonbai FLOAT, @thueGTGT FLOAT, @thueTNCN FLOAT, @KyThue NVARCHAR(10)
 SELECT @masothue = inserted.masothue FROM inserted
@@ -72,11 +82,11 @@ DECLARE @SoDuTMB BIGINT,@SoNoTMB BIGINT, @HieuSoTMB BIGINT
 	WHERE a.masothue = @masothue
 
 
-	SET @HieuSoGTGT = (@thueGTGT +ISNULL(@SoDuGTGT,0)) - (@SoTienGTGT -ISNULL(@SoNoGTGT,0))
-	SET @HieuSoTNCN = (@thueTNCN+ISNULL(@SoDuTNCN,0)) - (@SoTienTNCN-ISNULL(@SoNoTNCN,0))
-	SET @HieuSoTMB = (@thuemonbai+ISNULL(@SoDuTNCN,0)) - (@SoTienTMB-ISNULL(@SoNoTNCN,0))
+	SET @HieuSoGTGT =  (@SoTienGTGT -ISNULL(@SoNoGTGT,0)) - (@thueGTGT +ISNULL(@SoDuGTGT,0))
+	SET @HieuSoTNCN =  (@SoTienTNCN-ISNULL(@SoNoTNCN,0)) - (@thueTNCN+ISNULL(@SoDuTNCN,0))
+	SET @HieuSoTMB =  (@SoTienTMB-ISNULL(@SoNoTNCN,0)) - (@thuemonbai+ISNULL(@SoDuTNCN,0))
 
-	IF(@HieuSoGTGT >0)
+	IF(@HieuSoGTGT < 0)
 	BEGIN
 		INSERT INTO dbo.sodu
 		        ( KyThue, SoTien, tieumuc, masothue )
@@ -86,7 +96,7 @@ DECLARE @SoDuTMB BIGINT,@SoNoTMB BIGINT, @HieuSoTMB BIGINT
 		          @masothue  -- masothue - varchar(14)
 		          )
     END 
-	IF(@HieuSoGTGT <0)
+	IF(@HieuSoGTGT > 0)
 	BEGIN
 		INSERT INTO dbo.sono
 		        ( KyThue, SoTien, tieumuc, masothue )
@@ -96,7 +106,7 @@ DECLARE @SoDuTMB BIGINT,@SoNoTMB BIGINT, @HieuSoTMB BIGINT
 		          @masothue  -- masothue - varchar(14)
 		          )
     END 
-	IF(@HieuSoTNCN >0)
+	IF(@HieuSoTNCN < 0)
 	BEGIN
 		INSERT INTO dbo.sodu
 		        ( KyThue, SoTien, tieumuc, masothue )
@@ -106,7 +116,7 @@ DECLARE @SoDuTMB BIGINT,@SoNoTMB BIGINT, @HieuSoTMB BIGINT
 		          @masothue  -- masothue - varchar(14)
 		          )
     END 
-	IF(@HieuSoTNCN <0)
+	IF(@HieuSoTNCN > 0)
 	BEGIN
 		INSERT INTO dbo.sono
 		        ( KyThue, SoTien, tieumuc, masothue )
@@ -117,7 +127,7 @@ DECLARE @SoDuTMB BIGINT,@SoNoTMB BIGINT, @HieuSoTMB BIGINT
 		          )
     END 
 
-	IF(@HieuSoTMB >0)
+	IF(@HieuSoTMB < 0)
 	BEGIN
 		INSERT INTO dbo.sodu
 		        ( KyThue, SoTien, tieumuc, masothue )
@@ -127,7 +137,7 @@ DECLARE @SoDuTMB BIGINT,@SoNoTMB BIGINT, @HieuSoTMB BIGINT
 		          @masothue  -- masothue - varchar(14)
 		          )
     END 
-	IF(@HieuSoTMB <0)
+	IF(@HieuSoTMB > 0)
 	BEGIN
 		INSERT INTO dbo.sono
 		        ( KyThue, SoTien, tieumuc, masothue )
@@ -139,4 +149,7 @@ DECLARE @SoDuTMB BIGINT,@SoNoTMB BIGINT, @HieuSoTMB BIGINT
     END 
 	
 
+
+
+GO
 
