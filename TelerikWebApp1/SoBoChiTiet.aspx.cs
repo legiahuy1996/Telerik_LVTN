@@ -31,14 +31,17 @@ namespace TelerikWebApp1
         protected void LoadDataByID(string id)
         {
             var sobothue = db.SoBoThues.SingleOrDefault(x=>x.idSoBoThue == int.Parse(id));
+            DateTime dt = new DateTime();
             txtIDKhaiThue.Text = sobothue.idKhaiThue.ToString();
-            txtNgayLapBo.Text = sobothue.NgayLapBo.ToString();
+            if (sobothue.NgayLapBo.ToString() != "")
+                dt = DateTime.Parse(sobothue.NgayLapBo.ToString());
+            txtNgayLapBo.Text = dt.ToString("dd/MM/yyyy");
             txtThang.Text = sobothue.Thang.ToString();
             txtGTGT.Text = sobothue.DoanhThuTinhThueGTGT.ToString();
             txtTNCN.Text = sobothue.DoanhThuTinhThueTNCN.ToString();
             txtTyLeGTGT.Text = sobothue.TyLeTinhThueGTGT.ToString();
             txtTyLeTNCN.Text = sobothue.TyLeTinhThueTNCN.ToString();
-            txtSoTienGTGT.Text = sobothue.SoTienTNCN1Thang.ToString();
+            txtSoTienGTGT.Text = sobothue.SoTienGTGT1Thang.ToString();
             txtSoTienTNCN.Text = sobothue.SoTienTNCN1Thang.ToString();
             if (sobothue.TinhTrangNopThue == true)
                 chkActive.Checked = true;

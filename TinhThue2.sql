@@ -1,14 +1,14 @@
-USE [thue]
+USE [up6]
 GO
 
-/****** Object:  Trigger [dbo].[TinhThue2]    Script Date: 5/19/2018 8:04:27 PM ******/
+/****** Object:  Trigger [dbo].[TinhThue2]    Script Date: 7/3/2018 10:15:41 AM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TRIGGER [dbo].[TinhThue2] ON [dbo].[ChiTietKhaiThue]
+ALTER TRIGGER [dbo].[TinhThue2] ON [dbo].[ChiTietKhaiThue]
     FOR DELETE
 AS
     DECLARE @TongDanhThu FLOAT ,
@@ -32,6 +32,7 @@ AS
     UPDATE  dbo.KhaiThue
     SET     TongDoanhThu = @TongDanhThu
     WHERE   idKhaiThue = @idKhaiThue
+
 
 GO
 

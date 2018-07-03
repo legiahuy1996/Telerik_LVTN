@@ -1,7 +1,7 @@
 USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 7/3/2018 9:28:15 AM ******/
+/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 7/3/2018 9:55:35 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -93,7 +93,7 @@ BEGIN
 				SELECT a.idKhaiThue,b.masothue,a.nam,b.sodt,b.email,b.ghichu,c.tennganh,a.SoLuongLD,a.DienTichKD,b.diachiKD, 
 					   CASE WHEN a.TrangThaiHoatDong = 1 THEN N'Đang hoạt động' ELSE N'Ngừng hoạt động' END AS TrangThaiHoatDong,
 					   a.TongDoanhThu,a.TongDoanhThu AS DoanhThuTinhThueGTGT,a.TongDoanhThu AS DoanhThuTinhThueTNCN,c.TyLeTinhThueGTGT,c.TyLeTinhThueTNCN,b.hoten,
-					   a.TuGio,a.DenGio,tennganh.nghekinhdoanh,m_monbai.MucThue
+					   a.TuGio,a.DenGio,tennganh.nghekinhdoanh,CASE WHEN ISNULL(m_monbai.MucThue,'')='' THEN 0 ELSE m_monbai.MucThue END AS MucThue
 				FROM dbo.KhaiThue a 
 				LEFT JOIN dbo.ChiTietKhaiThue e ON e.idKhaiThue = a.idKhaiThue
 				INNER JOIN dbo.DanhBa b ON b.masothue = a.masothue

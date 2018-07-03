@@ -35,13 +35,13 @@
                     <asp:Label runat="server" ID="lblDoanhThuGTGT">Doanh thu GTGT</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtGTGT" Width="40%" ReadOnly="true"></asp:TextBox>
+                    <asp:TextBox class="input" runat="server" ID="txtGTGT" onchange="javascript:checkNumber(this);" Width="40%" ReadOnly="true"></asp:TextBox>
                 </td>
                 <td width="10%">
                     <asp:Label runat="server" ID="lblDoanhthuTNCN">Doanh thu TNCN</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtTNCN" Width="40%" ReadOnly="true"></asp:TextBox>
+                    <asp:TextBox class="input" runat="server" ID="txtTNCN" Width="40%" onblur="javascript:checkNumber(this);" ReadOnly="true"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -65,13 +65,13 @@
                     <asp:Label runat="server" ID="lblSoTienGTGT">S&#7889; ti&#7873;n GTGT</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtSoTienGTGT" Width="30%" ReadOnly="true"></asp:TextBox>
+                    <asp:TextBox class="input" runat="server" ID="txtSoTienGTGT" Width="30%" ReadOnly="true" onblur="javascript:checkNumber(this);"></asp:TextBox>
                 </td>
                 <td width="10%">
                     <asp:Label runat="server" ID="lblSoTienTNCN">S&#7889; ti&#7873;n TNCN</asp:Label>
                 </td>
                 <td width="25%">
-                    <asp:TextBox class="input" runat="server" ID="txtSoTienTNCN" Width="30%" ReadOnly="true"></asp:TextBox>
+                    <asp:TextBox class="input" runat="server" ID="txtSoTienTNCN" Width="30%" ReadOnly="true" onblur="javascript:checkNumber(this);"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -176,4 +176,9 @@
             </tr>
         </table>
     </form>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="script" ID="script" runat="server">
+    <script>
+        $("#<%=txtNgayLapBo.ClientID%>").datepicker();
+    </script>
 </asp:Content>
