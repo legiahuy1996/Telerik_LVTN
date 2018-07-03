@@ -21,6 +21,8 @@ namespace TelerikWebApp1
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
             if (!IsPostBack)
             {
                 if (DateTime.Now.Month < 10)
@@ -155,6 +157,31 @@ namespace TelerikWebApp1
         {
             Export();
             Response.Redirect("SoThueMonBai.aspx");
+        }
+        public void getDataSearch()
+        {
+            string thang = txtThangNam.Text.Trim();
+
+            List<GetSoThueMonBaiResult> lst = db.GetSoThueMonBai(thang).ToList();
+            grid.DataSource = lst;
+            grid.Rebind();
+        }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            getDataSearch();
+        }
+
+        protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
+        {
+            try
+            {
+                getDataSearch();
+            }
+            catch
+            {
+                if (grid.DataSource == null)
+                    grid.DataSource = new string[] { };
+            }
         }
     }
 }
