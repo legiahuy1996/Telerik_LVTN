@@ -1,7 +1,7 @@
 USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 6/30/2018 8:59:23 PM ******/
+/****** Object:  StoredProcedure [dbo].[spfrm_SoBoThue]    Script Date: 7/3/2018 9:28:15 AM ******/
 SET ANSI_NULLS ON
 GO
 
