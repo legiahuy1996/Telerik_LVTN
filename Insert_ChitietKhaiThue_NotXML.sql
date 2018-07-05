@@ -1,7 +1,7 @@
 USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue_NotXML]    Script Date: 7/3/2018 8:32:34 PM ******/
+/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue_NotXML]    Script Date: 7/4/2018 10:46:02 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -67,31 +67,31 @@ AS
         UPDATE  dbo.KhaiThue
         SET     TongDoanhThu = @TongDanhThu
         WHERE   idKhaiThue = @idKhaiThue
-        IF ( @TongDanhThu > 100000000 )
-            BEGIN
-                IF ( @TongDanhThu <= 300000000 )
-                    BEGIN
-                        PRINT 'bac3'
-                        INSERT  INTO thuemonbai
-                                ( trangthai, Bac, idKhaiThue )
-                        VALUES  ( 0, 3, @idKhaiThue )
-                    END 
-                IF ( @TongDanhThu > 300000000 )
-                    BEGIN
-                        PRINT 'bac2'
-                        INSERT  INTO thuemonbai
-                                ( trangthai, Bac, idKhaiThue )
-                        VALUES  ( 0, 2, @idKhaiThue )
-                    END 
-                ELSE
-                    IF ( @TongDanhThu > 500000000 )
-                        BEGIN
-                            PRINT 'bac1'
-                            INSERT  INTO thuemonbai
-                                    ( trangthai, Bac, idKhaiThue )
-                            VALUES  ( 0, 1, @idKhaiThue )
-                        END 
-            END
+        --IF ( @TongDanhThu > 100000000 )
+        --    BEGIN
+        --        IF ( @TongDanhThu <= 300000000 )
+        --            BEGIN
+        --                PRINT 'bac3'
+        --                INSERT  INTO thuemonbai
+        --                        ( trangthai, Bac, idKhaiThue )
+        --                VALUES  ( 0, 3, @idKhaiThue )
+        --            END 
+        --        IF ( @TongDanhThu > 300000000 )
+        --            BEGIN
+        --                PRINT 'bac2'
+        --                INSERT  INTO thuemonbai
+        --                        ( trangthai, Bac, idKhaiThue )
+        --                VALUES  ( 0, 2, @idKhaiThue )
+        --            END 
+        --        ELSE
+        --            IF ( @TongDanhThu > 500000000 )
+        --                BEGIN
+        --                    PRINT 'bac1'
+        --                    INSERT  INTO thuemonbai
+        --                            ( trangthai, Bac, idKhaiThue )
+        --                    VALUES  ( 0, 1, @idKhaiThue )
+        --                END 
+        --    END
         DECLARE @Dem INT 
             
         SELECT  @Dem = COUNT(idChiTiet)

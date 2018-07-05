@@ -377,7 +377,7 @@ namespace TelerikWebApp1
                                     string idKhaiThueNew = ReturnMessCode;
                                     foreach (ChiTietKhaiThue ct in ctkt)
                                     {
-                                        db.Insert_ChitietKhaiThue_NotXML(idKhaiThueNew, ct.DoanhThu.ToString(), ct.manganh, ct.nghekinhdoanh);
+                                        db.Insert_ChitietKhaiThue_NotXML(idKhaiThueNew, ct.DoanhThu, ct.manganh, ct.nghekinhdoanh);
                                     }
                                 }
                             }

@@ -98,7 +98,7 @@ namespace TelerikWebApp1
                         FilePath = Server.MapPath(FolderPath + FileName);
                         FileUpload1.SaveAs(FilePath);
                         var data = ReadFromExcelfile(FilePath);
-                        txtFilepath.Text = FilePath;
+                        Session["File"] = FilePath;
                         grid.DataSource = data;
                         grid.DataBind();
                     }
@@ -123,9 +123,13 @@ namespace TelerikWebApp1
         }
         protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            var data = ReadFromExcelfile(txtFilepath.Text);
-            grid.DataSource = data;
-
+            if (Session["File"] != null)
+            {
+                var data = ReadFromExcelfile(Session["File"].ToString());
+                grid.DataSource = data;
+            }
+            else
+                grid.DataSource = new string[] { };
             if (grid.DataSource == null)
                 grid.DataSource = new string[] { };
         }
@@ -153,6 +157,7 @@ namespace TelerikWebApp1
                 {
                     try
                     {
+                        Int64 doanhthu = 0;
                         string masothue = item["masothue"].Text.Trim();
                         string nam = item["nam"].Text.Trim();
                         string IDKHAITHUE = "";
@@ -169,7 +174,7 @@ namespace TelerikWebApp1
                             dientich = float.Parse(item["dientichKD"].Text.Trim());
                         else
                             dientich = 0;
-                        if (item["soluongLD"].Text.Trim() != "" &&  item["soluongLD"].Text.Trim()!= "&nbsp;")
+                        if (item["soluongLD"].Text.Trim() != "" && item["soluongLD"].Text.Trim() != "&nbsp;")
                             soluongld = int.Parse(item["soluongLD"].Text.Trim());
                         else
                             soluongld = 0;
@@ -182,7 +187,8 @@ namespace TelerikWebApp1
                         else
                             dengio = 23;
                         string manganh = item["manganh"].Text.Trim();
-                        string doanhthu = item["doanhthu"].Text.Trim();
+                        if(item["doanhthu"].Text.Trim()!="")
+                            doanhthu =  Int64.Parse(item["doanhthu"].Text.Trim());
                         string nghekinhdoanh = item["nghekinhdoanh"].Text.Trim();
                         string status = item["trangthai"].Text.Trim();
                         if (status.ToUpper() == "TRUE")

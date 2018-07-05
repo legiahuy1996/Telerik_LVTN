@@ -1,7 +1,7 @@
 USE [up6]
 GO
 
-/****** Object:  Trigger [dbo].[TinhThue]    Script Date: 7/3/2018 10:15:33 AM ******/
+/****** Object:  Trigger [dbo].[TinhThue]    Script Date: 7/4/2018 10:45:23 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,11 +10,10 @@ GO
 
 ALTER TRIGGER [dbo].[TinhThue] ON [dbo].[ChiTietKhaiThue] FOR INSERT,UPDATE,DELETE
 AS
-DECLARE @TongDanhThu FLOAT,@idKhaiThue INT,@SoTien FLOAT,
+DECLARE @TongDanhThu float,@idKhaiThue INT,@SoTien BIGINT,
 		@idChiTiet int
 SELECT @idKhaiThue = Inserted.idKhaiThue,@idChiTiet = Inserted.idChiTiet
 FROM Inserted
-SELECT @TongDanhThu = SUM(DoanhThu) FROM dbo.ChiTietKhaiThue
 ----------KHAI THUE
 --tinh tong doanh thu
 SELECT @TongDanhThu = sum(DoanhThu) FROM dbo.ChiTietKhaiThue 
@@ -25,12 +24,11 @@ WHERE idChiTiet = @idChiTiet
 UPDATE dbo.KhaiThue
 set	TongDoanhThu = @TongDanhThu
 WHERE idKhaiThue = @idKhaiThue
-SELECT  @TongDanhThu = ( TongDoanhThu * 12 )
+SELECT  @TongDanhThu = TongDoanhThu 
         FROM    dbo.KhaiThue
         WHERE   idKhaiThue = @idKhaiThue
-        IF ( @TongDanhThu > 100000000 )
-            BEGIN
-                IF ( @TongDanhThu <= 300000000 )
+		PRINT @TongDanhThu
+              IF ( (@TongDanhThu*12) <= 300000000 AND (@TongDanhThu*12) > 100000000 )
                     BEGIN
                         PRINT 'bac3'
 						IF NOT EXISTS ( SELECT TOP 1 1 FROM dbo.thuemonbai WHERE idKhaiThue = @idKhaiThue)
@@ -47,7 +45,7 @@ SELECT  @TongDanhThu = ( TongDoanhThu * 12 )
                         END
                         
                     END 
-                IF ( @TongDanhThu > 300000000  AND @TongDanhThu <500000000)
+                ELSE IF ( (@TongDanhThu*12) > 300000000  AND (@TongDanhThu*12) <500000000)
                     BEGIN
                         PRINT 'bac2'
 						IF NOT EXISTS ( SELECT TOP 1 1 FROM dbo.thuemonbai WHERE idKhaiThue = @idKhaiThue)
@@ -64,7 +62,7 @@ SELECT  @TongDanhThu = ( TongDoanhThu * 12 )
                         END
                     END 
                 ELSE
-                    IF ( @TongDanhThu >= 500000000 )
+                    IF ( (@TongDanhThu*12) >= 500000000 )
                         BEGIN
                             PRINT 'bac1'
 							IF NOT EXISTS ( SELECT TOP 1 1 FROM dbo.thuemonbai WHERE idKhaiThue = @idKhaiThue)
@@ -80,8 +78,6 @@ SELECT  @TongDanhThu = ( TongDoanhThu * 12 )
 									WHERE idKhaiThue = @idKhaiThue
 							END
                     END 
-            END
-
 
 
 GO

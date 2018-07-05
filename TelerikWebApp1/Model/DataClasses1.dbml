@@ -33,11 +33,11 @@
       <Column Name="idChiTiet" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="idKhaiThue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DoanhThu" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="SoTienGTGT1Thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoTienTNCN1Thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TongSoTienNop" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoTienGTGT1Thang" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SoTienTNCN1Thang" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TongSoTienNop" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="manganh" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Association Name="KhaiThue_ChiTietKhaiThue" Member="KhaiThue" ThisKey="idKhaiThue" OtherKey="idKhaiThue" Type="KhaiThue" IsForeignKey="true" />
     </Type>
   </Table>
@@ -291,7 +291,7 @@
       <Column Name="nam" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
       <Column Name="masothue" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
       <Column Name="hoten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="diachiKD" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
       <Column Name="Thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DoanhThuTinhThueTNCN" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -389,13 +389,13 @@
   <Function Name="dbo.getDsConNo" Method="getDsConNo">
     <Parameter Name="masothue" Type="System.String" DbType="NVarChar(15)" />
     <ElementType Name="getDsConNoResult">
-      <Column Name="masothue" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
+      <Column Name="masothue" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
       <Column Name="hoten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="nam" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
-      <Column Name="KyThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KyThue" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SoTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="tieumuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tieumuc" Type="System.String" DbType="NVarChar(59) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.getDSHoDuocLenSoBo" Method="getDSHoDuocLenSoBo">
@@ -463,30 +463,17 @@
       <Column Name="MucThue" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.getDSThue" Method="getDSThue">
-    <Parameter Name="masothue" Type="System.String" DbType="VarChar(14)" />
-    <Parameter Name="sogiayphep" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="manganh" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="nam" Type="System.String" DbType="VarChar(4)" />
-    <Parameter Name="TrangThai" Parameter="trangThai" Type="System.String" DbType="NVarChar(1)" />
-    <ElementType Name="getDSThueResult">
-      <Column Name="idKhaiThue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+  <Function Name="dbo.GetSoThu" Method="GetSoThu">
+    <Parameter Name="MST" Parameter="mST" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="thang" Type="System.String" DbType="NVarChar(7)" />
+    <Parameter Name="loaithue" Type="System.String" DbType="NVarChar(4)" />
+    <ElementType Name="GetSoThuResult">
       <Column Name="masothue" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
-      <Column Name="TongDoanhThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="nam" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
-      <Column Name="lankhaithue" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Bac" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
-      <Column Name="diachiKD" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
-      <Column Name="TrangThaiHoatDong" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="ThueGTGT" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ThueTNCN" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="sogp" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="tennganh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="LyDo" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="mattngungnghi" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="tungay" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="denngay" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="ngaynopdon" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="SoTienNop" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KyThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayNop" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="hoten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tieumuc" Type="System.String" DbType="NVarChar(59) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.GetSoThueMonBai" Method="GetSoThueMonBai">
@@ -497,6 +484,7 @@
       <Column Name="vonkd" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="Bac" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="MucThue" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngaykhaithue" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.GetSoThueNgungNghi" Method="GetSoThueNgungNghi">
@@ -506,8 +494,44 @@
       <Column Name="nam" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
       <Column Name="thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TongDoanhThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GTGT" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TNCN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GTGT" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TNCN" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSoThuGTGT" Method="GetSoThuGTGT">
+    <Parameter Name="MST" Parameter="mST" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="thang" Type="System.String" DbType="NVarChar(7)" />
+    <ElementType Name="GetSoThuGTGTResult">
+      <Column Name="masothue" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
+      <Column Name="SoTienNop" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KyThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayNop" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="hoten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tieumuc" Type="System.String" DbType="NVarChar(59) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSoThuMB" Method="GetSoThuMB">
+    <Parameter Name="MST" Parameter="mST" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="thang" Type="System.String" DbType="NVarChar(7)" />
+    <ElementType Name="GetSoThuMBResult">
+      <Column Name="masothue" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
+      <Column Name="SoTienNop" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KyThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayNop" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="hoten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tieumuc" Type="System.String" DbType="NVarChar(59) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSoThuTNCN" Method="GetSoThuTNCN">
+    <Parameter Name="MST" Parameter="mST" Type="System.String" DbType="NVarChar(12)" />
+    <Parameter Name="thang" Type="System.String" DbType="NVarChar(7)" />
+    <ElementType Name="GetSoThuTNCNResult">
+      <Column Name="masothue" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
+      <Column Name="SoTienNop" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KyThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayNop" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="hoten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tieumuc" Type="System.String" DbType="NVarChar(59) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.getThongBaoNopThue" Method="getThongBaoNopThue">
@@ -535,13 +559,6 @@
       <Column Name="NgheKinhDoanh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="manganh" Type="System.String" DbType="NVarChar(14)" CanBeNull="true" />
     </ElementType>
-  </Function>
-  <Function Name="dbo.Insert_ChitietKhaiThue_NotXML" Method="Insert_ChitietKhaiThue_NotXML">
-    <Parameter Name="idKhaiThue" Type="System.String" DbType="NVarChar(14)" />
-    <Parameter Name="DoanhThu" Parameter="doanhThu" Type="System.String" DbType="NVarChar(14)" />
-    <Parameter Name="manganh" Type="System.String" DbType="NVarChar(14)" />
-    <Parameter Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(100)" />
-    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.Insert_HoCaThe" Method="Insert_HoCaThe">
     <Parameter Name="masothue" Type="System.String" DbType="NVarChar(12)" />
@@ -609,7 +626,7 @@
       <Column Name="DoanhThu" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="TyLeTinhThueGTGT" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="TyLeTinhThueTNCN" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="NgheKinhDoanh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgheKinhDoanh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.LoadChiTietKhaiThueXML" Method="LoadChiTietKhaiThueXML">
@@ -634,6 +651,33 @@
     <Parameter Name="MatKhau" Parameter="matKhau" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="ReturnMess" Parameter="returnMess" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.getDSThue" Method="getDSThue">
+    <Parameter Name="masothue" Type="System.String" DbType="VarChar(14)" />
+    <Parameter Name="sogiayphep" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="manganh" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="nam" Type="System.String" DbType="VarChar(4)" />
+    <Parameter Name="TrangThai" Parameter="trangThai" Type="System.String" DbType="NVarChar(1)" />
+    <ElementType Name="getDSThueResult">
+      <Column Name="idKhaiThue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="masothue" Type="System.String" DbType="VarChar(14) NOT NULL" CanBeNull="false" />
+      <Column Name="TongDoanhThu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nam" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="lankhaithue" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bac" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="diachiKD" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="TrangThaiHoatDong" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="ThueGTGT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThueTNCN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="sogp" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="tennganh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LyDo" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="mattngungnghi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tungay" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="denngay" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ngaynopdon" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="hoten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
   </Function>
   <Function Name="dbo.spfrm_SoBoThue" Method="spfrm_SoBoThue">
     <Parameter Name="MST" Parameter="mST" Type="System.String" DbType="VarChar(50)" />
@@ -669,8 +713,15 @@
       <Column Name="hoten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="TuGio" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DenGio" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="MucThue" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.Insert_ChitietKhaiThue_NotXML" Method="Insert_ChitietKhaiThue_NotXML">
+    <Parameter Name="idKhaiThue" Type="System.String" DbType="NVarChar(14)" />
+    <Parameter Name="DoanhThu" Parameter="doanhThu" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="manganh" Type="System.String" DbType="NVarChar(14)" />
+    <Parameter Name="nghekinhdoanh" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

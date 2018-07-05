@@ -1,7 +1,7 @@
 USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue]    Script Date: 7/1/2018 10:08:42 PM ******/
+/****** Object:  StoredProcedure [dbo].[Insert_ChitietKhaiThue]    Script Date: 7/4/2018 10:45:51 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -93,31 +93,56 @@ AS
 		  UPDATE  dbo.KhaiThue
         SET     TongDoanhThu = @TongDanhThu
         WHERE   idKhaiThue = @id
-        IF ( @TongDanhThu > 100000000 )
-            BEGIN
-                IF ( @TongDanhThu <= 300000000 )
+        IF ( (@TongDanhThu*12) <= 300000000 AND (@TongDanhThu*12) > 100000000 )
                     BEGIN
                         PRINT 'bac3'
-                        INSERT  INTO thuemonbai
-                                ( trangthai, Bac, idKhaiThue )
-                        VALUES  ( 0, 3, @id )
+						IF NOT EXISTS ( SELECT TOP 1 1 FROM dbo.thuemonbai WHERE idKhaiThue = @id)
+						begin
+							INSERT  INTO thuemonbai
+									( trangthai, Bac, idKhaiThue )
+							VALUES  ( 0, 3, @id )
+						END
+                        ELSE
+                        BEGIN
+							UPDATE dbo.thuemonbai
+							SET Bac = 3
+							WHERE idKhaiThue = @id
+                        END
+                        
                     END 
-                IF ( @TongDanhThu > 300000000 )
+                ELSE IF ( (@TongDanhThu*12) > 300000000  AND (@TongDanhThu*12) <500000000)
                     BEGIN
                         PRINT 'bac2'
-                        INSERT  INTO thuemonbai
-                                ( trangthai, Bac, idKhaiThue )
-                        VALUES  ( 0, 2, @id )
+						IF NOT EXISTS ( SELECT TOP 1 1 FROM dbo.thuemonbai WHERE idKhaiThue = @id)
+						begin
+							INSERT  INTO thuemonbai
+									( trangthai, Bac, idKhaiThue )
+							VALUES  ( 0, 2, @id )
+						END
+                        ELSE
+                        BEGIN
+								UPDATE dbo.thuemonbai
+								SET Bac = 2
+								WHERE idKhaiThue = @id
+                        END
                     END 
                 ELSE
-                    IF ( @TongDanhThu > 500000000 )
+                    IF ( (@TongDanhThu*12) >= 500000000 )
                         BEGIN
                             PRINT 'bac1'
-                            INSERT  INTO thuemonbai
-                                    ( trangthai, Bac, idKhaiThue )
-                            VALUES  ( 0, 1, @id )
-                        END 
-            END
+							IF NOT EXISTS ( SELECT TOP 1 1 FROM dbo.thuemonbai WHERE idKhaiThue = @id)
+							begin
+								INSERT  INTO thuemonbai
+										( trangthai, Bac, idKhaiThue )
+								VALUES  ( 0, 1, @id )
+							END 
+							ELSE
+							BEGIN
+									UPDATE dbo.thuemonbai
+									SET Bac = 1
+									WHERE idKhaiThue = @id
+							END
+                    END 
         DECLARE @Dem INT 
             
         SELECT  @Dem = COUNT(idChiTiet)
