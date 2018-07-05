@@ -95,6 +95,9 @@
                         <asp:LinkButton ID="btnExportGrid" name="btnExportGrid" runat="server" OnClick="btnExportGrid_Click">
 			            <span class="btnExport">Xuất DL</span>
                         </asp:LinkButton>
+                        <asp:LinkButton ID="btnImport" name="btnImport" runat="server">
+			            <span class="btnImport">Nhập DL</span>
+                        </asp:LinkButton>
                     </span>
                     <hr />
                 </td>
@@ -188,4 +191,13 @@
             </tr>
         </table>
     </form>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="script" ID="script" runat="server">
+    <script> 
+
+        function ShowExcelSelectPage() {
+            window.open("DanhSachHoCaThe_Import.aspx", 'SelectFile', 'status=1,toolbar=0,scrollbars=1,resizable=0,alwaysRaised=Yes, top=20, left=30, width=1200, height=600,1 ,align=center');
+            return false;
+        }
+    </script>
 </asp:Content>

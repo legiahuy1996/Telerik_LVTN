@@ -22,6 +22,7 @@ namespace TelerikWebApp1
             db = new DataClasses1DataContext();
             if (Session["taikhoan"] == null)
                 Response.Redirect("Login.aspx");
+            btnImport.Attributes.Add("OnClick", "return ShowExcelSelectPage()");
         }
         private void BindingFormatForExcel(ExcelWorksheet worksheet, List<DanhSachHoCaTheResult> listItems)
         {
@@ -204,5 +205,6 @@ namespace TelerikWebApp1
 
             }
         }
+
     }
 }
