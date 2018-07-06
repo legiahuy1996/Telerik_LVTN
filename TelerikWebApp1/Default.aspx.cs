@@ -16,5 +16,15 @@ public partial class Default : System.Web.UI.Page
     {
         if (Session["taikhoan"] == null)
             Response.Redirect("Login.aspx");
+        else
+        {
+            if (Request.QueryString["logout"] != null)
+            {
+                Session["taikhoan"] = null;
+                Response.Redirect("Login.aspx");
+            }
+        }
+            
+            
     }
 }

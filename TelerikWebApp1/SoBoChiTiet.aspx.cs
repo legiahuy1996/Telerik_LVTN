@@ -47,9 +47,6 @@ namespace TelerikWebApp1
                 chkActive.Checked = true;
             else
                 chkNoActive.Checked = true;
-
-
-
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {

@@ -5,8 +5,8 @@
 <html>
 
 <head>
-    
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Quản lý thu nộp thuế hộ cá thể</title>
 
     <link href="Content/style.css" rel="stylesheet" />
@@ -30,13 +30,26 @@
     </style>
 </head>
 <body>
+
     <table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
             <td align="left" valign="top" class="whiteBg">
+
+                <div style="float: right">
+                   
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn" runat="server" id="btn"></button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="#home">Đổi mật khẩu</a>
+                        </div>
+                    </div>
+                    <a href="Default.aspx?logout=1" style="text-decoration:none;color:black;font-size:16px;font-weight: normal;" class="dropbtn" id="logout"  > <img src="images/icon/logout_ico.png" style="width: 12px; height: 12px;" /> Đăng xuất</a>
+                </div>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td align="left" valign="top" class="bannerBg">
                             <table width="100%" border="0" align="right" cellpadding="0" cellspacing="0">
+
                                 <tr>
                                     <td width="206" align="left" valign="top" class="logoBotmbg">
                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -107,14 +120,11 @@
                                                                     <li>
                                                                         <a href="DanhSachTongSoTienPhaiThu.aspx"><span>In sổ thuế</span></a>
                                                                     </li>
-                                                                     <li>
+                                                                    <li>
                                                                         <a href="SoThueMonBai.aspx"><span>In sổ thuế môn bài</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href="DanhSachNgungNghi.aspx"><span>Danh sách số hộ ngưng nghỉ</span></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="ChamBoThue.aspx"><span>Chấm bộ thuế</span></a>
                                                                     </li>
                                                                 </ul>
                                                             </li>
@@ -123,8 +133,10 @@
                                                                     <li>
                                                                         <a href="Template/huongdansudung.docx"><span>Hướng dẫn sử dụng chương trình</span></a>
                                                                     </li>
+
                                                                 </ul>
                                                             </li>
+
                                                         </ul>
                                                     </div>
                                                     <div style="clear: both; margin: 0 0 30px 0;">&nbsp;</div>
@@ -224,26 +236,6 @@
                 <div class="clear" id="divBottom" style="padding: 0 0 10px 0">Design By :<a href="http://www.dreamweaver-templates.org/" target="_blank">Dreamweaver-Templates.org</a></div>
             </td>
         </tr>
-        <tr>
-            <td align="left" valign="top" class="footerBg">
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td align="left" valign="top">
-                            <ul class="footerLink">
-                                <li class="noDivider"><a href="index.html" title="Home">Home</a></li>
-                                <li><a href="#" title="About Us">About Us</a></li>
-                                <li><a href="#" title="Service">Service</a></li>
-                                <li><a href="#" title="News">News</a></li>
-                                <li><a href="#" title="Contact Us" class="last">Contact Us</a></li>
-                            </ul>
-                            <p class="copy">&copy; Copyright Information Goes Here. All Rights Reserved.</p>
-                            <p class="dsign">&nbsp;</p>
-                        </td>
-                    </tr>
-                </table>
-
-            </td>
-        </tr>
     </table>
 
     <script src="Content/jquery-ui-1.12.1.custom/jquery.ui.datepicker-vi-VN.js"></script>
@@ -252,7 +244,28 @@
 
     <script src="Content/Javascript/common.js"></script>
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
 
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 
 

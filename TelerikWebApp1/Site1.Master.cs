@@ -11,7 +11,10 @@ namespace TelerikWebApp1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
+            else
+                btn.InnerHtml = "<img src='images/icon/account_icon.png'/> "+ Session["taikhoan"].ToString();
         }
     }
 }
