@@ -1,4 +1,4 @@
-﻿ALTER PROC DanhSachHoCaThe_Import
+﻿create PROC DanhSachHoCaThe_Import
 @MST	VARCHAR(14) = NULL,
 @hoten	NVARCHAR(50) = NULL,
 @CMND	VARCHAR(20) = NULL,

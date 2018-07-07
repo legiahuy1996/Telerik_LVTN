@@ -132,7 +132,7 @@ namespace TelerikWebApp1
                         FilePath = Server.MapPath(FolderPath + FileName);
                         FileUpload1.SaveAs(FilePath);
                         var data = ReadFromExcelfile(FilePath);
-                        txtFilepath.Text = FilePath;
+                        Session["File"] = FilePath;
                         grid.DataSource = data;
                         grid.DataBind();
                     }
@@ -199,9 +199,11 @@ namespace TelerikWebApp1
 
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            var data = ReadFromExcelfile(txtFilepath.Text);
-            grid.DataSource = data;
-
+            if (Session["File"] != null)
+            {
+                var data = ReadFromExcelfile(Session["File"].ToString());
+                grid.DataSource = data;
+            }
             if (grid.DataSource == null)
                 grid.DataSource = new string[] { };
         }

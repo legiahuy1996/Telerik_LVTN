@@ -52,10 +52,10 @@
                         </asp:LinkButton>
                     </div>
                 </td>
-                
+
             </tr>
             <tr>
-                
+
                 <td colspan="3" align="center">
                     <span class="btn1">
                         <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" OnClick="btnReset_Click"><span class="btnReset">Làm m&#7899;i</span>
@@ -65,15 +65,15 @@
                         <asp:LinkButton ID="btnClose" name="btnClose" AccessKey="C" ToolTip="ALT+C" runat="server" CssClass="btnCloseOther" OnClick="btnClose_Click"
                             Text="Đóng">                            
                         </asp:LinkButton>
-                       <asp:LinkButton ID="btnTemplate" name="btnTemplate" AccessKey="S" ToolTip="ALT+S" runat="server" CssClass="btnViewOther"
+                        <asp:LinkButton ID="btnTemplate" name="btnTemplate" AccessKey="S" ToolTip="ALT+S" runat="server" CssClass="btnViewOther"
                             Text="Xem file mẫu" OnClick="btnTemplate_Click">
                         </asp:LinkButton>
                     </span>
                 </td>
             </tr>
-            <tr style="display:none">
+            <tr style="display: none">
                 <asp:TextBox runat="server" ID="txtFilepath" Visible="false"></asp:TextBox>
-                 </tr>
+            </tr>
         </table>
 
 
@@ -86,15 +86,19 @@
                     <telerik:RadSplitter ID="RadSplitter2" Width="100%" runat="server" Orientation="Horizontal">
                         <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
                             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
-                                <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" 
+                                <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true"
                                     AllowAutomaticUpdates="true"
                                     AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource">
                                     <ClientSettings>
                                         <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
+
+                                        <Resizing AllowColumnResize="true" AllowResizeToFit="true" />
                                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
                                     </ClientSettings>
 
-                                    <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
+                                    <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top"
+                                        PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true" TableLayout="Auto"
+                                         GridLines="Both">
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
@@ -144,11 +148,11 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                             <telerik:GridBoundColumn UniqueName="DenGio" DataField="DenGio" HeaderText="Đến giờ">
+                                            <telerik:GridBoundColumn UniqueName="DenGio" DataField="DenGio" HeaderText="Đến giờ">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                             <telerik:GridBoundColumn UniqueName="nghekinhdoanh" DataField="nghekinhdoanh" HeaderText="Nghề kinh doanh">
+                                            <telerik:GridBoundColumn UniqueName="nghekinhdoanh" DataField="nghekinhdoanh" HeaderText="Nghề kinh doanh">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>

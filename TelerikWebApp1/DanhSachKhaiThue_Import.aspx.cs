@@ -27,6 +27,8 @@ namespace TelerikWebApp1
         {
             if (Session["taikhoan"] == null)
                 Response.Redirect("Login.aspx");
+            if (!IsPostBack)
+                Session["File"] = null;
         }
         private bool checkEmptyRow(IRow row)
         {
@@ -187,8 +189,8 @@ namespace TelerikWebApp1
                         else
                             dengio = 23;
                         string manganh = item["manganh"].Text.Trim();
-                        if(item["doanhthu"].Text.Trim()!="")
-                            doanhthu =  Int64.Parse(item["doanhthu"].Text.Trim());
+                        if (item["doanhthu"].Text.Trim() != "")
+                            doanhthu = Int64.Parse(item["doanhthu"].Text.Trim());
                         string nghekinhdoanh = item["nghekinhdoanh"].Text.Trim();
                         string status = item["trangthai"].Text.Trim();
                         if (status.ToUpper() == "TRUE")

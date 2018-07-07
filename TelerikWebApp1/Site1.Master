@@ -40,7 +40,7 @@
                     <div class="dropdown">
                         <button onclick="myFunction()" class="dropbtn" runat="server" id="btn"></button>
                         <div id="myDropdown" class="dropdown-content">
-                            <a href="#home">Đổi mật khẩu</a>
+                            <a href="DoiMatKhau.aspx">Đổi mật khẩu</a>
                         </div>
                     </div>
                     <a href="Default.aspx?logout=1" style="text-decoration:none;color:black;font-size:16px;font-weight: normal;" class="dropbtn" id="logout"  > <img src="images/icon/logout_ico.png" style="width: 12px; height: 12px;" /> Đăng xuất</a>

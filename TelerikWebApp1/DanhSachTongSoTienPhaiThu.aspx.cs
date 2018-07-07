@@ -99,29 +99,32 @@ namespace TelerikWebApp1
             worksheet.Cells[listItems.Count + 3, 5].Style.Font.Bold = true;
             worksheet.Cells[listItems.Count + 3, 7].Formula = "SUM(G2:G" + (listItems.Count + 1) + ")";
             worksheet.Cells[listItems.Count + 3, 7].Style.Font.Bold = true;
-            worksheet.Cells[listItems.Count + 4, 1].Value = "CNKD ngừng, nghỉ trong tháng";
-            worksheet.Cells[listItems.Count + 4, 1].Style.Font.Bold = true;
-            worksheet.Cells["A" + (listItems.Count + 4) + ":I" + (listItems.Count + 4)].Merge = true;
-            for (int i = 0; i < listNN.Count; i++)
+            if (listNN.Count > 0)
             {
-                var item = listNN[i];
-                worksheet.Cells[listItems.Count + 5 + i, 1].Value = item.masothue;
-                worksheet.Cells[listItems.Count + 5 + i, 2].Value = item.nam;
-                worksheet.Cells[listItems.Count + 5 + i, 3].Value = item.thang;
-                worksheet.Cells[listItems.Count + 5 + i, 4].Value = item.TongDoanhThu;
-                worksheet.Cells[listItems.Count + 5 + i, 5].Value = item.GTGT;
-                worksheet.Cells[listItems.Count + 5 + i, 6].Value = item.GTGT * 12;
-                worksheet.Cells[listItems.Count + 5 + i, 7].Value = item.TNCN;
-                worksheet.Cells[listItems.Count + 5 + i, 8].Value = item.TNCN * 12;
-                worksheet.Cells[listItems.Count + 5 + i, 9].Value = (item.TNCN * 12) + (item.GTGT * 12);
+                worksheet.Cells[listItems.Count + 4, 1].Value = "CNKD ngừng, nghỉ trong tháng";
+                worksheet.Cells[listItems.Count + 4, 1].Style.Font.Bold = true;
+                worksheet.Cells["A" + (listItems.Count + 4) + ":I" + (listItems.Count + 4)].Merge = true;
+                for (int i = 0; i < listNN.Count; i++)
+                {
+                    var item = listNN[i];
+                    worksheet.Cells[listItems.Count + 5 + i, 1].Value = item.masothue;
+                    worksheet.Cells[listItems.Count + 5 + i, 2].Value = item.nam;
+                    worksheet.Cells[listItems.Count + 5 + i, 3].Value = item.thang;
+                    worksheet.Cells[listItems.Count + 5 + i, 4].Value = item.TongDoanhThu;
+                    worksheet.Cells[listItems.Count + 5 + i, 5].Value = item.GTGT;
+                    worksheet.Cells[listItems.Count + 5 + i, 6].Value = item.GTGT * 12;
+                    worksheet.Cells[listItems.Count + 5 + i, 7].Value = item.TNCN;
+                    worksheet.Cells[listItems.Count + 5 + i, 8].Value = item.TNCN * 12;
+                    worksheet.Cells[listItems.Count + 5 + i, 9].Value = (item.TNCN * 12) + (item.GTGT * 12);
+                }
+                worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 1].Value = "Tổng:";
+                worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 1].Style.Font.Bold = true;
+                worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 5].Formula = "SUM(E" + (listItems.Count + 5) + ":E" + (listItems.Count + 5 + listNN.Count) + ")";
+                worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 5].Style.Font.Bold = true;
+                worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 7].Formula = "SUM(G" + (listItems.Count + 5) + ":G" + (listItems.Count + 5 + listNN.Count) + ")";
+                worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 7].Style.Font.Bold = true;
+                worksheet.Cells[2, 4, listItems.Count + 5 + listNN.Count + 1, 9].Style.Numberformat.Format = "#,##";
             }
-            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 1].Value = "Tổng:";
-            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 1].Style.Font.Bold = true;
-            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 5].Formula = "SUM(E" + (listItems.Count + 5) + ":E" + (listItems.Count + 5 + listNN.Count) + ")";
-            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 5].Style.Font.Bold = true;
-            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 7].Formula = "SUM(G" + (listItems.Count + 5) + ":G" + (listItems.Count + 5 + listNN.Count) + ")";
-            worksheet.Cells[listItems.Count + 5 + listNN.Count + 1, 7].Style.Font.Bold = true;
-            worksheet.Cells[2, 4, listItems.Count + 5 + listNN.Count + 1, 9].Style.Numberformat.Format = "#,##";
         }
         private Stream CreateExcelFile(Stream stream = null)
         {
