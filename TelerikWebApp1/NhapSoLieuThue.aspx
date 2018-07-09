@@ -18,7 +18,6 @@
             border: 16px solid #f3f3f3;
             border-radius: 50%;
             border-top: 16px solid #3498db;
-         
             -webkit-animation: spin 2s linear infinite;
             animation: spin 2s linear infinite;
         }
@@ -80,9 +79,10 @@
             display: none;
             text-align: center;
         }
-        #ctl00_content_grid_ctl00_ctl03_ctl01_PageSizeComboBox_Arrow:after{
-            pointer-events:none;
-            z-index:0;
+
+        #ctl00_content_grid_ctl00_ctl03_ctl01_PageSizeComboBox_Arrow:after {
+            pointer-events: none;
+            z-index: 0;
         }
     </style>
     <form id="frm" runat="server" enctype="multipart/form-data">
@@ -146,9 +146,7 @@
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();" OnClick="btnSave_Click"><span class="btnSave">L&#432;u</span>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnClose" name="btnClose" AccessKey="C" ToolTip="ALT+C" runat="server" CssClass="btnCloseOther"
-                            Text="Đóng">                            
-                        </asp:LinkButton>
+
                         <asp:LinkButton ID="btnTemplate" name="btnTemplate" AccessKey="S" ToolTip="ALT+S" runat="server" CssClass="btnViewOther" OnClick="btnTemplate_Click"
                             Text="Xem file mẫu">
                         </asp:LinkButton>
@@ -288,8 +286,8 @@
         $("body").on('change', '#ctl00_content_grid_ctl00_ctl03_ctl01_PageSizeComboBox_Input', function (e) {
             Loader();
         });
-      
-         $("body").on('click', '.rgPager .rgWrap a,button', function (e) {
+
+        $("body").on('click', '.rgPager .rgWrap a,button', function (e) {
             Loader();
         });
 

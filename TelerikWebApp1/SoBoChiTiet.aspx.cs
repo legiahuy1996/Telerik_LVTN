@@ -87,10 +87,8 @@ namespace TelerikWebApp1
             try
             {
                 grid.DataSource = db.DanhSachThongTinHoCaThe(int.Parse(idSoBoThue));
-                grid.Rebind();
-
             }
-            catch
+            catch(Exception ex)
             {
                 if (grid.DataSource == null)
                     grid.DataSource = new string[] { };

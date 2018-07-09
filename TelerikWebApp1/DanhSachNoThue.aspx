@@ -28,6 +28,10 @@
                         <asp:LinkButton ID="btnSearch" name="btnSearch" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSearch_Click" ><span class="btnSearch">Tìm kiếm</span>
                         </asp:LinkButton>
                     </span>
+                    <span class="btn1">
+                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();"><span class="btnSave">L&#432;u</span>
+                        </asp:LinkButton>
+                    </span>
                 </td>
             </tr>
         </table>
@@ -51,6 +55,9 @@
                                     <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
+                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
+                                                <HeaderStyle Width="50px" />
+                                            </telerik:GridClientSelectColumn>
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -71,10 +78,14 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>                                            
-                                            <telerik:GridBoundColumn UniqueName="SoTien" DataField="SoTien" HeaderText="Số tiền còn nợ" DataFormatString="{0:N0}">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px"/>
+                                            
+                                             <telerik:GridTemplateColumn UniqueName="SoTien" DataField="SoTien" HeaderText="Số tiền còn nợ">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
+                                                <ItemTemplate>
+                                                    <asp:TextBox runat="server" ID="txtSoTien" CssClass="Input" onblur="javascript:checkNumeric(this);" Text='<%# Bind("SoTien", "{0:N0}") %>' Width="100px"></asp:TextBox>
+                                                </ItemTemplate>
+                                            </telerik:GridTemplateColumn>
                                             <telerik:GridBoundColumn UniqueName="tieumuc" DataField="tieumuc" HeaderText="Loại thuế còn nợ">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="100px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

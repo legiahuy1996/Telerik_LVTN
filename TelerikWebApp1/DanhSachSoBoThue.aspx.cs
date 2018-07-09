@@ -271,40 +271,40 @@ namespace TelerikWebApp1
             }
         }
 
-        protected void btnCopy_Click(object sender, EventArgs e)
-        {
-            GridDataItem item;
-            st.Clear();
-            for (int i = 0; i < grid.Items.Count; i++)
-            {
-                item = (GridDataItem)grid.Items[i];
-                CheckBox checkBox = (CheckBox)item["ClientSelectColumn"].Controls[0];
-                if (checkBox.Checked == true)
-                {
-                    try
-                    {
-                        string idKhaiThue = item["idKhaiThue"].Text.Trim();
-                        int lstsobothue = db.GetDSChuaLapBo(idKhaiThue, DateTime.Now.Month).Count();
-                        if (lstsobothue != 0)
-                        {
-                            db.spfrm_SoBoThue(null, null, null, null, null, null, null, null, null, null, int.Parse(idKhaiThue), "Create", "");
-                            st.Append("$.notify('Sao chép thông tin thành công',{className: 'success',globalPosition: 'bottom right'});");
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                        }
-                        else
-                        {
-                            st.Append("$.notify('Đã tồn tại dữ liệu của thang " + DateTime.Now.Month + "',{className: 'error',globalPosition: 'bottom right'});");
-                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                            txtThang.Focus();
-                        }
-                    }
-                    catch (Exception mess)
-                    {
-                        st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
-                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                    }
-                }
-            }
-        }
+        //protected void btnCopy_Click(object sender, EventArgs e)
+        //{
+        //    GridDataItem item;
+        //    st.Clear();
+        //    for (int i = 0; i < grid.Items.Count; i++)
+        //    {
+        //        item = (GridDataItem)grid.Items[i];
+        //        CheckBox checkBox = (CheckBox)item["ClientSelectColumn"].Controls[0];
+        //        if (checkBox.Checked == true)
+        //        {
+        //            try
+        //            {
+        //                string idKhaiThue = item["idKhaiThue"].Text.Trim();
+        //                int lstsobothue = db.GetDSChuaLapBo(idKhaiThue, DateTime.Now.Month).Count();
+        //                if (lstsobothue != 0)
+        //                {
+        //                    db.spfrm_SoBoThue(null, null, null, null, null, null, null, null, null, null, int.Parse(idKhaiThue), "Create", "");
+        //                    st.Append("$.notify('Sao chép thông tin thành công',{className: 'success',globalPosition: 'bottom right'});");
+        //                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+        //                }
+        //                else
+        //                {
+        //                    st.Append("$.notify('Đã tồn tại dữ liệu của thang " + DateTime.Now.Month + "',{className: 'error',globalPosition: 'bottom right'});");
+        //                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+        //                    txtThang.Focus();
+        //                }
+        //            }
+        //            catch (Exception mess)
+        //            {
+        //                st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
+        //                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

@@ -21,7 +21,7 @@
                 <td></td>
                 <td width="10%"></td>
                 <td width="10%">
-                        <asp:Label runat="server" ID="lblThangNam">Tháng in bảng kê khai(MM/yy)</asp:Label>
+                    <asp:Label runat="server" ID="lblThangNam">Tháng in bảng kê khai(MM/yy)</asp:Label>
                 </td>
                 <td width="25%">
                     <asp:TextBox class="Input" runat="server" ID="txtThangNam" onblur="return CheckMonthYear(this)" Width="20%" MaxLength="7"></asp:TextBox>
@@ -31,7 +31,7 @@
             <tr>
                 <td></td>
                 <td></td>
-                    
+
                 <td colspan="3">
                     <asp:RadioButtonList runat="server" ID="rblLoaiThue" RepeatDirection="Horizontal">
                         <asp:ListItem Value="1701">Thuế GTGT</asp:ListItem>
@@ -51,10 +51,15 @@
                         </asp:LinkButton>
                     </span>
                     <span class="btn1">
+                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();"><span class="btnSave">L&#432;u</span>
+                        </asp:LinkButton>
+                    </span>
+                    <span class="btn1">
                         <asp:LinkButton ID="btnExport" name="btnExport" runat="server" AccessKey="E" ToolTip="Alt+E" OnClick="btnExport_Click">
 		                    <span class="btnExport">Xuất DL</span>
                         </asp:LinkButton>
                     </span>
+                    
                 </td>
             </tr>
         </table>
@@ -77,6 +82,9 @@
                                     <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
+                                            <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
+                                                <HeaderStyle Width="50px" />
+                                            </telerik:GridClientSelectColumn>
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -89,6 +97,13 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
+                                            <telerik:GridTemplateColumn UniqueName="SoTienNop" DataField="SoTienNop" HeaderText="Số tiền nộp">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <ItemTemplate>
+                                                    <asp:TextBox runat="server" ID="txtSoTienNop" CssClass="Input" onblur="javascript:checkNumeric(this);" Text='<%# Bind("SoTienNop", "{0:N0}") %>' Width="80px"></asp:TextBox>
+                                                </ItemTemplate>
+                                            </telerik:GridTemplateColumn>
                                             <telerik:GridBoundColumn UniqueName="KyThue" DataField="KyThue" HeaderText="Kỳ thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

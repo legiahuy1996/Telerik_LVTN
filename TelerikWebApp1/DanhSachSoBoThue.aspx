@@ -101,11 +101,7 @@
                         <asp:LinkButton ID="btnImport" name="btnImport" runat="server" AccessKey="E" ToolTip="Alt+E">
 		                    <span class="btnImport">Import DL</span>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnCopy" name="btnCopy" AccessKey="S" OnClick="btnCopy_Click"
-                            runat="server" ToolTip="ALT+S">
-                            <span class="btnCopy">Sao chép</span>
-                        </asp:LinkButton>
-                    </span>
+                       
                 </td>
             </tr>
         </table>

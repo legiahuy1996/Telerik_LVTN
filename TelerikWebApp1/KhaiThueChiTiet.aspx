@@ -246,7 +246,7 @@
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnBack" name="btnBack" AccessKey="L" runat="server" ToolTip="ALT+L"
                             OnClientClick="DisableAllButton('_ctl0:btnList'); return true;" OnClick="btnBack_Click">
-                    <span class="btnBack">V&#7873; DS YC</span>
+                    <span class="btnBack">V&#7873; DS</span>
                         </asp:LinkButton>
 
 
