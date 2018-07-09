@@ -1,7 +1,7 @@
-USE [thue]
+USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[DanhSachThongTinHoCaThe]    Script Date: 6/3/2018 9:50:09 AM ******/
+/****** Object:  StoredProcedure [dbo].[DanhSachThongTinHoCaThe]    Script Date: 7/9/2018 3:06:16 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -18,7 +18,8 @@ BEGIN
 	k.tengoi 
 	,j.SoTienNop SoTienDaNop,
 	--CASE WHEN f.trangthai = 0 THEN (i.TongSoTienNop + h.MucThue) - j.SoTienNop ELSE (i.TongSoTienNop - j.SoTienNop) END SoTienConNo
-	(b.SoTien* -1) AS SoTienConNo
+	b.SoTien AS SoTienConNo,
+	c.SoTien AS SoTienDu
 	FROM dbo.DanhBa (NOLOCK) a
 	LEFT JOIN dbo.sono (NOLOCK) b ON b.masothue = a.masothue
 	LEFT JOIN dbo.sodu (NOLOCK) c ON c.masothue = a.masothue
@@ -27,9 +28,10 @@ BEGIN
 	LEFT JOIN dbo.SoBoThue (NOLOCK) e ON e.idKhaiThue = d.idKhaiThue
 	LEFT JOIN dbo.thuemonbai (NOLOCK) f ON f.idKhaiThue = d.idKhaiThue
 	LEFT JOIN dbo.mucluc_MonBai (NOLOCK) h ON h.Bac = f.Bac
-	LEFT JOIN dbo.SoLieuTuNganHang (NOLOCK) j ON j.masothue = a.masothue
+	LEFT JOIN dbo.SoLieuTuKhoBac (NOLOCK) j ON j.masothue = a.masothue
 	LEFT JOIN dbo.mucluc_thue k ON k.tieumuc = j.tieumuc
 	WHERE e.idSoBoThue = @idSoBoThue
 END
+
 GO
 

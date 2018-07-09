@@ -114,17 +114,16 @@ namespace TelerikWebApp1
             string sodt = txtSoDT.Text;
             string email = txtEmail.Text;
             string ghichu = txtGhiChu.Text;
-            int err;
             try
             {
-                err = db.Insert_HoCaThe(masothue, ngaycapmst, hoten, tencuahang, ngaysinh, cmnd, diachi, ngaycapcmnd, madp, nam, nghekinhdoanh, vonkd, ngaybatdaukd, ngaytinhthue, sogp, sodt, email, ghichu);
-                if(err == 0)
+                try
                 {
+                    db.Insert_HoCaThe(masothue, ngaycapmst, hoten, tencuahang, ngaysinh, cmnd, diachi, ngaycapcmnd, madp, nam, nghekinhdoanh, vonkd, ngaybatdaukd, ngaytinhthue, sogp, sodt, email, ghichu);
                     st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     LoadDataByID(masothue);
                 }
-                else
+                catch
                 {
                     st.Append("$.notify('Chương trình xảy ra lỗi',{className: 'error',globalPosition: 'bottom right'});");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
