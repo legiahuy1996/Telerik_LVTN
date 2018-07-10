@@ -218,5 +218,11 @@ namespace TelerikWebApp1
                 lbl.Text = (e.Item.ItemIndex + 1 + rowCounter).ToString();
             }
         }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            Session["File"] = null;
+            Response.Redirect("NhapSoLieuThue.aspx");
+        }
     }
 }

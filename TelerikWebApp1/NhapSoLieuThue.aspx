@@ -142,7 +142,7 @@
 
                 <td colspan="3" align="center">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R"><span class="btnReset">Làm m&#7899;i</span>
+                        <asp:LinkButton ID="btnReset" name="btnReset" runat="server" AccessKey="R" ToolTip="Alt+R" OnClick="btnReset_Click"><span class="btnReset">Làm m&#7899;i</span>
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();" OnClick="btnSave_Click"><span class="btnSave">L&#432;u</span>
                         </asp:LinkButton>
@@ -192,7 +192,9 @@
 
                                         <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="50,100,150,200" AllowMultiColumnSorting="true">
                                             <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
+                                            <HeaderStyle Width="100px" />
                                             <Columns>
+
                                                 <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                                     <HeaderStyle />
                                                 </telerik:GridClientSelectColumn>

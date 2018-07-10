@@ -51,7 +51,7 @@
                         </asp:LinkButton>
                     </span>
                     <span class="btn1">
-                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();"><span class="btnSave">L&#432;u</span>
+                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSave_Click" OnClientClick="return checkSave();"><span class="btnSave">L&#432;u</span>
                         </asp:LinkButton>
                     </span>
                     <span class="btn1">
@@ -114,6 +114,10 @@
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="tieumuc" DataField="tieumuc" HeaderText="Loại thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>
+                                             <telerik:GridBoundColumn UniqueName="id" DataField="id" Visible="true" Display="false">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                         </Columns>

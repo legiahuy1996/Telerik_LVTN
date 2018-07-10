@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 using TelerikWebApp1.Model;
 
 namespace TelerikWebApp1
@@ -15,6 +17,7 @@ namespace TelerikWebApp1
     public partial class DanhSachThu : System.Web.UI.Page
     {
         private DataClasses1DataContext db;
+        StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
             db = new DataClasses1DataContext();
@@ -35,7 +38,7 @@ namespace TelerikWebApp1
             string mst = txtMST.Text;
             string thang = txtThangNam.Text;
             string loaithue = rblLoaiThue.SelectedValue;
-            grid.DataSource = db.GetSoThu(mst, thang,loaithue);
+            grid.DataSource = db.GetSoThu(mst, thang, loaithue);
             grid.Rebind();
         }
         protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -110,7 +113,7 @@ namespace TelerikWebApp1
             worksheet.Cells[listGTGT.Count + 3, 1].Style.Font.Bold = true;
             worksheet.Cells[listGTGT.Count + 3, 3].Formula = "SUM(C2:C" + (listGTGT.Count + 1) + ")";
             worksheet.Cells[listGTGT.Count + 3, 3].Style.Font.Bold = true;
-            var range1 = worksheet.Cells["A" + ((listGTGT.Count + 3)-1) + ":F" +( (listGTGT.Count + 3)-1)];
+            var range1 = worksheet.Cells["A" + ((listGTGT.Count + 3) - 1) + ":F" + ((listGTGT.Count + 3) - 1)];
             range1.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
             range1.Style.Border.Bottom.Color.SetColor(Color.Red);
             for (int i = 0; i < listTNCN.Count; i++)
@@ -134,7 +137,7 @@ namespace TelerikWebApp1
             worksheet.Cells[listGTGT.Count + 4 + listTNCN.Count + 1, 1].Style.Font.Bold = true;
             worksheet.Cells[listGTGT.Count + 4 + listTNCN.Count + 1, 3].Formula = "SUM(C" + (listGTGT.Count + 4) + ":C" + (listGTGT.Count + 4 + listTNCN.Count) + ")";
             worksheet.Cells[listGTGT.Count + 4 + listTNCN.Count + 1, 3].Style.Font.Bold = true;
-            var range2 = worksheet.Cells["A" + ((listGTGT.Count + 4 + listTNCN.Count + 1)-1) + ":F" + ((listGTGT.Count + 4 + listTNCN.Count + 1)-1)];
+            var range2 = worksheet.Cells["A" + ((listGTGT.Count + 4 + listTNCN.Count + 1) - 1) + ":F" + ((listGTGT.Count + 4 + listTNCN.Count + 1) - 1)];
             range2.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
             range2.Style.Border.Bottom.Color.SetColor(Color.Red);
             for (int i = 0; i < listMB.Count; i++)
@@ -158,7 +161,7 @@ namespace TelerikWebApp1
             worksheet.Cells[listGTGT.Count + 4 + listTNCN.Count + 2 + listMB.Count + 1, 1].Style.Font.Bold = true;
             worksheet.Cells[listGTGT.Count + 4 + listTNCN.Count + 2 + listMB.Count + 1, 3].Formula = "SUM(C" + (listGTGT.Count + 4 + listTNCN.Count + 2) + ":C" + (listGTGT.Count + 4 + listTNCN.Count + 2 + listMB.Count) + ")";
             worksheet.Cells[listGTGT.Count + 4 + listTNCN.Count + 2 + listMB.Count + 1, 3].Style.Font.Bold = true;
-            var range3 = worksheet.Cells["A" + ((listGTGT.Count + 4 + listTNCN.Count + 2 + listMB.Count + 1)-1) + ":F" + ((listGTGT.Count + 4 + listTNCN.Count + 2 + listMB.Count + 1)-1)];
+            var range3 = worksheet.Cells["A" + ((listGTGT.Count + 4 + listTNCN.Count + 2 + listMB.Count + 1) - 1) + ":F" + ((listGTGT.Count + 4 + listTNCN.Count + 2 + listMB.Count + 1) - 1)];
             range3.Style.Border.Bottom.Style = ExcelBorderStyle.Thick;
             range3.Style.Border.Bottom.Color.SetColor(Color.Red);
 
@@ -210,6 +213,50 @@ namespace TelerikWebApp1
         {
             Export();
             Response.Redirect("DanhSachThu.aspx");
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            GridDataItem item;
+            st.Clear();
+            string strErr = "";
+            int dem = 0;
+            for (int i = 0; i < grid.Items.Count; i++)
+            {
+                item = (GridDataItem)grid.Items[i];
+                CheckBox checkBox = (CheckBox)item["ClientSelectColumn"].Controls[0];
+                TextBox txtSoTienNop = (TextBox)item["ClientSelectColumn"].FindControl("txtSoTienNop");
+                if (checkBox.Checked == true)
+                {
+                    try
+                    {
+                        dem++;
+                        string id = item["id"].Text.Trim().Replace("&nbsp;", "");
+                        SoLieuTuKhoBac sl = db.SoLieuTuKhoBacs.SingleOrDefault(x => x.id == int.Parse(id));
+                        if (sl != null)
+                        {
+                            sl.SoTienNop = int.Parse(txtSoTienNop.Text.Replace(",", ""));
+                            sl.Editer = Session["taikhoan"].ToString();
+                            sl.EditTime = DateTime.Now;
+                            db.SubmitChanges();
+                            st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+
+                        }
+                    }
+                    catch (Exception mess)
+                    {
+                        st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                    }
+                }
+            }
+            if (dem == 0)
+            {
+                st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+            }
+            loadData();
         }
     }
 }
