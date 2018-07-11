@@ -16,37 +16,51 @@ namespace TelerikWebApp1
         StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["taikhoan"] == null)
-                Response.Redirect("Login.aspx");
+
             db = new DataClasses1DataContext();
             idSoBoThue = Request.QueryString["idSoBoThue"];
             if (!IsPostBack)
             {
+                if (Session["taikhoan"] == null)
+                    Response.Redirect("Login.aspx");
                 if (idSoBoThue != "")
                 {
+
                     LoadDataByID(idSoBoThue);
                 }
             }
         }
         protected void LoadDataByID(string id)
         {
-            var sobothue = db.SoBoThues.SingleOrDefault(x=>x.idSoBoThue == int.Parse(id));
-            DateTime dt = new DateTime();
-            txtIDKhaiThue.Text = sobothue.idKhaiThue.ToString();
-            if (sobothue.NgayLapBo.ToString() != "")
-                dt = DateTime.Parse(sobothue.NgayLapBo.ToString());
-            txtNgayLapBo.Text = dt.ToString("dd/MM/yyyy");
-            txtThang.Text = sobothue.Thang.ToString();
-            txtGTGT.Text = sobothue.DoanhThuTinhThueGTGT.ToString();
-            txtTNCN.Text = sobothue.DoanhThuTinhThueTNCN.ToString();
-            txtTyLeGTGT.Text = sobothue.TyLeTinhThueGTGT.ToString();
-            txtTyLeTNCN.Text = sobothue.TyLeTinhThueTNCN.ToString();
-            txtSoTienGTGT.Text = sobothue.SoTienGTGT1Thang.ToString();
-            txtSoTienTNCN.Text = sobothue.SoTienTNCN1Thang.ToString();
-            if (sobothue.TinhTrangNopThue == true)
-                chkActive.Checked = true;
-            else
-                chkNoActive.Checked = true;
+            try
+            {
+                var sobothue = db.SoBoThues.SingleOrDefault(x => x.idSoBoThue == int.Parse(id));
+                DateTime dt = new DateTime();
+                txtIDKhaiThue.Text = sobothue.idKhaiThue.ToString();
+                if (sobothue.NgayLapBo.ToString() != "")
+                    dt = DateTime.Parse(sobothue.NgayLapBo.ToString());
+                txtNgayLapBo.Text = dt.ToString("dd/MM/yyyy");
+                txtThang.Text = sobothue.Thang.ToString();
+                int doanhthu = sobothue.DoanhThuTinhThueGTGT ?? 0;
+                int sotienGTGT = sobothue.SoTienGTGT1Thang ?? 0;
+                int sotienTNCN = sobothue.SoTienTNCN1Thang ?? 0;
+                txtGTGT.Text = doanhthu.ToString("#,##");
+                txtTNCN.Text = doanhthu.ToString("#,##");
+
+                //txtTyLeGTGT.Text = sobothue.TyLeTinhThueGTGT.ToString();
+                //txtTyLeTNCN.Text = sobothue.TyLeTinhThueTNCN.ToString();
+                txtSoTienGTGT.Text = sotienGTGT.ToString("#,##");
+                txtSoTienTNCN.Text = sotienTNCN.ToString("#,##");
+                if (sobothue.TinhTrangNopThue == true)
+                    chkActive.Checked = true;
+                else
+                    chkNoActive.Checked = true;
+            }
+            catch (Exception mess)
+            {
+                st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+            }
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -56,7 +70,7 @@ namespace TelerikWebApp1
                 var kt = db.SoBoThues.SingleOrDefault(x => x.idSoBoThue == int.Parse(idSoBoThue));
                 if (kt != null)
                 {
-                    if(chkActive.Checked == true)
+                    if (chkActive.Checked == true)
                     {
                         kt.TinhTrangNopThue = true;
                     }
@@ -88,7 +102,7 @@ namespace TelerikWebApp1
             {
                 grid.DataSource = db.DanhSachThongTinHoCaThe(int.Parse(idSoBoThue));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (grid.DataSource == null)
                     grid.DataSource = new string[] { };

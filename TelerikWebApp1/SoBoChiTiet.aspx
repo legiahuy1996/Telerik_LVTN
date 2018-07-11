@@ -44,7 +44,7 @@
                     <asp:TextBox class="input" runat="server" ID="txtTNCN" Width="40%" onblur="javascript:checkNumber(this);" ReadOnly="true"></asp:TextBox>
                 </td>
             </tr>
-            <tr>
+<%--            <tr>
                 <td></td>
                 <td width="10%">
                     <asp:Label runat="server" ID="lblTyLeGTGT">T&#7927; l&#7879; GTGT</asp:Label>
@@ -58,7 +58,7 @@
                 <td width="25%">
                     <asp:TextBox class="input" runat="server" ID="txtTyLeTNCN" Width="10%" ReadOnly="true"></asp:TextBox>
                 </td>
-            </tr>
+            </tr>--%>
             <tr>
                 <td></td>
                 <td width="10%">
@@ -102,7 +102,7 @@
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnBack" name="btnBack" AccessKey="L" runat="server" ToolTip="ALT+L"
                             OnClientClick="DisableAllButton('_ctl0:btnList'); return true;" OnClick="btnBack_Click">
-                    <span class="btnBack">V&#7873; DS YC</span>
+                    <span class="btnBack">V&#7873; DS </span>
                         </asp:LinkButton>
 
 

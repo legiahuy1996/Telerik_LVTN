@@ -1,7 +1,7 @@
 USE [up6]
 GO
 
-/****** Object:  StoredProcedure [dbo].[DanhSachThongTinHoCaThe]    Script Date: 7/9/2018 3:06:16 PM ******/
+/****** Object:  StoredProcedure [dbo].[DanhSachThongTinHoCaThe]    Script Date: 7/11/2018 10:33:21 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -14,12 +14,11 @@ AS
 BEGIN
 	SELECT DISTINCT a.masothue,a.hoten, a.nam,e.Thang
 	--,CASE WHEN f.trangthai = 0 THEN (i.TongSoTienNop + h.MucThue) ELSE i.TongSoTienNop END SoTienPhaiDong
-	,j.tieumuc AS tieumuc,
-	k.tengoi 
-	,j.SoTienNop SoTienDaNop,
+	,CASE WHEN j.tieumuc IS NULL THEN '-' ELSE j.tieumuc END AS tieumuc,CASE WHEN k.tengoi  IS NULL THEN '-' ELSE k.tengoi  END AS tengoi
+	,ISNULL(j.SoTienNop,0) SoTienDaNop,
 	--CASE WHEN f.trangthai = 0 THEN (i.TongSoTienNop + h.MucThue) - j.SoTienNop ELSE (i.TongSoTienNop - j.SoTienNop) END SoTienConNo
-	b.SoTien AS SoTienConNo,
-	c.SoTien AS SoTienDu
+	ISNULL(b.SoTien,0) AS SoTienConNo,
+	ISNULL(c.SoTien,0) AS SoTienDu
 	FROM dbo.DanhBa (NOLOCK) a
 	LEFT JOIN dbo.sono (NOLOCK) b ON b.masothue = a.masothue
 	LEFT JOIN dbo.sodu (NOLOCK) c ON c.masothue = a.masothue

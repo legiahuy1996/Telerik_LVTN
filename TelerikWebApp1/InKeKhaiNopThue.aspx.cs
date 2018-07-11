@@ -111,7 +111,7 @@ namespace TelerikWebApp1
                 }
             }
         }
-        protected void FillMergeFieldsOfDocumentAndSaveDoc(string filedocpath,Dictionary<string,string>data)
+        protected void FillMergeFieldsOfDocumentAndSaveDoc(string filedocpath, Dictionary<string, string> data)
         {
             using (WordprocessingDocument document = WordprocessingDocument.Open(filedocpath, true))
             {
@@ -130,16 +130,21 @@ namespace TelerikWebApp1
         protected Dictionary<string, string> GetDataToFillMergeFields(getThongBaoNopThueResult g)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
+            int thuemonbai = g.ThueMonBai ?? 0;
+            int thueGTGT = g.ThueGTGN ?? 0;
+            int thueTNCN = g.ThueTNCN ?? 0;
+            int tong = g.TongCong ?? 0;
+            int sono = g.SoNo ?? 0;
             data.Add("hoten", g.hoten);
             data.Add("masothue", g.masothue);
             data.Add("diachi", g.diachiKD);
             data.Add("KyThue", g.KyThue.ToString());
             data.Add("KyThue2", g.KyThue2.ToString());
-            data.Add("ThueMonBai", g.ThueMonBai.ToString());
-            data.Add("ThueGTGN", g.ThueGTGN.ToString());
-            data.Add("ThueTNCN", g.ThueTNCN.ToString());
-            data.Add("SoNo", g.SoNo.ToString());
-            data.Add("TongCong", g.TongCong.ToString());
+            data.Add("ThueMonBai", thuemonbai.ToString("#,##"));
+            data.Add("ThueGTGN", thueGTGT.ToString("#,##"));
+            data.Add("ThueTNCN", thueTNCN.ToString("#,##"));
+            data.Add("SoNo", sono.ToString("#,##"));
+            data.Add("TongCong", tong.ToString("#,##"));
             return data;
         }
         protected void btnExport_Click(object sender, EventArgs e)
@@ -152,7 +157,7 @@ namespace TelerikWebApp1
                 foreach (getThongBaoNopThueResult g in list)
                 {
                     string templatefile = Server.MapPath("~/Template/kb02.dotx");
-                    string newfile = Server.MapPath("~/file/"+ g.hoten+ i + ".docx");
+                    string newfile = Server.MapPath("~/file/" + g.hoten + i + ".docx");
                     FileInfo tf = new FileInfo(newfile);
                     if (tf.Exists)
                         System.IO.File.Delete(newfile);

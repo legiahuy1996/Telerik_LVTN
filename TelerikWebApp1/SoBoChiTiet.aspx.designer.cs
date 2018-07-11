@@ -94,42 +94,6 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.TextBox txtTNCN;
         
         /// <summary>
-        /// lblTyLeGTGT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTyLeGTGT;
-        
-        /// <summary>
-        /// txtTyLeGTGT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTyLeGTGT;
-        
-        /// <summary>
-        /// lblTyLeTNCN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTyLeTNCN;
-        
-        /// <summary>
-        /// txtTyLeTNCN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTyLeTNCN;
-        
-        /// <summary>
         /// lblSoTienGTGT control.
         /// </summary>
         /// <remarks>
