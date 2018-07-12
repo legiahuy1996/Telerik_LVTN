@@ -23,7 +23,10 @@ namespace TelerikWebApp1
         StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(IsPostBack)
+            {
 
+            }
         }
         private bool checkEmptyRow(IRow row)
         {
@@ -126,10 +129,9 @@ namespace TelerikWebApp1
                 {
                     string FileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
                     string Extension = Path.GetExtension(FileUpload1.PostedFile.FileName);
-                    string FolderPath = ConfigurationManager.AppSettings["FolderPath"];
                     if ((Extension == ".xls") || (Extension == ".xlsx"))
                     {
-                        FilePath = Server.MapPath(FolderPath + FileName);
+                        FilePath = Server.MapPath("~/file/"+ FileName);
                         FileUpload1.SaveAs(FilePath);
                         var data = ReadFromExcelfile(FilePath);
                         Session["File"] = FilePath;

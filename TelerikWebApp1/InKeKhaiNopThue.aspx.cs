@@ -73,6 +73,20 @@ namespace TelerikWebApp1
             }
 
         }
+        protected void DeleteFile()
+        {
+            System.IO.DirectoryInfo di = new DirectoryInfo(Server.MapPath("~/file"));
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+
+        }
         protected void CreateFileZip()
         {
             string dirRoot = Server.MapPath("~/file");
@@ -171,7 +185,9 @@ namespace TelerikWebApp1
                 Response.AppendHeader("Content-Disposition", "attachment; filename=DanhSachBangKe.zip");
                 Response.Flush();
                 Response.WriteFile(Server.MapPath("~/file/DanhSachBangKe.zip"));
+                DeleteFile();
                 Response.End();
+                
             }
             catch (Exception mess)
             {
