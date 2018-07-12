@@ -200,7 +200,7 @@
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="Họ tên">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="150px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
 
@@ -221,7 +221,7 @@
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="diachiKD" DataField="diachiKD" HeaderText="Địa chỉ kinh doanh">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="150px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="sogp" DataField="sogp" HeaderText="Số giấy phép">
@@ -229,7 +229,7 @@
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="tennganh" DataField="tennganh" HeaderText="Tên ngành">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="150px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="TrangThaiHoatDong" DataField="TrangThaiHoatDong" HeaderText="Trạng thái">

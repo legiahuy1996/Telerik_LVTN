@@ -93,10 +93,6 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="SoTienNop" DataField="SoTienNop" HeaderText="Số tiền nộp" DataFormatString="{0:N0}">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
-                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
                                             <telerik:GridTemplateColumn UniqueName="SoTienNop" DataField="SoTienNop" HeaderText="Số tiền nộp">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

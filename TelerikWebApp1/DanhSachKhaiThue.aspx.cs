@@ -91,6 +91,7 @@ namespace TelerikWebApp1
                         if (IsNullTextBox(txttungay))
                         {
                             ShowMess("Không được để trống trường này");
+                            strErr = "1";
                             txttungay.Focus();
                             break;
                         }
@@ -98,18 +99,21 @@ namespace TelerikWebApp1
                         {
                             ShowMess("Không được để trống trường này");
                             txtdenngay.Focus();
+                            strErr = "1";
                             break;
                         }
                         if (IsNullTextBox(txtNgayNopDon))
                         {
                             ShowMess("Không được để trống trường này");
                             txtNgayNopDon.Focus();
+                            strErr = "1";
                             break;
                         }
                         if (IsNullTextBox(txb))
                         {
                             ShowMess("Không được để trống trường này");
                             txb.Focus();
+                            strErr = "1";
                             break;
                         }
                         else
@@ -158,7 +162,11 @@ namespace TelerikWebApp1
                 st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
-            loadData();
+            if(strErr =="")
+            {
+                loadData();
+            }
+            
         }
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {

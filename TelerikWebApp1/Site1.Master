@@ -36,14 +36,16 @@
             <td align="left" valign="top" class="whiteBg">
 
                 <div style="float: right">
-                   
+
                     <div class="dropdown">
                         <button onclick="myFunction()" class="dropbtn" runat="server" id="btn"></button>
                         <div id="myDropdown" class="dropdown-content">
                             <a href="DoiMatKhau.aspx">Đổi mật khẩu</a>
                         </div>
                     </div>
-                    <a href="Default.aspx?logout=1" style="text-decoration:none;color:black;font-size:16px;font-weight: normal;" class="dropbtn" id="logout"  > <img src="images/icon/logout_ico.png" style="width: 12px; height: 12px;" /> Đăng xuất</a>
+                    <a href="Default.aspx?logout=1" style="text-decoration: none; color: black; font-size: 16px; font-weight: normal;" class="dropbtn" id="logout">
+                        <img src="images/icon/logout_ico.png" style="width: 12px; height: 12px;" />
+                        Đăng xuất</a>
                 </div>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
@@ -104,6 +106,18 @@
                                                                     <li>
                                                                         <a href='InKeKhaiNopThue.aspx'><span>In bảng kê nộp thuế</span></a>
                                                                     </li>
+                                                                     <li>
+                                                                        <a href="DanhSachTongSoTienPhaiThu.aspx"><span>In sổ thuế</span></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="SoThueMonBai.aspx"><span>In sổ thuế môn bài</span></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href='DanhSachDuocLenSoBo.aspx'><span>Danh sách hộ được lên sổ bộ trong tháng</span></a>
+                                                                    </li>
+                                                                    <li class='has-sub '>
+                                                                        <a href="DanhSachNgungNghi.aspx"><span>Danh sách số hộ ngưng nghỉ</span></a>
+                                                                    </li>
                                                                 </ul>
                                                             </li>
                                                             <li class='has-sub '>
@@ -112,22 +126,16 @@
                                                                     <li><a href="NhapSoLieuThue.aspx"><span>Nhập số liệu nộp thuế</span></a></li>
                                                                     <li><a href="DanhSachThu.aspx"><span>Sổ thu</span></a></li>
                                                                     <li>
-                                                                        <a href='DanhSachDuocLenSoBo.aspx'><span>Danh sách hộ được lên sổ bộ trong tháng</span></a>
+                                                                        <a href="ChamBoThue.aspx"><span>Chấm sổ bộ</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a href='DanhSachNoThue.aspx'><span>Danh sách hộ còn nợ thuế</span></a>
                                                                     </li>
-                                                                    <li>
-                                                                        <a href="DanhSachTongSoTienPhaiThu.aspx"><span>In sổ thuế</span></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="SoThueMonBai.aspx"><span>In sổ thuế môn bài</span></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="DanhSachNgungNghi.aspx"><span>Danh sách số hộ ngưng nghỉ</span></a>
-                                                                    </li>
+                                                                   
+
                                                                 </ul>
                                                             </li>
+
                                                             <li class='has-sub '><a href='#'><span>Hướng dẫn</span></a>
                                                                 <ul>
                                                                     <li>

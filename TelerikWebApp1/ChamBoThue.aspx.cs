@@ -32,7 +32,16 @@ namespace TelerikWebApp1
         }
         protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            loadDataSearch();
+           
+            try
+            {
+                loadDataSearch();
+            }
+            catch
+            {
+                if (grid.DataSource == null)
+                    grid.DataSource = new string[] { };
+            }
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -67,17 +76,6 @@ namespace TelerikWebApp1
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     }
                 }
-            }
-        }
-
-        protected void grid_ItemDataBound(object sender, GridItemEventArgs e)
-        {
-            if (e.Item is GridDataItem)
-            {
-                int rowCounter = new int();
-                Label lbl = e.Item.FindControl("numberLabel") as Label;
-                rowCounter = grid.MasterTableView.PageSize * grid.MasterTableView.CurrentPageIndex;
-                lbl.Text = (e.Item.ItemIndex + 1 + rowCounter).ToString();
             }
         }
     }

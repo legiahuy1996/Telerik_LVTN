@@ -40,7 +40,6 @@ namespace TelerikWebApp1
                 if (sobothue.NgayLapBo.ToString() != "")
                     dt = DateTime.Parse(sobothue.NgayLapBo.ToString());
                 txtNgayLapBo.Text = dt.ToString("dd/MM/yyyy");
-                txtThang.Text = sobothue.Thang.ToString();
                 int doanhthu = sobothue.DoanhThuTinhThueGTGT ?? 0;
                 int sotienGTGT = sobothue.SoTienGTGT1Thang ?? 0;
                 int sotienTNCN = sobothue.SoTienTNCN1Thang ?? 0;
@@ -51,6 +50,14 @@ namespace TelerikWebApp1
                 //txtTyLeTNCN.Text = sobothue.TyLeTinhThueTNCN.ToString();
                 txtSoTienGTGT.Text = sotienGTGT.ToString("#,##");
                 txtSoTienTNCN.Text = sotienTNCN.ToString("#,##");
+                KhaiThue kt = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == sobothue.idKhaiThue);
+                if (kt != null)
+                {
+                    DanhBa danhba = db.DanhBas.SingleOrDefault(x => x.masothue == kt.masothue);
+                    txtMST.Text = danhba.masothue;
+                    txtHoTen.Text = danhba.hoten;
+                }
+
                 if (sobothue.TinhTrangNopThue == true)
                     chkActive.Checked = true;
                 else

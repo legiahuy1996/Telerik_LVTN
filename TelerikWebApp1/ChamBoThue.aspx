@@ -104,7 +104,7 @@
                             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
                                 <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
                                     AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false"
-                                    OnNeedDataSource="grid_NeedDataSource" OnItemDataBound="grid_ItemDataBound">
+                                    OnNeedDataSource="grid_NeedDataSource">
                                     <ClientSettings>
                                         <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
                                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
@@ -116,29 +116,29 @@
                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                                 <HeaderStyle Width="50px" />
                                             </telerik:GridClientSelectColumn>
-                                            <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
-                                                <HeaderStyle Width="50px" />
+                                           <telerik:GridBoundColumn UniqueName="STT" DataField="STT" HeaderText="STT" >
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="50px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                <ItemTemplate>
-                                                    <asp:Label ID="numberLabel" runat="server" />
-                                                </ItemTemplate>
-
-                                            </telerik:GridTemplateColumn>
+                                            </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="idSoBoThue" DataField="idSoBoThue" Visible="true" Display="false">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="Họ tên">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="Thang" DataField="Thang" HeaderText="Tháng">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="50px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
 
                                             <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm tính thuế">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="50px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="diachiKD" DataField="diachiKD" HeaderText="Địa chỉ kinh doanh">
