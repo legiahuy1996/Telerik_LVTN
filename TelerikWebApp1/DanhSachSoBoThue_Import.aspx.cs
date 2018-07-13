@@ -134,6 +134,7 @@ namespace TelerikWebApp1
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
+            Session["File"] = null;
             Response.Redirect("DanhSachSoBoThue_Import.aspx");
         }
         public void Save()

@@ -97,14 +97,6 @@
                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                                 <HeaderStyle Width="50px" />
                                             </telerik:GridClientSelectColumn>
-                                            <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
-                                                <HeaderStyle Width="50px" />
-                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                <ItemTemplate>
-                                                    <asp:Label ID="numberLabel" runat="server" />
-                                                </ItemTemplate>
-
-                                            </telerik:GridTemplateColumn>
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

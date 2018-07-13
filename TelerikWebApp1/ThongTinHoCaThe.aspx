@@ -39,7 +39,7 @@
                 <td>
                     <asp:Label runat="server">Họ tên</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" ID="txtHoTen" runat="server" MaxLength="15" Width="80%"></asp:TextBox>
+                    <asp:TextBox class="Input" ID="txtHoTen" runat="server" Width="80%"></asp:TextBox>
                 </td>
 
                 <td>
@@ -80,13 +80,13 @@
                 <td>
                     <asp:Label runat="server">Địa chỉ</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" ID="txtDiaChi" runat="server" MaxLength="15" TextMode="MultiLine" Width="80%"></asp:TextBox></td>
+                    <asp:TextBox class="Input" ID="txtDiaChi" runat="server" TextMode="MultiLine" Width="80%"></asp:TextBox></td>
                 <td>
 
                     <asp:Label runat="server">Ngày cấp CMND</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" ID="txtNgayCapCMND" runat="server" MaxLength="14" Width="80px"></asp:TextBox>
+                    <asp:TextBox class="Input" ID="txtNgayCapCMND" runat="server" Width="80px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -97,7 +97,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Label runat="server">Mã đường phố</asp:Label></td>
+                    <asp:Label runat="server" CssClass="labelRequire">Mã đường phố</asp:Label></td>
                 <td>
                     <telerik:RadComboBox class="Input" ID="cboMaDuongPho" Width="80%" runat="server" Skin="Office2007"></telerik:RadComboBox>
                 </td>
@@ -119,7 +119,7 @@
                 <td>
                     <asp:Label runat="server">Nghề kinh doanh</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80%" ID="txtNghekinhDoanh"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server"  Width="80%" ID="txtNghekinhDoanh"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -132,13 +132,13 @@
                 <td>
                     <asp:Label runat="server">Vốn kinh doanh</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="15" Width="80%" ID="txtVonKD"></asp:TextBox></td>
+                    <asp:TextBox class="Input" runat="server" Width="80%" ID="txtVonKD"></asp:TextBox></td>
                 <td>
 
                     <asp:Label runat="server">Ngày bắt đầu kinh doanh</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80px" ID="txtNgayBatDauKD"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server"  Width="80px" ID="txtNgayBatDauKD"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -157,7 +157,7 @@
                     <asp:Label runat="server">Số giấy phép</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80%" ID="txtSoGP"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server"  Width="80%" ID="txtSoGP"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -170,13 +170,13 @@
                 <td>
                     <asp:Label runat="server">Số điện thoại</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="15" Width="80%" ID="txtSoDT"></asp:TextBox></td>
+                    <asp:TextBox class="Input" runat="server"  Width="80%" ID="txtSoDT"></asp:TextBox></td>
                 <td>
 
                     <asp:Label runat="server">Email</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="80%" ID="txtEmail"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" Width="80%" ID="txtEmail"></asp:TextBox>
                     <%--<asp:RegularExpressionValidator ID="regexEmailValid" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ErrorMessage="Email không hợp lệ"></asp:RegularExpressionValidator>--%>
                 </td>
             </tr>
@@ -190,7 +190,7 @@
                 <td>
                     <asp:Label runat="server">Ghi chú</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="15" Width="80%" TextMode="MultiLine" ID="txtGhiChu"></asp:TextBox></td>
+                    <asp:TextBox class="Input" runat="server"  Width="80%" TextMode="MultiLine" ID="txtGhiChu"></asp:TextBox></td>
 
             </tr>
             <tr>
@@ -239,6 +239,7 @@
         function validateform() {
             if (CheckIsNull('txtMST') == false) return false;
             if (CheckIsNull('txtCMND') == false) return false;
+             if (CheckIsNull_RCB('cboMaDuongPho') == false) return false;
         }
         //function checkSave() {
         //    if (CheckIsNull('txtMST') == false) return false;

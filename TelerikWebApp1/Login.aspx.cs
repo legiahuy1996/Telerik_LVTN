@@ -28,6 +28,7 @@ namespace TelerikWebApp1
             if(user != null)
             {
                 Session["TaiKhoan"] = taikhoan;
+                Session["UserID"] = user.ma;
                 Response.Redirect("Default.aspx");
             }
             else

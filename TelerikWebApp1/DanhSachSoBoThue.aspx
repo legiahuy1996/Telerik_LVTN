@@ -130,12 +130,21 @@
                                                 <HeaderStyle Width="50px" />
                                             </telerik:GridClientSelectColumn>
 
-                                            <telerik:GridTemplateColumn UniqueName="Edit" HeaderText="Sửa">
+                                            <%--<telerik:GridTemplateColumn UniqueName="Edit" HeaderText="Sửa">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemTemplate>
                                                     <asp:ImageButton CssClass="rgpointer" ID="Edit" runat="server"
                                                         ImageUrl="~/Images/edit.gif" CommandName="EDIT_DATA" />
+                                                </ItemTemplate>
+                                            </telerik:GridTemplateColumn>--%>
+                                               <telerik:GridTemplateColumn SortExpression="Detail" UniqueName="Detail"
+                                                HeaderText="Chi tiết">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="lnkMST" CssClass="Hlink" runat="server"
+                                                        CommandName="EDIT_DATA">Chi tiết</asp:LinkButton>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
                                             <telerik:GridBoundColumn UniqueName="idSoBoThue" DataField="idSoBoThue" HeaderText="idSoBoThue">

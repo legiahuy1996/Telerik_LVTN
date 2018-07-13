@@ -88,6 +88,7 @@ namespace TelerikWebApp1
 
         protected void btnClose_Click(object sender, EventArgs e)
         {
+            Session["File"] = null;
             ClientScript.RegisterClientScriptBlock(Page.GetType(), "script", "window.close();", true);
         }
 
@@ -114,9 +115,10 @@ namespace TelerikWebApp1
                         tencuahang = item["tencuahang"].Text;
                         diachiKD = item["diachiKD"].Text;
                         string nghekinhdoanh = item["nghekinhdoanh"].Text;
-                        ngaybatdaukd = item["ngaybatdaukd"].Text;
+                        ngaybatdaukd = item["ngaybatdaukd"].Text.Replace("&nbsp;","");
                         ngaysinh = item["ngaysinh"].Text;
                         string madp = item["madp"].Text;
+                        sogp = item["sogp"].Text;
                         db.DanhSachHoCaThe_Import(masothue, hoten, cmnd, ngaysinh, tencuahang, diachiKD, nghekinhdoanh, ngaybatdaukd,sogp,madp);
                         st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);

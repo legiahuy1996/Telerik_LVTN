@@ -104,28 +104,20 @@
                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                                 <HeaderStyle Width="50px" />
                                             </telerik:GridClientSelectColumn>
-                                            <telerik:GridTemplateColumn UniqueName="TemplateColumn" HeaderText="STT">
-                                                <HeaderStyle Width="50px" />
-                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                <ItemTemplate>
-                                                    <asp:Label ID="numberLabel" runat="server" />
-                                                </ItemTemplate>
-
-                                            </telerik:GridTemplateColumn>
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="ngaykhaithue" DataField="ngaykhaithue" HeaderText="Ngày khai thuế">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="DoanhThu" DataField="DoanhThu" HeaderText="Doanh thu">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <telerik:GridBoundColumn UniqueName="DoanhThu" DataField="DoanhThu" HeaderText="Doanh thu" DataFormatString="{0:N0}">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm tính thuế">
@@ -153,7 +145,7 @@
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="nghekinhdoanh" DataField="nghekinhdoanh" HeaderText="Nghề kinh doanh">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="150px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
 

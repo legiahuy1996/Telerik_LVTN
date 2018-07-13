@@ -123,7 +123,7 @@ namespace TelerikWebApp1
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     LoadDataByID(masothue);
                 }
-                catch
+                catch (Exception mess)
                 {
                     st.Append("$.notify('Chương trình xảy ra lỗi',{className: 'error',globalPosition: 'bottom right'});");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);

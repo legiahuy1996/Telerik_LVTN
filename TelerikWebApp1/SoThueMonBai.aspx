@@ -71,6 +71,10 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
+                                             <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm tính thuế">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
