@@ -96,7 +96,8 @@ namespace TelerikWebApp1
             string ngaytinhthue = txtNgayTinhThue.Text.Trim();
             string sdt = txtSDT.Text.Trim();
             string hoten = txtHoTen.Text;
-            grid.DataSource = db.DanhSachHoCaThe(mst, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, sdt, "Search");
+            
+            grid.DataSource = db.DanhSachHoCaThe(mst, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, sdt, "Search", Session["UserID"].ToString());
             grid.DataBind();
         }
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -116,7 +117,7 @@ namespace TelerikWebApp1
             string ngaycap = txtNgayCap.Text;
             string ngaytinhthue = txtNgayTinhThue.Text;
             string sdt = txtSDT.Text;
-            List<DanhSachHoCaTheResult> list = db.DanhSachHoCaThe(MST, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, sdt, Activity).ToList();
+            List<DanhSachHoCaTheResult> list = db.DanhSachHoCaThe(MST, cmnd, tencuahang, ngaycap, sogp, diachi, hoten, ngaytinhthue, sdt, Activity, Session["UserID"].ToString()).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel

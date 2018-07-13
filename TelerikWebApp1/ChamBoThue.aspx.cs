@@ -27,7 +27,7 @@ namespace TelerikWebApp1
             string diachi = txtDiaChi.Text;
             string hoten = txtHoTen.Text;
    
-            grid.DataSource = db.ChamBoThue_LoadData(MST, nghekinhdoanh, diachi, hoten); 
+            grid.DataSource = db.ChamBoThue_LoadData(MST, nghekinhdoanh, diachi, hoten, Session["UserID"].ToString()); 
             grid.Rebind();
         }
         protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)

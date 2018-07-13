@@ -21,7 +21,7 @@ namespace TelerikWebApp1
                 Response.Redirect("Login.aspx");
             if (!IsPostBack)
             {
-                List<getDSHoDuocLenSoBoResult> data = db.getDSHoDuocLenSoBo().ToList();
+                List<getDSHoDuocLenSoBoResult> data = db.getDSHoDuocLenSoBo(Session["UserID"].ToString()).ToList();
                 grid.DataSource = data;
                 grid.Rebind();
             }

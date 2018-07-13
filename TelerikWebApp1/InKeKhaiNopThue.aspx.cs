@@ -32,6 +32,7 @@ namespace TelerikWebApp1
                 Response.Redirect("Login.aspx");
             if (!IsPostBack)
             {
+                DeleteFile();
                 if (DateTime.Now.Month < 10)
                 {
                     txtThangNam.Text = "0" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString();
@@ -166,12 +167,12 @@ namespace TelerikWebApp1
             try
             {
                 string Thang = txtThangNam.Text;
-                List<getThongBaoNopThueResult> list = db.getThongBaoNopThue(Thang).ToList();
+                List<getThongBaoNopThueResult> list = db.getThongBaoNopThue(Thang, Session["UserID"].ToString()).ToList();
                 int i = 0;
                 foreach (getThongBaoNopThueResult g in list)
                 {
                     string templatefile = Server.MapPath("~/Template/kb02.dotx");
-                    string newfile = Server.MapPath("~/file/" + g.hoten + i + ".docx");
+                    string newfile = Server.MapPath("~/file/" + g.hoten + ".docx");
                     FileInfo tf = new FileInfo(newfile);
                     if (tf.Exists)
                         System.IO.File.Delete(newfile);
@@ -180,14 +181,20 @@ namespace TelerikWebApp1
                     FillMergeFieldsOfDocumentAndSaveDoc(newfile, data);
                     i++;
                 }
-                CreateFileZip();
-                Response.ContentType = "application/zip";
-                Response.AppendHeader("Content-Disposition", "attachment; filename=DanhSachBangKe.zip");
-                Response.Flush();
-                Response.WriteFile(Server.MapPath("~/file/DanhSachBangKe.zip"));
-                DeleteFile();
-                Response.End();
-                
+                try
+                {
+                    CreateFileZip();
+                    Response.ContentType = "application/zip";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=DanhSachBangKe.zip");
+                    Response.Flush();
+                    Response.WriteFile(Server.MapPath("~/file/DanhSachBangKe.zip"));
+                }
+                finally
+                {
+                    Response.Flush();
+                    DeleteFile();
+                }
+
             }
             catch (Exception mess)
             {

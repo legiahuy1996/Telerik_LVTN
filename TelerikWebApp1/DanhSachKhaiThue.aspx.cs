@@ -45,7 +45,7 @@ namespace TelerikWebApp1
             string MaNganh = cboMaNganh.SelectedValue;
             string Nam = txtNam.Text;
             string trangthai = rdbTinhTrang.SelectedValue.Trim();
-            grid.DataSource = db.getDSThue(MST, SoGP, MaNganh, Nam, trangthai);
+            grid.DataSource = db.getDSThue(MST, SoGP, MaNganh, Nam, trangthai, Session["UserID"].ToString());
             grid.Rebind();
         }
 
@@ -254,7 +254,7 @@ namespace TelerikWebApp1
             string MaNganh = cboMaNganh.SelectedValue;
             string Nam = txtNam.Text;
             string trangthai = rdbTinhTrang.SelectedValue.Trim();
-            List<getDSThueResult> list = db.getDSThue(MST, SoGP, MaNganh, Nam, trangthai).ToList();
+            List<getDSThueResult> list = db.getDSThue(MST, SoGP, MaNganh, Nam, trangthai, Session["UserID"].ToString()).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel

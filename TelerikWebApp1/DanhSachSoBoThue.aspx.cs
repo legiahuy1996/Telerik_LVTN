@@ -74,7 +74,7 @@ namespace TelerikWebApp1
             string hoten = txtHoTen.Text;
             string thanglapbo = txtThangLapBo.Text;
             string namlapbo = txtNamLapBo.Text;
-            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, thang, diachi, hoten, thanglapbo, namlapbo).ToList();
+            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, thang, diachi, hoten, thanglapbo, namlapbo, Session["UserID"].ToString()).ToList();
             grid.DataSource = data;
             list = data;
             grid.Rebind();
@@ -187,7 +187,7 @@ namespace TelerikWebApp1
             string hoten = txtHoTen.Text;
             string thanglapbo = txtThangLapBo.Text;
             string namlapbo = txtNamLapBo.Text;
-            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, thang, diachi, hoten, thanglapbo, namlapbo).ToList();
+            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, thang, diachi, hoten, thanglapbo, namlapbo, Session["UserID"].ToString()).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel

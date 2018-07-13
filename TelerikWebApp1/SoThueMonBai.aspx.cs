@@ -117,7 +117,7 @@ namespace TelerikWebApp1
         private Stream CreateExcelFile(Stream stream = null)
         {
             string Thang = txtThangNam.Text;
-            List<GetSoThueMonBaiResult> list = db.GetSoThueMonBai(Thang).ToList();
+            List<GetSoThueMonBaiResult> list = db.GetSoThueMonBai(Thang, Session["UserID"].ToString()).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
@@ -164,7 +164,7 @@ namespace TelerikWebApp1
         {
             string thang = txtThangNam.Text.Trim();
 
-            List<GetSoThueMonBaiResult> lst = db.GetSoThueMonBai(thang).ToList();
+            List<GetSoThueMonBaiResult> lst = db.GetSoThueMonBai(thang, Session["UserID"].ToString()).ToList();
             grid.DataSource = lst;
             grid.Rebind();
         }

@@ -25,7 +25,7 @@ namespace TelerikWebApp1
         {
             string masothue = txtMST.Text.Trim();
 
-            List<GetDSNgungNghiResult> lst = db.GetDSNgungNghi(masothue).ToList();
+            List<GetDSNgungNghiResult> lst = db.GetDSNgungNghi(masothue, Session["UserID"].ToString()).ToList();
             grid.DataSource = lst;
             grid.Rebind();
         }

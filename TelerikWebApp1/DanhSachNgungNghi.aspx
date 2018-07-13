@@ -61,11 +61,11 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="tuthang" DataField="tuthang" HeaderText="Từ tháng">
+                                            <telerik:GridBoundColumn UniqueName="tungay" DataField="tungay" HeaderText="Từ ngày">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="denthang" DataField="denthang" HeaderText="Đến tháng">
+                                            <telerik:GridBoundColumn UniqueName="denngay" DataField="denngay" HeaderText="Đến ngày">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>                                            

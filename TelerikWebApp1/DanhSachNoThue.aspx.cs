@@ -26,7 +26,7 @@ namespace TelerikWebApp1
         public void getDataSearch()
         {
             string masothue = txtMST.Text.Trim();
-            grid.DataSource = db.getDsConNo(masothue);
+            grid.DataSource = db.getDsConNo(masothue, Session["UserID"].ToString());
             grid.Rebind();
         }
         protected void btnSearch_Click(object sender, EventArgs e)

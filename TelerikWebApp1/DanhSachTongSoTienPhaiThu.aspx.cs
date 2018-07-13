@@ -129,7 +129,7 @@ namespace TelerikWebApp1
         private Stream CreateExcelFile(Stream stream = null)
         {
             string Thang = txtThangNam.Text;
-            List<GetDanhSachTongTienPhaiThuResult> list = db.GetDanhSachTongTienPhaiThu(Thang).ToList();
+            List<GetDanhSachTongTienPhaiThuResult> list = db.GetDanhSachTongTienPhaiThu(Thang, Session["UserID"].ToString()).ToList();
             List<GetSoThueNgungNghiResult> listNN = db.GetSoThueNgungNghi(Thang).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
@@ -176,7 +176,7 @@ namespace TelerikWebApp1
         {
             string thang = txtThangNam.Text.Trim();
 
-            List<GetDanhSachTongTienPhaiThuResult> lst = db.GetDanhSachTongTienPhaiThu(thang).ToList();
+            List<GetDanhSachTongTienPhaiThuResult> lst = db.GetDanhSachTongTienPhaiThu(thang, Session["UserID"].ToString()).ToList();
             grid.DataSource = lst;
             grid.Rebind();
         }

@@ -54,8 +54,11 @@
 		   <form runat="server">
 				<asp:TextBox runat="server" ID="txtTaiKhoan" placeholder="Tên đăng nhập"></asp:TextBox>
                <asp:TextBox TextMode="Password" runat="server" ID="txtMatKhau" placeholder="Mật khẩu"></asp:TextBox>
+                 <%-- <a href="QuenMatKhau.aspx"> Quên mật khẩu</a>--%>
 				<asp:Button runat="server" ID="btnLogin" OnClick="btnLogin_Click" Text="Đăng nhập"/>
+              
 			</form>	
+         
 	   </div>
 	   <div class="footer">
 	   <!---728x90--->
