@@ -34,7 +34,7 @@ namespace TelerikWebApp1
             string Activity = "Search";
             string MST = txtMST.Text;
             string CMND = txtCMND.Text;
-           List<spfrm_SoBoThueResult> data = db.spfrm_SoBoThue(MST, CMND, null, null, null, null, null, null, null, null, null, Activity, null).ToList();
+           List<spfrm_SoBoThueResult> data = db.spfrm_SoBoThue(MST, CMND, null, null, null, null, null, null, null, null, null, Activity, null, Session["UserID"].ToString()).ToList();
             grid.DataSource = data;
             grid.Rebind();
         }
@@ -64,7 +64,7 @@ namespace TelerikWebApp1
                     {
                         dem++;
                         idkhaithue = item["idKhaiThue"].Text;
-                        db.spfrm_SoBoThue(null, null, null, null, null, null, null, null, null, null, int.Parse(idkhaithue), "Create", null);
+                        db.spfrm_SoBoThue(null, null, null, null, null, null, null, null, null, null, int.Parse(idkhaithue), "Create", null, Session["UserID"].ToString());
                     }
                 }
                 if(dem==0)
