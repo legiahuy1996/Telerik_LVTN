@@ -90,28 +90,28 @@ namespace TelerikWebApp1
                         TextBox txtNgayNopDon = (TextBox)item["ClientSelectColumn"].FindControl("txtNgayNopDon");
                         if (IsNullTextBox(txttungay))
                         {
-                            ShowMess("Không được để trống trường này");
+                            ShowMess("Không được để trống từ ngày");
                             strErr = "1";
                             txttungay.Focus();
                             break;
                         }
                         if (IsNullTextBox(txtdenngay))
                         {
-                            ShowMess("Không được để trống trường này");
+                            ShowMess("Không được để trống đến ngày");
                             txtdenngay.Focus();
                             strErr = "1";
                             break;
                         }
                         if (IsNullTextBox(txtNgayNopDon))
                         {
-                            ShowMess("Không được để trống trường này");
+                            ShowMess("Không được để trống ngày nộp đơn");
                             txtNgayNopDon.Focus();
                             strErr = "1";
                             break;
                         }
                         if (IsNullTextBox(txb))
                         {
-                            ShowMess("Không được để trống trường này");
+                            ShowMess("Không được để trống lý do");
                             txb.Focus();
                             strErr = "1";
                             break;

@@ -19,6 +19,7 @@ namespace TelerikWebApp1
         StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtMST.Text = Request.QueryString["masothue"]??"";
             db = new DataClasses1DataContext();
             if (Session["taikhoan"] == null)
                 Response.Redirect("Login.aspx");
@@ -204,6 +205,28 @@ namespace TelerikWebApp1
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                 }
 
+            }
+            else if(commandName == "LINKKT")
+            {
+                try
+                {
+                    if (e.Item is GridDataItem)
+                    {
+                        item_detail = (GridDataItem)e.Item;
+                        string masothue = item_detail["masothue"].Text.Trim().Replace("&nbsp;", "");
+                        if (masothue != "")
+                        {
+                            string url = "KhaiThuechiTiet.aspx?masothue=" + item_detail["masothue"].Text.Trim().Replace("&nbsp;", "");
+                            Response.Redirect(url);
+                        }
+
+                    }
+                }
+                catch (Exception mess)
+                {
+                    st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                }
             }
         }
 

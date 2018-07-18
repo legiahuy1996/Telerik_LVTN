@@ -133,6 +133,15 @@
                                                         CommandName="LINKMST">Chi tiết</asp:LinkButton>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
+                                            <telerik:GridTemplateColumn SortExpression="Detail" UniqueName="Detail"
+                                                HeaderText="Khai thuế">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="LNKKT" CssClass="Hlink" runat="server"
+                                                        CommandName="LINKKT">>></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </telerik:GridTemplateColumn>
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

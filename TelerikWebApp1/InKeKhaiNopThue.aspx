@@ -8,10 +8,10 @@
             <tr>
                 <td width="18%"></td>
                 <td width="8%">
-                     <h3><asp:Label runat="server" ID="lblThangNam">Tháng in b&#7843;ng kê khai(MM/yy)</asp:Label></h3>
+                     <h3><asp:Label runat="server" ID="lblThangNam">Tháng in b&#7843;ng kê khai</asp:Label></h3>
                 </td>
                 <td width="25%">
-                     <asp:TextBox class="input" runat="server" ID="txtThangNam" Width="20%" MaxLength="7"></asp:TextBox>
+                     <asp:TextBox class="Inputcenter" ReadOnly="true" runat="server" ID="txtThangNam" Width="20%" MaxLength="7"></asp:TextBox>
                 </td>
             </tr>
           </table>

@@ -21,6 +21,7 @@ namespace TelerikWebApp1
         string idKhaiThue = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtMST.Text = Request.QueryString["masothue"]??"";
             db = new DataClasses1DataContext();
             idKhaiThue = Request.QueryString["idKhaiThue"];
             if (Session["taikhoan"] == null)

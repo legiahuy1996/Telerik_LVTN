@@ -145,11 +145,11 @@ namespace TelerikWebApp1
         protected Dictionary<string, string> GetDataToFillMergeFields(getThongBaoNopThueResult g)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
-            int thuemonbai = g.ThueMonBai ?? 0;
-            int thueGTGT = g.ThueGTGN ?? 0;
-            int thueTNCN = g.ThueTNCN ?? 0;
-            int tong = g.TongCong ?? 0;
-            int sono = g.SoNo ?? 0;
+            long thuemonbai = g.ThueMonBai ?? 0;
+            long thueGTGT = g.ThueGTGT ?? 0;
+            long thueTNCN = g.ThueTNCN ?? 0;
+            long tong = g.TongCong ?? 0;
+            long sono = g.SoNo ?? 0;
             data.Add("hoten", g.hoten);
             data.Add("masothue", g.masothue);
             data.Add("diachi", g.diachiKD);
@@ -159,7 +159,7 @@ namespace TelerikWebApp1
             data.Add("ThueGTGN", thueGTGT.ToString("#,##"));
             data.Add("ThueTNCN", thueTNCN.ToString("#,##"));
             data.Add("SoNo", sono.ToString("#,##"));
-            data.Add("TongCong", tong.ToString("#,##"));
+            data.Add("TongCong", (tong+thuemonbai).ToString("#,##"));
             return data;
         }
         protected void btnExport_Click(object sender, EventArgs e)

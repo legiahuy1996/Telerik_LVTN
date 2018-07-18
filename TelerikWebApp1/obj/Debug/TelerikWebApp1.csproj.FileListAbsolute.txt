@@ -137,7 +137,6 @@ E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OpenXml4Net.dll
 E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.OpenXmlFormats.dll
 E:\New folder\Telerik_LVTN\TelerikWebApp1\bin\NPOI.xml
 E:\New folder\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojAssemblyReference.cache
-C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojAssemblyReference.cache
 C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll.licenses
 C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CoreCompileInputs.cache
 C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.dll
@@ -175,3 +174,4 @@ C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Window
 C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.xml
 C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\bin\Telerik.Windows.Zip.xml
 C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csproj.CopyComplete
+C:\Users\Huy\Desktop\Telerik_LVTN\Telerik_LVTN\TelerikWebApp1\obj\Debug\TelerikWebApp1.csprojAssemblyReference.cache

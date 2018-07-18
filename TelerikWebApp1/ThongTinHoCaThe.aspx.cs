@@ -21,20 +21,13 @@ namespace TelerikWebApp1
                 Response.Redirect("Login.aspx");
             db = new DataClasses1DataContext();
             masothue = Request.QueryString["masothue"];
+            txtNgayCapMST.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtNgayTinhThue.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtNam.Text = DateTime.Now.Year.ToString();
             if (!IsPostBack)
             {
-                LoadComBo();
                 LoadDataByID(masothue);
             }
-        }
-        protected void LoadComBo()
-        {
-            cboMaDuongPho.DataSource = (from a in db.maduongphos  select new { ma = a.madp, ten = a.tenduong }).ToList();
-            cboMaDuongPho.DataValueField = "ma";
-            cboMaDuongPho.DataTextField = "ten";
-            cboMaDuongPho.DataBind();
-            cboMaDuongPho.Items.Insert(0, "");
-            cboMaDuongPho.SelectedIndex = 0;
         }
         protected void LoadDataByID(string id)
         {
@@ -66,12 +59,10 @@ namespace TelerikWebApp1
                 txtCMND.Text = danhba.cmnd;
                 txtDiaChi.Text = danhba.diachiKD;
                 txtHoTen.Text = danhba.hoten;
-                txtMST.Text = danhba.masothue;
                 txtNgayCapCMND.Text = ngaycapcmnd.ToString("dd/MM/yyyy");
                 txtNgayCapMST.Text = ngaycapmst.ToString("dd/MM/yyyy");
                 txtNgaySinh.Text = ngaysinh.ToString("dd/MM/yyyy");
                 txtTenCuaHang.Text = danhba.tencuahang;
-                cboMaDuongPho.SelectedValue = danhba.madp;
                 txtNghekinhDoanh.Text = danhba.nghekinhdoanh;
                 txtNam.Text = danhba.nam;
                 txtVonKD.Text = danhba.vonkd.ToString();
@@ -81,12 +72,14 @@ namespace TelerikWebApp1
                 txtSoGP.Text = danhba.sogp;
                 txtEmail.Text = danhba.email;
                 txtGhiChu.Text = danhba.ghichu;
+                masothue =danhba.masothue;
             }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("DanhSachHoCaThe.aspx");
+            string url = "DanhSachHoCaThe.aspx";
+            Response.Redirect(url);
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
@@ -96,15 +89,25 @@ namespace TelerikWebApp1
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string masothue = txtMST.Text;
+            
             string ngaycapmst = txtNgayCapMST.Text;
             string hoten = txtHoTen.Text;
             string tencuahang = txtTenCuaHang.Text;
             string ngaysinh = txtNgaySinh.Text;
+            if(ngaysinh !="")
+            {
+                DateTime dngaysinh = DateTime.ParseExact(txtNgaySinh.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                DateTime dngaycap = DateTime.ParseExact(txtNgayCapMST.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                if (dngaysinh.AddYears(18)>dngaycap)
+                {
+                    st.Append("$.notify('Chưa đủ tuổi cấp mã số thuế',{className: 'error',globalPosition: 'bottom right'});");
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                }
+               
+            }
             string cmnd = txtCMND.Text;
             string diachi = txtDiaChi.Text;
             string ngaycapcmnd = txtNgayCapCMND.Text;
-            string madp = cboMaDuongPho.SelectedValue.Trim();
             string nam = txtNam.Text;
             string nghekinhdoanh = txtNghekinhDoanh.Text;
             string vonkd = txtVonKD.Text;
@@ -118,14 +121,14 @@ namespace TelerikWebApp1
             {
                 try
                 {
-                    db.Insert_HoCaThe(masothue, ngaycapmst, hoten, tencuahang, ngaysinh, cmnd, diachi, ngaycapcmnd, madp, nam, nghekinhdoanh, vonkd, ngaybatdaukd, ngaytinhthue, sogp, sodt, email, ghichu);
+                    string id="";
+                    db.Insert_HoCaThe(masothue, ngaycapmst, hoten, tencuahang, ngaysinh, cmnd, diachi, ngaycapcmnd, nam, nghekinhdoanh, vonkd, ngaybatdaukd, ngaytinhthue, sogp, sodt, email, ghichu, Session["UserID"].ToString());
                     st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                    LoadDataByID(masothue);
                 }
                 catch (Exception mess)
                 {
-                    st.Append("$.notify('Chương trình xảy ra lỗi',{className: 'error',globalPosition: 'bottom right'});");
+                    st.Append("$.notify('"+mess.Message+"',{className: 'error',globalPosition: 'bottom right'});");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                 }
             } catch(Exception mess)

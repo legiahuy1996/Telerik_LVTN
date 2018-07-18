@@ -97,10 +97,6 @@
                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
                                                 <HeaderStyle Width="50px" />
                                             </telerik:GridClientSelectColumn>
-                                            <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
-                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="hoten" DataField="hoten" HeaderText="Họ tên">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -133,10 +129,7 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                             <telerik:GridBoundColumn UniqueName="madp" DataField="madp" HeaderText="Mã đường phố">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
+                                        
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>

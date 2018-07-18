@@ -146,8 +146,18 @@
                         <asp:LinkButton ID="btnImport" name="btnImport" runat="server" AccessKey="E" ToolTip="Alt+E">
 		                    <span class="btnImport">Import DL</span>
                         </asp:LinkButton>
+
                     </span>
                 </td>
+            <%--    <td id="tdLapSoBo" runat="server">
+                    <span class="btn1">
+                        <asp:LinkButton ID="btnCreate" name="btnCreate" runat="server" AccessKey="C" ToolTip="Alt+C" OnClick="">
+		                    <span class="btnCreate">Lập sổ bộ</span>
+                        </asp:LinkButton>
+
+                    </span>
+                </td>--%>
+
 
             </tr>
 
@@ -236,6 +246,18 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn UniqueName="ThueGTGT" DataField="ThueGTGT" HeaderText="Tiền thuế GTGT phải đóng 1 tháng" DataFormatString="{0:N0}">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn UniqueName="ThueTNCN" DataField="ThueTNCN" HeaderText="Tiền thuế TNCN phải đóng 1 tháng" DataFormatString="{0:N0}">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn UniqueName="MucThue" DataField="MucThue" HeaderText="Tiền thuế môn bài" DataFormatString="{0:N0}">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="mattngungnghi" DataField="mattngungnghi" HeaderText="mattngungnghi" Display="false">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -244,28 +266,28 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="left" VerticalAlign="Middle" />
                                                 <ItemTemplate>
-                                                    <asp:TextBox runat="server" ID="txttungay"  CssClass="Input" onblur="javascript:CheckDate(this);" Text='<%# Eval("tungay") %>' Width="80px"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txttungay" CssClass="Input" onblur="javascript:CheckDate(this);" Text='<%# Eval("tungay") %>' Width="80px"></asp:TextBox>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
-                                            <telerik:GridTemplateColumn UniqueName="denngay" DataField="denngay"  HeaderText="Đến ngày">
+                                            <telerik:GridTemplateColumn UniqueName="denngay" DataField="denngay" HeaderText="Đến ngày">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemTemplate>
-                                                    <asp:TextBox runat="server" ID="txtdenngay" CssClass="Input" onblur="javascript:CheckDate(this);" Text='<%# Eval("denngay") %>' Width="80px" ></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtdenngay" CssClass="Input" onblur="javascript:CheckDate(this);" Text='<%# Eval("denngay") %>' Width="80px"></asp:TextBox>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
                                             <telerik:GridTemplateColumn UniqueName="ngaynopdon" DataField="ngaynopdon" HeaderText="Ngày nộp đơn">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemTemplate>
-                                                    <asp:TextBox runat="server" ID="txtNgayNopDon" CssClass="Input" onblur="javascript:CheckDate(this);" Text='<%# Eval("ngaynopdon") %>'  Width="80px"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtNgayNopDon" CssClass="Input" onblur="javascript:CheckDate(this);" Text='<%# Eval("ngaynopdon") %>' Width="80px"></asp:TextBox>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
                                             <telerik:GridTemplateColumn UniqueName="LyDo" DataField="LyDo" HeaderText="Lý do">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemTemplate>
-                                                    <asp:TextBox runat="server" ID="txtLyDo" CssClass="Input" Text='<%# Eval("LyDo") %>'  Width="80px" TextMode="MultiLine"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtLyDo" CssClass="Input" Text='<%# Eval("LyDo") %>' Width="80px" TextMode="MultiLine"></asp:TextBox>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
                                         </Columns>
@@ -281,7 +303,7 @@
     </form>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="script" ID="script" runat="server">
-      <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function () {
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindPicker);
             bindPicker();

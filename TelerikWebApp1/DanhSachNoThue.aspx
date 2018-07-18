@@ -78,14 +78,17 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>                                            
-                                            
-                                             <telerik:GridTemplateColumn UniqueName="SoTien" DataField="SoTien" HeaderText="Số tiền còn nợ">
+                                              <telerik:GridBoundColumn UniqueName="SoTien" DataField="SoTien" HeaderText="Số tiền còn nợ" DataFormatString="{0:N0}">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>    
+<%--                                             <telerik:GridTemplateColumn UniqueName="SoTien" DataField="SoTien" HeaderText="Số tiền còn nợ">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemTemplate>
                                                     <asp:TextBox runat="server" ID="txtSoTien" CssClass="Input" onblur="javascript:checkNumeric(this);" Text='<%# Bind("SoTien", "{0:N0}") %>' Width="100px"></asp:TextBox>
                                                 </ItemTemplate>
-                                            </telerik:GridTemplateColumn>
+                                            </telerik:GridTemplateColumn>--%>
                                             <telerik:GridBoundColumn UniqueName="tieumuc" DataField="tieumuc" HeaderText="Loại thuế còn nợ">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" width="100px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

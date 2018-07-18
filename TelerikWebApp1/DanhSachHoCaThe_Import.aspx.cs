@@ -104,12 +104,7 @@ namespace TelerikWebApp1
                 {
                     try
                     {
-                        string masothue = item["masothue"].Text.Trim();
                         string hoten = "", cmnd = "", tencuahang = "", diachiKD = "", sogp = "",ngaysinh = "",ngaybatdaukd = "";
-
-                        DanhBa kt = db.DanhBas.SingleOrDefault(x => x.masothue == masothue);
-                        if (kt != null)
-                            masothue = kt.masothue.ToString();
                         hoten = item["hoten"].Text;
                         cmnd = item["cmnd"].Text.Trim();
                         tencuahang = item["tencuahang"].Text;
@@ -117,9 +112,8 @@ namespace TelerikWebApp1
                         string nghekinhdoanh = item["nghekinhdoanh"].Text;
                         ngaybatdaukd = item["ngaybatdaukd"].Text.Replace("&nbsp;","");
                         ngaysinh = item["ngaysinh"].Text;
-                        string madp = item["madp"].Text;
                         sogp = item["sogp"].Text;
-                        db.DanhSachHoCaThe_Import(masothue, hoten, cmnd, ngaysinh, tencuahang, diachiKD, nghekinhdoanh, ngaybatdaukd,sogp,madp);
+                        db.DanhSachHoCaThe_Import(hoten, cmnd, ngaysinh, tencuahang, diachiKD, nghekinhdoanh, ngaybatdaukd, sogp, Session["UserID"].ToString());
                         st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
 
