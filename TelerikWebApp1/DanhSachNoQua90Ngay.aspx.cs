@@ -26,42 +26,8 @@ namespace TelerikWebApp1
         }
         protected void LoadData()
         {
-            List<sono> lstSoNoTNCN = db.sonos.Where(x => x.tieumuc == 1003).OrderBy(x =>x.masothue).ToList();
-            List<sono> lstSoNoGTGT = db.sonos.Where(x => x.tieumuc == 1701).ToList();
-            List<sono> lstSoNoMonNai = db.sonos.Where(x => x.tieumuc == 0).ToList();
-            List<DanhBa> lst90 = new List<DanhBa>();
-            int dem = 0;
-            for (int i = 0; i < lstSoNoTNCN.Count; i++)
-            {
-                if (i == lstSoNoTNCN.Count - 1)
-                    break;
-                if (lstSoNoTNCN[i].CreateTime.Value.Month + 1 == lstSoNoTNCN[i + 1].CreateTime.Value.Month)
-                    dem++;
-                if (dem == 2)
-                {
-                    DanhBa a = db.DanhBas.SingleOrDefault(x => x.masothue == lstSoNoTNCN[i].masothue);
-                    lst90.Add(a);
-                    break;
-                }
-            }
-            if(lst90.Count ==0)
-            {
-                for (int i = 0; i < lstSoNoGTGT.Count; i++)
-                {
-                    if (i == lstSoNoGTGT.Count - 1)
-                        break;
-                    if (lstSoNoGTGT[i].CreateTime.Value.Month + 1 == lstSoNoGTGT[i + 1].CreateTime.Value.Month)
-                        dem++;
-                    if (dem == 2)
-                    {
-                        DanhBa a = db.DanhBas.SingleOrDefault(x => x.masothue == lstSoNoGTGT[i].masothue);
-                        lst90.Add(a);
-                        break;
-                    }
-                }
-            }
-
-            grid.DataSource = lst90;
+            string masothue = txtMST.Text;
+            grid.DataSource = db.getDsConNoQua3Thang(masothue, Session["UserID"].ToString()).ToList();
             grid.Rebind();
         }
         protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -75,6 +41,11 @@ namespace TelerikWebApp1
                 if (grid.DataSource == null)
                     grid.DataSource = new string[] { };
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

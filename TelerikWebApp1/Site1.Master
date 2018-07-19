@@ -131,7 +131,9 @@
                                                                     <li>
                                                                         <a href='DanhSachNoThue.aspx'><span>Sổ nợ</span></a>
                                                                     </li>
-                                                                  
+                                                                  <li>
+                                                                      <a href="DanhSachNoQua90Ngay.aspx">Danh sách hộ nợ hơn 3 tháng</a>
+                                                                  </li>
 
                                                                 </ul>
                                                             </li>

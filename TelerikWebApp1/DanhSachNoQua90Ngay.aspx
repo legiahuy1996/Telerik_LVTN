@@ -4,6 +4,33 @@
     <h1>DANH SÁCH HỘ NỢ THUẾ QUÁ 90 NGÀY</h1>
     <br />
     <form id="frm" runat="server">
+        <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
+              <tr>
+                <td></td>
+                <td width="10%">
+                </td>
+                <td width="10%">
+                    <asp:Label runat="server" ID="lblMaSoThue">Mã số thuế</asp:Label>
+                </td>
+                <td width="25%">
+                   <asp:TextBox class="input" runat="server" ID="txtMST" Width="50%"></asp:TextBox>
+                </td>
+                <td width="25%">            
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <table cellspacing="1" cellpadding="1" width="100%" border="0">
+            <tr>
+                <td colspan="3" align="center">
+                    <span class="btn1">
+                        <asp:LinkButton ID="btnSearch" name="btnSearch" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSearch_Click" ><span class="btnSearch">Tìm kiếm</span>
+                        </asp:LinkButton>
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <br />
         <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
