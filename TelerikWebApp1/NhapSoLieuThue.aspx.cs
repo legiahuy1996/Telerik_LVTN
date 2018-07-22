@@ -272,16 +272,16 @@ namespace TelerikWebApp1
                             continue;
                         else
                         {
-                            string id= "";
-                            int kt = db.getKhaiThueGanNhat(danhba.masothue,ref id);
-                            if (kt !=0)
+                            int? id=0;
+                            db.getKhaiThueGanNhat(danhba.masothue,ref id);
+                            if (id !=0)
                             {
-                                var sobo = db.SoBoThues.SingleOrDefault(x => x.idKhaiThue == kt);
+                                var sobo = db.SoBoThues.SingleOrDefault(x => x.idKhaiThue == id && x.NgayLapBo.Value.Month == DateTime.Now.Month );
                                 if(sobo !=null)
                                 {
                                     //Kiểm tra nếu nộp thiếu tiền thuế thì trả về danh sách các hộ có số thu chưa đúng 
                                     //Do chỉ có 2 trường hợp nộp đủ và không nộp
-                                    if (tieumuc == "1003" && muc == "1000")
+                                    if (int.Parse(tieumuc) == 1003 && muc == "1000")
                                     {
                                         if (sotiennop < sobo.SoTienTNCN1Thang)
                                         {
@@ -292,13 +292,13 @@ namespace TelerikWebApp1
                                                 SoTienNop = int.Parse(sotiennop.ToString()),
                                                 NgayNop = DateTime.Parse(ngaynop),
                                                 KyThue = kythue,
-                                                tieumuc = tieumuc,
+                                                tieumuc = int.Parse(tieumuc),
                                                 muc = muc
                                             });
                                             continue;
                                         }
                                     }
-                                    else if (tieumuc == "1701" && muc == "1700")
+                                    else if (int.Parse(tieumuc) == 1701 && muc == "1700")
                                     {
                                         if (sotiennop < sobo.SoTienGTGT1Thang)
                                         {
@@ -309,7 +309,7 @@ namespace TelerikWebApp1
                                                 SoTienNop = int.Parse(sotiennop.ToString()),
                                                 NgayNop = DateTime.Parse(ngaynop),
                                                 KyThue = kythue,
-                                                tieumuc = tieumuc,
+                                                tieumuc = int.Parse(tieumuc),
                                                 muc = muc
                                             });
                                             continue;
@@ -317,7 +317,7 @@ namespace TelerikWebApp1
                                     }
                                     else
                                     {
-                                        thuemonbai monbai = db.thuemonbais.SingleOrDefault(x => x.idKhaiThue == kt);
+                                        thuemonbai monbai = db.thuemonbais.SingleOrDefault(x => x.idKhaiThue == id);
                                         if (monbai != null && monbai.trangthai == false)
                                         {
                                             mucluc_MonBai mucluc_MB = db.mucluc_MonBais.SingleOrDefault(x => x.Bac == monbai.Bac);
@@ -330,7 +330,7 @@ namespace TelerikWebApp1
                                                     SoTienNop = int.Parse(sotiennop.ToString()),
                                                     NgayNop = DateTime.Parse(ngaynop),
                                                     KyThue = kythue,
-                                                    tieumuc = tieumuc,
+                                                    tieumuc = int.Parse(tieumuc),
                                                     muc = muc
                                                 });
                                                 continue;
@@ -342,6 +342,7 @@ namespace TelerikWebApp1
                                 {
                                     st.Append("$.notify('Mã số thuế :"+masothue+" chưa lập sổ bộ tháng hiện tại',{className: 'error',globalPosition: 'bottom right'});");
                                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                                    continue;
                                 }
                                 
                                 db.Insert_SoLieuNopThue(masothue, macbql, sotiennop, ngaynop, kythue, tieumuc, muc);

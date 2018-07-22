@@ -26,12 +26,13 @@ namespace TelerikWebApp1
             idKhaiThue = Request.QueryString["idKhaiThue"];
             if (Session["taikhoan"] == null)
                 Response.Redirect("Login.aspx");
+            if (idKhaiThue != "" && idKhaiThue != null)
+            {
+                LoadDataByID(idKhaiThue);
+            }
             if (!IsPostBack)
             {
-                if (idKhaiThue != "" && idKhaiThue != null)
-                {
-                    LoadDataByID(idKhaiThue);
-                }
+              
                 LoadComBo();
                 txtNam.Text = DateTime.Now.Year.ToString();
                 txtNgayKhaiThue.Text = DateTime.Now.ToString("dd/MM/yyyy");

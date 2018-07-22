@@ -26,8 +26,23 @@ namespace TelerikWebApp1
             txtNam.Text = DateTime.Now.Year.ToString();
             if (!IsPostBack)
             {
+                LoadComBoQuan();
                 LoadDataByID(masothue);
             }
+        }
+        protected void LoadComBoQuan()
+        {
+            cboQuan.DataSource = (from a in db.Quans
+                                        select new
+                                        {
+                                            ma = a.maquan,
+                                            ten = a.tenquan
+                                        }).ToList();
+            cboQuan.DataValueField = "ma";
+            cboQuan.DataTextField = "ten";
+            cboQuan.DataBind();
+            cboQuan.Items.Insert(0, "");
+            cboQuan.SelectedIndex = 0;
         }
         protected void LoadDataByID(string id)
         {
@@ -42,7 +57,7 @@ namespace TelerikWebApp1
                 ngaytinhthue = DateTime.Now;
                 if (danhba.ngaycapcmnd != null)
                 {
-                     ngaycapcmnd = (DateTime)danhba.ngaycapcmnd;
+                    ngaycapcmnd = (DateTime)danhba.ngaycapcmnd;
                 }
                 if (danhba.ngaycapmst != null)
                 {
@@ -50,7 +65,7 @@ namespace TelerikWebApp1
                 }
                 if (danhba.ngaysinh != null)
                 {
-                     ngaysinh = (DateTime)danhba.ngaysinh;
+                    ngaysinh = (DateTime)danhba.ngaysinh;
                 }
                 if (danhba.ngaybatdaukd != null)
                     ngaybatdaukd = (DateTime)danhba.ngaybatdaukd;
@@ -66,13 +81,15 @@ namespace TelerikWebApp1
                 txtNghekinhDoanh.Text = danhba.nghekinhdoanh;
                 txtNam.Text = danhba.nam;
                 txtVonKD.Text = danhba.vonkd.ToString();
-                txtNgayBatDauKD.Text= ngaybatdaukd.ToString("dd/MM/yyyy");
+                txtNgayBatDauKD.Text = ngaybatdaukd.ToString("dd/MM/yyyy");
                 txtNgayTinhThue.Text = ngaytinhthue.ToString("dd/MM/yyyy");
                 txtSoDT.Text = danhba.sodt;
                 txtSoGP.Text = danhba.sogp;
                 txtEmail.Text = danhba.email;
                 txtGhiChu.Text = danhba.ghichu;
-                masothue =danhba.masothue;
+                masothue = danhba.masothue;
+                cboQuan.SelectedValue = danhba.maduongpho.maquan.Value.ToString();
+                cboMaDuongPho.SelectedValue = danhba.madp;
             }
         }
 
@@ -89,53 +106,84 @@ namespace TelerikWebApp1
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            
+
             string ngaycapmst = txtNgayCapMST.Text;
             string hoten = txtHoTen.Text;
             string tencuahang = txtTenCuaHang.Text;
             string ngaysinh = txtNgaySinh.Text;
-            if(ngaysinh !="")
+            if (ngaysinh != "")
             {
                 DateTime dngaysinh = DateTime.ParseExact(txtNgaySinh.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 DateTime dngaycap = DateTime.ParseExact(txtNgayCapMST.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                if (dngaysinh.AddYears(18)>dngaycap)
+                if (dngaysinh.AddYears(18) > dngaycap)
                 {
                     st.Append("$.notify('Chưa đủ tuổi cấp mã số thuế',{className: 'error',globalPosition: 'bottom right'});");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                 }
-               
-            }
-            string cmnd = txtCMND.Text;
-            string diachi = txtDiaChi.Text;
-            string ngaycapcmnd = txtNgayCapCMND.Text;
-            string nam = txtNam.Text;
-            string nghekinhdoanh = txtNghekinhDoanh.Text;
-            string vonkd = txtVonKD.Text;
-            string ngaybatdaukd = txtNgayBatDauKD.Text;
-            string ngaytinhthue = txtNgayTinhThue.Text;
-            string sogp = txtSoGP.Text;
-            string sodt = txtSoDT.Text;
-            string email = txtEmail.Text;
-            string ghichu = txtGhiChu.Text;
-            try
-            {
-                try
+                else
                 {
-                    string id="";
-                    db.Insert_HoCaThe(masothue, ngaycapmst, hoten, tencuahang, ngaysinh, cmnd, diachi, ngaycapcmnd, nam, nghekinhdoanh, vonkd, ngaybatdaukd, ngaytinhthue, sogp, sodt, email, ghichu, Session["UserID"].ToString());
-                    st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                    string cmnd = txtCMND.Text;
+                    string diachi = txtDiaChi.Text;
+                    string ngaycapcmnd = txtNgayCapCMND.Text;
+                    string nam = txtNam.Text;
+                    string nghekinhdoanh = txtNghekinhDoanh.Text;
+                    string vonkd = txtVonKD.Text;
+                    string ngaybatdaukd = txtNgayBatDauKD.Text;
+                    string ngaytinhthue = txtNgayTinhThue.Text;
+                    string sogp = txtSoGP.Text;
+                    string sodt = txtSoDT.Text;
+                    string email = txtEmail.Text;
+                    string ghichu = txtGhiChu.Text;
+                    string madp = cboMaDuongPho.SelectedValue;
+                    try
+                    {
+                        try
+                        {
+                            string id = "";
+                            db.Insert_HoCaThe(masothue, ngaycapmst, hoten, tencuahang, ngaysinh, cmnd, diachi, ngaycapcmnd,madp, nam, nghekinhdoanh, vonkd, ngaybatdaukd, ngaytinhthue, sogp, sodt, email, ghichu);
+                            st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                        }
+                        catch (Exception mess)
+                        {
+                            st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
+                            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                        }
+                    }
+                    catch (Exception mess)
+                    {
+                        st.Append("$.notify('" + mess.Message.Replace("\"", "") + "',{className: 'error',globalPosition: 'bottom right'});");
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                    }
                 }
-                catch (Exception mess)
-                {
-                    st.Append("$.notify('"+mess.Message+"',{className: 'error',globalPosition: 'bottom right'});");
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                }
-            } catch(Exception mess)
-            {
-                st.Append("$.notify('" + mess.Message.Replace("\"","") + "',{className: 'error',globalPosition: 'bottom right'});");
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+
             }
+
+        }
+        protected void LoadComBoDuong()
+        {
+            if(cboQuan.SelectedValue != "")
+            {
+                cboMaDuongPho.DataSource = (from a in db.maduongphos
+                                            where a.maquan == int.Parse(cboQuan.SelectedValue)
+                                            select new
+                                            {
+                                                ma = a.madp,
+                                                ten = a.tenduong
+                                            }).ToList();
+                cboMaDuongPho.DataValueField = "ma";
+                cboMaDuongPho.DataTextField = "ten";
+                cboMaDuongPho.DataBind();
+                cboMaDuongPho.Items.Insert(0, "");
+            }
+          
+        }
+      
+
+        protected void cboQuan_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            cboMaDuongPho.Text = "";
+            LoadComBoDuong();
         }
     }
 }

@@ -28,7 +28,6 @@ namespace TelerikWebApp1
         {
             string masothue = txtMST.Text;
             grid.DataSource = db.getDsConNoQua3Thang(masothue, Session["UserID"].ToString()).ToList();
-            grid.Rebind();
         }
         protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {

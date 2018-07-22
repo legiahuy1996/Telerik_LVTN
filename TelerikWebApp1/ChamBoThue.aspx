@@ -70,7 +70,7 @@
             <tr>
                 <td id="tdTimKem" runat="server">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnSearch" name="btnSearch" runat="server" AccessKey="F" ToolTip="Alt+F">
+                        <asp:LinkButton ID="btnSearch" name="btnSearch" runat="server" AccessKey="F" ToolTip="Alt+F" OnClick="btnSearch_Click">
 		                    <span class="btnSearch">Tìm kiếm</span>
                         </asp:LinkButton>
                     </span>
@@ -150,7 +150,7 @@
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
 
-                                            <telerik:GridBoundColumn UniqueName="DoanhThuTinhThueTNCN" DataField="DoanhThuTinhThueTNCN" HeaderText="Doanh Thu" DataFormatString="{0:N0}">
+                                            <telerik:GridBoundColumn UniqueName="DoanhThu" DataField="DoanhThu" HeaderText="Doanh Thu" DataFormatString="{0:N0}">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"  />
                                             </telerik:GridBoundColumn>

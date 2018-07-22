@@ -113,7 +113,8 @@ namespace TelerikWebApp1
                         ngaybatdaukd = item["ngaybatdaukd"].Text.Replace("&nbsp;","");
                         ngaysinh = item["ngaysinh"].Text;
                         sogp = item["sogp"].Text;
-                        db.DanhSachHoCaThe_Import(hoten, cmnd, ngaysinh, tencuahang, diachiKD, nghekinhdoanh, ngaybatdaukd, sogp, Session["UserID"].ToString());
+                        string madp = item["madp"].Text;
+                        db.DanhSachHoCaThe_Import(hoten, cmnd, ngaysinh, tencuahang, diachiKD, nghekinhdoanh, ngaybatdaukd, sogp, madp);
                         st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
 

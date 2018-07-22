@@ -50,10 +50,7 @@
                         <asp:LinkButton ID="btnSearch" name="btnSearch" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSearch_Click"><span class="btnSearch">Tìm kiếm</span>
                         </asp:LinkButton>
                     </span>
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSave_Click" OnClientClick="return checkSave();"><span class="btnSave">L&#432;u</span>
-                        </asp:LinkButton>
-                    </span>
+                
                     <span class="btn1">
                         <asp:LinkButton ID="btnExport" name="btnExport" runat="server" AccessKey="E" ToolTip="Alt+E" OnClick="btnExport_Click">
 		                    <span class="btnExport">Xuất DL</span>
@@ -93,13 +90,10 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridTemplateColumn UniqueName="SoTienNop" DataField="SoTienNop" HeaderText="Số tiền nộp">
+                                             <telerik:GridBoundColumn UniqueName="SoTienNop" DataField="SoTienNop" HeaderText="Số tiền nộp" DataFormatString="{0:N0}">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                                <ItemTemplate>
-                                                    <asp:TextBox runat="server" ID="txtSoTienNop" CssClass="Input" onblur="javascript:checkNumeric(this);" Text='<%# Bind("SoTienNop", "{0:N0}") %>' Width="80px"></asp:TextBox>
-                                                </ItemTemplate>
-                                            </telerik:GridTemplateColumn>
+                                            </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="KyThue" DataField="KyThue" HeaderText="Kỳ thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />

@@ -148,8 +148,6 @@ namespace TelerikWebApp1
             long thuemonbai = g.ThueMonBai ?? 0;
             long thueGTGT = g.ThueGTGT ?? 0;
             long thueTNCN = g.ThueTNCN ?? 0;
-            long tong = g.TongCong ?? 0;
-            long sono = g.SoNo ?? 0;
             data.Add("hoten", g.hoten);
             data.Add("masothue", g.masothue);
             data.Add("diachi", g.diachiKD);
@@ -158,8 +156,7 @@ namespace TelerikWebApp1
             data.Add("ThueMonBai", thuemonbai.ToString("#,##"));
             data.Add("ThueGTGN", thueGTGT.ToString("#,##"));
             data.Add("ThueTNCN", thueTNCN.ToString("#,##"));
-            data.Add("SoNo", sono.ToString("#,##"));
-            data.Add("TongCong", (tong+thuemonbai).ToString("#,##"));
+            data.Add("TongCong", (thueGTGT+thueTNCN+thuemonbai).ToString("#,##"));
             return data;
         }
         protected void btnExport_Click(object sender, EventArgs e)

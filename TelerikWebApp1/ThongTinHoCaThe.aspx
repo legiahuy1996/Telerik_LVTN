@@ -63,31 +63,12 @@
                 </td>
                 <td>
 
-                    <asp:Label runat="server">Tên cửa hàng</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox class="Input" ID="txtTenCuaHang" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
-                </td>
-
-            </tr>
-            <tr>
-                <td>
-                    <br />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <asp:Label runat="server">Địa chỉ</asp:Label></td>
-                <td>
-                    <asp:TextBox class="Input" ID="txtDiaChi" runat="server" TextMode="MultiLine" Width="80%"></asp:TextBox></td>
-                <td>
-
-                    <asp:Label runat="server">Ngày cấp CMND</asp:Label>
+                    <asp:Label runat="server" ID="Label7">Ngày cấp CMND</asp:Label>
                 </td>
                 <td>
                     <asp:TextBox class="Input" ID="txtNgayCapCMND" runat="server" onblur="javascript:CheckDate(this);" Width="80px"></asp:TextBox>
                 </td>
+
             </tr>
             <tr>
                 <td>
@@ -97,16 +78,34 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" ID="Label1">Ngày tính thuế</asp:Label></td>
+                    <asp:Label runat="server">Số nhà</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" ID="txtNgayTinhThue" onblur="javascript:CheckDate(this);" MaxLength="15" Width="80px"></asp:TextBox>
-                </td>
+                    <asp:TextBox class="Input" ID="txtDiaChi" runat="server"  Width="80%"></asp:TextBox></td>
                 <td>
 
-                    <asp:Label runat="server">Năm</asp:Label>
+                    <asp:Label runat="server" ID="Label8">Tên cửa hàng</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="50px" ID="txtNam"></asp:TextBox>
+                    <asp:TextBox class="Input" ID="txtTenCuaHang" runat="server" MaxLength="14" Width="80%"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 16px"></td>
+                <td style="height: 16px">
+                    Quận/Huyện</td>
+                <td style="height: 16px">
+                       <telerik:RadComboBox class="Input" ID="cboQuan" Width="80%" AutoPostBack="true" EmptyMessage="-Chọn quận/huyện-" OnSelectedIndexChanged="cboQuan_SelectedIndexChanged"  runat="server" Skin="Office2007"></telerik:RadComboBox>
+</td>
+                <td style="height: 16px">
+
+                    Tuyến đường</td>
+                <td style="height: 16px">
+                     <telerik:RadComboBox class="Input" ID="cboMaDuongPho" Width="80%" runat="server" EmptyMessage="-Chọn tuyến đường-" Skin="Office2007"></telerik:RadComboBox>
                 </td>
             </tr>
             <tr>
@@ -161,11 +160,9 @@
                 <td>
                     <asp:TextBox class="Input" runat="server"  Width="80%" ID="txtSoDT"></asp:TextBox></td>
                 <td>
-
-                    <asp:Label runat="server">Số giấy phép</asp:Label>
-                </td>
+                    <asp:Label runat="server" ID="Label1">Ngày tính thuế</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server"  Width="80%" ID="txtSoGP"></asp:TextBox>
+                    <asp:TextBox class="Input" runat="server" ID="txtNgayTinhThue" onblur="javascript:CheckDate(this);" MaxLength="15" Width="80px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -181,9 +178,11 @@
                     <asp:TextBox class="Input" runat="server"  Width="80%" TextMode="MultiLine" ID="txtGhiChu"></asp:TextBox></td>
                 <td>
 
-                    &nbsp;</td>
+                    <asp:Label runat="server" ID="Label5">Số giấy phép</asp:Label>
+                </td>
                 <td>
                     <%--<asp:RegularExpressionValidator ID="regexEmailValid" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ErrorMessage="Email không hợp lệ"></asp:RegularExpressionValidator>--%>
+                    <asp:TextBox class="Input" runat="server"  Width="80%" ID="txtSoGP"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -194,10 +193,17 @@
             <tr>
                 <td></td>
                 <td>
+
+                    <asp:Label runat="server" ID="Label6">Năm</asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox class="Input" runat="server" MaxLength="14" Width="50px" ID="txtNam"></asp:TextBox>
+                </td>
+                <td>
+
                     &nbsp;</td>
                 <td>
                     &nbsp;</td>
-
             </tr>
             <tr>
                 <td>

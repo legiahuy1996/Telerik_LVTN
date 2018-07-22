@@ -28,10 +28,6 @@
                         <asp:LinkButton ID="btnSearch" name="btnSearch" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSearch_Click" ><span class="btnSearch">Tìm kiếm</span>
                         </asp:LinkButton>
                     </span>
-                    <span class="btn1">
-                        <asp:LinkButton ID="btnSave"  name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClientClick="return checkSave();" OnClick="btnSave_Click"><span class="btnSave">L&#432;u</span>
-                        </asp:LinkButton>
-                    </span>
                 </td>
             </tr>
         </table>

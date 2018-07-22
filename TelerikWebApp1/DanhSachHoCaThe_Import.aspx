@@ -129,6 +129,10 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
+                                            <telerik:GridBoundColumn UniqueName="madp" DataField="madp" HeaderText="mã tuyến đường">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            </telerik:GridBoundColumn>
                                         
                                         </Columns>
                                     </MasterTableView>

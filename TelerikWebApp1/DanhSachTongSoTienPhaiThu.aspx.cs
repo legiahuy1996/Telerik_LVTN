@@ -174,11 +174,15 @@ namespace TelerikWebApp1
         }
         public void getDataSearch()
         {
-            string thang = txtThangNam.Text.Trim();
+            try
+            {
+                string thang = txtThangNam.Text.Trim();
+                grid.DataSource = db.GetDanhSachTongTienPhaiThu(thang, Session["UserID"].ToString());
+            }
+           catch(Exception mess)
+            {
 
-            List<GetDanhSachTongTienPhaiThuResult> lst = db.GetDanhSachTongTienPhaiThu(thang, Session["UserID"].ToString()).ToList();
-            grid.DataSource = lst;
-            grid.Rebind();
+            }
         }
         protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {

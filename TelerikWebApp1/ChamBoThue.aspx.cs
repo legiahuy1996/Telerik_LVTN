@@ -79,10 +79,28 @@ namespace TelerikWebApp1
                     try
                     {
                         dem++;
-                        string idSoBoThue = item["idSoBoThue"].Text.Trim();
+                        string idSoBoThue = item["idSoBoThue"].Text.Trim().Replace("&nbsp;","");
                         string ReturnMess = "";
-                        db.ChamBoThue(idSoBoThue,ref ReturnMess);
-                        if(ReturnMess!="")
+                        string masothue = item["masothue"].Text.Trim().Replace("&nbsp;", "");
+                        List<SoLieuTuKhoBac> lstsl = db.SoLieuTuKhoBacs.Where(x => x.masothue == masothue ).ToList();
+                        foreach(SoLieuTuKhoBac sl in lstsl )
+                        {
+                            if(int.Parse(sl.KyThue.Substring(0,2)) != DateTime.Now.Month )
+                            {
+                                sono s = db.sonos.SingleOrDefault(x => x.KyThue == sl.KyThue && x.masothue == sl.masothue && x.tieumuc == sl.tieumuc);
+                                if(s!=null)
+                                {
+                                    long? a = s.SoTien - sl.SoTienNop;
+                                    if (a <= 0)
+                                    {
+                                        db.sonos.DeleteOnSubmit(s);
+                                        db.SubmitChanges();
+                                    }
+                                }
+                            }
+                        }
+                        db.ChamBoThue(idSoBoThue, ref ReturnMess);
+                        if (ReturnMess!="")
                         {
                             st.Append("$.notify('" + ReturnMess + "',{className: 'error',globalPosition: 'bottom right'});");
                             ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
@@ -105,6 +123,11 @@ namespace TelerikWebApp1
                 st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            loadDataSearch();
         }
     }
 }

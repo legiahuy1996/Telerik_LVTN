@@ -42,7 +42,7 @@
                         <telerik:RadPane ID="RadPane1" Height="500px" Width="100%" runat="server" Scrolling="Both">
                             <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server">
                                 <telerik:RadGrid runat="server" ID="grid" RenderMode="Lightweight" CellPadding="1" CellSpacing="1" AllowPaging="true" AllowAutomaticUpdates="true"
-                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="false" OnNeedDataSource="grid_NeedDataSource">
+                                    AllowMultiRowSelection="true" AllowSorting="true" AutoGenerateColumns="true" OnNeedDataSource="grid_NeedDataSource">
                                     <ClientSettings>
                                         <Selecting AllowRowSelect="true" EnableDragToSelectRows="false" />
                                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
@@ -51,7 +51,7 @@
                                     <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="10,50,100,200" AllowMultiColumnSorting="true">
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
-                                            <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
+                                <%--            <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
@@ -63,18 +63,18 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="TongDoanhThu" DataField="TongDoanhThu" HeaderText="Tổng doanh thu" DataFormatString="{0:N0}">
+                                            <telerik:GridBoundColumn UniqueName="TongDoanhThu" DataField="TongDoanhThu" HeaderText="Tổng doanh thu">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="SoTienGTGT1Thang" DataField="SoTienGTGT1Thang" HeaderText="Số tiền GTGT 1 tháng" DataFormatString="{0:N0}">
+                                            <telerik:GridBoundColumn UniqueName="SoTienGTGT1Thang" DataField="SoTienGTGT1Thang" HeaderText="Số tiền GTGT 1 tháng" >
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="SoTienTNCN1Thang" DataField="SoTienTNCN1Thang" HeaderText="Số tiền TNCN 1 tháng" DataFormatString="{0:N0}">
+                                            <telerik:GridBoundColumn UniqueName="SoTienTNCN1Thang" DataField="SoTienTNCN1Thang" HeaderText="Số tiền TNCN 1 tháng" >
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
+                                            </telerik:GridBoundColumn>--%>
                                         </Columns>
                                     </MasterTableView>
                                 </telerik:RadGrid>
