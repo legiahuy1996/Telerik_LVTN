@@ -121,7 +121,7 @@
                 </td>
                 <td id="tdKhoa" runat="server">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnLock" name="btnLock" runat="server" AccessKey="L" ToolTip="Alt+L" OnClick="btnLock_Click">
+                        <asp:LinkButton ID="btnLock" name="btnLock" runat="server" AccessKey="L" ToolTip="Alt+L" OnClick="btnLock_Click" OnClientClick="return confirm('Bạn có muốn khoá trạng thái?');">
 		                    <span class="btnLock">Khóa</span>
                         </asp:LinkButton>
                     </span>
@@ -129,7 +129,7 @@
                 <td runat="server">
                     <span class="btn1">
                         <asp:LinkButton ID="btnUnLock" name="btnUnLock" AccessKey="U"
-                            runat="server" ToolTip="ALT+U" OnClick="btnUnLock_Click" OnClientClick="return CheckUnLock()">
+                            runat="server" ToolTip="ALT+U" OnClick="btnUnLock_Click" OnClientClick="return confirm('Bạn có muốn mở khoá trạng thái?');">
                     <span class="btnUnLock">Mở Khóa</span>
                         </asp:LinkButton>
                     </span>

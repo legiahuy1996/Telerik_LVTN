@@ -134,6 +134,10 @@
                                                                   <li>
                                                                       <a href="DanhSachNoQua90Ngay.aspx">Danh sách hộ nợ hơn 3 tháng</a>
                                                                   </li>
+                                                                     <li>
+                                                                      <a href="DanhSachHetHanNgungNghi.aspx">Danh sách hộ kinh doanh hết hạn ngưng nghỉ</a>
+                                                                  </li>
+
 
                                                                 </ul>
                                                             </li>

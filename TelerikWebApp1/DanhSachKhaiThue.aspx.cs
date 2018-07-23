@@ -134,17 +134,24 @@ namespace TelerikWebApp1
                            
                             if (kt != null)
                             {
-                                kt.TrangThaiHoatDong = false;
-                                var tt = db.thongtinngungnghis.OrderByDescending(x => x.mattngungnghi).FirstOrDefault();
-                                int idngungnghi = 0;
-                                if (tt != null)
-                                    idngungnghi = tt.mattngungnghi + 1;
-                                thongtinngungnghi a = new thongtinngungnghi { mattngungnghi = idngungnghi, idKhaiThue = int.Parse(idKhaiThue),tungay =dTuNgay ,denngay =dDenNgay,ngaynopdon=dNgayNop , lydo = txb.Text };
-                                db.thongtinngungnghis.InsertOnSubmit(a);
-                                db.SubmitChanges();
-                                st.Append("$.notify('Khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
-                                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                                
+                                if(kt.TrangThaiHoatDong == false)
+                                {
+                                    st.Append("$.notify('Hộ kinh doanh đã ngưng nghỉ',{className: 'error',globalPosition: 'bottom right'});");
+                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                                }
+                                else
+                                {
+                                    kt.TrangThaiHoatDong = false;
+                                    var tt = db.thongtinngungnghis.OrderByDescending(x => x.mattngungnghi).FirstOrDefault();
+                                    int idngungnghi = 0;
+                                    if (tt != null)
+                                        idngungnghi = tt.mattngungnghi + 1;
+                                    thongtinngungnghi a = new thongtinngungnghi { mattngungnghi = idngungnghi, idKhaiThue = int.Parse(idKhaiThue), tungay = dTuNgay, denngay = dDenNgay, ngaynopdon = dNgayNop, lydo = txb.Text };
+                                    db.thongtinngungnghis.InsertOnSubmit(a);
+                                    db.SubmitChanges();
+                                    st.Append("$.notify('Khoá trạng thái thành công',{className: 'success',globalPosition: 'bottom right'});");
+                                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+                                }
                             }
                         }
                     }

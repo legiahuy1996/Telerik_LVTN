@@ -350,8 +350,7 @@ namespace TelerikWebApp1
                                 {
                                     System.IO.File.Delete(txtFilepath.Text);
                                 }
-                                if(lstErr.Count>0)
-                                    Export(lstErr);
+                               
                                 st.Append("$.notify('Thao tác thành công',{className: 'success',globalPosition: 'bottom right'});");
                                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                             }
@@ -364,6 +363,8 @@ namespace TelerikWebApp1
                     }
                 }
             }
+            if (lstErr.Count > 0)
+                Export(lstErr);
         }
 
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
