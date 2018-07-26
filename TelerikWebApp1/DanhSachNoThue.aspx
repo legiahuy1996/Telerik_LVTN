@@ -32,7 +32,6 @@
             </tr>
         </table>
         <br />
-        <asp:label runat="server" CssClass="labelRequire" > Lưu ý: Số tiền nợ bằng 0 nghĩa là đã cộng sang tháng tiếp theo</asp:label>
           <table width="100%" cellpadding="1" cellspacing="1" border="0">
             <tr>
                 <td>

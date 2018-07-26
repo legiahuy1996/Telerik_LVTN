@@ -187,10 +187,10 @@
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="MucThue" DataField="MucThue" HeaderText="Thuế môn bài" DataFormatString="{0:N0}">
+                                           <%-- <telerik:GridBoundColumn UniqueName="MucThue" DataField="MucThue" HeaderText="Thuế môn bài" DataFormatString="{0:N0}">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="100px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
+                                            </telerik:GridBoundColumn>--%>
 
                                         </Columns>
                                         <%--                            <Columns>
