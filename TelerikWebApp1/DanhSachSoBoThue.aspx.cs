@@ -36,34 +36,6 @@ namespace TelerikWebApp1
                 
             }
         }
-        public void ShowHideControl()
-        {
-            if (rblLoaiThue.SelectedValue == "1")
-            {
-                grid.MasterTableView.GetColumn("ThueTNCN").Display = false;
-                grid.MasterTableView.GetColumn("ThueGTGT").Display = true;
-                grid.MasterTableView.GetColumn("MucThue").Display = false;
-            }
-            else if (rblLoaiThue.SelectedValue == "2")
-            {
-                grid.MasterTableView.GetColumn("ThueTNCN").Display = true;
-                grid.MasterTableView.GetColumn("ThueGTGT").Display = false;
-                grid.MasterTableView.GetColumn("MucThue").Display = false;
-
-            }
-            else if (rblLoaiThue.SelectedValue == "3")
-            {
-                grid.MasterTableView.GetColumn("ThueTNCN").Display = false;
-                grid.MasterTableView.GetColumn("ThueGTGT").Display = false;
-                grid.MasterTableView.GetColumn("MucThue").Display = true;
-            }
-            else
-            {
-                grid.MasterTableView.GetColumn("ThueTNCN").Display = true;
-                grid.MasterTableView.GetColumn("ThueGTGT").Display = true;
-                grid.MasterTableView.GetColumn("MucThue").Display = true;
-            }
-        }
         public void loadDataSearch()
         {
             string nghekinhdoanh = txtNgheKinhDoanh.Text;
@@ -244,7 +216,6 @@ namespace TelerikWebApp1
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            ShowHideControl();
             loadDataSearch();
         }
 

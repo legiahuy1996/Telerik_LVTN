@@ -207,7 +207,7 @@
                     <asp:Label runat="server" ID="lblSoLuongLD">S&#7889; l&#432;&#7907;ng LD</asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox class="InputCenter" runat="server" ID="txtSoLuongLD" Width="50px" onblur="javascript:checkNumeric(this,9Z);"></asp:TextBox>
+                    <asp:TextBox class="InputCenter" runat="server" ID="txtSoLuongLD" Width="50px" onblur="javascript:checkNumeric(this,9);"></asp:TextBox>
                 </td>
 
 

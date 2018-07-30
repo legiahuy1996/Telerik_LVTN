@@ -201,8 +201,8 @@
                                                         ImageUrl="~/Images/edit.gif" CommandName="EDIT_DATA" />
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
-                                            <telerik:GridBoundColumn UniqueName="idKhaiThue" DataField="idKhaiThue" Visible="true" Display="false">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <telerik:GridBoundColumn UniqueName="idKhaiThue" DataField="idKhaiThue"  HeaderText="Mã khai thuế">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">

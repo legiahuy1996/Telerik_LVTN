@@ -52,18 +52,7 @@
 
             <tr>
                 <td></td>
-                 <td>
-                    <asp:Label runat="server" ID="Label1">Loại thuế</asp:Label>
-                </td>
-                <td>
-                    <asp:RadioButtonList runat="server" ID="rblLoaiThue" RepeatDirection="Horizontal">
-                        <asp:ListItem Value="1">Thuế GTGT</asp:ListItem>
-                        <asp:ListItem Value="2">Thuế TNCN</asp:ListItem>
-                        <asp:ListItem Value="3">Thuế môn bài</asp:ListItem>
-                        <asp:ListItem Value="4" Selected="True">Tất cả</asp:ListItem>
-                    </asp:RadioButtonList>
-                </td>
-                <td width="10%">
+               <td width="10%">
                     <asp:Label runat="server" ID="lblNgheKinhDoanh">Nghề kinh doanh</asp:Label>
                 </td>
                 <td width="25%">
@@ -139,7 +128,7 @@
                                                         CommandName="EDIT_DATA">Chi tiết</asp:LinkButton>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
-                                            <telerik:GridBoundColumn UniqueName="idSoBoThue" DataField="idSoBoThue" HeaderText="idSoBoThue" >
+                                            <telerik:GridBoundColumn UniqueName="idSoBoThue" DataField="idSoBoThue" HeaderText="idSoBoThue" Visible="true" Display="false">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
