@@ -5,7 +5,7 @@
     <h1>Danh sách hộ cá thể</h1>
     <br />
 
-    <form id="frm" runat="server">
+    <form id="frm" runat="server">  
 
         <table cellspacing="1" cellpadding="0" width="100%" border="0" runat="server">
             <tr>

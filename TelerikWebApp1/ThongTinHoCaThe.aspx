@@ -139,7 +139,7 @@
                 <td>
                     <asp:Label runat="server">Vốn kinh doanh</asp:Label></td>
                 <td>
-                    <asp:TextBox class="Input" runat="server" Width="80%" ID="txtVonKD"></asp:TextBox></td>
+                    <asp:TextBox class="Input" runat="server" Width="80%" ID="txtVonKD" onblur="javascript:checkNumeric(this);"></asp:TextBox></td>
                 <td>
 
                     <asp:Label runat="server">Ngày bắt đầu kinh doanh</asp:Label>
