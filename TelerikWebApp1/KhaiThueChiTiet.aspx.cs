@@ -21,22 +21,23 @@ namespace TelerikWebApp1
         string idKhaiThue = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Request.QueryString["masothue"]!=null)
-                 txtMST.Text = Request.QueryString["masothue"];
+            if (Request.QueryString["masothue"] != null)
+                txtMST.Text = Request.QueryString["masothue"];
             db = new DataClasses1DataContext();
             idKhaiThue = Request.QueryString["idKhaiThue"];
             if (Session["taikhoan"] == null)
                 Response.Redirect("Login.aspx");
-            if (idKhaiThue != "" && idKhaiThue != null)
-            {
-                LoadDataByID(idKhaiThue);
-            }
             if (!IsPostBack)
             {
-              
-                LoadComBo();
-                txtNam.Text = DateTime.Now.Year.ToString();
-                txtNgayKhaiThue.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                if (idKhaiThue != "" && idKhaiThue != null)
+                {
+                    LoadDataByID(idKhaiThue);
+                }
+                else
+                {
+                    txtNam.Text = DateTime.Now.Year.ToString();
+                    txtNgayKhaiThue.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                }
             }
         }
         protected void LoadComBo()
@@ -102,11 +103,13 @@ namespace TelerikWebApp1
         {
             KhaiThue khaithue = db.KhaiThues.SingleOrDefault(x => x.idKhaiThue == int.Parse(id));
             txtMST.Text = khaithue.masothue;
+            DateTime dt = DateTime.Parse(khaithue.ngaykhaithue.ToString());
             txtNam.Text = khaithue.nam;
             //txtEmail.Text = khaithue.email;
             //txtSodt.Text = khaithue.sodt;
             //txtNote.Text = khaithue.ghichu;
             //txtDiaChiKD.Text = khaithue.diachiKD;
+            txtNgayKhaiThue.Text = dt.ToString("dd/MM/yyyy");
             txtDienTichKD.Text = khaithue.DienTichKD.ToString();
             if (khaithue.TrangThaiHoatDong == true)
                 chkActive.Checked = true;

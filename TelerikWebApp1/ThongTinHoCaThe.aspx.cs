@@ -22,8 +22,6 @@ namespace TelerikWebApp1
             db = new DataClasses1DataContext();
             masothue = Request.QueryString["masothue"];
             txtNgayCapMST.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            txtNgayTinhThue.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            txtNam.Text = DateTime.Now.Year.ToString();
             if (!IsPostBack)
             {
                 LoadComBoQuan();
