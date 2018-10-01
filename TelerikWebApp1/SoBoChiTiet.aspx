@@ -22,6 +22,12 @@
                 <td width="25%">
                     <asp:TextBox class="Input" runat="server" ID="txtNgayLapBo" Width="30%" ReadOnly="true"></asp:TextBox>
                 </td>
+                  <td width="10%">
+                    <asp:Label runat="server" ID="Label2">Họ tên</asp:Label>
+                </td>
+                <td width="25%">
+                    <asp:TextBox class="Input" runat="server" ID="txtHoTen" Width="50%" ReadOnly="true"></asp:TextBox>
+                </td>
             </tr>
            <tr>
                 <td></td>
@@ -71,28 +77,10 @@
             <tr>
                 <td></td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="lblTrangThai">Tr&#7841;ng thái</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:Label>&#272;ã n&#7897;p</asp:Label>
-                    <asp:RadioButton runat="server" ID="chkActive" GroupName="Status" Checked="true" />
-                    <asp:Label>Ch&#432;a n&#7897;p thu&#7871;</asp:Label>
-                    <asp:RadioButton runat="server" ID="chkNoActive" GroupName="Status" />
-                </td>
-                <td width="10%">
                     <asp:Label runat="server" ID="Label1">Mã Khai Thu&#7871;</asp:Label>
                 </td>
                 <td width="25%">  
                     <asp:TextBox class="Input" runat="server" ID="txtIDKhaiThue" Width="30%" ReadOnly="true"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-               <td></td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="Label2">Họ tên</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="Input" runat="server" ID="txtHoTen" Width="30%" ReadOnly="true"></asp:TextBox>
                 </td>
                 <td width="10%">
                     <asp:Label runat="server" ID="Label3">Mã số thuế</asp:Label>
@@ -101,14 +89,19 @@
                     <asp:TextBox class="Input" runat="server" ID="txtMST" Width="30%" ReadOnly="true"></asp:TextBox>
                 </td>
             </tr>
+            <tr>
+               <td></td>
+              
+                
+            </tr>
         </table>
           <hr />
         <table cellspacing="1" cellpadding="1" width="100%" border="0">
             <tr>
                 <td colspan="3" align="center">
                     <span class="btn1">
-                        <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSave_Click" ><span class="btnSave">L&#432;u</span>
-                        </asp:LinkButton>
+                     <%--   <asp:LinkButton ID="btnSave" name="btnSave" AccessKey="S" ToolTip="ALT+S" runat="server" OnClick="btnSave_Click" ><span class="btnSave">L&#432;u</span>
+                        </asp:LinkButton>--%>
                         <asp:LinkButton ID="btnBack" name="btnBack" AccessKey="L" runat="server" ToolTip="ALT+L"
                             OnClientClick="DisableAllButton('_ctl0:btnList'); return true;" OnClick="btnBack_Click">
                     <span class="btnBack">V&#7873; DS </span>

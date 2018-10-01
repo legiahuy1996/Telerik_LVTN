@@ -21,9 +21,25 @@ namespace TelerikWebApp1
                 Response.Redirect("Login.aspx");
             if (!IsPostBack)
             {
-                List<getDSHoDuocLenSoBoResult> data = db.getDSHoDuocLenSoBo(Session["UserID"].ToString()).ToList();
-                grid.DataSource = data;
-                grid.Rebind();
+                LoadData();   
+            }
+        }
+        protected void LoadData()
+        {
+            List<getDSHoDuocLenSoBoResult> data = db.getDSHoDuocLenSoBo(Session["UserID"].ToString()).ToList();
+            grid.DataSource = data;
+            grid.Rebind();
+        }
+        protected void grid_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
+        {
+            try
+            {
+                LoadData();
+            }
+            catch
+            {
+                if (grid.DataSource == null)
+                    grid.DataSource = new string[] { };
             }
         }
     }

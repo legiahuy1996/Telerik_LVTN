@@ -76,22 +76,22 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.TextBox txtNamLapBo;
         
         /// <summary>
-        /// lblCMND control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCMND;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// txtThang control.
+        /// txtHoTen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtThang;
+        protected global::System.Web.UI.WebControls.TextBox txtHoTen;
         
         /// <summary>
         /// lblDiaChi control.
@@ -112,22 +112,22 @@ namespace TelerikWebApp1 {
         protected global::System.Web.UI.WebControls.TextBox txtDiaChi;
         
         /// <summary>
-        /// Label5 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// txtHoTen control.
+        /// rblLoaiThue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoTen;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblLoaiThue;
         
         /// <summary>
         /// lblNgheKinhDoanh control.
@@ -146,24 +146,6 @@ namespace TelerikWebApp1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNgheKinhDoanh;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// rblLoaiThue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblLoaiThue;
         
         /// <summary>
         /// btnSearch control.

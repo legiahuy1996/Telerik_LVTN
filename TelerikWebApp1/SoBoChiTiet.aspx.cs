@@ -16,7 +16,6 @@ namespace TelerikWebApp1
         StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             db = new DataClasses1DataContext();
             idSoBoThue = Request.QueryString["idSoBoThue"];
             if (!IsPostBack)
@@ -25,7 +24,6 @@ namespace TelerikWebApp1
                     Response.Redirect("Login.aspx");
                 if (idSoBoThue != "")
                 {
-
                     LoadDataByID(idSoBoThue);
                 }
             }
@@ -57,11 +55,6 @@ namespace TelerikWebApp1
                     txtMST.Text = danhba.masothue;
                     txtHoTen.Text = danhba.hoten;
                 }
-
-                if (sobothue.TinhTrangNopThue == true)
-                    chkActive.Checked = true;
-                else
-                    chkNoActive.Checked = true;
             }
             catch (Exception mess)
             {
@@ -69,33 +62,33 @@ namespace TelerikWebApp1
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
         }
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-            st.Clear();
-            try
-            {
-                var kt = db.SoBoThues.SingleOrDefault(x => x.idSoBoThue == int.Parse(idSoBoThue));
-                if (kt != null)
-                {
-                    if (chkActive.Checked == true)
-                    {
-                        kt.TinhTrangNopThue = true;
-                    }
-                    else
-                    {
-                        kt.TinhTrangNopThue = false;
-                    }
-                    db.SubmitChanges();
-                    st.Append("$.notify('Cập nhật thông tin thành công',{className: 'success',globalPosition: 'bottom right'});");
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-                }
-            }
-            catch (Exception mess)
-            {
-                st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
-            }
-        }
+        //protected void btnSave_Click(object sender, EventArgs e)
+        //{
+        //    st.Clear();
+        //    try
+        //    {
+        //        var kt = db.SoBoThues.SingleOrDefault(x => x.idSoBoThue == int.Parse(idSoBoThue));
+        //        if (kt != null)
+        //        {
+        //            if (chkActive.Checked == true)
+        //            {
+        //                kt.TinhTrangNopThue = true;
+        //            }
+        //            else
+        //            {
+        //                kt.TinhTrangNopThue = false;
+        //            }
+        //            db.SubmitChanges();
+        //            st.Append("$.notify('Cập nhật thông tin thành công',{className: 'success',globalPosition: 'bottom right'});");
+        //            ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+        //        }
+        //    }
+        //    catch (Exception mess)
+        //    {
+        //        st.Append("$.notify('" + mess.Message + "',{className: 'error',globalPosition: 'bottom right'});");
+        //        ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
+        //    }
+        //}
 
         protected void btnBack_Click(object sender, EventArgs e)
         {

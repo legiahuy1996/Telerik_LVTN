@@ -129,9 +129,9 @@
                                                                         <a href="ChamBoThue.aspx"><span>Chấm sổ bộ</span></a>
                                                                     </li>
                                                                     <li>
-                                                                        <a href='DanhSachNoThue.aspx'><span>Danh sách hộ còn nợ thuế</span></a>
+                                                                        <a href='DanhSachNoThue.aspx'><span>Sổ nợ</span></a>
                                                                     </li>
-                                                                   
+                                                                  
 
                                                                 </ul>
                                                             </li>

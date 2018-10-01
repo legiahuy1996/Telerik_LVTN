@@ -16,9 +16,30 @@ namespace TelerikWebApp1
         StringBuilder st = new StringBuilder();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["taikhoan"] == null)
+                Response.Redirect("Login.aspx");
             db = new DataClasses1DataContext();
             if (!IsPostBack)
+            {
                 loadDataSearch();
+                //if (DateTime.Now == GoToEndOfMonth(DateTime.Now))
+                //    btnCreate.Enabled = true;
+                //else
+                //    btnCreate.Enabled = false;
+            }
+               
+        }
+        public DateTime GoToEndOfMonth(DateTime date)
+        {
+            if (date.Month == 12)
+            {
+                // nếu là tháng 12 thì trả về ngày 31
+                return new DateTime(date.Year, date.Month, 31);
+            }
+            // chuyển tới ngày đầu tiên của tháng kế tiếp
+            DateTime tem = new DateTime(date.Year, date.Month + 1, 1);
+            // lùi lại 1 ngày là về ngày cuối tháng của tháng hiện tại rồi. 
+            return tem.AddDays(-1);
         }
         public void loadDataSearch()
         {
@@ -48,6 +69,7 @@ namespace TelerikWebApp1
         {
             GridDataItem item;
             st.Clear();
+            int dem = 0;
             for (int i = 0; i < grid.Items.Count; i++)
             {
                 item = (GridDataItem)grid.Items[i];
@@ -56,6 +78,7 @@ namespace TelerikWebApp1
                 {
                     try
                     {
+                        dem++;
                         string idSoBoThue = item["idSoBoThue"].Text.Trim();
                         string ReturnMess = "";
                         db.ChamBoThue(idSoBoThue,ref ReturnMess);
@@ -76,6 +99,11 @@ namespace TelerikWebApp1
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
                     }
                 }
+            }
+            if (dem == 0)
+            {
+                st.Append("$.notify('Vui lòng chọn 1 mẫu tin',{className: 'error',globalPosition: 'bottom right'});");
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "", st.ToString(), true);
             }
         }
     }

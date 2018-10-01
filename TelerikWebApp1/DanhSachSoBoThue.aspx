@@ -36,10 +36,10 @@
             <tr>
                 <td></td>
                 <td width="10%">
-                    <asp:Label runat="server" ID="lblCMND">Tháng kinh doanh </asp:Label>
+                    <asp:Label runat="server" ID="Label5">Họ Tên</asp:Label>
                 </td>
-                <td width="30%">
-                    <asp:TextBox class="Input" runat="server" ID="txtThang" Width="50px" onblur="return validateDOB(this);"></asp:TextBox>
+                <td width="25%">
+                    <asp:TextBox class="Input" runat="server" ID="txtHoTen" Width="80%"></asp:TextBox>
                 </td>
 
                 <td width="10%">
@@ -52,22 +52,7 @@
 
             <tr>
                 <td></td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="Label5">Họ Tên</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="Input" runat="server" ID="txtHoTen" Width="80%"></asp:TextBox>
-                </td>
-                <td width="10%">
-                    <asp:Label runat="server" ID="lblNgheKinhDoanh">Nghề kinh doanh</asp:Label>
-                </td>
-                <td width="25%">
-                    <asp:TextBox class="Input" runat="server" ID="txtNgheKinhDoanh" Width="80%"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
+                 <td>
                     <asp:Label runat="server" ID="Label1">Loại thuế</asp:Label>
                 </td>
                 <td>
@@ -78,7 +63,14 @@
                         <asp:ListItem Value="4" Selected="True">Tất cả</asp:ListItem>
                     </asp:RadioButtonList>
                 </td>
+                <td width="10%">
+                    <asp:Label runat="server" ID="lblNgheKinhDoanh">Nghề kinh doanh</asp:Label>
+                </td>
+                <td width="25%">
+                    <asp:TextBox class="Input" runat="server" ID="txtNgheKinhDoanh" Width="80%"></asp:TextBox>
+                </td>
             </tr>
+         
 
         </table>
 
@@ -123,7 +115,7 @@
                                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
                                     </ClientSettings>
 
-                                    <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="5,10,15" AllowMultiColumnSorting="true">
+                                    <MasterTableView GroupLoadMode="Client" Width="100%" CommandItemDisplay="Top" PagerStyle-AlwaysVisible="true" PagerStyle-PageSizes="10,50,100,200" AllowMultiColumnSorting="true">
                                         <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                         <Columns>
                                             <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn">
@@ -147,7 +139,7 @@
                                                         CommandName="EDIT_DATA">Chi tiết</asp:LinkButton>
                                                 </ItemTemplate>
                                             </telerik:GridTemplateColumn>
-                                            <telerik:GridBoundColumn UniqueName="idSoBoThue" DataField="idSoBoThue" HeaderText="idSoBoThue">
+                                            <telerik:GridBoundColumn UniqueName="idSoBoThue" DataField="idSoBoThue" HeaderText="idSoBoThue" >
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
@@ -157,7 +149,7 @@
                                             </telerik:GridBoundColumn>
 
                                             <telerik:GridBoundColumn UniqueName="nam" DataField="nam" HeaderText="Năm">
-                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle"  Width="50px"/>
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="masothue" DataField="masothue" HeaderText="Mã số thuế">
@@ -185,10 +177,6 @@
 
                                             <telerik:GridBoundColumn UniqueName="Thang" DataField="Thang" HeaderText="Tháng lập bộ">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" />
-                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            </telerik:GridBoundColumn>
-                                            <telerik:GridBoundColumn UniqueName="TinhTrangNopThue" DataField="TinhTrangNopThue" HeaderText="Trạng thái">
-                                                <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" Width="70px" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                             </telerik:GridBoundColumn>
                                             <telerik:GridBoundColumn UniqueName="ThueGTGT" DataField="ThueGTGT" HeaderText="Thuế GTGT phải nộp 1 tháng" DataFormatString="{0:N0}">

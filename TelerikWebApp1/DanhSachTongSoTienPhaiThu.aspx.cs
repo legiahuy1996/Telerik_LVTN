@@ -160,7 +160,7 @@ namespace TelerikWebApp1
             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
             // Dòng này rất quan trọng, vì chạy trên firefox hay IE thì dòng này sẽ hiện Save As dialog cho người dùng chọn thư mục để lưu
             // File name của Excel này là ExcelDemo
-            Response.AddHeader("Content-Disposition", "attachment; filename=DanhSachTongSoTienPhaiThu.xlsx");
+            Response.AddHeader("Content-Disposition", "attachment; filename=SoThue.xlsx");
             // Lưu file excel của chúng ta như 1 mảng byte để trả về response
             Response.BinaryWrite(buffer.ToArray());
             // Send tất cả ouput bytes về phía clients

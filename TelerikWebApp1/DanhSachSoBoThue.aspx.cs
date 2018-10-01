@@ -66,15 +66,13 @@ namespace TelerikWebApp1
         }
         public void loadDataSearch()
         {
-           
             string nghekinhdoanh = txtNgheKinhDoanh.Text;
             string MST = txtMST.Text;
-            string thang = txtThang.Text;
             string diachi = txtDiaChi.Text;
             string hoten = txtHoTen.Text;
             string thanglapbo = txtThangLapBo.Text;
             string namlapbo = txtNamLapBo.Text;
-            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, thang, diachi, hoten, thanglapbo, namlapbo, Session["UserID"].ToString()).ToList();
+            List<getDSSoBoThueResult> data = db.getDSSoBoThue(MST, nghekinhdoanh, diachi, hoten, thanglapbo, namlapbo, Session["UserID"].ToString()).ToList();
             grid.DataSource = data;
             list = data;
             grid.Rebind();
@@ -142,7 +140,6 @@ namespace TelerikWebApp1
                 worksheet.Cells[i + 2, 10].Value = item.TyLeTinhThueTNCN + "%";
                 worksheet.Cells[i + 2, 11].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN;
                 worksheet.Cells[i + 2, 12].Value = item.DoanhThuTinhThueTNCN * item.TyLeTinhThueTNCN * 12;
-                worksheet.Cells[i + 2, 13].Value = item.TinhTrangNopThue;
                 worksheet.Cells[i + 2, 14].Value = item.NgayLapBo;
 
 
@@ -182,12 +179,11 @@ namespace TelerikWebApp1
         {
             string nghekinhdoanh = txtNgheKinhDoanh.Text;
             string MST = txtMST.Text;
-            string thang = txtThang.Text;
             string diachi = txtDiaChi.Text;
             string hoten = txtHoTen.Text;
             string thanglapbo = txtThangLapBo.Text;
             string namlapbo = txtNamLapBo.Text;
-            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, thang, diachi, hoten, thanglapbo, namlapbo, Session["UserID"].ToString()).ToList();
+            List<getDSSoBoThueResult> list = db.getDSSoBoThue(MST, nghekinhdoanh, diachi, hoten, thanglapbo, namlapbo, Session["UserID"].ToString()).ToList();
             using (var excelPackage = new ExcelPackage(stream ?? new MemoryStream()))
             {
                 // Tạo author cho file Excel
